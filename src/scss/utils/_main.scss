@@ -1,0 +1,64 @@
+@use "variables" as *;
+
+main {
+  //    padding: 1rem 2rem 2rem;
+
+  code {
+    border-radius: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 0.15rem 0.25rem;
+  }
+  img {
+    &.avatar {
+      width: 10rem;
+    }
+
+    &.fluid {
+      max-width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+  figure {
+    display: block;
+    width: 100%;
+    margin: 0 0.5rem 2rem -0.5rem;
+    img {
+      border: 10px solid white;
+      box-shadow: 0 0 0.5rem #d4d4d4;
+    }
+    figcaption {
+      background: #ededed;
+      color: #222;
+      padding: 0.5rem;
+    }
+  }
+  // .card-content {
+  //     padding: 0 1rem 1rem;
+  //     ul, ol {
+  //         margin-left: 2rem;
+  //     }
+  //     ol {
+  //         list-style-type: lower-roman;
+  //     }
+  //     p, ul, ol {
+  //         font-size: 1.2rem;
+  //         line-height: 1.75rem;
+  //         margin-bottom: 1rem;
+  //     }
+  // }
+
+  .code-sample {
+    background: $vscode;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    color: $chuck;
+    font-family: "Gabriela", serif;
+    padding: 1rem 2rem 0.25rem;
+    margin: 0 0 1rem;
+
+    p {
+      font-size: 1.35rem;
+    }
+  }
+}

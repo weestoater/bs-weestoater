@@ -1,0 +1,122 @@
+@use "variables" as *;
+
+.match-details {
+    margin: 0 0 1.5rem;
+
+    &.away h2 {
+        background: $claret;
+        color: white;
+    }
+
+    &.home h2 {
+        background: $amber;
+        color: black;
+    }
+
+    h2 {
+        padding: .5rem;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        border-bottom: none;
+        .venue, .score {
+            text-align: center;
+        }
+
+        @media(max-width: 616px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    ul.no-bullets {
+
+        display: block;
+        margin: -1rem 0  2rem; 
+        padding: 0;
+
+        li {
+            display: inline-table;
+            list-style-type: none;
+            margin-left: 0;
+            padding: 0.25rem 1rem 0.25rem 0;
+            line-height: 1rem;
+        }
+    }
+
+    table {
+        width: 100%;
+        margin: 0 0 1rem;
+
+        thead {
+            background: $amber;
+            color: $claret;
+
+            th {
+                padding: .5rem;
+                text-transform: uppercase;
+                border: 1px solid $claret;
+            }
+        }
+        tbody {
+            tr { 
+                text-align: center;
+            }
+            td {
+                background: rgba(255,255,255,.25);
+                border: 1px solid $claret;
+                padding: 1rem;
+                font-size: 1.25rem;
+            }
+        }
+    }
+}
+
+.score-details {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1;
+
+    @media(max-width: 616px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 2;
+    }
+
+}
+
+.cards {
+    display: inline-block;
+    width: 1rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 .333rem #ddd;
+    margin: .75rem .5rem 0 0;
+
+    &.red {
+        background: red;
+    }
+
+    &.yellow {
+        background: yellow;
+    }
+}
+
+.goal-scorers {
+    width: 100%;
+    max-width: calc(100vw / 2.25);
+    height: calc(100vh / 2);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 .333rem #ddd;
+    background-color: transparent;
+}
+
+@media(max-width: 616px) {
+    .goal-scorers {
+        max-width: 80vw;
+        height: 50vh;
+    }
+}
+.tab-panels {
+    margin-top: 2rem;
+}

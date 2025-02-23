@@ -1,0 +1,72 @@
+[
+    {
+        "startDate": "Sep '16",
+        "endDate": "Today",
+        "jobTitle": "Lead UI Developer",
+        "company": "J.P. Morgan Chase & Co.",
+        "details": "Lead UI developer in a team of UX designers and researchers.  Subject matter expert Front End development / Accessibility + Web standards. Advising development teams on improvements to their UI development standards + practices; Assisting teams with Accessibility improvements; Encouraging / enabling adoption of standardised UI frameworks; Working with designers to understand implemenation issues / best practices; Advising on best use of framework components; Evangelising on Accessibility and web standards.  I have worked in other teams within the firm as UI Senior Associate, mentoring junior talent and leading on interface development. As well as working on voluntary projects such as Code for Good; Force for Good and Generation Tech - all of which help support young talent discover paths into IT."
+    },
+    {
+        "startDate": "Aug '16",
+        "endDate": "Sep '16",
+        "jobTitle": "UI Developer",
+        "company": "Student Loans Co.",
+        "details": "Web developer in small team producing standards compliant, highly accessible content updates."
+    },
+    {
+        "startDate": "Nov '14",
+        "endDate": "Jul '16",
+        "jobTitle": "Senior Front-End Developer / UI Team Lead",
+        "company": "Xedo",
+        "details": "Implemented Umbraco to power content in the core app and upgraded legacy sites. Agile methodology, coached by the excellent Chris McDermott and learned the benefits of the empowered autonomous teams. Promoted to the UX /UI Team Lead role: I encouraged Jasmine TDD JavaScript development in Xedo and Visual Regression Testing for the UX/UI."
+    },
+    {
+        "startDate": "Dec '11",
+        "endDate": "Nov '14",
+        "jobTitle": "Senior Web Developer / Designer",
+        "company": "IRW Systems Ltd.",
+        "details": "Front-End specialist within team of .NET developers. Worked on numerous interfaces for applications; certified Umbraco developer and produced many responsive websites using Umbraco;  Sharepoint interface development - wrestling with the nested CSS; Gained Microsoft Certifications - MCSD Web Applications and bing accredited"
+    },
+    {
+        "startDate": "Jan '08",
+        "endDate": "Dec '11",
+        "jobTitle": "Senior Web Developer",
+        "company": "East Renfrewshire Council",
+        "details": "Maintenance and update of Council website. Build and training of editors for new Council intranet and website, using .NET based GOSS CMS. Accessibility advocate."
+    },
+    {
+        "startDate": "Aug '07",
+        "endDate": "Oct '07",
+        "jobTitle": "Freelance",
+        "company": "Education Scotland",
+        "details": "I worked on a SQL server migration project, requiring analysis and accuracy."
+    },
+    {
+        "startDate": "Feb '05",
+        "endDate": "Sep '07",
+        "jobTitle": "Freelance",
+        "company": "accessibilitygnu.com",
+        "details": "Taking a career break from UK, worked out of South Korea doing TEfL classes during day and contracting on websites and design in my spare time.  Built up a client base of repeat business and some successful outcomes."
+    },
+    {
+        "startDate": "Sep '00",
+        "endDate": "Feb '05",
+        "jobTitle": "Web Developer",
+        "company": "Learning & Teaching Scotland",
+        "details": "Worked on a variety of educational projects, from html driven information sites to highly interactive Flash game site which won National Award.  Also began journey of discovery into Accessibility and became expert in web standards promoting best practices across teams."
+    },
+    {
+        "startDate": "Mar '96",
+        "endDate": "Sep '00",
+        "jobTitle": "DBA / Web Developer",
+        "company": "DCA Data Services Ltd.",
+        "details": "Small consultancy requiring me to wear many hats. Database Administrator for National Training Information DB; Web Designer and Developer; Network Administrator for office hardware."
+    },
+    {
+        "startDate": "Jul '95",
+        "endDate": "Feb '96",
+        "jobTitle": "Graduate Developer",
+        "company": "Rockmoor Ltd.",
+        "details": "Worked on a number of interface designs for Eurodesk project; desktop publishing for the Scottish Music Information Centre handbook and icon designs for CiPFA application."
+    }
+]
