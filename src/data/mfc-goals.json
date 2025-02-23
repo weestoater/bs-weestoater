@@ -1,0 +1,349 @@
+[
+  {
+    "season": "2024-25",
+    "details": [
+      {
+        "player": "Tawanda Maswanhise",
+        "goals": 5
+      },
+      {
+        "player": "Apostolos Stamatelopoulos",
+        "goals": 5
+      },
+      {
+        "player": "Moses Ebiye",
+        "goals": 4
+      },
+
+      {
+        "player": "Lennon Miller",
+        "goals": 4
+      },
+      {
+        "player": "Andy Halliday",
+        "goals": 3
+      },
+      {
+        "player": "Tom Sparrow",
+        "goals": 3
+      },
+      {
+        "player": "Dan Casey",
+        "goals": 2
+      },
+      {
+        "player": "Stephen O'Donnell",
+        "goals": 2
+      },
+      {
+        "player": "Zack Robinson",
+        "goals": 2
+      },
+      {
+        "player": "Luke Armstrong",
+        "goals": 1
+      },
+      {
+        "player": "Kofi Balmer",
+        "goals": 1
+      },
+      {
+        "player": "Shane Blaney",
+        "goals": 1
+      },
+      {
+        "player": "Liam Gordon",
+        "goals": 1
+      },
+      {
+        "player": "Paul McGinn",
+        "goals": 1
+      },
+      {
+        "player": "Callum Slattery",
+        "goals": 1
+      },
+      {
+        "player": "Filip Stuperavic",
+        "goals": 1
+      },
+      {
+        "player": "Tony Watt",
+        "goals": 1
+      },
+      {
+        "player": "Ewan Wilson",
+        "goals": 1
+      }
+    ]
+  },
+  {
+    "season": "2023-24",
+    "details": [
+      {
+        "player": "Theo Bair",
+        "goals": 15
+      },
+      {
+        "player": "Blair Spittal",
+        "goals": 11
+      },
+      {
+        "player": "Mika Biereth",
+        "goals": 6
+      },
+      {
+        "player": "Conor Wilkinson",
+        "goals": 4
+      },
+      {
+        "player": "Dan Casey",
+        "goals": 3
+      },
+      {
+        "player": "Jonathan Obika",
+        "goals": 3
+      },
+      {
+        "player": "Callum Slattery",
+        "goals": 3
+      },
+      {
+        "player": "Shane Blaney",
+        "goals": 2
+      },
+      {
+        "player": "Lennon Miller",
+        "goals": 2
+      },
+      {
+        "player": "Bevis Mugabi",
+        "goals": 2
+      },
+      {
+        "player": "Sam Nicholson",
+        "goals": 2
+      },
+      {
+        "player": "Harry Paton",
+        "goals": 2
+      },
+      {
+        "player": "Jack Vale",
+        "goals": 2
+      },
+      {
+        "player": "Adam Devine",
+        "goals": 1
+      },
+      {
+        "player": "Georgie Gent",
+        "goals": 1
+      },
+      {
+        "player": "Andrew Halliday",
+        "goals": 1
+      },
+      {
+        "player": "Ebiye Moses",
+        "goals": 1
+      },
+      {
+        "player": "Luca Ross",
+        "goals": 1
+      },
+      {
+        "player": "Davor Zdravkovski",
+        "goals": 1
+      }
+    ]
+  },
+  {
+    "season": "2022-23",
+    "details": [
+      {
+        "player": "Kevin Van Veen",
+        "goals": 29
+      },
+      {
+        "player": "Blair Spittal",
+        "goals": 6
+      },
+      {
+        "player": "Stuart McKinstry",
+        "goals": 4
+      },
+      {
+        "player": "Callum Slattery",
+        "goals": 4
+      },
+      {
+        "player": "Max Johnston",
+        "goals": 3
+      },
+      {
+        "player": "Mikael Mandron",
+        "goals": 3
+      },
+      {
+        "player": "Ross Tierney",
+        "goals": 2
+      },
+      {
+        "player": "Joe Efford",
+        "goals": 1
+      },
+      {
+        "player": "Stephen O'Donnell",
+        "goals": 1
+      },
+      {
+        "player": "Sondre Johansen",
+        "goals": 1
+      },
+      {
+        "player": "Jonathan Obika",
+        "goals": 1
+      },
+      {
+        "player": "Louis Moult",
+        "goals": 1
+      },
+      {
+        "player": "Bevis Mugabi",
+        "goals": 1
+      },
+      {
+        "player": "Sean Goss",
+        "goals": 1
+      }
+    ]
+  },
+  {
+    "season": "2021-22",
+    "details": [
+      {
+        "player": "Kevin Van Veen",
+        "goals": 11
+      },
+      {
+        "player": "Ricki Lamie",
+        "goals": 4
+      },
+      {
+        "player": "Connor Shields",
+        "goals": 3
+      },
+      {
+        "player": "Joe Efford",
+        "goals": 3
+      },
+      {
+        "player": "Ross Tierney",
+        "goals": 2
+      },
+      {
+        "player": "Callum Slattery",
+        "goals": 2
+      },
+      {
+        "player": "Dean Cornelius",
+        "goals": 2
+      },
+      {
+        "player": "Kaiyne Woolery",
+        "goals": 2
+      },
+      {
+        "player": "Bevis Mugabi",
+        "goals": 2
+      },
+      {
+        "player": "Jordan Roberts",
+        "goals": 2
+      },
+      {
+        "player": "Juhani Ojala",
+        "goals": 1
+      },
+      {
+        "player": "Liam Grimshaw",
+        "goals": 1
+      },
+      {
+        "player": "Barry Maguire",
+        "goals": 1
+      },
+
+      {
+        "player": "Mark O'Hara",
+        "goals": 1
+      },
+      {
+        "player": "Liam Donnelly",
+        "goals": 1
+      },
+      {
+        "player": "Sean Goss",
+        "goals": 1
+      },
+      {
+        "player": "Justin Amaluzor",
+        "goals": 1
+      }
+    ]
+  },
+  {
+    "season": "2020-21",
+    "details": [
+      {
+        "player": "Devante Cole",
+        "goals": 12
+      },
+      {
+        "player": "Tony Watt",
+        "goals": 6
+      },
+      {
+        "player": "Christopher Long",
+        "goals": 6
+      },
+      {
+        "player": "Alan Campbell",
+        "goals": 5
+      },
+      {
+        "player": "Mark O'Hara",
+        "goals": 4
+      },
+      {
+        "player": "Jordan Roberts",
+        "goals": 3
+      },
+      {
+        "player": "Stephen O'Donnell",
+        "goals": 3
+      },
+      {
+        "player": "Bevis Mugabi",
+        "goals": 2
+      },
+      {
+        "player": "Liam Polwarth",
+        "goals": 1
+      },
+      {
+        "player": "Barry Maguire",
+        "goals": 1
+      },
+      {
+        "player": "Declan Gallagher",
+        "goals": 1
+      },
+      {
+        "player": "Sam Foley",
+        "goals": 1
+      }
+    ]
+  }
+]
