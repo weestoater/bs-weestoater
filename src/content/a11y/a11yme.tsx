@@ -1,8 +1,12 @@
 export const A11yMe = () => {
   return (
-    <>
-      <h2>A11y &amp; me</h2>
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>
+          <i className="bi bi-universal-access-circle me-2"></i> A11y &amp; me
+        </h2>
+      </div>
+      <div className="card-body">
         <p>
           I <strong>really care</strong> about Accessibility (a11y) online and
           have done for 20+ years now.
@@ -23,6 +27,6 @@ export const A11yMe = () => {
           products the designers work to.
         </p>
       </div>
-    </>
+    </div>
   );
 };

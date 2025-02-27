@@ -1,8 +1,12 @@
 export const AxePlugin = () => {
   return (
-    <>
-      <h2>Axe Plugin</h2>
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>
+          <i className="bi bi-universal-access-circle me-2"></i> Axe Plugin
+        </h2>
+      </div>
+      <div className="card-body">
         <p>
           I believe in clean easy to read code, especially in my html. As part
           of my day job I help teams building web applications to make sure they
@@ -27,6 +31,6 @@ export const AxePlugin = () => {
           across the issues a lot better than any text book ever could.
         </p>
       </div>
-    </>
+    </div>
   );
 };

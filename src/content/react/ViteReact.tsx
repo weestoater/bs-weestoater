@@ -9,11 +9,13 @@ import viteLogo from "../../assets/img/logo-with-shadow.png";
 
 export const ViteContent = () => {
   return (
-    <>
-      <h2>
-        <Atom size={32} /> Vite &amp; React-ts
-      </h2>
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>
+          <Atom size={32} /> Vite &amp; React-ts
+        </h2>
+      </div>
+      <div className="card-body">
         <img src={viteLogo} className="right w10" alt="Vite logo" />
         <p>
           I've been messing about with{" "}
@@ -75,6 +77,6 @@ export const ViteContent = () => {
           the site, so compression and 'waste' management are the drivers.
         </p>
       </div>
-    </>
+    </div>
   );
 };

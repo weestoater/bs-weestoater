@@ -8,10 +8,11 @@ export const AgilePage = () => {
   return (
     <>
       <PageTitleH1 title="Agile articles" />
-
-      <AgilePractices />
-      <MobRulesContent />
-      <LessonsLearnedContent />
+      <div className="grid-auto-fill">
+        <AgilePractices />
+        <MobRulesContent />
+        <LessonsLearnedContent />
+      </div>
     </>
   );
 };

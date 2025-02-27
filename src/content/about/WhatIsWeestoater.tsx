@@ -2,14 +2,16 @@ import vsCodeScreenShot from "../../assets/img/vs-code.png";
 
 export const WhatIsWeestoater = () => {
   return (
-    <>
-      <h2>what is weestoater</h2>
+    <div className="card">
+      <div className="card-header">
+        <h2>what is weestoater</h2>
+      </div>
       <img
         src={vsCodeScreenShot}
         alt="code example in VS Code"
         className="fluid"
       />
-      <div className="card-content">
+      <div className="card-body">
         <p>
           <strong>weestoater</strong> is the nickname I've used for my personal
           'playgrounds' online since 1999, when I first cut my teeth in{" "}
@@ -47,6 +49,6 @@ export const WhatIsWeestoater = () => {
           too.
         </p>
       </div>
-    </>
+    </div>
   );
 };

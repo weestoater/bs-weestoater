@@ -1,8 +1,10 @@
 export const SadMessage = () => {
   return (
-    <>
-      <h2>I’m free</h2>
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>I’m free</h2>
+      </div>
+      <div className="card-body">
         <p>
           Sadly in life, from time to time, we lose someone who means a great
           deal to us.
@@ -19,7 +21,7 @@ export const SadMessage = () => {
         </p>
 
         <blockquote className="sad">
-          Don't grieve for me for now I'm free,
+          Don't grieve for me now I'm free,
           <br />
           I'm following the path God laid for me
           <br />
@@ -61,6 +63,6 @@ export const SadMessage = () => {
           <br />
         </blockquote>
       </div>
-    </>
+    </div>
   );
 };

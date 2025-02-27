@@ -2,9 +2,14 @@ import { Binoculars } from "@phosphor-icons/react";
 
 export const ScreenReaders = () => {
   return (
-    <>
-      <h2>Learn to use Screen Readers</h2>
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>
+          <i className="bi bi-universal-access-circle me-2"></i> Learn to use
+          Screen Readers
+        </h2>
+      </div>
+      <div className="card-body">
         <div className="right">
           <Binoculars size={64} />
         </div>
@@ -50,6 +55,6 @@ export const ScreenReaders = () => {
           your site using NVDA or JAWS.
         </p>
       </div>
-    </>
+    </div>
   );
 };

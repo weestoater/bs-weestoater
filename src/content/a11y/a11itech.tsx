@@ -2,11 +2,14 @@ import { Biohazard, Binoculars, Rocket } from "@phosphor-icons/react";
 
 export const A11yTech = () => {
   return (
-    <>
-      <h2>
-        A11y <code>techncIAN</code>
-      </h2>
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>
+          <i className="bi bi-universal-access-circle me-2"></i> A11y{" "}
+          <code>techncIAN</code>
+        </h2>
+      </div>
+      <div className="card-body">
         <div className="right">
           <Biohazard size={64} />
         </div>
@@ -67,6 +70,6 @@ export const A11yTech = () => {
           products.
         </p>
       </div>
-    </>
+    </div>
   );
 };

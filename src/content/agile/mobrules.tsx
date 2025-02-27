@@ -2,9 +2,11 @@ import MobRuleImg from "../../assets/img/mob-programming.jpg";
 
 export const MobRulesContent = () => {
   return (
-    <>
-      <h2>Mob Rules</h2>
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>Mob Rules</h2>
+      </div>
+      <div className="card-body">
         <img src={MobRuleImg} alt="" className="fluid" />
         <p>
           In early July 2019, I worked in a different team at my firm. We used
@@ -50,6 +52,6 @@ export const MobRulesContent = () => {
         </p>
         <p>Try it, love it, code it.</p>
       </div>
-    </>
+    </div>
   );
 };

@@ -7,8 +7,10 @@ export const HomePage = () => {
   return (
     <>
       <PageTitleH1 title="Welcome" hidden={true} />
-      <EthosCard />
-      <TrialnErrorCard />
+      <div className="grid-auto-fill">
+        <EthosCard />
+        <TrialnErrorCard />
+      </div>
     </>
   );
 };

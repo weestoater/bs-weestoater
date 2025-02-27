@@ -2,9 +2,11 @@ import LightweightImg from "../../assets/img/Landie/lightweight.jpg";
 
 export const EarlyAge = () => {
   return (
-    <>
-      <h2>Early age</h2>
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>Early age</h2>
+      </div>
+      <div className="card-body">
         <img
           src={LightweightImg}
           className="fluid"
@@ -36,6 +38,6 @@ export const EarlyAge = () => {
           unstoppable, incredible pieces of mechanical engineering.
         </p>
       </div>
-    </>
+    </div>
   );
 };

@@ -6,9 +6,11 @@ import Landie5img from "../../assets/img/Landie/2011/cimg2894.jpg";
 
 export const BirthdayTreat = () => {
   return (
-    <>
-      <h2>Birthday Treat 1</h2>
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>Birthday Treat 1</h2>
+      </div>
+      <div className="card-body">
         <img
           src={BirthdayTreatOne}
           className="fluid"
@@ -74,6 +76,6 @@ export const BirthdayTreat = () => {
           <figcaption>Me standing next to the vehicle</figcaption>
         </figure>
       </div>
-    </>
+    </div>
   );
 };

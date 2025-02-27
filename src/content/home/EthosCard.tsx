@@ -1,10 +1,12 @@
 export const EthosCard = () => {
   return (
-    <>
-      <h2>
-        <i className="bi bi-house-heart me-4"></i>Ethos
-      </h2>
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>
+          <i className="bi bi-house-heart me-4"></i>Ethos
+        </h2>
+      </div>
+      <div className="card-body">
         <p>
           I started this space as an online area for me to experiment with
           ReactJS and data 'patterns'. I've not got any desire to add a database
@@ -27,6 +29,6 @@ export const EthosCard = () => {
           elsewhere instead.
         </p>
       </div>
-    </>
+    </div>
   );
 };
