@@ -1,8 +1,10 @@
 export const ReactHooksPost = () => {
   return (
-    <>
-      <h2>hook, line &amp; sinker</h2>
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>hook, line &amp; sinker</h2>
+      </div>
+      <div className="card-body">
         <p>
           Since moving teams and re-learning Angular I’ve had the chance to work
           recently on a rather nice ReactJS project. It gave me my first real
@@ -56,6 +58,6 @@ export const ReactHooksPost = () => {
           part of my employers ethos.
         </p>
       </div>
-    </>
+    </div>
   );
 };

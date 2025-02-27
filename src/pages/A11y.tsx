@@ -9,17 +9,13 @@ export const A11yPage = () => {
   return (
     <>
       <PageTitleH1 title="Accessibility (a11y)" />
-      
-          <ScreenReaders />
-      
-          <A11yTech />
-      
-          <A11yMe />
-      
-          <A11yPromotion />
-      
-          <AxePlugin />
-      
+      <div className="grid-auto-fill">
+        <ScreenReaders />
+        <A11yTech />
+        <A11yMe />
+        <A11yPromotion />
+        <AxePlugin />
+      </div>
     </>
   );
 };

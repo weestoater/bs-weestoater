@@ -1,7 +1,7 @@
 @use "variables" as *;
 
 main {
-  //    padding: 1rem 2rem 2rem;
+  padding: 2rem;
 
   code {
     border-radius: 0.5rem;
@@ -33,21 +33,19 @@ main {
       padding: 0.5rem;
     }
   }
-  // .card-content {
-  //     padding: 0 1rem 1rem;
-  //     ul, ol {
-  //         margin-left: 2rem;
-  //     }
-  //     ol {
-  //         list-style-type: lower-roman;
-  //     }
-  //     p, ul, ol {
-  //         font-size: 1.2rem;
-  //         line-height: 1.75rem;
-  //         margin-bottom: 1rem;
-  //     }
-  // }
-
+  .card {
+    border-radius: 0.5rem;
+    .card-header {
+      h2 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        height: 2rem;
+        line-height: normal;
+        margin-bottom: 0;
+        padding: 0;
+      }
+    }
+  }
   .code-sample {
     background: $vscode;
     border: 1px solid;

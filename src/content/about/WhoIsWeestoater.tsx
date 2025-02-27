@@ -3,10 +3,11 @@ import busterPic from "../../assets/img/buster.jpg";
 
 export const WhoIsWeestoater = () => {
   return (
-    <>
-      <h2>who is weestoater</h2>
-
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>who is weestoater</h2>
+      </div>
+      <div className="card-body">
         <img
           src={burtIcon}
           alt="avatar of weestoater"
@@ -37,6 +38,6 @@ export const WhoIsWeestoater = () => {
           know to strum a tune on the guitar once in a blue moon.
         </p>
       </div>
-    </>
+    </div>
   );
 };

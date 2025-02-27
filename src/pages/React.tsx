@@ -8,10 +8,12 @@ export const ReactPage = () => {
   return (
     <>
       <PageTitleH1 title="React articles" />
-      <ViteContent />
-      <SaltPost />
-      <NextThingPost />
-      <ReactHooksPost />
+      <div className="grid-auto-fill">
+        <ViteContent />
+        <SaltPost />
+        <NextThingPost />
+        <ReactHooksPost />
+      </div>
     </>
   );
 };

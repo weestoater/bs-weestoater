@@ -8,12 +8,11 @@ export const AboutPage = () => {
   return (
     <>
       <PageTitleH1 title="About" />
-
-      <WhoIsWeestoater />
-
-      <WhatIsWeestoater />
-
-      <SadMessage />
+      <div className="grid-auto-fill">
+        <WhoIsWeestoater />
+        <WhatIsWeestoater />
+        <SadMessage />
+      </div>
     </>
   );
 };

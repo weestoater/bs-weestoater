@@ -2,10 +2,11 @@ import NextJSLogo from "../../assets/img/nextjs-logo.png";
 
 export const NextThingPost = () => {
   return (
-    <>
-      <h2>NextJS things Next...</h2>
-
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>NextJS things Next...</h2>
+      </div>
+      <div className="card-body">
         <img src={NextJSLogo} alt="NextJS logo" className="right w10" />
         <p>
           On a recent works 'global hackathon' I did a small PoC using NextJS
@@ -47,6 +48,6 @@ export const NextThingPost = () => {
 
         <p>Wish me luck - I'm going to need it.</p>
       </div>
-    </>
+    </div>
   );
 };

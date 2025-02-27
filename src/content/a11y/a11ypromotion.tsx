@@ -1,9 +1,12 @@
 export const A11yPromotion = () => {
   return (
-    <>
-      <h2>A11y Promotion</h2>
-
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>
+          <i className="bi bi-universal-access-circle me-2"></i> A11y Promotion
+        </h2>
+      </div>
+      <div className="card-body">
         <p>
           I am incredibly lucky to work for a company who support and encourage
           my passion for A11y. I was promoted to Vice President for the work
@@ -28,6 +31,6 @@ export const A11yPromotion = () => {
           education and advice to young or inexperienced developers.
         </p>
       </div>
-    </>
+    </div>
   );
 };

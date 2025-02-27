@@ -4,9 +4,11 @@ import { Armchair, Engine } from "@phosphor-icons/react";
 
 export const SaltPost = () => {
   return (
-    <>
-      <h2>Needs a little Salt</h2>
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>Needs a little Salt</h2>
+      </div>
+      <div className="card-body">
         <img
           src={SaltDSImg}
           className="fluid"
@@ -74,6 +76,6 @@ export const SaltPost = () => {
           .
         </p>
       </div>
-    </>
+    </div>
   );
 };

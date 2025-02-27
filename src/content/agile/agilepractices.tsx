@@ -2,10 +2,11 @@ import AgileImg from "../../assets/img/agile.png";
 
 export const AgilePractices = () => {
   return (
-    <>
-      <h2>Agile practices</h2>
-
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>Agile practices</h2>
+      </div>
+      <div className="card-body">
         <img src={AgileImg} alt="" className="fluid" />
         <p>
           Having worked in the IT Industry since goodness knows when I'm a
@@ -59,6 +60,6 @@ export const AgilePractices = () => {
           understanding across dev team and client group – fantastic experience.
         </p>
       </div>
-    </>
+    </div>
   );
 };

@@ -2,10 +2,11 @@ import LessonsLearnedImg from "../../assets/img/lessons-learned.jpg";
 
 export const LessonsLearnedContent = () => {
   return (
-    <>
-      <h2>Lessons Learned</h2>
-
-      <div className="card-content">
+    <div className="card">
+      <div className="card-header">
+        <h2>Lessons Learned</h2>
+      </div>
+      <div className="card-body">
         <img src={LessonsLearnedImg} alt="" className="fluid" />
         <p>
           Over the last few sprints I've been allocated what should have been a
@@ -48,6 +49,6 @@ export const LessonsLearnedContent = () => {
           we made to reach the goals.
         </p>
       </div>
-    </>
+    </div>
   );
 };
