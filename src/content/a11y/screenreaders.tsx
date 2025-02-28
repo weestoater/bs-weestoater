@@ -17,7 +17,7 @@ export const ScreenReaders = () => {
           On the first Monday of Dec '24 I switched over to my dream team at
           work. We've partnered on a number of projects and I have wanted to be
           more closely involved with them for as long as I can remember. Since
-          joining,I've been knee deep in learning screen readers. A few of my
+          joining, I've been knee deep in learning screen readers. A few of my
           new colleagues are visually impaired and use them all the time to
           perform their respective work duties. Others in the team, like myself,
           use them to test the Accessibility compliance of websites, software
@@ -52,7 +52,7 @@ export const ScreenReaders = () => {
           Lay out the <code>landmarks</code> in your design. Make sure
           everything is keyboard focusable that needs to be, test using the{" "}
           <strong>AxeDevtools</strong> plugin for Chrome and then try to 'read'
-          your site using NVDA or JAWS.
+          your site using NVDA, JAWS or VoiceOver.
         </p>
       </div>
     </div>
