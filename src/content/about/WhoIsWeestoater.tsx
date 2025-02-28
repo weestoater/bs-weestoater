@@ -16,8 +16,10 @@ export const WhoIsWeestoater = () => {
           className="right avatar"
         />
         <p>
-          I am Ian Burrett, a Scottish Lead UI Engineer / Web Developer, working
-          in Glasgow, UK and living just outside the fine city.
+          I am Ian Burrett, a Scottish Accessibility Lead, working in Glasgow,
+          UK and living just outside the fine city. Using my 25+ years of
+          front-end web development and Accessibility evangelism, I help keep
+          teams and applications honest in the world of accessibility.
         </p>
 
         <p>
