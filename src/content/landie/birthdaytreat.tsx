@@ -8,7 +8,9 @@ export const BirthdayTreat = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h2>Birthday Treat 1</h2>
+        <h2>
+          <i className="bi bi-cake2 me-2"></i> Birthday Treat 1
+        </h2>
       </div>
       <div className="card-body">
         <img

@@ -4,7 +4,9 @@ export const AgilePractices = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h2>Agile practices</h2>
+        <h2>
+          <i className="bi bi-cup-hot me-2"></i> Agile practices
+        </h2>
       </div>
       <div className="card-body">
         <img src={AgileImg} alt="" className="fluid" />

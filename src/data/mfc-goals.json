@@ -11,6 +11,10 @@
         "goals": 5
       },
       {
+        "player": "Dan Casey",
+        "goals": 4
+      },
+      {
         "player": "Moses Ebiye",
         "goals": 4
       },
@@ -26,10 +30,6 @@
       {
         "player": "Tom Sparrow",
         "goals": 3
-      },
-      {
-        "player": "Dan Casey",
-        "goals": 2
       },
       {
         "player": "Stephen O'Donnell",

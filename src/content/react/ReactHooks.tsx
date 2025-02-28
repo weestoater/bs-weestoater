@@ -2,7 +2,9 @@ export const ReactHooksPost = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h2>hook, line &amp; sinker</h2>
+        <h2>
+          <i className="bi bi-life-preserver me-2"></i> hook, line &amp; sinker
+        </h2>
       </div>
       <div className="card-body">
         <p>

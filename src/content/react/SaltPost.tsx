@@ -6,7 +6,9 @@ export const SaltPost = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h2>Needs a little Salt</h2>
+        <h2>
+          <i className="bi bi-egg-fried me-2"></i> Needs a little Salt
+        </h2>
       </div>
       <div className="card-body">
         <img

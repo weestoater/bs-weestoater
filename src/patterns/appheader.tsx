@@ -27,10 +27,10 @@ export const Header = () => {
 
   return (
     <>
-      <HashLink to="#main-content" className="skip-link">
-        Skip to main content
-      </HashLink>
       <Navbar color="dark" dark expand="md">
+        <HashLink to="#main-content" className="skip-link">
+          Skip to main content
+        </HashLink>
         <NavbarBrand href="/">
           <img src={wsIcon} alt="weestoater icon" className="header-app-logo" />{" "}
           weestoater
