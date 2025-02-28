@@ -1,5 +1,7 @@
 @use "variables" as *;
-
+.navbar {
+  box-shadow: 0 0 0.5rem $vscode;
+}
 .header-app-logo {
   border: 2px solid white;
   border-radius: 50%;

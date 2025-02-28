@@ -4,7 +4,9 @@ export const MobRulesContent = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h2>Mob Rules</h2>
+        <h2>
+          <i className="bi bi-people me-2"></i> Mob Rules
+        </h2>
       </div>
       <div className="card-body">
         <img src={MobRuleImg} alt="" className="fluid" />

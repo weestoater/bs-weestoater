@@ -4,7 +4,9 @@ export const WhatIsWeestoater = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h2>what is weestoater</h2>
+        <h2>
+          <i className="bi bi-journal-code me-2"></i> what is weestoater
+        </h2>
       </div>
       <img
         src={vsCodeScreenShot}

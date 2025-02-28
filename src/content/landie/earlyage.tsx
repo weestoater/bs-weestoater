@@ -4,7 +4,9 @@ export const EarlyAge = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h2>Early age</h2>
+        <h2>
+          <i className="bi bi-emoji-heart-eyes me-2"></i> Early age
+        </h2>
       </div>
       <div className="card-body">
         <img

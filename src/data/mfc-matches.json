@@ -3,6 +3,27 @@
     "season": "2024-25",
     "details": [
       {
+        "scored": 2,
+        "conceded": 1,
+        "date": "26/02/25",
+        "opposition": "Dundee",
+        "venue": "Home",
+        "league": null,
+        "goals": [
+          {
+            "player": "Dan Casey",
+            "mins": "12"
+          },
+          {
+            "player": "Dan Casey",
+            "mins": "84"
+          }
+        ],
+        "cards": null,
+        "video": "https://youtu.be/QD1I3KaNFew?si=ug5F4aMo4I4NGeae",
+        "notes": "New manager - at home, midweek, had all the makings of another poor performance. But someone clearly put something in the bovril cause the Well came out flying. Attacking, one-touch passing, lots to be happy about, especially if you're Dan Casey. Much improved and long may they continue like this! #COYW!!"
+      },
+      {
         "scored": 0,
         "conceded": 1,
         "date": "22/02/25",

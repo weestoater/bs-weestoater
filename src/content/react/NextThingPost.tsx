@@ -4,7 +4,9 @@ export const NextThingPost = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h2>NextJS things Next...</h2>
+        <h2>
+          <i className="bi bi-filetype-tsx me-2"></i> NextJS things Next...
+        </h2>
       </div>
       <div className="card-body">
         <img src={NextJSLogo} alt="NextJS logo" className="right w10" />

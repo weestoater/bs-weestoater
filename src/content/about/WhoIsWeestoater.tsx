@@ -5,7 +5,9 @@ export const WhoIsWeestoater = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h2>who is weestoater</h2>
+        <h2>
+          <i className="bi bi-person-badge me-2"></i> who is weestoater
+        </h2>
       </div>
       <div className="card-body">
         <img

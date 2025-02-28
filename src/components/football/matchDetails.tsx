@@ -16,7 +16,7 @@ export const MatchDetails = (props: any) => {
               className={`match-details ${item.venue.toLowerCase()}`}
               key={key}
             >
-              <h2>
+              <h3>
                 <div className="venue">
                   {item.venue} to {item.opposition}
                 </div>
@@ -27,7 +27,7 @@ export const MatchDetails = (props: any) => {
                     venue={item.venue}
                   />
                 </div>
-              </h2>
+              </h3>
               <div className="card-content">
                 <table>
                   <thead>

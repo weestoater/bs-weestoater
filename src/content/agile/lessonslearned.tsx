@@ -4,7 +4,9 @@ export const LessonsLearnedContent = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h2>Lessons Learned</h2>
+        <h2>
+          <i className="bi bi-award me-2"></i> Lessons Learned
+        </h2>
       </div>
       <div className="card-body">
         <img src={LessonsLearnedImg} alt="" className="fluid" />
