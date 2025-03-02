@@ -5,6 +5,38 @@
       {
         "scored": 2,
         "conceded": 1,
+        "date": "01/03/25",
+        "opposition": "Rangers",
+        "venue": "Away",
+        "league": null,
+        "goals": [
+          {
+            "player": "Luke Armstrong",
+            "mins": "9"
+          },
+          {
+            "player": "Tom Sparrow",
+            "mins": "30"
+          }
+        ],
+        "cards": [
+          {
+            "player": "Andy Halliday",
+            "card": "yellow",
+            "mins": "45+6"
+          },
+          {
+            "player": "Tom Sparrow",
+            "card": "yellow",
+            "mins": "90+2"
+          }
+        ],
+        "video": "https://youtu.be/5Gb1LeKQFCI?si=K_26ruRu6RkCJqpd",
+        "notes": "Two newest managers in Scottish Premier League, meet for the first time at one of Scotlands 'biggest' stadiums. Nobody expected Motherwell to score first, but they did! Confidence and pressing football from the 'Well. Hounding Rangers players for the majority of the first half. A rare lapse in concentration from Dan Casey gave the home side an opening for their goal, but it was solid defending from Motherwell to claim all three points. Lots to be happy about -  long may this continue! #COYW!!"
+      },
+      {
+        "scored": 2,
+        "conceded": 1,
         "date": "26/02/25",
         "opposition": "Dundee",
         "venue": "Home",

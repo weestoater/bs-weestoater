@@ -24,12 +24,16 @@
         "goals": 4
       },
       {
+        "player": "Tom Sparrow",
+        "goals": 4
+      },
+      {
         "player": "Andy Halliday",
         "goals": 3
       },
       {
-        "player": "Tom Sparrow",
-        "goals": 3
+        "player": "Luke Armstrong",
+        "goals": 2
       },
       {
         "player": "Stephen O'Donnell",
@@ -38,10 +42,6 @@
       {
         "player": "Zack Robinson",
         "goals": 2
-      },
-      {
-        "player": "Luke Armstrong",
-        "goals": 1
       },
       {
         "player": "Kofi Balmer",
