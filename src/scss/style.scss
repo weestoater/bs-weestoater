@@ -15,77 +15,6 @@
   overflow: hidden;
 }
 
-html[data-mode="dark"] {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--salt-color-green-300);
-    border-bottom: 1px dashed var(--salt-color-green-300);
-  }
-
-  blockquote {
-    background: var(--salt-color-gray-900);
-    border: 1px dotted var(--salt-color-gray-200);
-    border-left: 5px solid var(--salt-color-gray-200);
-  }
-
-  .densityBtn {
-    border-color: var(--salt-color-gray-700);
-  }
-
-  code {
-    background: var(--salt-color-gray-900);
-    border: 1px dashed var(--salt-color-green-300);
-    color: var(--salt-color-green-300);
-  }
-}
-html[data-mode="light"] {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: $vscode;
-    border-bottom: 1px dashed $chuck;
-  }
-
-  hr {
-    margin: 0.5rem 0;
-    height: 0;
-    border: none;
-    border-bottom: 1px dotted $vscode;
-  }
-  .tab-panels {
-    margin-top: 2rem;
-  }
-
-  blockquote {
-    border: 1px dotted $chuck;
-    border-left: 5px solid $chuck;
-    &.sad {
-      border: 1px dashed $vscode;
-      border-left: 5px solid $vscode;
-      font-family: "Georgia", serif;
-      font-size: 1.3rem;
-      font-style: italic;
-      line-height: 1.75;
-    }
-  }
-
-  .densityBtn {
-    border-color: var(--salt-color-gray-300);
-  }
-  code {
-    background: var(--salt-color-gray-10);
-    border: 1px dashed var(--salt-color-orange-700);
-    color: var(--salt-color-orange-700);
-  }
-}
-
 //--    universal
 //----  headings
 h1,
@@ -161,5 +90,6 @@ blockquote {
 
 code {
   font-family: "Courier New", Courier, monospace;
+  font-size: 0.95rem !important;
   margin: 0 0.25rem;
 }
