@@ -93,3 +93,15 @@ code {
   font-size: 0.95rem !important;
   margin: 0 0.25rem;
 }
+
+.card {
+  box-shadow: 0 0 0.25rem #ddd;
+  .card-header {
+    background: #33680d;
+    color: white;
+
+    h2 {
+      font-size: 1.1rem;
+    }
+  }
+}
