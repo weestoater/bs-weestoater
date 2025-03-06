@@ -2,7 +2,9 @@ export const UtilsScript = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h2>utils js class</h2>
+        <h2>
+          <i className="bi bi-wrench-adjustable me-2"></i> utils js class
+        </h2>
       </div>
       <div className="card-body">
         <p>
