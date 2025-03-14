@@ -6,7 +6,7 @@ export const A11yTech = () => {
       <div className="card-header">
         <h2>
           <i className="bi bi-universal-access-circle me-2"></i> A11y{" "}
-          <code>techncIAN</code>
+          <code>technicIAN</code>
         </h2>
       </div>
       <div className="card-body">
