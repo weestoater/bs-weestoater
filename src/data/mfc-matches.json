@@ -4,6 +4,43 @@
     "details": [
       {
         "scored": 2,
+        "conceded": 2,
+        "date": "15/03/25",
+        "opposition": "St. Mirren",
+        "venue": "Home",
+        "league": null,
+        "goals": [
+          {
+            "player": "Callum Slattery",
+            "mins": "35"
+          },
+          {
+            "player": "Callum Slattery",
+            "mins": "71"
+          }
+        ],
+        "cards": [
+          {
+            "player": "Liam Gordon",
+            "card": "yellow",
+            "mins": "61"
+          },
+          {
+            "player": "Andy Halliday",
+            "card": "yellow",
+            "mins": "90+5"
+          },
+          {
+            "player": "Dan Casey",
+            "card": "yellow",
+            "mins": "90+10"
+          }
+        ],
+        "video": null,
+        "notes": " Two goals down in 30 mins, would normally be the end of the game for us. But there was a swift response from Slattery to the second goal which gave the team something to work with in the second half. Some strong challenges being made and a better desire from the Well. Good to salvage a point, pity not to get all three. Still a good watch but far from safe in the table yet #COYW!!"
+      },
+      {
+        "scored": 2,
         "conceded": 1,
         "date": "01/03/25",
         "opposition": "Rangers",
