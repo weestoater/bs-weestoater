@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 a.skip-link {
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
@@ -10,20 +12,23 @@ a.skip-link {
   transition: transform 0.3s;
   &:hover,
   &:focus-visible {
+    background: $yellow;
     clip: auto;
-    height: auto;
-    overflow: auto;
+    color: $blue;
+    font-weight: bold;
+    height: 5rem;
+    left: 1rem;
+    line-height: 4rem;
+    padding: 0.5rem 1rem;
     position: absolute;
-    width: auto;
-    transform: translateY(0%);
-    height: 2rem;
-    padding: 0.25rem 1rem;
-    text-indent: 0;
     outline: none;
     outline-offset: 0;
+    overflow: auto;
+    text-indent: 0;
+    top: 0.5rem;
+    transform: translateY(0%);
+    width: calc(100% - 2rem);
     z-index: 999999;
-    background: yellow;
-    color: blue;
   }
 }
 

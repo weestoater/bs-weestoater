@@ -25,11 +25,11 @@ main {
     margin: 0 0.5rem 2rem -0.5rem;
     img {
       border: 10px solid white;
-      box-shadow: 0 0 0.5rem #d4d4d4;
+      box-shadow: 0 0 0.5rem $grey550;
     }
     figcaption {
-      background: #ededed;
-      color: #222;
+      background: $grey650;
+      color: $black200;
       padding: 0.5rem;
     }
   }

@@ -16,7 +16,7 @@ export const App = () => {
   return (
     <HashRouter>
       <Header />
-      <main id="main-content" className="container-fluid">
+      <main className="container-fluid" id="content">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
