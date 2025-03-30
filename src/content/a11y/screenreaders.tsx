@@ -5,8 +5,8 @@ export const ScreenReaders = () => {
     <div className="card">
       <div className="card-header">
         <h2>
-          <i className="bi bi-universal-access-circle me-2"></i> Learn to use
-          Screen Readers
+          <i className="bi bi-universal-access-circle me-2"></i> Use Screen
+          Readers
         </h2>
       </div>
       <div className="card-body">

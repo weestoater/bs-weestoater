@@ -3,6 +3,34 @@
     "season": "2024-25",
     "details": [
       {
+        "scored": 1,
+        "conceded": 4,
+        "date": "29/03/25",
+        "opposition": "Aberdeen",
+        "venue": "Away",
+        "league": null,
+        "goals": [
+          {
+            "player": "Callum Slattery",
+            "mins": "5"
+          }
+        ],
+        "cards": [
+          {
+            "player": "Callum Slattery",
+            "card": "yellow",
+            "mins": "68"
+          },
+          {
+            "player": "Tawanda Maswanhise",
+            "card": "yellow",
+            "mins": "81"
+          }
+        ],
+        "video": null,
+        "notes": "Off to a good start with an early goal, but chronic defending made for painful viewing. Lucky to be only 2-1 down at half time. Will be very unlikely to get a top 6 slot before the split. #COYW!!"
+      },
+      {
         "scored": 2,
         "conceded": 2,
         "date": "15/03/25",
