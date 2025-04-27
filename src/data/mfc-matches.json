@@ -3,6 +3,88 @@
     "season": "2024-25",
     "details": [
       {
+        "scored": 3,
+        "conceded": 2,
+        "date": "26/04/25",
+        "opposition": "St. Johnstone",
+        "venue": "Home",
+        "league": null,
+        "goals": [
+          { "mins": 39, "player": "Callum Slattery" },
+          { "mins": 40, "player": "S.Sprangler (O.G.)" },
+          { "mins": 48, "player": "Tom Sparrow" }
+        ],
+        "cards": [
+          {
+            "player": "Callum Slattery",
+            "card": "yellow",
+            "mins": "65"
+          },
+          {
+            "player": "Stephen O'Donnell",
+            "card": "yellow",
+            "mins": "66"
+          },
+          {
+            "player": "Andy Halliday",
+            "card": "yellow",
+            "mins": "68"
+          },
+          {
+            "player": "Tom Sparrow",
+            "card": "yellow",
+            "mins": "89"
+          }
+        ],
+        "video": null,
+        "notes": "Much better performance - AT LAST. We've proved we can win at home again, so that should hopefully get some of the gremlins off our backs. Four yellow cards and three goals gives me belief the effort was there. Need to take this spirit and attitude into the rest of the games going forward. #COYW!!"
+      },
+      {
+        "scored": 0,
+        "conceded": 0,
+        "date": "12/04/25",
+        "opposition": "Hearts",
+        "venue": "Home",
+        "league": null,
+        "goals": null,
+        "cards": null,
+        "video": "https://youtu.be/-zeSp3cBR1g?si=GLDU3HX4yH9A_H0A",
+        "notes": "Dismall performance. No yellow cards for the Well, shows there was little or no effort. That makes us firmly rooted in the bottom six post split and we just deserve that and no more. #COYW!!"
+      },
+      {
+        "scored": 0,
+        "conceded": 2,
+        "date": "05/04/25",
+        "opposition": "Kilmarnock",
+        "venue": "Away",
+        "league": null,
+        "goals": null,
+        "cards": [
+          {
+            "player": "Callum Slattery",
+            "card": "yellow",
+            "mins": "71"
+          },
+          {
+            "player": "Dominic Thompson",
+            "card": "yellow",
+            "mins": "64"
+          },
+          {
+            "player": "Kofi Balmer",
+            "card": "red",
+            "mins": "26"
+          },
+          {
+            "player": "Stephen O'Donnell",
+            "card": "yellow",
+            "mins": "12"
+          }
+        ],
+        "video": "https://youtu.be/qNt3R3jQ9X8?si=C7_bPE3SKrq1IZAh",
+        "notes": "Referee killed this match in a RED card happy frenzy. Didn't know the rules and was making them up as he went along. #COYW!!"
+      },
+      {
         "scored": 1,
         "conceded": 4,
         "date": "29/03/25",
@@ -27,7 +109,7 @@
             "mins": "81"
           }
         ],
-        "video": null,
+        "video": "https://youtu.be/6ozsGZSat4o?si=JqN2LN801FCORfUJ",
         "notes": "Off to a good start with an early goal, but chronic defending made for painful viewing. Lucky to be only 2-1 down at half time. Will be very unlikely to get a top 6 slot before the split. #COYW!!"
       },
       {
