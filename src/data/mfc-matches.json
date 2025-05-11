@@ -3,6 +3,29 @@
     "season": "2024-25",
     "details": [
       {
+        "scored": 0,
+        "conceded": 3,
+        "date": "10/05/25",
+        "opposition": "Hearts",
+        "venue": "Away",
+        "league": null,
+        "goals": null,
+        "cards": [
+          {
+            "player": "Andy Halliday",
+            "card": "yellow",
+            "mins": "45+1"
+          },
+          {
+            "player": "Lennon Miller",
+            "card": "yellow",
+            "mins": "54"
+          }
+        ],
+        "video": null,
+        "notes": "Soft goals meant the heads went down, especially after the goal was chopped off. Safely secure in the league, but would have been nice to have seen a bit more of a fight. #COYW!!"
+      },
+      {
         "scored": 3,
         "conceded": 2,
         "date": "26/04/25",
