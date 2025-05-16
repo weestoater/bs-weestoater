@@ -3,6 +3,28 @@
     "season": "2024-25",
     "details": [
       {
+        "scored": 3,
+        "conceded": 0,
+        "date": "14/05/25",
+        "opposition": "Kilmarnock",
+        "venue": "Home",
+        "league": null,
+        "goals": [
+          {
+            "player": "Luke Armstrong",
+            "mins": "70"
+          },
+          { "player": "Callum Slattery", "mins": "83" },
+          {
+            "player": "Luke Armstrong",
+            "mins": "86"
+          }
+        ],
+        "cards": null,
+        "video": "https://youtu.be/evrAqUK14G4?si=z4RWvn45XM6ZJ_nN",
+        "notes": "A lot to be happy about for the last home game of the season. Red card for Killie didn't really help us that much, as they defended very well indeed. It was looking like a counter attack from them would break the deadlock. But then we made some good changes in the second half and justice was served. Slattery's efforts, somewhat skyward as they were, paid off with a superb give'n'go to a magical finish. Armstrong made his presence felt too and was a great addition to a team lacking that final touch. All in all a great result, even if it took it's time in coming. #COYW!!"
+      },
+      {
         "scored": 0,
         "conceded": 3,
         "date": "10/05/25",
