@@ -3,11 +3,11 @@
     "season": "2024-25",
     "details": [
       {
-        "player": "Tawanda Maswanhise",
-        "goals": 5
+        "player": "Callum Slattery",
+        "goals": 6
       },
       {
-        "player": "Callum Slattery",
+        "player": "Tawanda Maswanhise",
         "goals": 5
       },
       {
@@ -17,6 +17,10 @@
       {
         "player": "Apostolos Stamatelopoulos",
         "goals": 5
+      },
+      {
+        "player": "Luke Armstrong",
+        "goals": 4
       },
       {
         "player": "Dan Casey",
@@ -35,10 +39,7 @@
         "player": "Andy Halliday",
         "goals": 3
       },
-      {
-        "player": "Luke Armstrong",
-        "goals": 2
-      },
+
       {
         "player": "Stephen O'Donnell",
         "goals": 2
