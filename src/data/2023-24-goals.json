@@ -1,0 +1,83 @@
+[
+  {
+    "season": "2023-24",
+    "details": [
+      {
+        "player": "Theo Bair",
+        "goals": 15
+      },
+      {
+        "player": "Blair Spittal",
+        "goals": 11
+      },
+      {
+        "player": "Mika Biereth",
+        "goals": 6
+      },
+      {
+        "player": "Conor Wilkinson",
+        "goals": 4
+      },
+      {
+        "player": "Dan Casey",
+        "goals": 3
+      },
+      {
+        "player": "Jonathan Obika",
+        "goals": 3
+      },
+      {
+        "player": "Callum Slattery",
+        "goals": 3
+      },
+      {
+        "player": "Shane Blaney",
+        "goals": 2
+      },
+      {
+        "player": "Lennon Miller",
+        "goals": 2
+      },
+      {
+        "player": "Bevis Mugabi",
+        "goals": 2
+      },
+      {
+        "player": "Sam Nicholson",
+        "goals": 2
+      },
+      {
+        "player": "Harry Paton",
+        "goals": 2
+      },
+      {
+        "player": "Jack Vale",
+        "goals": 2
+      },
+      {
+        "player": "Adam Devine",
+        "goals": 1
+      },
+      {
+        "player": "Georgie Gent",
+        "goals": 1
+      },
+      {
+        "player": "Andrew Halliday",
+        "goals": 1
+      },
+      {
+        "player": "Ebiye Moses",
+        "goals": 1
+      },
+      {
+        "player": "Luca Ross",
+        "goals": 1
+      },
+      {
+        "player": "Davor Zdravkovski",
+        "goals": 1
+      }
+    ]
+  }  
+]
