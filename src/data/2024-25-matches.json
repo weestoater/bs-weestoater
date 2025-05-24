@@ -3,6 +3,29 @@
     "season": "2024-25",
     "details": [
       {
+        "scored": 1,
+        "conceded": 1,
+        "date": "18/05/25",
+        "opposition": "Ross County",
+        "venue": "Away",
+        "league": null,
+        "goals": [
+          {
+            "player": "Moses Ebiye",
+            "mins": "83"
+          }
+        ],
+        "cards": [
+          {
+            "player": "Stephen O'Donnell",
+            "card": "yellow",
+            "mins": "90+5"
+          }
+        ],
+        "video": "https://youtu.be/st7e-7Myl5U?si=hrPvaMrcpx1YwWf1",
+        "notes": "A slow start for the Well - taking the second half before we really woke up, but what a half. Solidly camped in or around the Ross County box, with plenty of shots peppering the goal area. Eventually we got the goal that was well deserved and a draw was probably the fairest outcome. #COYW!!"
+      },
+      {
         "scored": 3,
         "conceded": 0,
         "date": "14/05/25",
