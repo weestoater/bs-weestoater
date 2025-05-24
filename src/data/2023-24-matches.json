@@ -1,0 +1,1095 @@
+[{
+  "season": "2023-24",
+  "details": [
+    {
+      "scored": 0,
+      "conceded": 3,
+      "date": "15/05/24",
+      "opposition": "Hibernian",
+      "venue": "Away",
+      "league": null,
+      "goals": null,
+      "cards": [
+        {
+          "player": "Georgie Gent",
+          "card": "yellow",
+          "mins": "28"
+        }
+      ],
+      "video": "https://youtu.be/bQvQEFczWis?si=YwkmjN_K3OYP5LaE",
+      "notes": "A merky night in Easter Rd with an equally poor performance. One to forget."
+    },
+    {
+      "scored": 5,
+      "conceded": 1,
+      "date": "11/05/24",
+      "opposition": "Ross County",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Harry Paton",
+          "mins": "90+4"
+        },
+        {
+          "player": "Davor Zdravkovskir",
+          "mins": "90"
+        },
+        {
+          "player": "Blair Spittal",
+          "mins": "82"
+        },
+        {
+          "player": "Paul McGinn",
+          "mins": "40"
+        },
+        {
+          "player": "Blair Spittal",
+          "mins": "8"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Davor Zdravkovskir",
+          "card": "yellow",
+          "mins": "71"
+        },
+        {
+          "player": "Georgie Gent",
+          "card": "yellow",
+          "mins": "57"
+        }
+      ],
+      "video": "https://www.youtube.com/watch?v=l0aLkdti9gI",
+      "notes": "A polished vicotry with some tasty play from the Steelmen.  A rare Paul McGinn goal, but the least he deserves for a great seasons efforts. Soft goals from opposition keepers errors aside, Motherwell were worthy winners, scoring three in the last ten minutes."
+    },
+    {
+      "scored": 4,
+      "conceded": 1,
+      "date": "04/05/24",
+      "opposition": "Livingston",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Dan Casey",
+          "mins": "74"
+        },
+        {
+          "player": "Theo Bair",
+          "mins": "68"
+        },
+        {
+          "player": "Sam Nicholson",
+          "mins": "45+2"
+        },
+        {
+          "player": "Theo Bair",
+          "mins": "21 (Pen)"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Davor Zdravkovskir",
+          "card": "yellow",
+          "mins": "86"
+        },
+        {
+          "player": "Lennon Miller",
+          "card": "yellow",
+          "mins": "70"
+        }
+      ],
+      "video": "https://youtu.be/QOCHnJ47mbU?si=xSspqDQnBuR-w4Kc",
+      "notes": "An impressive score but dissappointing to not get the clean sheet. Commentators claiming some of the VAR decisions were poor for Livingston, which is unfortunate, but like all the other cliche's in football - they even themselves out in the end. Great goal from Nicholson by all account - look forward to seeing it on the highlights."
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "27/04/24",
+      "opposition": "Aberdeen",
+      "venue": "Away",
+      "league": null,
+      "goals": null,
+      "cards": [
+        {
+          "player": "Jack Vale",
+          "card": "red",
+          "mins": "56"
+        }
+      ],
+      "notes": "An unimpressive start to the post-split games, and a long journey home to lick our wounds. Commentary says referee was not great, but that's no excuse. No goals scored and a man down for the majority of the second half - however reckless or not - isn't the performance the manager or supporters are expecting."
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "13/04/24",
+      "opposition": "Hibernian",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Shane Blaney",
+          "mins": "90 + 4"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Blair Spittal",
+          "card": "yellow",
+          "mins": "56"
+        },
+        {
+          "player": "Jack Vale",
+          "card": "yellow",
+          "mins": "45"
+        }
+      ],
+      "notes": "A scrappy affair by the radio commentary, with a fair few bookings for the visitors. A much deserved equaliser from the 'Well in the last minute of the game. Both teams landing in the bottom six for the final games."
+    },
+    {
+      "scored": 3,
+      "conceded": 2,
+      "date": "06/04/24",
+      "opposition": "Dundee",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Georgie Gent",
+          "mins": "79"
+        },
+        {
+          "player": "Theo Bair",
+          "mins": "81"
+        },
+        {
+          "player": "Ebiye Moses",
+          "mins": "90 + 3"
+        }
+      ],
+      "video": "https://youtu.be/lHQmi1MsqQ0?si=vHhuxNYqZp-86hsp",
+      "notes": "Game should never have been allowed.  Pitch is a joke and potentially dangerous to play on - that said we pulled a victory out of the jaws of embarrasment."
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "30/03/24",
+      "opposition": "St. Mirren",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Theo Bair",
+          "mins": "74"
+        }
+      ],
+      "video": "https://youtu.be/E6GJVpAY5Tw?si=8gAGrUhlK78WplvC"
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "16/03/24",
+      "opposition": "Aberdeen",
+      "venue": "Home",
+      "league": null,
+      "goals": null
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "02/03/24",
+      "opposition": "Rangers",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Theo Bair",
+          "mins": "9"
+        },
+        {
+          "player": "Dan Casey",
+          "mins": "75"
+        }
+      ],
+      "video": "https://youtu.be/hXU1TL_lHhw?si=PufXtO-wrh-lSZ1n",
+      "notes": "An historic victory for the Well against the Mighty Rangers. No surprises the home team gets a soft penalty. First win in the league for over 25 years apparently. Worth watching over and over again. Casey megged the goalie with a header from a beautiful cross... Kelly was heroic and McGinn saved the day with an off-the-line clearance. #coyw"
+    },
+    {
+      "scored": 3,
+      "conceded": 1,
+      "date": "28/02/24",
+      "opposition": "Livingston",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Sam Nicholson",
+          "mins": "49"
+        },
+        {
+          "player": "Blair Spittal",
+          "mins": "71"
+        },
+        {
+          "player": "Jack Vale",
+          "mins": "87"
+        }
+      ]
+    },
+    {
+      "scored": 1,
+      "conceded": 3,
+      "date": "25/02/24",
+      "opposition": "Celtic",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Blair Spittal",
+          "mins": "43"
+        }
+      ]
+    },
+    {
+      "scored": 0,
+      "conceded": 2,
+      "date": "17/02/24",
+      "opposition": "Hearts",
+      "venue": "Away",
+      "league": null,
+      "goals": null
+    },
+    {
+      "scored": 3,
+      "conceded": 3,
+      "date": "14/02/24",
+      "opposition": "Aberdeen",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Theo Bair",
+          "mins": "5 pen"
+        },
+        {
+          "player": "Theo Bair",
+          "mins": "22"
+        },
+        {
+          "player": "Adam Devine",
+          "mins": "26"
+        }
+      ]
+    },
+    {
+      "scored": 1,
+      "conceded": 2,
+      "date": "09/02/24",
+      "opposition": "Greenock Morton",
+      "venue": "Away",
+      "video": null,
+      "league": "Scottish Cup - 5th Round",
+      "cards": [
+        {
+          "player": "Calum Butcher",
+          "card": "yellow",
+          "mins": "90+2"
+        },
+        {
+          "player": "Bevis Mugabi",
+          "card": "yellow",
+          "mins": "87"
+        },
+        {
+          "player": "Liam Kelly",
+          "card": "yellow",
+          "mins": "4"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Jack Vale",
+          "mins": "85"
+        },
+        {
+          "player": "Harry Paton (OG)",
+          "mins": "35"
+        }
+      ],
+      "notes": "A pitiful performance from the Well.  Too late to everything, keeper had a mare of an evening and supporters got nothing for their efforts to raise the teams spirit."
+    },
+    {
+      "scored": 5,
+      "conceded": 0,
+      "date": "05/02/24",
+      "opposition": "Ross County",
+      "venue": "Home",
+      "video": "https://youtu.be/QElr7c96Ex8?si=sSwiZTzPcRPiDRnS",
+      "league": null,
+      "cards": [
+        {
+          "player": "Lennon Miller",
+          "card": "yellow",
+          "mins": "80"
+        },
+        {
+          "player": "Calum Butcher",
+          "card": "yellow",
+          "mins": "65"
+        },
+        {
+          "player": "Liam Kelly",
+          "card": "yellow",
+          "mins": "4"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Jack Vale",
+          "mins": "90+1"
+        },
+        {
+          "player": "Blair Spittal",
+          "mins": "87"
+        },
+        {
+          "player": "Theo Bair",
+          "mins": "38"
+        },
+        {
+          "player": "Blair Spittal",
+          "mins": "21"
+        },
+        {
+          "player": "Andy Halliday",
+          "mins": "8"
+        }
+      ],
+      "notes": "A brilliant performance from all in Claret and Amber tonight. Especially Blair Spittal.  Bossed the midfield, was at the heart of everything and scored two great goals, one a contender for GOTS."
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "03/02/24",
+      "opposition": "Kilmarnock",
+      "venue": "Home",
+      "video": null,
+      "league": null,
+      "cards": [
+        {
+          "player": "Blair Spittal",
+          "card": "yellow",
+          "mins": "85"
+        },
+        {
+          "player": "Calum Butcher",
+          "card": "yellow",
+          "mins": "80"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Theo Bair",
+          "mins": "38"
+        }
+      ],
+      "notes": "A very bitty game, no real stand out performances. Dissappointed to see Motherwell 'fans' booing Kevin Van Veen.  Short memories for those bampots."
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "27/01/24",
+      "opposition": "St. Johnstone",
+      "venue": "Away",
+      "video": null,
+      "league": null,
+      "cards": [
+        {
+          "player": "Andy Halliday",
+          "card": "yellow",
+          "mins": "45+5"
+        },
+        {
+          "player": "Davor Zdravkovskir",
+          "card": "yellow",
+          "mins": "45"
+        },
+        {
+          "player": "Liam Kelly",
+          "card": "yellow",
+          "mins": "4"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Theo Bair",
+          "mins": "29"
+        }
+      ],
+      "notes": "A pinball disaster to concede the first goal. But the better of the two teams and the majority of the chances."
+    },
+    {
+      "scored": 3,
+      "conceded": 1,
+      "date": "20/01/24",
+      "opposition": "Alloa Athletic",
+      "venue": "Home",
+      "video": null,
+      "league": "Scottish Cup - 4th Round",
+      "cards": [],
+      "goals": [
+        {
+          "player": "Blair Spittal",
+          "mins": "88"
+        },
+        {
+          "player": "Georgie Gent",
+          "mins": "60"
+        },
+        {
+          "player": "Blair Spittal",
+          "mins": "2"
+        }
+      ],
+      "notes": "Good goals from us and a slack piece of defending to allow theirs. Safely through to the next round."
+    },
+    {
+      "scored": 2,
+      "conceded": 2,
+      "date": "02/01/24",
+      "opposition": "Hibernian",
+      "venue": "Away",
+      "video": null,
+      "league": null,
+      "cards": [
+        {
+          "player": "Harry Paton",
+          "card": "yellow",
+          "mins": "88"
+        },
+        {
+          "player": "Georgie Gent",
+          "card": "yellow",
+          "mins": "48"
+        },
+        {
+          "player": "Liam Kelly",
+          "card": "yellow",
+          "mins": "4"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Bevis Mugabi",
+          "mins": "64"
+        },
+        {
+          "player": "Theo Bair",
+          "mins": "35"
+        }
+      ],
+      "notes": "A fair result for a dismal game."
+    },
+    {
+      "scored": 3,
+      "conceded": 1,
+      "date": "30/12/23",
+      "opposition": "Livingston",
+      "venue": "Home",
+      "video": null,
+      "league": null,
+      "cards": [
+        {
+          "player": "Callum Slattery",
+          "card": "yellow",
+          "mins": "84"
+        },
+        {
+          "player": "Bevis Mugabi",
+          "card": "yellow",
+          "mins": "71"
+        },
+        {
+          "player": "Brodie Spencer",
+          "card": "yellow",
+          "mins": "59"
+        },
+        {
+          "player": "Mika Biereth",
+          "card": "yellow",
+          "mins": "45"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Theo Bair",
+          "mins": "35"
+        },
+        {
+          "player": "Theo Bair",
+          "mins": "19"
+        },
+        {
+          "player": "Blair Spittal",
+          "mins": "14"
+        }
+      ],
+      "notes": "Good performance. Solid three points."
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "25/11/23",
+      "opposition": "Celtic",
+      "venue": "Away",
+      "video": null,
+      "league": null,
+      "cards": [
+        {
+          "player": "Calum Butcher",
+          "card": "yellow",
+          "mins": "85"
+        },
+        {
+          "player": "Bevis Mugabi",
+          "card": "yellow",
+          "mins": "64"
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "card": "yellow",
+          "mins": "41"
+        },
+        {
+          "player": "Callum Slattery",
+          "card": "yellow",
+          "mins": "14"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Jonathan Obika",
+          "mins": "90"
+        }
+      ],
+      "notes": "A tough point in strange circumstances. One of the penalties given was questionable at best. Player of the Match for Liam Kelly."
+    },
+    {
+      "scored": 2,
+      "conceded": 2,
+      "date": "07/11/23",
+      "opposition": "St. Johnstone",
+      "venue": "Away",
+      "video": null,
+      "league": null,
+      "cards": [
+        {
+          "player": "Harry Paton",
+          "card": "yellow",
+          "mins": "47"
+        },
+        {
+          "player": "Callum Slattery",
+          "card": "yellow",
+          "mins": "37"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Mika Biereth",
+          "mins": "74"
+        },
+        {
+          "player": "Shane Blaney",
+          "mins": "68"
+        }
+      ],
+      "notes": "Another poor performance. Good fight to get the draw, but should never have been in that position in the first place. VAR takes away early goal and heads go down."
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "04/11/23",
+      "opposition": "Kilmarnock",
+      "venue": "Away",
+      "video": null,
+      "league": null,
+      "cards": [
+        {
+          "player": "Dan Casey",
+          "card": "yellow",
+          "mins": "32"
+        }
+      ],
+      "goals": null,
+      "notes": "A continued poor run of form. Something needs to be done to return to winning ways, just not sure what or who it is will deliver it."
+    },
+    {
+      "scored": 2,
+      "conceded": 4,
+      "date": "01/11/23",
+      "opposition": "Aberdeen",
+      "venue": "Home",
+      "video": "https://youtu.be/dmo8Bsyhbzs?si=OxTmyTleMnHY7fyy",
+      "league": null,
+      "cards": [
+        {
+          "player": "Davor Zdravkovskir",
+          "card": "yellow",
+          "mins": "90+4"
+        },
+        {
+          "player": "Liam Kelly",
+          "card": "yellow",
+          "mins": "69"
+        },
+        {
+          "player": "Mika Biereth",
+          "card": "yellow",
+          "mins": "59"
+        },
+        {
+          "player": "Brodie Spencer",
+          "card": "yellow",
+          "mins": "54"
+        },
+        {
+          "player": "Conor Wilkinson",
+          "card": "yellow",
+          "mins": "52"
+        },
+        {
+          "player": "Calum Butcher",
+          "card": "yellow",
+          "mins": "51"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Mika Biereth",
+          "mins": "90+3"
+        },
+        {
+          "player": "Theo Bair",
+          "mins": "78"
+        }
+      ],
+      "notes": "Far too late to join in the game. Poor goals to concede and woeful defending. Lots to learn if we want to move back up the table."
+    },
+    {
+      "scored": 3,
+      "conceded": 3,
+      "date": "28/10/23",
+      "opposition": "Ross County",
+      "venue": "Home",
+      "video": "https://youtu.be/JvRED3DcScI?si=XuCf1nRaNE-BCIvj",
+      "league": null,
+      "cards": [
+        {
+          "player": "Callum Slattery",
+          "card": "yellow",
+          "mins": "85"
+        },
+        {
+          "player": "Brodie Spencer",
+          "card": "yellow",
+          "mins": "70"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Luca Ross",
+          "mins": "90+4"
+        },
+        {
+          "player": "Conor Wilkinson",
+          "mins": "88"
+        },
+        {
+          "player": "Mika Biereth",
+          "mins": "79"
+        }
+      ],
+      "notes": "Self inflicted pain and misery. But an incredible turn-around to get the goals needed to salvage a point."
+    },
+    {
+      "scored": 1,
+      "conceded": 2,
+      "date": "30/09/23",
+      "opposition": "Celtic",
+      "venue": "Home",
+      "video": null,
+      "league": null,
+      "cards": [
+        {
+          "player": "Brodie Spencer",
+          "card": "yellow",
+          "mins": "90"
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "card": "yellow",
+          "mins": "54"
+        },
+        {
+          "player": "Callum Slattery",
+          "card": "yellow",
+          "mins": "10"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Blair Spittal",
+          "mins": "90+5"
+        }
+      ],
+      "notes": "Motherwell were strong and deserved more out of this than they sadly got.  Refereeing decisions did not go there way, with Willy Collum doing some Fergie time, in order to let his favoured team Celtic get their winner.  Soft yellow card for Slattery and no yellow cards for any of the fouls that Motherwell had against them."
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "24/09/23",
+      "opposition": "Rangers",
+      "venue": "Away",
+      "video": null,
+      "league": null,
+      "cards": [
+        {
+          "player": "Lennon Miller",
+          "card": "yellow",
+          "mins": "58"
+        },
+        {
+          "player": "Dan Casey",
+          "card": "yellow",
+          "mins": "32"
+        }
+      ],
+      "goals": null,
+      "notes": "Motherwell started very brightly with Sam Lammers close to gifting a glaring chance before Callum Slattery found space and tried to bend one to the far corner. It was off target with Jack Butland exposed."
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "16/09/23",
+      "opposition": "St. Mirren",
+      "venue": "Home",
+      "video": null,
+      "league": null,
+      "cards": null,
+      "goals": null,
+      "notes": "Motherwell peppered the St Mirren goal, hitting the bar late on with Georgie Gent's effort, but they couldn't find a way past Zach Hemming.  The St Mirren goal was against the run of play as Motherwell had started the second half stronger."
+    },
+    {
+      "scored": 1,
+      "conceded": 0,
+      "date": "3/09/23",
+      "opposition": "Hearts",
+      "venue": "Away",
+      "video": "https://youtu.be/pe9iscTmRO4?si=0ARNsG-wNkaJrnS0",
+      "league": null,
+      "cards": [
+        {
+          "player": "Oli Shaw",
+          "card": "yellow",
+          "mins": "90"
+        },
+        {
+          "player": "Dan Casey",
+          "card": "yellow",
+          "mins": "71"
+        },
+        {
+          "player": "Paul McGinn",
+          "card": "red",
+          "mins": "69"
+        },
+        {
+          "player": "Paul McGinn",
+          "card": "yellow",
+          "mins": "36"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Callum Slattery",
+          "mins": "29"
+        }
+      ],
+      "notes": "Again a poor first half from 'Well. Sublime pass from Blair Spittal to get the goal and some questionable refereeing with a soft first yellow and 50:50 second yellow for Paul McGinn."
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "26/08/23",
+      "opposition": "Kilmarnock",
+      "venue": "Home",
+      "video": null,
+      "league": null,
+      "cards": [
+        {
+          "player": "Paul McGinn",
+          "card": "yellow",
+          "mins": "90+2"
+        },
+        {
+          "player": "Dan Casey",
+          "card": "yellow",
+          "mins": "71"
+        },
+        {
+          "player": "Harry Paton",
+          "card": "yellow",
+          "mins": "66"
+        },
+        {
+          "player": "Callum Slattery",
+          "card": "yellow",
+          "mins": "57"
+        },
+        {
+          "player": "Brodie Spencer",
+          "card": "yellow",
+          "mins": "52"
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "card": "yellow",
+          "mins": "43"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Harry Paton",
+          "mins": "90+8"
+        },
+        {
+          "player": "Dan Casey",
+          "mins": "59"
+        }
+      ],
+      "notes": "Very poor first half from 'Well, stood off far too much and didn't really get into any kind of rhythm.  But we came out much improved and together in the second half. Some great play, a penalty we could have done better on and an impressive finish from two non-strikers.  Great team spirit and an important 3 points at the start of the season."
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "19/08/23",
+      "opposition": "St. Mirren",
+      "venue": "Away",
+      "video": null,
+      "league": "Scottish League Cup",
+      "cards": [
+        {
+          "player": "Paul McGinn",
+          "card": "yellow",
+          "mins": "90+3"
+        },
+        {
+          "player": "Bevis Mugabi",
+          "card": "yellow",
+          "mins": "89"
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "card": "yellow",
+          "mins": "53"
+        }
+      ],
+      "goals": [],
+      "notes": "Painful defeat, not just in the sense of the match performance, but the injuries sustained too.  Some sore bodies coming off the pitch.  We'll dust ourselves down, look over the footage and try to grow, but that is the end of our cup run this season sadly."
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "13/08/23",
+      "opposition": "Hibernian",
+      "venue": "Home",
+      "video": "https://www.youtube.com/watch?v=u7F64WiYunk",
+      "league": null,
+      "cards": [
+        {
+          "player": "Blair Spittal",
+          "card": "yellow",
+          "mins": "90+6"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Mika Biereth",
+          "mins": "85"
+        },
+        {
+          "player": "Conor Wilkinson",
+          "mins": "66"
+        }
+      ],
+      "notes": "Not much between the sides in the first half. Great substitution lifted our side and gave us the edge."
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "05/08/23",
+      "opposition": "Dundee",
+      "venue": "Away",
+      "video": null,
+      "league": null,
+      "cards": [
+        {
+          "player": "Nathan McGinley",
+          "card": "yellow",
+          "mins": "79"
+        },
+        {
+          "player": "Pape Souare",
+          "card": "yellow",
+          "mins": "72"
+        },
+        {
+          "player": "Paul McGinn",
+          "card": "yellow",
+          "mins": "32"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Theo Bair",
+          "mins": "45"
+        }
+      ],
+      "notes": "Good first half, but let the win slip away."
+    },
+    {
+      "scored": 3,
+      "conceded": 0,
+      "date": "29/07/23",
+      "opposition": "East Fife",
+      "venue": "Home",
+      "video": null,
+      "league": "Scottish League Cup",
+      "cards": [
+        {
+          "player": "Bevis Mugabi",
+          "card": "yellow",
+          "mins": "71"
+        },
+        {
+          "player": "Conor Wilkinson",
+          "card": "yellow",
+          "mins": "62"
+        },
+        {
+          "player": "Paul McGinn",
+          "card": "yellow",
+          "mins": "32"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Callum Slattery",
+          "mins": "66"
+        },
+        {
+          "player": "Conor Wilkinson",
+          "mins": "36"
+        },
+        {
+          "player": "Lennon Miller",
+          "mins": "32"
+        }
+      ],
+      "notes": "Another great result - good goals, team effort and clean sheet.  All is 'Well!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 0,
+      "date": "22/07/23",
+      "opposition": "Queen's Park",
+      "venue": "Home",
+      "video": null,
+      "league": "Scottish League Cup",
+      "cards": [
+        {
+          "player": "Stephen O'Donnell",
+          "card": "yellow",
+          "mins": "72"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Jonathan Obika",
+          "mins": "29"
+        }
+      ],
+      "notes": "Scrappy first 20 mins, but settled down after goal. referee gave us nothing at all - shocker!"
+    },
+    {
+      "scored": 3,
+      "conceded": 3,
+      "date": "18/07/23",
+      "opposition": "Queen of the South",
+      "venue": "Away",
+      "video": null,
+      "league": "Scottish League Cup",
+      "cards": [
+        {
+          "player": "Ricki Lamie",
+          "card": "red",
+          "mins": "90+1"
+        },
+        {
+          "player": "Conor Wilkinson",
+          "card": "yellow",
+          "mins": "88"
+        },
+        {
+          "player": "Ricki Lamie",
+          "card": "yellow",
+          "mins": "84"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Blair Spittal",
+          "mins": "75"
+        },
+        {
+          "player": "Callum Slattery",
+          "mins": "56"
+        },
+        {
+          "player": "Blair Spittal",
+          "mins": "40"
+        }
+      ],
+      "notes": "Win 5/4 on penalties - some hairy tackles flying in. Good penalty save for win."
+    },
+    {
+      "scored": 2,
+      "conceded": 0,
+      "date": "15/07/23",
+      "opposition": "Elgin City",
+      "venue": "Away",
+      "video": null,
+      "league": "Scottish League Cup",
+      "cards": [
+        {
+          "player": "Lennon Miller",
+          "card": "yellow",
+          "mins": "68"
+        }
+      ],
+      "goals": [
+        {
+          "player": "Lennon Miller",
+          "mins": "25"
+        },
+        {
+          "player": "Jonathan Obika",
+          "mins": "76"
+        }
+      ],
+      "notes": "Great performance."
+    }
+  ]
+}]
