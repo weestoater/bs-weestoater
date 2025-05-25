@@ -1,17 +1,22 @@
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { MatchDetails } from "../components/football/matchDetails";
 import { GoalScorerDetails } from "../components/football/goalScorerDetails";
-import mfcGoals from "../data/2025-26-goals.json";
-import mfcMatches from "../data/2025-26-matches.json";
-import { FootballIntro } from "../content/football/footballIntro";
+import mfcGoals from "../data/2022-23-goals.json";
+import mfcMatches from "../data/2022-23-matches.json";
+import { FootballSeasonsNav } from "../content/football/footballSeasonsNav";
 
-export const FootballPage = () => {
-  const seasons = ["2025-2026"];
+export const FootballSeason202223 = () => {
+  const seasons = ["2022-2023"];
 
   return (
     <div className="container-fluid">
-      <PageTitleH1 title="Football" />
-      <FootballIntro />
+      <PageTitleH1 title="Previous Football Seasons" />
+
+      <div className="row">
+        <div className="previous-seasons">
+          <FootballSeasonsNav />
+        </div>
+      </div>
 
       {seasons.map((item, key) => {
         return (
