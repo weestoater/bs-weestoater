@@ -14,9 +14,9 @@ export const EthosCard = () => {
           on the front end aspects of rendering JSON payloads.
         </p>
         <p>
-          There isn't any roadmap of what I will build, but I am iterating
-          around the football details, using the Motherwell F.C. results as my
-          data source. I am 'hand-rolling' the data into two
+          There wasn't any roadmap of what I wanted to build, but I was
+          iterating around the football details, using the Motherwell F.C.
+          results as my data source,'hand-rolling' the data into two
           <code>.json</code> files:
         </p>
         <ul>
@@ -27,6 +27,13 @@ export const EthosCard = () => {
           then creating a number of components to render the results onto the
           page. This works well for me so I've moved off AWS and am hosting
           elsewhere instead.
+        </p>
+
+        <p>
+          That worked for a few seasons, but maintaining large files became
+          combersome and I came up with the current setup instead. None of it is
+          based on computer science or any other theory of how the web works,
+          this is just my playground to see what works for me.
         </p>
       </div>
     </div>
