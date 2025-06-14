@@ -38,7 +38,7 @@ a.skip-link:hover, a.skip-link:focus-visible {
 .grid-auto-fill {
   --min-col-size: 18rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--min-col-size), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--min-col-size), calc(25% - 2rem)));
   gap: 2rem;
   margin-top: -2rem;
 }
@@ -12142,20 +12142,6 @@ h6,
     width: 100%;
   }
 }
-.densityBtn {
-  margin: -0.5rem 0 0 1rem;
-}
-
-.right-drawer {
-  width: 20vw;
-  padding: 2rem;
-}
-@media (max-width: 616px) {
-  .right-drawer {
-    width: 35%;
-  }
-}
-
 blockquote {
   background: whitesmoke;
   box-shadow: -0.1rem 0.1rem 0.75rem #ccc;

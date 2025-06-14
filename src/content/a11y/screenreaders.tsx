@@ -1,4 +1,4 @@
-import { Binoculars } from "@phosphor-icons/react";
+import { Binoculars, Monitor } from "@phosphor-icons/react";
 
 export const ScreenReaders = () => {
   return (
@@ -24,6 +24,9 @@ export const ScreenReaders = () => {
           and other digitial products inside the firm.
         </p>
 
+        <div className="left">
+          <Monitor size={64} />
+        </div>
         <p>
           The two main ones used are <strong>JAWS</strong> and{" "}
           <strong>NVDA</strong>. They are both very comprehensive in the
