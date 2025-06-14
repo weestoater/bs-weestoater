@@ -29,7 +29,7 @@ export const WhoIsWeestoater = () => {
         </p>
         <img
           src={busterPic}
-          alt="Our golden lab Buster aka Brock Goldie"
+          alt="Our golden lab Buster"
           className="fluid"
         />
         <p>

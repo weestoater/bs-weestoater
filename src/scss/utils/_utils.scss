@@ -35,7 +35,10 @@ a.skip-link {
 .grid-auto-fill {
   --min-col-size: 18rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--min-col-size), 1fr));
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--min-col-size), calc(25% - 2rem))
+  );
   gap: 2rem;
   margin-top: -2rem;
 }
