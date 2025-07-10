@@ -16,6 +16,7 @@ import { FootballSeason202324 } from "./pages/2023-24-season";
 import { FootballSeason202223 } from "./pages/2022-23-season";
 import { FootballSeason202122 } from "./pages/2021-22-season";
 import { FootballSeason202021 } from "./pages/2020-21-season";
+import { SlimmingWorld } from "./pages/SlimmingWorld";
 
 export const App = () => {
   return (
@@ -36,6 +37,7 @@ export const App = () => {
           <Route path="/2021-22-season" element={<FootballSeason202122 />} />
           <Route path="/2020-21-season" element={<FootballSeason202021 />} />
           <Route path="/react" element={<ReactPage />} />
+          <Route path="/sw" element={<SlimmingWorld />} />
         </Routes>
       </main>
     </HashRouter>

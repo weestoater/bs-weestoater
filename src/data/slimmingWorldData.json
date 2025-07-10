@@ -1,0 +1,13 @@
+[
+  {
+    "startDate": "10/06/2025",
+    "startWeight": 282.5,
+    "targetWeight": 196,
+    "data": [
+      { "date": "10/06/2025", "weight": 282.5, "change": 0 },
+      { "date": "17/06/2025", "weight": 277.5, "change": -5 },
+      { "date": "24/06/2025", "weight": 274.5, "change": -3 },
+      { "date": "08/07/2025", "weight": 271.5, "change": -3 }
+    ]
+  }
+]
