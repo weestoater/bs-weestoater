@@ -1,40 +1,38 @@
+import { WeightConverter } from "./WeightConverter";
+
 export const SWDataTable = (props: any) => {
   const { data, startWeight, startDate, targetWeight } = props;
 
   const joinDate = startDate ? startDate : undefined;
+
+  if (!data || data.length === 0) return <p>No data available</p>;
+
+  function parseDateString(dateStr: string): Date {
+    const [day, month, year] = dateStr.split("/");
+    return new Date(`${year}-${month}-${day}`);
+  }
+  const mostRecent = [...data].sort(
+    (a, b) =>
+      parseDateString(b.date).getTime() - parseDateString(a.date).getTime()
+  )[0];
 
   return (
     <div className="card">
       <div className="card-header">Slimming World details</div>
       <div className="card-body">
         <p>
-          Joined: <strong>{joinDate}</strong>
+          Joined: {joinDate}
           <br />
-          Start weight: <strong>{JSON.stringify(startWeight)}</strong> lbs
+          Start weight: <WeightConverter lbs={startWeight} />
           <br />
-          Target weight: <strong>{JSON.stringify(targetWeight)}</strong> lbs
+          Target weight: <WeightConverter lbs={targetWeight} />
         </p>
-
-        <p>data: {JSON.stringify(data)}</p>
+        <p>
+          Last weigh-in: <WeightConverter lbs={mostRecent.weight} />
+          <br />
+          Sat 12/07/2025: <WeightConverter kgs={121.2} />
+        </p>
       </div>
-      {/* <table>
-        <thead>
-          <tr>
-            {columns.map((col: string, index: number) => (
-              <th key={index}>{col}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((date: any, weight: number) => (
-            <tr key={rowIndex}>
-              {columns.map((col: string, colIndex: number) => (
-                <td key={colIndex}>{row[col]}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
     </div>
   );
 };
