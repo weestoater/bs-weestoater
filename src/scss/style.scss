@@ -142,4 +142,11 @@ code {
   border: 1px solid $grey500;
   box-shadow: 0 0 0.333rem $grey500;
   background-color: transparent;
+
+  @media (max-width: 991px) {
+    height: calc(65vh / 1.5);
+    margin: 1rem 0;
+    max-width: 100%;
+    width: 100%;
+  }
 }

@@ -29,8 +29,6 @@ export const SWDataTable = (props: any) => {
         </p>
         <p>
           Last weigh-in: <WeightConverter lbs={mostRecent.weight} />
-          <br />
-          Sat 12/07/2025: <WeightConverter kgs={121.2} />
         </p>
       </div>
     </div>

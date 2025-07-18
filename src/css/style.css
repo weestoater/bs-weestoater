@@ -12206,4 +12206,25 @@ code {
   text-decoration: underline;
 }
 
+/*--    Slimming World
+----  chart */
+.sw-chart {
+  width: 100%;
+  max-width: 44.4444444444vw;
+  height: 50vh;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 0.333rem #ddd;
+  background-color: transparent;
+}
+@media (max-width: 991px) {
+  .sw-chart {
+    height: 43.3333333333vh;
+    margin: 1rem 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
