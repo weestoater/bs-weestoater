@@ -17,6 +17,38 @@ export const SlimmingWorld = () => {
         xKey: "date",
         yKey: "weight",
         yName: "Weight in lbs",
+        strokeWidth: 3,
+        marker: {
+          enabled: true,
+          shape: "diamond",
+          size: 12, // Make marker large
+          fill: "blue", // Optional: color of diamond
+          stroke: "black", // Optional: border color
+          strokeWidth: 2, // Optional: border thickness
+        },
+      },
+      {
+        type: "bar",
+        xKey: "date",
+        yKey: "lost",
+        yName: "Weight lost in lbs",
+      },
+    ],
+    axes: [
+      {
+        type: "category",
+        position: "bottom",
+        title: { text: "Date" },
+      },
+      {
+        type: "number",
+        position: "left",
+        title: { text: "Weight in lbs" },
+      },
+      {
+        type: "number",
+        position: "right",
+        title: { text: "Weight lost in lbs" },
       },
     ],
     padding: {
@@ -28,13 +60,6 @@ export const SlimmingWorld = () => {
     legend: {
       position: "bottom",
       spacing: 20,
-    },
-    marker: {
-      fill: "orange",
-      shape: "diamond",
-      size: 10,
-      strokeWidth: 2,
-      stroke: "black",
     },
     theme: {},
   };
