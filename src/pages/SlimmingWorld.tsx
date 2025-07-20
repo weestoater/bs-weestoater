@@ -23,7 +23,7 @@ export const SlimmingWorld = () => {
           shape: "diamond",
           size: 12, // Make marker large
           fill: "blue", // Optional: color of diamond
-          stroke: "black", // Optional: border color
+          stroke: "blue", // Optional: border color
           strokeWidth: 2, // Optional: border thickness
         },
       },
@@ -32,6 +32,21 @@ export const SlimmingWorld = () => {
         xKey: "date",
         yKey: "lost",
         yName: "Weight lost in lbs",
+      },
+      {
+        type: "line",
+        xKey: "date",
+        yKey: "target",
+        yName: "Target",
+        strokeWidth: 1,
+        marker: {
+          enabled: true,
+          shape: "circle",
+          size: 12, // Make marker large
+          fill: "green", // Optional: color of diamond
+          stroke: "green", // Optional: border color
+          strokeWidth: 1, // Optional: border thickness
+        },
       },
     ],
     axes: [
