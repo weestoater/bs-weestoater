@@ -1,6 +1,23 @@
 [
   {
     "season": "2025-26",
-    "details": null
+    "details": [
+      {
+        "player": "Tawanda Maswanhise",
+        "goals": 2
+      },
+      {
+        "player": "Lukas Fadinger",
+        "goals": 1
+      },
+      {
+        "player": "Emmanuel Longelo",
+        "goals": 1
+      },
+      {
+        "player": "Stephen O'Donnell",
+        "goals": 1
+      }
+    ]
   }
 ]
