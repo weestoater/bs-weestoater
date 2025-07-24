@@ -3,6 +3,37 @@
     "season": "2025-26",
     "details": [
       {
+        "scored": 3,
+        "conceded": 0,
+        "date": "22/07/25",
+        "opposition": "Greenock Morton",
+        "venue": "Home",
+        "league": "League Cup",
+        "goals": [
+          {
+            "player": "Apostolos Stamatelopoulos",
+            "mins": "52"
+          },
+          {
+            "player": "Tawanda Maswanhise",
+            "mins": "83"
+          },
+          {
+            "player": "Tawanda Maswanhise",
+            "mins": "90+3"
+          }
+        ],
+        "cards": [
+          {
+            "player": "Callum Slattery",
+            "mins": "34",
+            "card": "yellow"
+          }
+        ],
+        "video": null,
+        "notes": "At last. A game that Motherwell have controlled and looked close to comfortable, for the majority of play.  Many commentators praised the team for commited and progressive play, with the manager saying he'd rather they made mistake for being to adventurous than from sitting back and being safe.  An easy tap in for Stamatelopoulos and a double for Maswanhise - his second goal was an absolute SCREAMER.  If this is the way we can play against one of the first 'proper' teams we've faced, then we should be in good shape for the season ahead. Let's just hope its a taste of things to come under our new manager.  #COYW!!"
+      },
+      {
         "scored": 1,
         "conceded": 0,
         "date": "19/07/25",

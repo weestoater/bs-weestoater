@@ -8,7 +8,7 @@ export const GoalScorerDetails = (props: any) => {
     data: details,
     title: {
       enabled: true,
-      text: "Goal Scorers",
+      text: "No. of Goals & Assists",
     },
     autoSize: true,
     series: [
@@ -18,10 +18,41 @@ export const GoalScorerDetails = (props: any) => {
         xName: "Players",
         yKey: "goals",
         yName: "Goals Scored",
-        cornerRadius: 5,
         fill: "#fd9402",
         stroke: "#6a0117",
         showInMiniChart: true,
+      },
+      {
+        type: "line",
+        xKey: "player",
+        xName: "Players",
+        yKey: "assists",
+        yName: "Assists ",
+        strokeWidth: 0,
+        marker: {
+          enabled: true,
+          shape: "circle",
+          size: 20, // Make marker large
+          fill: "#6a0117", // Optional: color of diamond
+        },
+        showInMiniChart: true,
+      },
+    ],
+    axes: [
+      {
+        type: "category",
+        position: "bottom",
+        title: { text: "Players" },
+      },
+      {
+        type: "number",
+        position: "left",
+        title: { text: "No. of Goals" },
+      },
+      {
+        type: "number",
+        position: "right",
+        title: { text: "No. of Assists" },
       },
     ],
     padding: {
