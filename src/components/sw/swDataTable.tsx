@@ -16,19 +16,23 @@ export const SWDataTable = (props: any) => {
       parseDateString(b.date).getTime() - parseDateString(a.date).getTime()
   )[0];
 
+  const totalLost = startWeight - mostRecent.weight;
+  const totalLostFormatted = totalLost.toFixed(1);
+
   return (
     <div className="card">
       <div className="card-header">Slimming World details</div>
       <div className="card-body">
         <p>
-          Joined: {joinDate}
+          Joined: <strong>{joinDate}</strong>
           <br />
           Start weight: <WeightConverter lbs={startWeight} />
           <br />
           Target weight: <WeightConverter lbs={targetWeight} />
         </p>
         <p>
-          Last weigh-in: <WeightConverter lbs={mostRecent.weight} />
+          Last weigh-in: <WeightConverter lbs={mostRecent.weight} /> |{" "}
+          <strong>{totalLostFormatted} lbs lost</strong>
         </p>
       </div>
     </div>
