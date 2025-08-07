@@ -44,10 +44,7 @@ export const MatchDetails = (props: any) => {
                   </tbody>
                 </table>
 
-                {item.video ||
-                  (item.iplayer && (
-                    <VideoLink url={item.video} iplayer={item.iplayer} />
-                  ))}
+                {item.video && <VideoLink url={item.video} />}
 
                 {item.goals && <GoalsDetails goals={item.goals} />}
 
