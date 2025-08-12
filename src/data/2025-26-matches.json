@@ -3,6 +3,24 @@
     "season": "2025-26",
     "details": [
       {
+        "scored": 0,
+        "conceded": 0,
+        "date": "09/08/25",
+        "opposition": "St. Mirren",
+        "venue": "Away",
+        "league": null,
+        "goals": null,
+        "cards": [
+          {
+            "player": "Paul McGinn",
+            "mins": "86",
+            "card": "yellow"
+          }
+        ],
+        "video": null,
+        "notes": "A lot of possession but not any precision. Sad story from an otherwise impressive display from the Well. A few good chances that came to nothing, but not a game to remember. Windy conditions ruined the game, but a share of the points is better than a loss. #claret&amber  #COYW!!"
+      },
+      {
         "scored": 1,
         "conceded": 1,
         "date": "02/08/25",
