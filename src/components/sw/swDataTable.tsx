@@ -17,7 +17,7 @@ export const SWDataTable = (props: any) => {
   )[0];
 
   const totalLost = startWeight - mostRecent.weight;
-  const totalLostFormatted = totalLost.toFixed(1);
+  const totalLostFormatted = totalLost;
 
   return (
     <div className="card">
@@ -31,8 +31,8 @@ export const SWDataTable = (props: any) => {
           Target weight: <WeightConverter lbs={targetWeight} />
         </p>
         <p>
-          Last weigh-in: <WeightConverter lbs={mostRecent.weight} /> |{" "}
-          <strong>{totalLostFormatted} lbs lost</strong>
+          Last weigh-in: <WeightConverter lbs={mostRecent.weight} /> <br />
+          Total lost: <WeightConverter lbs={totalLostFormatted} />
         </p>
       </div>
     </div>
