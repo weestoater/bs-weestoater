@@ -3,6 +3,29 @@
     "season": "2025-26",
     "details": [
       {
+        "scored": 1,
+        "conceded": 0,
+        "date": "15/08/25",
+        "opposition": "St. Johnstone",
+        "venue": "Away",
+        "league": "League Cup",
+        "goals": [
+          {
+            "player": "Lukas Fadinger",
+            "mins": "109"
+          }
+        ],
+        "cards": [
+          {
+            "player": "Stephen O'Donnell",
+            "mins": "50",
+            "card": "yellow"
+          }
+        ],
+        "video": null,
+        "notes": "Once again - lots of possession but not any precision in the final third. First game since the record transfer fee from Lennon Miller going to Udinese, but we need to fill the void and get a striker or two on the squad. No use having 70% possession, but 0-0 draw after 90 minutes. Through the the quarter-finals and onwards from there hopefully. #claret&amber  #COYW!!"
+      },
+      {
         "scored": 0,
         "conceded": 0,
         "date": "09/08/25",
