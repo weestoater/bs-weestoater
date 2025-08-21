@@ -33,7 +33,7 @@ export const Header = () => {
           Skip to main content
         </HashLink>
         <NavbarBrand href="/">
-          <img src={wsIcon} alt="weestoater icon" className="header-app-logo" />
+          <img src={wsIcon} alt="weestoater logo" className="header-app-logo" />
           <span>weestoater</span>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
