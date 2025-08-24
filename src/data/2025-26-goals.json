@@ -4,11 +4,11 @@
     "details": [
       {
         "player": "Tawanda Maswanhise",
-        "goals": 4
+        "goals": 5
       },
       {
         "player": "Emmanuel Longelo",
-        "goals": 2
+        "goals": 3
       },
       {
         "player": "Lukas Fadinger",
@@ -21,7 +21,7 @@
       },
       {
         "player": "Elijah Just",
-        "assists": 1
+        "assists": 3
       },
       {
         "player": "Paul McGinn",
@@ -33,11 +33,16 @@
       },
       {
         "player": "Callum Slattery",
-        "assists": 2
+        "assists": 2,
+        "goals": 1
       },
       {
         "player": "Apostolos Stamatelopoulos",
         "goals": 1,
+        "assists": 1
+      },
+      {
+        "player": "Elliot Watt",
         "assists": 1
       }
     ]
