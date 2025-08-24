@@ -3,6 +3,42 @@
     "season": "2025-26",
     "details": [
       {
+        "scored": 3,
+        "conceded": 3,
+        "date": "23/08/25",
+        "opposition": "Heart of Midlothian",
+        "venue": "Away",
+        "league": null,
+        "goals": [
+          {
+            "player": "Callum Slattery",
+            "mins": "21"
+          },
+          {
+            "player": "Tawanda Maswanhise",
+            "mins": "49"
+          },
+          {
+            "player": "Emmanuel Longelo",
+            "mins": "62"
+          }
+        ],
+        "cards": [
+          {
+            "player": "Callum Slattery",
+            "mins": "24",
+            "card": "yellow"
+          },
+          {
+            "player": "Callum Hendry",
+            "mins": "78",
+            "card": "yellow"
+          }
+        ],
+        "video": null,
+        "notes": "Lions share of possession in the first half and a score of goals, what is not to like. But the last 25 minutes will need a serious review to see what went wrong and how to improve. As before the managers interview after the match was the definition of coaching - nothing to be dissappointed with, only opportunities to improve. We are all learning the new playing style and I for one am happy with the results. A win would be nice, but very nice to watch and great to see Derek McInnes sweating in the home dugout. #claret&amber  #COYW!!"
+      },
+      {
         "scored": 1,
         "conceded": 0,
         "date": "15/08/25",
