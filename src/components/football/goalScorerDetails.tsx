@@ -31,8 +31,8 @@ export const GoalScorerDetails = (props: any) => {
         strokeWidth: 0,
         marker: {
           enabled: true,
-          shape: "circle",
-          size: 20, // Make marker large
+          shape: "star",
+          size: 15, // Make marker large
           fill: "#6a0117", // Optional: color of diamond
         },
         showInMiniChart: true,

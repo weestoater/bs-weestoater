@@ -3,6 +3,38 @@
     "season": "2025-26",
     "details": [
       {
+        "scored": 2,
+        "conceded": 2,
+        "date": "30/08/25",
+        "opposition": "Kilmarnock",
+        "venue": "Home",
+        "league": null,
+        "goals": [
+          {
+            "player": "Tawanda Maswanhise",
+            "mins": "45+1"
+          },
+          {
+            "player": "Emmanuel Longelo",
+            "mins": "62"
+          }
+        ],
+        "cards": [
+          {
+            "player": "Elliot Watt",
+            "mins": "43",
+            "card": "yellow"
+          },
+          {
+            "player": "Liam Gordon",
+            "mins": "90+4",
+            "card": "yellow"
+          }
+        ],
+        "video": null,
+        "notes": "Perhaps showed Killie too much respect in the opening half hour, but got our equaliser on half time. Same story as last week, get a lead then unable to hold onto it. It's great to have exciting football and to remain unbeaten, but it would be really nice to win a game in the league too.  #claret&amber  #COYW!!"
+      },
+      {
         "scored": 3,
         "conceded": 3,
         "date": "23/08/25",
@@ -35,7 +67,7 @@
             "card": "yellow"
           }
         ],
-        "video": null,
+        "video": "https://youtu.be/e3lFfwgVH8U?si=Iuyk4P_ZUmcJAG9z",
         "notes": "Lions share of possession in the first half and a score of goals, what is not to like. But the last 25 minutes will need a serious review to see what went wrong and how to improve. As before the managers interview after the match was the definition of coaching - nothing to be dissappointed with, only opportunities to improve. We are all learning the new playing style and I for one am happy with the results. A win would be nice, but very nice to watch and great to see Derek McInnes sweating in the home dugout. #claret&amber  #COYW!!"
       },
       {
