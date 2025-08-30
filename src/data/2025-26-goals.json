@@ -3,14 +3,6 @@
     "season": "2025-26",
     "details": [
       {
-        "player": "Tawanda Maswanhise",
-        "goals": 5
-      },
-      {
-        "player": "Emmanuel Longelo",
-        "goals": 3
-      },
-      {
         "player": "Lukas Fadinger",
         "goals": 2,
         "assists": 1
@@ -22,6 +14,14 @@
       {
         "player": "Elijah Just",
         "assists": 3
+      },
+      {
+        "player": "Emmanuel Longelo",
+        "goals": 4
+      },
+      {
+        "player": "Tawanda Maswanhise",
+        "goals": 6
       },
       {
         "player": "Paul McGinn",

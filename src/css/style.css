@@ -12211,7 +12211,7 @@ code {
 .sw-chart {
   width: 100%;
   max-width: 44.4444444444vw;
-  height: 75vh;
+  height: 50vh;
   padding: 1rem;
   margin-bottom: 2rem;
   border: 1px solid #ddd;
