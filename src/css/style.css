@@ -216,10 +216,14 @@ main .code-sample p {
 
 @media (max-width: 616px) {
   .goal-scorers {
-    max-width: 80vw;
-    height: 50vh;
+    display: none;
   }
 }
+.goal-scorers-table {
+  clear: both;
+  margin: 2.5rem 0 0;
+}
+
 /*!
  * Bootstrap  v5.3.6 (https://getbootstrap.com/)
  * Copyright 2011-2025 The Bootstrap Authors

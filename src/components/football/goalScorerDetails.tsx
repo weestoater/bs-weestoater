@@ -1,5 +1,6 @@
 import { AgChartsReact } from "ag-charts-react";
 import { GoalScorersDetails } from "../../interfaces/interfaces";
+import { GoalScorersDetailsTable } from "./goalScorersDetailsTable";
 
 export const GoalScorerDetails = (props: any) => {
   const details: GoalScorersDetails = props.details ? props.details : null;
@@ -69,8 +70,12 @@ export const GoalScorerDetails = (props: any) => {
   };
 
   return (
-    <div className="goal-scorers" data-testid="goalscorers-pie-chart">
-      <AgChartsReact options={_options} />
-    </div>
+    <>
+      <div className="goal-scorers" data-testid="goalscorers-pie-chart">
+        <AgChartsReact options={_options} />
+      </div>
+
+      <GoalScorersDetailsTable details={details} />
+    </>
   );
 };
