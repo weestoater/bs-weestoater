@@ -36,9 +36,9 @@ a.skip-link:hover, a.skip-link:focus-visible {
 }
 
 .grid-auto-fill {
-  --min-col-size: 18rem;
+  --min-col-size: 23rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--min-col-size), calc(25% - 2rem)));
+  grid-template-columns: repeat(auto-fill, minmax(var(--min-col-size), calc(33% - 2rem)));
   gap: 2rem;
   margin-top: -2rem;
 }
