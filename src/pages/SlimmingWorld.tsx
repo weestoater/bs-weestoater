@@ -48,6 +48,20 @@ export const SlimmingWorld = () => {
           strokeWidth: 1, // Optional: border thickness
         },
       },
+      {
+        type: "line",
+        xKey: "date",
+        yKey: "sotw",
+        yName: "Slimmer of the Week",
+        strokeWidth: 0,
+        marker: {
+          enabled: true,
+          shape: "star",
+          size: 15, // Make marker large
+          fill: "#6a0117", // Optional: color of diamond
+        },
+        showInMiniChart: true,
+      },
     ],
     axes: [
       {
