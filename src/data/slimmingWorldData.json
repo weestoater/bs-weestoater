@@ -37,7 +37,8 @@
         "weight": 268.5,
         "change": -3,
         "lost": 14,
-        "target": 196
+        "target": 196,
+        "sotw": 100
       },
       {
         "date": "22/07/2025",
@@ -66,7 +67,7 @@
         "change": -4,
         "lost": 21.5,
         "target": 196,
-        "sotw": true
+        "sotw": 100
       },
       {
         "date": "19/08/2025",
@@ -81,7 +82,14 @@
         "change": -3.5,
         "lost": 25.5,
         "target": 196,
-        "sotw": true
+        "sotw": 100
+      },
+      {
+        "date": "02/09/2025",
+        "weight": 257.5,
+        "change": 0.5,
+        "lost": 25,
+        "target": 196
       }
     ]
   }
