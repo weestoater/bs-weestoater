@@ -32,7 +32,7 @@ export const Header = () => {
         <HashLink to="#content" className="skip-link">
           Skip to main content
         </HashLink>
-        <NavbarBrand href="/">
+        <NavbarBrand>
           <img src={wsIcon} alt="weestoater logo" className="header-app-logo" />
           <span>weestoater</span>
         </NavbarBrand>
@@ -43,6 +43,7 @@ export const Header = () => {
               <NavItem key={key}>
                 <RouterNavLink
                   to={`/${item.toLowerCase()}`}
+                  end
                   className={({ isActive }: { isActive: boolean }) =>
                     isActive ? "active nav-link" : "nav-link"
                   }
