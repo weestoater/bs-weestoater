@@ -131,8 +131,6 @@ code {
   }
 }
 
-
-
 /*--    Slimming World
 ----  chart */
 .sw-chart {
@@ -149,6 +147,7 @@ code {
     height: calc(65vh / 1.5);
     margin: 1rem 0;
     max-width: 100%;
+    min-height: 300px;
     width: 100%;
   }
 }
