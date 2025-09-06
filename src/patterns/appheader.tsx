@@ -6,8 +6,8 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
 } from "reactstrap";
+import { NavLink as RouterNavLink } from "react-router-dom";
 
 import { HashLink } from "react-router-hash-link";
 import wsIcon from "../assets/img/weestoater-icon.png";
@@ -41,7 +41,14 @@ export const Header = () => {
           <Nav className="me-auto" navbar>
             {items.map((item, key) => (
               <NavItem key={key}>
-                <NavLink href={`./#/${item.toLowerCase()}`}>{item}</NavLink>
+                <RouterNavLink
+                  to={`/${item.toLowerCase()}`}
+                  className={({ isActive }: { isActive: boolean }) =>
+                    isActive ? "active nav-link" : "nav-link"
+                  }
+                >
+                  {item}
+                </RouterNavLink>
               </NavItem>
             ))}
           </Nav>
