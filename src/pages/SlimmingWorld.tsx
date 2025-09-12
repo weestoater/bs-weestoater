@@ -4,6 +4,22 @@ import { SWDataTable } from "../components/sw/swDataTable";
 import swData from "../data/slimmingWorldData.json";
 
 export const SlimmingWorld = () => {
+  function formatDateToDDMMM(dateString: string) {
+    // Split the input string into day, month, year
+    const [day, month, year] = dateString.split("/").map(Number);
+
+    // Create a date object (months are 0-indexed in JavaScript)
+    const date = new Date(year, month - 1, day);
+
+    console.log(date);
+
+    // Format the date as "dd MMM"
+    return date.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+    });
+  }
+
   const _options: any = {
     data: swData[0].data,
     title: {
@@ -67,7 +83,13 @@ export const SlimmingWorld = () => {
       {
         type: "category",
         position: "bottom",
-        title: { text: "Date" },
+        title: { text: "Date of Weigh-in" },
+        label: {
+          autoRotate: true,
+          formatter: ({ value }) => {
+            return formatDateToDDMMM(value);
+          },
+        },
       },
       {
         type: "number",

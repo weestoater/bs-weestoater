@@ -1,39 +1,39 @@
 [
   {
-    "startDate": "10/06/25",
+    "startDate": "10/06/2025",
     "startWeight": 282.5,
     "targetWeight": 196,
     "data": [
       {
-        "date": "10/06/25",
+        "date": "10/06/2025",
         "weight": 282.5,
         "change": 0,
         "lost": 0,
         "target": 196
       },
       {
-        "date": "17/06/25",
+        "date": "17/06/2025",
         "weight": 277.5,
         "change": -5,
         "lost": 5,
         "target": 196
       },
       {
-        "date": "24/06/25",
+        "date": "24/06/2025",
         "weight": 274.5,
         "change": -3,
         "lost": 8,
         "target": 196
       },
       {
-        "date": "08/07/25",
+        "date": "08/07/2025",
         "weight": 271.5,
         "change": -3,
         "lost": 11,
         "target": 196
       },
       {
-        "date": "15/07/25",
+        "date": "15/07/2025",
         "weight": 268.5,
         "change": -3,
         "lost": 14,
@@ -41,28 +41,28 @@
         "sotw": 100
       },
       {
-        "date": "22/07/25",
+        "date": "22/07/2025",
         "weight": 267,
         "change": -1.5,
         "lost": 15.5,
         "target": 196
       },
       {
-        "date": "29/07/25",
+        "date": "29/07/2025",
         "weight": 265.5,
         "change": -1.5,
         "lost": 17,
         "target": 196
       },
       {
-        "date": "05/08/25",
+        "date": "05/08/2025",
         "weight": 265.0,
         "change": -0.5,
         "lost": 17.5,
         "target": 196
       },
       {
-        "date": "12/08/25",
+        "date": "12/08/2025",
         "weight": 261.0,
         "change": -4,
         "lost": 21.5,
@@ -70,14 +70,14 @@
         "sotw": 100
       },
       {
-        "date": "19/08/25",
+        "date": "19/08/2025",
         "weight": 260.5,
         "change": -0.5,
         "lost": 22,
         "target": 196
       },
       {
-        "date": "26/08/25",
+        "date": "26/08/2025",
         "weight": 257,
         "change": -3.5,
         "lost": 25.5,
@@ -85,14 +85,14 @@
         "sotw": 100
       },
       {
-        "date": "02/09/25",
+        "date": "02/09/2025",
         "weight": 257.5,
         "change": 0.5,
         "lost": 25,
         "target": 196
       },
       {
-        "date": "09/09/25",
+        "date": "09/09/2025",
         "weight": 254,
         "change": -3.5,
         "lost": 28.5,
