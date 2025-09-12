@@ -1,3 +1,5 @@
+import { Brain } from "@phosphor-icons/react";
+
 export const EthosCard = () => {
   return (
     <div className="card">
@@ -7,6 +9,9 @@ export const EthosCard = () => {
         </h2>
       </div>
       <div className="card-body">
+        <div className="right w5">
+          <Brain size={64} />
+        </div>
         <p>
           I started this space as an online area for me to experiment with
           ReactJS and data 'patterns'. I've not got any desire to add a database

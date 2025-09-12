@@ -1,6 +1,6 @@
 import SaltDSImg from "../../assets/img/salt-ds.png";
-
 import { Armchair, Engine } from "@phosphor-icons/react";
+
 
 export const SaltPost = () => {
   return (
