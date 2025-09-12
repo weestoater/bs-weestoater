@@ -66,7 +66,7 @@ a.skip-link:hover, a.skip-link:focus-visible {
 }
 .navbar-nav li.nav-item a {
   border: 3px solid transparent;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   color: white;
   display: block;
   margin: 0;
