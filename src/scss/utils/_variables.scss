@@ -1,3 +1,8 @@
+:root {
+  --code-light: #00681e;
+  --code-dark: #00be1e;
+}
+
 //--    Colours
 $barbie: #d118fe;
 $chuck: #bada55;
@@ -22,7 +27,12 @@ $black200: #222;
 $black300: #333;
 $black400: #444;
 
-:root {
-  --code-light: #00681e;
-  --code-dark: #00be1e;
-}
+//-----    Grey band
+$bandgrey50: #b9b9b9;
+$bandgrey200: #959593;
+$bandgrey200: #555553;
+$bandgrey300: #393939;
+$bandgrey400: #282828;
+
+//-----    Multi-colour band
+$orange200: #eab43d;
