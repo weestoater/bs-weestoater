@@ -86,7 +86,7 @@ export const SlimmingWorld = () => {
         title: { text: "Date of Weigh-in" },
         label: {
           autoRotate: true,
-          formatter: ({ value }) => {
+          formatter: ({ value }: { value: any }) => {
             return formatDateToDDMMM(value);
           },
         },
