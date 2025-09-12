@@ -1,3 +1,5 @@
+import { CodesandboxLogo, ImageBroken } from "@phosphor-icons/react";
+
 export const TrialnErrorCard = () => {
   return (
     <div className="card">
@@ -7,6 +9,9 @@ export const TrialnErrorCard = () => {
         </h2>
       </div>
       <div className="card-body">
+        <div className="right w5">
+          <ImageBroken size={64} />
+        </div>
         <p>
           Ideally I want to learn as much as possible in building this site, as
           I have the freedom to make as many mistakes as I like.
@@ -15,6 +20,9 @@ export const TrialnErrorCard = () => {
           Afterall, it's only a <code>git pull</code> away from being removed or
           over-written, so I don't want to be precious.
         </p>
+        <div className="left w5">
+          <CodesandboxLogo size={64} />
+        </div>
         <p>
           I've learned enough about AWS to know I <em>don't</em> want to use it
           for my personal sites anymore. But also enough to appreciate and

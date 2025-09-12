@@ -30,10 +30,9 @@ export const WhatIsWeestoater = () => {
         </ul>
 
         <p>
-          This current version is ReactJS and Salt-DS. It is a site for me to
-          play with and learn more about ReactJS and Salt-DS, as I use both
-          technologies in my day job, as well as Angular; Node; Cypress;
-          Playwright; Jest; Testing-Libraries and multiple CSS frameworks.
+          This current version is ReactJS and Bootstrap, with some custom CSS of
+          my own. I did use Salt-DS for a previous version, as I used it in a
+          former team.
         </p>
 
         <p>
