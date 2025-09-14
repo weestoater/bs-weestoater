@@ -17,11 +17,12 @@
       },
       {
         "player": "Emmanuel Longelo",
-        "goals": 4
+        "goals": 4,
+        "assists": 1
       },
       {
         "player": "Tawanda Maswanhise",
-        "goals": 6
+        "goals": 7
       },
       {
         "player": "Paul McGinn",
@@ -38,8 +39,7 @@
       },
       {
         "player": "Apostolos Stamatelopoulos",
-        "goals": 1,
-        "assists": 1
+        "goals": 1
       },
       {
         "player": "Elliot Watt",
