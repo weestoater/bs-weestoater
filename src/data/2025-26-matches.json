@@ -3,6 +3,29 @@
     "season": "2025-26",
     "details": [
       {
+        "scored": 1,
+        "conceded": 1,
+        "date": "13/09/25",
+        "opposition": "Dundee",
+        "venue": "Away",
+        "league": null,
+        "goals": [
+          {
+            "player": "Tawanda Maswanhise",
+            "mins": "33"
+          }
+        ],
+        "cards": [
+          {
+            "player": "Emmanuel Longelo",
+            "mins": "89",
+            "card": "yellow"
+          }
+        ],
+        "video": null,
+        "notes": "Described by Askou after the match as the best and worst he's seen them play this season. First half was free flowing and owned the game. Second half a total lack of concentration from all the players on a set piece and we lose a very soft goal. Being a man up should have put us back in the drivers seat, but we looked more nervy if anything. #claret&amber  #COYW!!"
+      },
+      {
         "scored": 2,
         "conceded": 2,
         "date": "30/08/25",
