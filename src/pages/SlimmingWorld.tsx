@@ -1,4 +1,4 @@
-import { AgChartsReact } from "ag-charts-react";
+import { AgCharts } from "ag-charts-react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { SWDataTable } from "../components/sw/swDataTable";
 import swData from "../data/slimmingWorldData.json";
@@ -103,14 +103,14 @@ export const SlimmingWorld = () => {
       },
     ],
     padding: {
-      top: 10,
+      top: 5,
       right: 10,
-      bottom: 20,
+      bottom: 5,
       left: 10,
     },
     legend: {
       position: "bottom",
-      spacing: 20,
+      spacing: 10,
     },
     theme: {},
   };
@@ -129,7 +129,7 @@ export const SlimmingWorld = () => {
         </div>
         <div className="col-lg-6">
           <div className="sw-chart">
-            <AgChartsReact options={_options} />
+            <AgCharts options={_options} />
           </div>
         </div>
       </div>

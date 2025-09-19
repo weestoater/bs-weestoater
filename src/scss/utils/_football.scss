@@ -108,12 +108,21 @@
 .goal-scorers {
   width: 100%;
   max-width: calc(100vw / 2.25);
-  height: calc(100vh / 2);
+  height: 45vh;
   padding: 1rem;
-  margin-bottom: 2rem;
+  margin: 0 0 1rem;
   border: 1px solid $grey500;
   box-shadow: 0 0 0.333rem $grey500;
-  background-color: transparent;
+  background: transparent;
+}
+.goal-scorers-grid {
+  border: 1px solid $grey500;
+  box-shadow: 0 0 0.333rem $grey500;
+  background: transparent;
+  height: 45vh;
+  margin: 2rem 0;
+  max-width: calc(100vw / 2.25);
+  padding: 1rem;
 }
 
 @media (max-width: 616px) {
