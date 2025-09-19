@@ -1,6 +1,6 @@
-import { AgChartsReact } from "ag-charts-react";
+import { AgCharts } from "ag-charts-react";
 import { GoalScorersDetails } from "../../interfaces/interfaces";
-import { GoalScorersDetailsTable } from "./goalScorersDetailsTable";
+import { GoalScorersGrid } from "./goalScorersGrid";
 
 export const GoalScorerDetails = (props: any) => {
   const details: GoalScorersDetails = props.details ? props.details : null;
@@ -57,14 +57,14 @@ export const GoalScorerDetails = (props: any) => {
       },
     ],
     padding: {
-      top: 20,
-      right: 20,
-      bottom: 20,
-      left: 40,
+      top: 5,
+      right: 5,
+      bottom: 5,
+      left: 5,
     },
     legend: {
       position: "bottom",
-      spacing: 20,
+      spacing: 10,
     },
     theme: {},
   };
@@ -72,10 +72,10 @@ export const GoalScorerDetails = (props: any) => {
   return (
     <>
       <div className="goal-scorers" data-testid="goalscorers-pie-chart">
-        <AgChartsReact options={_options} />
+        <AgCharts options={_options} />
       </div>
 
-      <GoalScorersDetailsTable details={details} />
+      <GoalScorersGrid details={details} />
     </>
   );
 };

@@ -29,7 +29,9 @@ export const FootballSeasonResults = (props: any) => {
           </h2>
 
           {seasonsGoals !== null && (
-            <GoalScorerDetails details={seasonsGoals[0].details} />
+            <>
+              <GoalScorerDetails details={seasonsGoals[0].details} />
+            </>
           )}
           {seasonsGoals === null && <>No goals data found</>}
         </div>
