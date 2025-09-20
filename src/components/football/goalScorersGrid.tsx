@@ -15,7 +15,7 @@ export const GoalScorersGrid = (props: any) => {
   const [rowData] = useState(details);
 
   const [colDefs] = useState([
-    { field: "player" },
+    { field: "player", flex: 2.5 },
     { field: "goals" },
     { field: "assists" },
   ]);

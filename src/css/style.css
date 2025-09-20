@@ -240,7 +240,7 @@ main .code-sample p {
   width: 100%;
   max-width: 44.4444444444vw;
   height: 45vh;
-  padding: 1rem;
+  padding: 0.5rem 2rem;
   margin: 0 0 1rem;
   border: 1px solid #ddd;
   box-shadow: 0 0 0.333rem #ddd;
@@ -258,8 +258,10 @@ main .code-sample p {
 }
 
 @media (max-width: 616px) {
-  .goal-scorers {
-    display: none;
+  .goal-scorers,
+  .goal-scorers-grid {
+    max-width: 98vw;
+    width: 95%;
   }
 }
 .goal-scorers-table {

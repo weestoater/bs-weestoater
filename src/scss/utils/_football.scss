@@ -109,7 +109,7 @@
   width: 100%;
   max-width: calc(100vw / 2.25);
   height: 45vh;
-  padding: 1rem;
+  padding: 0.5rem 2rem;
   margin: 0 0 1rem;
   border: 1px solid $grey500;
   box-shadow: 0 0 0.333rem $grey500;
@@ -126,8 +126,10 @@
 }
 
 @media (max-width: 616px) {
-  .goal-scorers {
-    display: none;
+  .goal-scorers,
+  .goal-scorers-grid {
+    max-width: 98vw;
+    width: 95%;
   }
 }
 
