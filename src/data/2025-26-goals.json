@@ -3,6 +3,10 @@
     "season": "2025-26",
     "details": [
       {
+        "player": "Regan Charles-Cook",
+        "goals": 1
+      },
+      {
         "player": "Lukas Fadinger",
         "goals": 2,
         "assists": 1
@@ -18,7 +22,7 @@
       {
         "player": "Emmanuel Longelo",
         "goals": 4,
-        "assists": 1
+        "assists": 2
       },
       {
         "player": "Tawanda Maswanhise",

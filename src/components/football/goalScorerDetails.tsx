@@ -11,7 +11,6 @@ export const GoalScorerDetails = (props: any) => {
       enabled: true,
       text: "No. of Goals & Assists",
     },
-    autoSize: true,
     series: [
       {
         type: "bar",
@@ -63,8 +62,8 @@ export const GoalScorerDetails = (props: any) => {
       left: 5,
     },
     legend: {
-      position: "bottom",
-      spacing: 10,
+      position: "top",
+      spacing: 5,
     },
     theme: {},
   };

@@ -4,6 +4,39 @@
     "details": [
       {
         "scored": 1,
+        "conceded": 0,
+        "date": "20/09/25",
+        "opposition": "Aberdeen",
+        "venue": "Away",
+        "league": "League Cup - Quarter-finals",
+        "goals": [
+          {
+            "player": "Regan Charles-Cook",
+            "mins": "63"
+          }
+        ],
+        "cards": [
+          {
+            "player": "Ibrahim Said",
+            "mins": "58",
+            "card": "yellow"
+          },
+          {
+            "player": "Lukas Fadinger",
+            "mins": "72",
+            "card": "yellow"
+          },
+          {
+            "player": "Emmanuel Longelo",
+            "mins": "73",
+            "card": "yellow"
+          }
+        ],
+        "video": null,
+        "notes": "Much lower possession for the match than we have had during league games so far this season, but that doesn't matter a jot - we won a game! Clean sheet and more goals than the opposition. Job done !!! Semi-finals here we come - Hampden here we come!!! #claret&amber  #COYW!!"
+      },
+      {
+        "scored": 1,
         "conceded": 1,
         "date": "13/09/25",
         "opposition": "Dundee",
