@@ -104,6 +104,13 @@
         "change": -1.5,
         "lost": 30,
         "target": 196
+      },
+      {
+        "date": "23/09/2025",
+        "weight": 253.5,
+        "change": 1,
+        "lost": 29,
+        "target": 196
       }
     ]
   }
