@@ -239,12 +239,15 @@ main .code-sample p {
 .goal-scorers {
   width: 100%;
   max-width: 44.4444444444vw;
-  height: 45vh;
+  height: 500px;
   padding: 0.5rem 2rem;
   margin: 0 0 1rem;
   border: 1px solid #ddd;
   box-shadow: 0 0 0.333rem #ddd;
   background: transparent;
+}
+.goal-scorers .ag-charts-wrapper {
+  height: 450px !important;
 }
 
 .goal-scorers-grid {
@@ -12266,12 +12269,15 @@ code {
 .sw-chart {
   width: 100%;
   max-width: 44.4444444444vw;
-  height: 50vh;
+  height: 500px;
   padding: 1rem;
   margin-bottom: 2rem;
   border: 1px solid #ddd;
   box-shadow: 0 0 0.333rem #ddd;
   background-color: transparent;
+}
+.sw-chart .ag-charts-wrapper {
+  height: 450px !important;
 }
 @media (max-width: 991px) {
   .sw-chart {
@@ -12281,6 +12287,15 @@ code {
     min-height: 300px;
     width: 100%;
   }
+}
+
+img.circle {
+  border-radius: 50%;
+  clip-path: circle(); /* This makes the image appear circular */
+  margin: 0 20px 20px 0; /* Spacing around the image */
+  max-width: 100%;
+  object-fit: cover;
+  shape-outside: circle(); /* This makes the text wrap around the circle */
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,4 +1,5 @@
 @use "utils" as *;
+
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 * {
@@ -136,12 +137,16 @@ code {
 .sw-chart {
   width: 100%;
   max-width: calc(100vw / 2.25);
-  height: 50vh;
+  height: 500px;
   padding: 1rem;
   margin-bottom: 2rem;
   border: 1px solid $grey500;
   box-shadow: 0 0 0.333rem $grey500;
   background-color: transparent;
+
+  .ag-charts-wrapper {
+    height: 450px !important;
+  }
 
   @media (max-width: 991px) {
     height: calc(65vh / 1.5);
@@ -151,3 +156,14 @@ code {
     width: 100%;
   }
 }
+
+///--    circular image
+
+img.circle {
+  border-radius: 50%;
+  clip-path: circle(); /* This makes the image appear circular */
+  margin: 0 20px 20px 0; /* Spacing around the image */
+  max-width: 100%;
+  object-fit: cover;
+  shape-outside: circle(); /* This makes the text wrap around the circle */
+} ///
