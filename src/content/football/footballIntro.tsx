@@ -8,7 +8,11 @@ export const FootballIntro = () => {
         <div className="col-9">
           <div className="card-content">
             <div className="left w10">
-              <img src={mfcLogo} className="fluid" alt="Motherwell F.C. logo" />
+              <img
+                src={mfcLogo}
+                className="circle"
+                alt="Motherwell F.C. logo"
+              />
             </div>
             <p>
               I'm a Motherwell supporter &amp; have been since I met my
