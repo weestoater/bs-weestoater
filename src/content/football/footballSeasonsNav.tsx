@@ -1,20 +1,55 @@
+import { NavLink } from "react-router-dom";
+
 export const FootballSeasonsNav = () => {
   return (
-    <ul>
+    <ul className="seasons-nav">
       <li>
-        <a href="/#/2024-25-season">2024-25</a>
+        <NavLink
+          to="/football"
+          className={({ isActive }) => (isActive ? "active-class" : "")}
+        >
+          2025-26
+        </NavLink>
       </li>
       <li>
-        <a href="/#/2023-24-season">2023-24</a>
+        <NavLink
+          to="/2024-25-season"
+          className={({ isActive }) => (isActive ? "active-class" : "")}
+        >
+          2024-25
+        </NavLink>
       </li>
       <li>
-        <a href="/#/2022-23-season">2022-23</a>
+        <NavLink
+          to="/2023-24-season"
+          className={({ isActive }) => (isActive ? "active-class" : "")}
+        >
+          2023-24
+        </NavLink>
       </li>
       <li>
-        <a href="/#/2021-22-season">2021-22</a>
+        <NavLink
+          to="/2022-23-season"
+          className={({ isActive }) => (isActive ? "active-class" : "")}
+        >
+          2022-23
+        </NavLink>
       </li>
       <li>
-        <a href="/#/2020-21-season">2020-21</a>
+        <NavLink
+          to="/2021-22-season"
+          className={({ isActive }) => (isActive ? "active-class" : "")}
+        >
+          2021-22
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/2020-21-season"
+          className={({ isActive }) => (isActive ? "active-class" : "")}
+        >
+          2020-21
+        </NavLink>
       </li>
     </ul>
   );

@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.cdnfonts.com/css/namdhinggo");
 :root {
   --code-light: #00681e;
   --code-dark: #00be1e;
@@ -39,8 +40,8 @@ a.skip-link:hover, a.skip-link:focus-visible {
   --min-col-size: 23rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--min-col-size), calc(33% - 2rem)));
-  gap: 2rem;
-  margin-top: -2rem;
+  gap: 1rem;
+  margin-top: -1rem;
 }
 
 .navbar {
@@ -271,6 +272,76 @@ main .code-sample p {
   clear: both;
   margin: 2.5rem 0 0 2rem;
   width: 80%;
+}
+
+.seasons-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.seasons-nav li {
+  background: #fd9402;
+  border: 1px solid #6a0117;
+  border-radius: 0.5rem;
+  list-style-type: none;
+  margin: 0 0 0.25rem;
+  padding: 0;
+  text-align: center;
+}
+.seasons-nav a {
+  color: black;
+  display: block;
+  padding: 0.25rem auto;
+  text-decoration: none;
+}
+.seasons-nav a:hover {
+  background: #6a0117;
+  border-radius: 0.5rem;
+  color: #fd9402;
+  text-decoration: underline;
+}
+.seasons-nav a.active-class {
+  background: #6a0117;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.previous-seasons {
+  display: inline-block;
+}
+.previous-seasons ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.previous-seasons ul li {
+  background: #fd9402;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  display: inline-block;
+  margin: 0 1rem 0 0;
+  padding: 0;
+}
+.previous-seasons ul li a {
+  color: black;
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+.previous-seasons ul li a:hover {
+  background: #6a0117;
+  border-radius: 0.5rem;
+  color: #fd9402;
+  text-decoration: underline;
+}
+.previous-seasons ul li a.active-class {
+  background: #6a0117;
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 /*!
@@ -12158,6 +12229,7 @@ h5,
 .h5,
 h6,
 .h6 {
+  font-family: "Namdhinggo", "Times New Roman", serif;
   font-weight: 100;
   line-height: normal;
   margin: 0 0 2rem;
@@ -12225,43 +12297,16 @@ code {
 .card .card-header {
   background: #193549;
   color: white;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
 }
 .card .card-header h2, .card .card-header .h2 {
-  font-size: 1.1rem;
+  font-size: 1.4rem !important;
 }
 .card .card-header h2 code, .card .card-header .h2 code {
   color: white;
   font-family: "Lucida Sans", Arial, sans-serif;
   font-size: 1.25rem !important;
   text-shadow: 0 0 1px black;
-}
-
-.previous-seasons {
-  display: inline-block;
-}
-.previous-seasons ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-.previous-seasons ul li {
-  background: #fd9402;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  display: inline-block;
-  margin: 0 1rem 0 0;
-  padding: 0.5rem 1rem;
-}
-.previous-seasons ul li a {
-  color: black;
-  font-size: 1.4rem;
-  font-weight: 400;
-  text-decoration: none;
-}
-.previous-seasons ul li a:hover {
-  color: #6a0117;
-  text-decoration: underline;
 }
 
 /*--    Slimming World

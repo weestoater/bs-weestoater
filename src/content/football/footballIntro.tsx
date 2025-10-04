@@ -5,7 +5,7 @@ export const FootballIntro = () => {
   return (
     <div className="mb-2">
       <div className="row">
-        <div className="col-9">
+        <div className="col-md-10 col-sm-12">
           <div className="card-content">
             <div className="left w10">
               <img
@@ -44,11 +44,8 @@ export const FootballIntro = () => {
             </p>
           </div>
         </div>
-        <div className="col-2">
+        <div className="col-md-1 col-sm-12">
           <div className="card-content">
-            <p>
-              <strong>Previous seasons:</strong>
-            </p>
             <FootballSeasonsNav />
           </div>
         </div>

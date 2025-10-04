@@ -24,6 +24,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: "Namdhinggo", "Times New Roman", serif;
   font-weight: 100;
   line-height: normal;
   margin: 0 0 2rem;
@@ -87,46 +88,16 @@ code {
   .card-header {
     background: $vscode;
     color: white;
-    padding-top: 0.5rem;
+    padding-top: 1rem;
 
     h2 {
-      font-size: 1.1rem;
+      font-size: 1.4rem !important;
 
       code {
         color: white;
         font-family: "Lucida Sans", Arial, sans-serif;
         font-size: 1.25rem !important;
         text-shadow: 0 0 1px black;
-      }
-    }
-  }
-}
-.previous-seasons {
-  display: inline-block;
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-      background: $amber;
-      border: 1px solid $grey500;
-      border-radius: 0.5rem;
-      display: inline-block;
-      margin: 0 1rem 0 0;
-      padding: 0.5rem 1rem;
-
-      a {
-        color: black;
-        font-size: 1.4rem;
-        font-weight: 400;
-        text-decoration: none;
-
-        &:hover {
-          color: $claret;
-          text-decoration: underline;
-        }
       }
     }
   }
