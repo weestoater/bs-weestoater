@@ -7,9 +7,13 @@ export const LandiePage = () => {
   return (
     <>
       <PageTitleH1 title="Land Rovers" />
-      <div className="grid-auto-fill">
-        <BirthdayTreat />
-        <EarlyAge />
+      <div className="row">
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <EarlyAge />
+        </div>
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <BirthdayTreat />
+        </div>
       </div>
     </>
   );

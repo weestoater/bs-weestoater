@@ -10,13 +10,25 @@ export const ReactPage = () => {
   return (
     <>
       <PageTitleH1 title="React & JS articles" />
-      <div className="grid-auto-fill">
-        <MyOwnTimeLine />
-        <ViteContent />
-        <SaltPost />
-        <NextThingPost />
-        <ReactHooksPost />
-        <UtilsScript />
+      <div className="row">
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <MyOwnTimeLine />
+        </div>
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <ViteContent />
+        </div>
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <SaltPost />
+        </div>
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <NextThingPost />
+        </div>
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <ReactHooksPost />
+        </div>
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <UtilsScript />
+        </div>
       </div>
     </>
   );

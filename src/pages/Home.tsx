@@ -7,10 +7,16 @@ export const HomePage = () => {
   return (
     <>
       <PageTitleH1 title="Welcome" hidden={true} />
-      <div className="grid-auto-fill">
-        <SlimLineVersionCard />
-        <EthosCard />
-        <TrialnErrorCard />
+      <div className="row">
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <SlimLineVersionCard />
+        </div>
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <EthosCard />
+        </div>
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <TrialnErrorCard />
+        </div>
       </div>
     </>
   );
