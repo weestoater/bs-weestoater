@@ -21,7 +21,7 @@
       },
       {
         "player": "Johnny Koutrombis",
-        "goals": 1
+        "goals": 3
       },
       {
         "player": "Emmanuel Longelo",
@@ -30,7 +30,8 @@
       },
       {
         "player": "Tawanda Maswanhise",
-        "goals": 7
+        "goals": 7,
+        "assists": 1
       },
       {
         "player": "Paul McGinn",

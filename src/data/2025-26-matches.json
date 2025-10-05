@@ -4,6 +4,27 @@
     "details": [
       {
         "scored": 2,
+        "conceded": 3,
+        "date": "05/10/25",
+        "opposition": "Celtic",
+        "venue": "Away",
+        "league": null,
+        "goals": [
+          {
+            "player": "Johnny Koutrombis",
+            "mins": "40"
+          },
+          {
+            "player": "Johnny Koutrombis",
+            "mins": "56 (Pen)"
+          }
+        ],
+        "cards": null,
+        "video": null,
+        "notes": "Couldn't watch the game live, I was just too nervous. Ward made another howler, how many has that been this season. In a game that everyone has to be at their best, he passes the ball out to a Celtic player - I give up. A good performance, other than that, with Celtic being pushed more than by other teams for sure. #claret&amber  #COYW!!"
+      },
+      {
+        "scored": 2,
         "conceded": 0,
         "date": "27/09/25",
         "opposition": "Aberdeen",
@@ -23,7 +44,6 @@
         "video": null,
         "notes": "Back to majority share of possession (63.5%), but began with a nervy few minutes. Calum Ward being called upon to make a save from an effort from Nisbet. Some crunching tackles let go by the referee, but eventually he found his cards and produced yellow a couple of times for some of the Dons players - who got subbed off shortly afterwards. It took into stoppage time for Motherwell to find the net, though they had been dominant for large periods of the first and second halves.  An horrendous error from the Dons keeper let an easy stop trickle through for our opening goal. Instead of playing out the clock the 'Well went for another goal and were rewarded with a penalty, slightly soft to be fair, but taken very convincingly by Stamatelopoulos. Puts us 4th in the league. #claret&amber  #COYW!!"
       },
-
       {
         "scored": 1,
         "conceded": 0,
