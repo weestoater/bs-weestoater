@@ -34,7 +34,7 @@ export const createSwChartOptions = (
       xKey: "date",
       yKey: "lost",
       yName: "Weight lost in lbs",
-      fill: "#999999",
+      fill: "#ff9900",
     },
     {
       type: "line",
@@ -53,13 +53,19 @@ export const createSwChartOptions = (
       },
     },
     {
-      type: "scatter",
+      type: "line",
       xKey: "date",
       yKey: "sotw",
       yName: "Slimmer of the Week",
-      size: 15,
-      fill: "#6a0117",
       stroke: "#6a0117",
+      strokeWidth: 3,
+      marker: {
+        enabled: true,
+        shape: "star",
+        size: 15, // Make marker large
+        fill: "#6a0117", // Optional: color of diamond
+      },
+      showInMiniChart: true,
     },
   ],
   axes: [
