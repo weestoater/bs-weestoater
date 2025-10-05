@@ -9,12 +9,22 @@ export const A11yPage = () => {
   return (
     <>
       <PageTitleH1 title="Accessibility (a11y)" />
-      <div className="grid-auto-fill">
-        <ScreenReaders />
-        <A11yTech />
-        <A11yMe />
-        <A11yPromotion />
-        <AxePlugin />
+      <div className="row">
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <ScreenReaders />
+        </div>
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <A11yTech />
+        </div>
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <A11yMe />
+        </div>
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <A11yPromotion />
+        </div>
+        <div className="col-lg-3 col-sm-12 mb-4">
+          <AxePlugin />
+        </div>
       </div>
     </>
   );
