@@ -15,6 +15,7 @@ describe("React page", () => {
     const heading = screen.getByText(/vite & react-ts/i);
     expect(heading).toBeInTheDocument();
   });
+
   test("renders needs a little salt", () => {
     render(<ReactPage />);
     const heading = screen.getByText(/needs a little salt/i);

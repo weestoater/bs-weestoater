@@ -1,20 +1,19 @@
 import { SoccerBall } from "@phosphor-icons/react";
-import { Goals } from "../../interfaces/interfaces";
+import { MatchGoal } from "../../interfaces/footballTypes";
 
-export const GoalsDetails = (props: any) => {
-  const goals: any = props.goals ? props.goals : null;
+export const GoalsDetails: React.FC<{ goals: MatchGoal[] }> = ({ goals }) => {
   return (
     <>
       <p>
         <strong>Goals</strong>:
       </p>
       <ul className="no-bullets">
-        {goals.map((item: Goals, key: number) => {
+        {goals.map((item: MatchGoal, key: number) => {
           return (
             <li key={key}>
               <SoccerBall size={24} />
               &nbsp;
-              <strong>{item.player}</strong> - {item.mins} mins
+              <strong>{item.scorer}</strong> - {item.minute} mins
             </li>
           );
         })}

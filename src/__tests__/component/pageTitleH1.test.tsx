@@ -1,17 +1,22 @@
 import { render, screen } from "@testing-library/react";
 import { describe, test, expect } from "vitest";
 import React from "react";
-import { PageTitleH1 } from "../../components/global/pageTitleHeading";
+import {
+  PageTitleH1,
+  PageTitleH1Props,
+} from "../../components/global/pageTitleHeading";
 
 describe("PageTitleH1 component", () => {
   test("renders `title` as set", () => {
-    render(<PageTitleH1 title="FooBar" />);
+    const props: PageTitleH1Props = { title: "FooBar" };
+    render(<PageTitleH1 {...props} />);
     const heading = screen.getByTestId("page-title");
     expect(heading).toHaveTextContent("FooBar");
   });
 
   test("renders 'No title set' when no `title`", () => {
-    render(<PageTitleH1 />);
+    const props: PageTitleH1Props = {};
+    render(<PageTitleH1 {...props} />);
     const heading = screen.getByTestId("page-title");
     expect(heading).toHaveTextContent("No title set");
   });

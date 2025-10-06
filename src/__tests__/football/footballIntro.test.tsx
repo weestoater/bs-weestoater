@@ -1,7 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "../../utils/test-utils";
 import { describe, test, expect } from "vitest";
-import React from "react";
-import { FootballIntro } from "../../content/football/footballIntro";
+import { FootballIntro } from "../../components/football/FootballIntro";
 
 describe("Football Intro content", () => {
   test("mentions Motherwell", () => {
@@ -14,5 +13,5 @@ describe("Football Intro content", () => {
     render(<FootballIntro />);
     const altTag = screen.getByAltText(/motherwell f.c. logo/i);
     expect(altTag).toBeInTheDocument();
-  })
+  });
 });
