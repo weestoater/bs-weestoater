@@ -1,9 +1,16 @@
-import { enableFetchMocks } from "jest-fetch-mock";
-import { future } from "@remix-run/router";
+import { vi } from "vitest";
 
-// Enable fetch mocks
-enableFetchMocks();
+// Mock fetch API
+global.fetch = vi.fn();
 
-// Set React Router future flags
-Object.defineProperty(future, "v7_startTransition", { value: true });
-Object.defineProperty(future, "v7_relativeSplatPath", { value: true });
+// Mock React Router future flags
+vi.mock("react-router-dom", () => ({
+  ...vi.importActual("react-router-dom"),
+  useNavigate: () => vi.fn(),
+  useLocation: () => ({
+    pathname: "/",
+    search: "",
+    hash: "",
+    state: null,
+  }),
+}));

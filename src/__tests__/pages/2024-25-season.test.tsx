@@ -20,8 +20,16 @@ vi.mock("../../components/football/footballSeasonResults", () => ({
     goals,
   }: {
     season: string[];
-    matches: any;
-    goals: any;
+    matches: {
+      details: {
+        date: string;
+        opposition: string;
+        venue: string;
+        scored: number;
+        conceded: number;
+      }[];
+    }[];
+    goals: { details: { player: string; goals: number; assists: number }[] }[];
   }) => (
     <div data-testid="season-results">
       <span>Season: {season.join(", ")}</span>

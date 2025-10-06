@@ -24,7 +24,7 @@ export const WhatIsWeestoater = () => {
         <ul>
           <li> A hand rolled CMS on php</li>
           <li> Numerous versions of WordPress</li>
-          <li> An umbraco site - didn't last long</li>
+          <li> An umbraco site, didn't last long</li>
           <li> A few Angular / AngularJS versions</li>
           <li> A couple of React sites</li>
         </ul>
