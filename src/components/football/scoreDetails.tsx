@@ -1,18 +1,23 @@
 import { HouseLine, Barn } from "@phosphor-icons/react";
+import { calculateMatchResult, formatScore } from "../../utils/footballUtils";
 
-export const ScoreDetails = (props: any) => {
-  const scored = props.scored ? props.scored : 0;
-  const conceded = props.conceded ? props.conceded : 0;
-  const venue = props.venue ? props.venue : "Home";
+interface Props {
+  scored: number;
+  conceded: number;
+  venue: string;
+}
 
-  let result;
-  if (scored > conceded) {
-    result = "Win";
-  } else if (scored < conceded) {
-    result = "Lost";
-  } else {
-    result = "Draw";
-  }
+export const ScoreDetails = ({
+  scored = 0,
+  conceded = 0,
+  venue = "Home",
+}: Props) => {
+  const matchResult = calculateMatchResult(scored, conceded);
+  const resultText = {
+    W: "Win",
+    D: "Draw",
+    L: "Lost",
+  }[matchResult];
 
   return (
     <div className="score-details">
@@ -22,7 +27,7 @@ export const ScoreDetails = (props: any) => {
             <HouseLine size={24} />
           </div>
           <div className="score">
-            {result} : {scored} - {conceded}
+            {resultText} : {formatScore(scored, conceded, venue)}
           </div>
         </>
       ) : (
@@ -31,7 +36,7 @@ export const ScoreDetails = (props: any) => {
             <Barn size={24} />
           </div>
           <div className="score">
-            {result} : {conceded} - {scored}
+            {resultText} : {formatScore(scored, conceded, venue)}
           </div>
         </>
       )}

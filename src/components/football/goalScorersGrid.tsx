@@ -1,39 +1,22 @@
 import { useState } from "react";
-import {
-  AllCommunityModule,
-  ModuleRegistry,
-  themeAlpine,
-} from "ag-grid-community";
+import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
+import { AgGridReact } from "ag-grid-react";
+import { goalScorersGridConfig } from "../../config/gridConfig";
+import { GoalScorer } from "../../interfaces/footballTypes";
+
 // Register all Community features
 ModuleRegistry.registerModules([AllCommunityModule]);
 
-import { AgGridReact } from "ag-grid-react";
+interface Props {
+  details: GoalScorer[];
+}
 
-export const GoalScorersGrid = (props: any) => {
-  const details = props.details ? props.details : null;
-
+export const GoalScorersGrid = ({ details }: Props) => {
   const [rowData] = useState(details);
-
-  const [colDefs] = useState([
-    { field: "player", flex: 2.5 },
-    { field: "goals" },
-    { field: "assists" },
-  ]);
-
-  const defaultColDef = {
-    sortable: true,
-    filter: true,
-    flex: 1,
-  };
 
   return (
     <div className="goal-scorers-grid">
-      <AgGridReact
-        columnDefs={colDefs}
-        defaultColDef={defaultColDef}
-        rowData={rowData}
-        theme={themeAlpine}
-      />
+      <AgGridReact {...goalScorersGridConfig} rowData={rowData} />
     </div>
   );
 };
