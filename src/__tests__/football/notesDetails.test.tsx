@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, test, expect } from "vitest";
-import { NotesDetails } from "../../components/football/NotesDetails";
+import { NotesDetails } from "../../components/football/notesDetails";
 
 describe("Notes Details component", () => {
   test("renders what it is given", () => {

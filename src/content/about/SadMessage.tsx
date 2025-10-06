@@ -3,7 +3,7 @@ export const SadMessage = () => {
     <div className="card">
       <div className="card-header">
         <h2>
-          <i className="bi bi-balloon-heart me-2"></i> I’m free
+          <i className="bi bi-balloon-heart me-2"></i> I'm free
         </h2>
       </div>
       <div className="card-body">
