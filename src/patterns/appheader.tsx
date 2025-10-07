@@ -10,6 +10,9 @@ import {
 import { NavLink as RouterNavLink } from "react-router-dom";
 
 import { HashLink } from "react-router-hash-link";
+
+// Type assertion to fix HashLink typing issue
+const HashLinkSafe = HashLink as React.ComponentType<any>;
 import wsIcon from "../assets/img/weestoater-icon.png";
 
 export const Header = () => {
@@ -29,9 +32,9 @@ export const Header = () => {
   return (
     <>
       <Navbar color="dark" dark expand="md">
-        <HashLink to="#content" className="skip-link">
+        <HashLinkSafe to="#content" className="skip-link">
           Skip to main content
-        </HashLink>
+        </HashLinkSafe>
         <NavbarBrand>
           <img src={wsIcon} alt="weestoater logo" className="header-app-logo" />
           <span>weestoater</span>

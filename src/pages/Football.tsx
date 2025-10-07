@@ -10,13 +10,14 @@ export const FootballPage = () => {
   return (
     <div className="container-fluid">
       <PageTitleH1 title="Football" />
-      <FootballIntro />
-
-      <FootballSeasonResults
-        season={seasons}
-        matches={mfcMatches}
-        goals={mfcGoals}
-      />
+      <div className="row">
+        <FootballIntro />
+        <FootballSeasonResults
+          season={seasons}
+          matches={mfcMatches}
+          goals={mfcGoals}
+        />
+      </div>
     </div>
   );
 };

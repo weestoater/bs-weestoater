@@ -1,9 +1,9 @@
 import { AgCharts } from "ag-charts-react";
-import { GoalScorersDetails } from "../../interfaces/interfaces";
+import type { GoalScorer } from "../../interfaces/footballTypes";
 import { GoalScorersGrid } from "./goalScorersGrid";
 
 export const GoalScorerDetails = (props: any) => {
-  const details: GoalScorersDetails = props.details ? props.details : null;
+  const details: GoalScorer[] = props.details ? props.details : [];
 
   const _options: any = {
     data: details,
