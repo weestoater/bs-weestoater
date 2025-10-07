@@ -257,7 +257,7 @@ main .code-sample p {
   background: transparent;
   height: 45vh;
   margin: 2rem 0;
-  max-width: 44.4444444444vw;
+  max-width: 95%;
   padding: 1rem;
 }
 
@@ -12313,7 +12313,6 @@ code {
 ----  chart */
 .sw-chart {
   width: 100%;
-  max-width: 44.4444444444vw;
   height: 500px;
   padding: 1rem;
   margin-bottom: 2rem;
@@ -12328,9 +12327,11 @@ code {
   .sw-chart {
     height: 43.3333333333vh;
     margin: 1rem 0;
-    max-width: 100%;
-    min-height: 300px;
+    min-height: 450px;
     width: 100%;
+  }
+  .sw-chart .ag-charts-wrapper {
+    width: 95vw !important;
   }
 }
 

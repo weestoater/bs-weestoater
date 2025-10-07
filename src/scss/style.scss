@@ -107,7 +107,6 @@ code {
 ----  chart */
 .sw-chart {
   width: 100%;
-  max-width: calc(100vw / 2.25);
   height: 500px;
   padding: 1rem;
   margin-bottom: 2rem;
@@ -122,9 +121,12 @@ code {
   @media (max-width: 991px) {
     height: calc(65vh / 1.5);
     margin: 1rem 0;
-    max-width: 100%;
-    min-height: 300px;
+    min-height: 450px;
     width: 100%;
+
+    .ag-charts-wrapper {
+      width: 95vw !important;
+    }
   }
 }
 

@@ -10,7 +10,7 @@ export const FootballSeasonResults = (props: any) => {
 
   return (
     <div className="row mt-4">
-      <div className="col-lg-6">
+      <div className="col-lg-6 col-sm-12 mb-4">
         <h2>
           <i className="bi bi-calendar3 me-2"></i>
           {seasonsTitle} Matches
@@ -21,7 +21,7 @@ export const FootballSeasonResults = (props: any) => {
         )}
         {seasonsMatches === null && <>No match data found</>}
       </div>
-      <div className="col-lg-6">
+      <div className="col-lg-6 col-sm-12 mb-4">
         <h2>
           <i className="bi bi-bar-chart-line me-2"></i>
           {seasonsTitle} Goals

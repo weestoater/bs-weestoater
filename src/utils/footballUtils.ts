@@ -1,4 +1,4 @@
-import { Match, MatchGoal, GoalScorer } from "../interfaces/footballTypes";
+import { MatchGoal, GoalScorer } from "../interfaces/footballTypes";
 
 export const calculateMatchResult = (
   scored: number,

@@ -3,7 +3,7 @@ import mfcLogo from "../../assets/img/mfclogo.png";
 
 export const FootballIntro = () => {
   return (
-    <div className="mb-2">
+    <>
       <div className="row">
         <div className="col-md-10 col-sm-12">
           <div className="card-content">
@@ -44,12 +44,12 @@ export const FootballIntro = () => {
             </p>
           </div>
         </div>
-        <div className="col-md-1 col-sm-12">
+        <div className="col-md-2 col-sm-12">
           <div className="card-content">
             <FootballSeasonsNav />
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
