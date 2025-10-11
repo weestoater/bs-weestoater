@@ -12204,6 +12204,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  overflow-x: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12234,6 +12238,10 @@ h6,
   line-height: normal;
   margin: 0 0 2rem;
   padding: 0 0 1rem;
+}
+
+h1, .h1 {
+  margin: 0;
 }
 
 .right {
@@ -12314,7 +12322,7 @@ code {
 .sw-chart {
   width: 100%;
   height: 500px;
-  padding: 1rem;
+  padding: 1rem 0;
   margin-bottom: 2rem;
   border: 1px solid #ddd;
   box-shadow: 0 0 0.333rem #ddd;
