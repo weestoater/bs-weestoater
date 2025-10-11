@@ -11,7 +11,7 @@ export const SlimmingWorld = () => {
     <>
       <PageTitleH1 title="Slimming World" />
       <div className="row">
-        <div className="col-lg-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <SWDataTable
             startDate={swData[0].startDate}
             startWeight={swData[0].startWeight}
@@ -19,7 +19,7 @@ export const SlimmingWorld = () => {
             data={swData[0].data}
           />
         </div>
-        <div className="col-lg-8">
+        <div className="col-lg-8 col-md-6 col-sm-6 col-xs-12 mb-4">
           <div className="sw-chart">
             <AgCharts options={_options} />
           </div>

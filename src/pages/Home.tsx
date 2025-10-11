@@ -6,15 +6,15 @@ import { TrialnErrorCard } from "../content/home/TrialnErrorCard";
 export const HomePage = () => {
   return (
     <>
-      <PageTitleH1 title="Welcome" hidden={true} />
+      <PageTitleH1 title="Welcome to weestoater" />
       <div className="row">
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <SlimLineVersionCard />
         </div>
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <EthosCard />
         </div>
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <TrialnErrorCard />
         </div>
       </div>

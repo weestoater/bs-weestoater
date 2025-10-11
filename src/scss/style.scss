@@ -2,6 +2,10 @@
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+body {
+  overflow-x: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -29,6 +33,9 @@ h6 {
   line-height: normal;
   margin: 0 0 2rem;
   padding: 0 0 1rem;
+}
+h1 {
+  margin: 0;
 }
 
 //----  alignment
@@ -108,7 +115,7 @@ code {
 .sw-chart {
   width: 100%;
   height: 500px;
-  padding: 1rem;
+  padding: 1rem 0;
   margin-bottom: 2rem;
   border: 1px solid $grey500;
   box-shadow: 0 0 0.333rem $grey500;

@@ -5,7 +5,6 @@ import { SwDataPoint } from "../interfaces/swTypes";
 export const createSwChartOptions = (
   data: SwDataPoint[]
 ): AgCartesianChartOptions<SwDataPoint> => ({
-  width: 800,
   height: 400,
   data: data,
   title: {
@@ -97,10 +96,10 @@ export const createSwChartOptions = (
     },
   ],
   padding: {
-    top: 20,
-    right: 40,
-    bottom: 20,
-    left: 40,
+    top: 10,
+    right: 10,
+    bottom: 10,
+    left: 10,
   },
   legend: {
     position: "bottom",

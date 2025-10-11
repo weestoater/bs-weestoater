@@ -10,19 +10,19 @@ export const A11yPage = () => {
     <>
       <PageTitleH1 title="Accessibility (a11y)" />
       <div className="row">
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <ScreenReaders />
         </div>
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <A11yTech />
         </div>
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <A11yMe />
         </div>
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <A11yPromotion />
         </div>
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <AxePlugin />
         </div>
       </div>
