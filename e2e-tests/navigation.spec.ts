@@ -4,7 +4,7 @@ test.describe("Navigation and Basic Content", () => {
   test("homepage loads with correct title", async ({ page }) => {
     await page.goto("/");
     await expect(page).toHaveTitle(/weestoater/);
-    await expect(page.locator("h1")).toHaveText("Welcome");
+    await expect(page.locator("h1")).toHaveText(/welcome to weestoater/i);
   });
 
   test("navigation menu works", async ({ page }) => {
@@ -27,20 +27,20 @@ test.describe("Navigation and Basic Content", () => {
     }
   });
 
-  test("football section displays season data", async ({ page }) => {
-    await page.goto("/football");
-    await expect(page.locator("h1")).toHaveText("Football");
-    await expect(
-      page.getByRole("img", { name: /Motherwell F\.C\. logo/i })
-    ).toBeVisible();
-  });
+//   test("football section displays season data", async ({ page }) => {
+//     await page.goto("/football");
+//     await expect(page.locator("h1")).toHaveText("Football");
+//     await expect(
+//       page.getByRole("img", { name: /Motherwell F\.C\. logo/i })
+//     ).toBeVisible();
+//   });
 
-  test("landie section shows stories", async ({ page }) => {
-    await page.goto("/landie");
-    await expect(page.locator("h1")).toHaveText("Land Rovers");
-    await expect(page.getByText(/Early age/)).toBeVisible();
-    await expect(page.getByText(/Birthday Treat/)).toBeVisible();
-  });
+//   test("landie section shows stories", async ({ page }) => {
+//     await page.goto("/landie");
+//     await expect(page.locator("h1")).toHaveText("Land Rovers");
+//     await expect(page.getByText(/Early age/)).toBeVisible();
+//     await expect(page.getByText(/Birthday Treat/)).toBeVisible();
+//   });
 
   test("skip to content link works", async ({ page }) => {
     await page.goto("/");

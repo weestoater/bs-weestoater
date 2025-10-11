@@ -31,3 +31,6 @@ coverage
 cypress/videos
 cypress/screenshots
 cypress/examples
+
+
+e2e-tests/visual.specs*

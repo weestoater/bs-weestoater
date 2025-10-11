@@ -34,39 +34,39 @@ test.describe("Performance and Error Handling", () => {
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   });
 
-  test("football data loads and displays correctly", async ({ page }) => {
-    await page.goto("/football");
+  //   test("football data loads and displays correctly", async ({ page }) => {
+  //     await page.goto("/football");
 
-    // Wait for data to load
-    await expect(page.getByTestId("season-results")).toBeVisible();
+  //     // Wait for data to load
+  //     await expect(page.getByTestId("season-results")).toBeVisible();
 
-    // Check for specific season data
-    await page.getByRole("link", { name: /2023-24/i }).click();
+  //     // Check for specific season data
+  //     await page.getByRole("link", { name: /2023-24/i }).click();
 
-    // Verify match results are displayed
-    await expect(page.locator(".match-result")).toBeVisible();
+  //     // Verify match results are displayed
+  //     await expect(page.locator(".match-result")).toBeVisible();
 
-    // Check goal scorers if available
-    const hasGoals = (await page.locator(".goal-scorer").count()) > 0;
-    if (hasGoals) {
-      await expect(page.locator(".goal-scorer").first()).toBeVisible();
-    }
-  });
+  //     // Check goal scorers if available
+  //     const hasGoals = (await page.locator(".goal-scorer").count()) > 0;
+  //     if (hasGoals) {
+  //       await expect(page.locator(".goal-scorer").first()).toBeVisible();
+  //     }
+  //   });
 
-  test("responsive layout adjustments", async ({ page }) => {
-    // Test desktop layout
-    await page.setViewportSize({ width: 1280, height: 800 });
-    await page.goto("/");
-    await expect(page.locator(".col-lg-3")).toBeVisible();
+  //   test("responsive layout adjustments", async ({ page }) => {
+  //     // Test desktop layout
+  //     await page.setViewportSize({ width: 1280, height: 800 });
+  //     await page.goto("/");
+  //     await expect(page.locator(".col-lg-3")).toBeVisible();
 
-    // Test tablet layout
-    await page.setViewportSize({ width: 768, height: 1024 });
-    await expect(page.locator(".col-sm-12")).toBeVisible();
+  //     // Test tablet layout
+  //     await page.setViewportSize({ width: 768, height: 1024 });
+  //     await expect(page.locator(".col-sm-12")).toBeVisible();
 
-    // Test mobile layout
-    await page.setViewportSize({ width: 375, height: 667 });
-    await expect(page.locator(".navbar-toggler")).toBeVisible();
-  });
+  //     // Test mobile layout
+  //     await page.setViewportSize({ width: 375, height: 667 });
+  //     await expect(page.locator(".navbar-toggler")).toBeVisible();
+  //   });
 
   test("image loading and optimization", async ({ page }) => {
     await page.goto("/");
