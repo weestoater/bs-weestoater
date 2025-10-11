@@ -4,15 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
     "dev": "vite --port 3000",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "sass": "sass -w src/scss:src/css",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.4",
@@ -31,7 +32,7 @@
     "reactstrap": "^9.2.3"
   },
   "devDependencies": {
-    "@testing-library/cypress": "^10.0.2",
+    "@playwright/test": "^1.56.0",
     "@testing-library/dom": "^9.3.4",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.2",
@@ -45,7 +46,6 @@
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-v8": "^3.1.4",
-    "cypress": "^13.17.0",
     "cypress-axe": "^1.7.0",
     "eslint": "^8.57.0",
     "eslint-plugin-cypress": "^3.5.0",
