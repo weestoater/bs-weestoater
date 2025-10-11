@@ -11,22 +11,22 @@ export const ReactPage = () => {
     <>
       <PageTitleH1 title="React & JS articles" />
       <div className="row">
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <MyOwnTimeLine />
         </div>
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <ViteContent />
         </div>
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <SaltPost />
         </div>
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <NextThingPost />
         </div>
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <ReactHooksPost />
         </div>
-        <div className="col-lg-3 col-sm-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <UtilsScript />
         </div>
       </div>
