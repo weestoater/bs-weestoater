@@ -17,6 +17,7 @@
     "test:e2e:report": "npx playwright show-report"
   },
   "dependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "@phosphor-icons/react": "^2.1.4",
     "@popperjs/core": "^2.11.8",
     "ag-charts-community": "^12.2.0",
