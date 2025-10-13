@@ -10,7 +10,7 @@ on:
     - cron: "0 2 * * 0"
 
 env:
-  NODE_VERSION: "20.x"
+  NODE_VERSION: '20.x'
 
 jobs:
   security-audit:
@@ -25,16 +25,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: "yarn"
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile --network-timeout 300000
 
       - name: Run security audit
         run: |
           # Run audit and allow it to fail gracefully in CI
           yarn audit --level moderate || echo "Security vulnerabilities found - please review"
-
+          
       - name: Check for outdated packages
         run: yarn outdated || echo "Some packages may be outdated - consider updating"
 
