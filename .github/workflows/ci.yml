@@ -17,19 +17,16 @@ jobs:
 
     strategy:
       matrix:
-        node-version:
-          - ${{ vars.NODE_VERSION_SECONDARY || '18.x' }}
-          - ${{ vars.NODE_VERSION_PRIMARY || '20.x' }}
+        node-version: ["18.x", "20.x"]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: ./.github/actions/setup-node
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "yarn"
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -68,11 +65,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-          cache: "yarn"
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-node
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile

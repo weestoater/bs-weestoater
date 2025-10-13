@@ -62,6 +62,10 @@
     "vite-plugin-image-optimizer": "^2.0.2",
     "vitest": "^3.1.4"
   },
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0"
+  },
   "resolutions": {
     "@types/react": "17.0.14",
     "@types/react-dom": "17.0.14"
