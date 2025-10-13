@@ -16,11 +16,13 @@ jobs:
           echo "=== Environment Information ==="
           echo "OS: $(uname -a)"
           echo "Available disk space:"
-          df -h
+          df -h || echo "df command failed"
           echo "Available memory:"
-          free -h
+          free -h || echo "free command failed"
           echo "Current user: $(whoami)"
           echo "Current directory: $(pwd)"
+          echo "Environment variables:"
+          env | grep -E "(NODE|NPM|YARN|PATH)" | head -10 || echo "No relevant env vars found"
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -36,25 +38,45 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20.18.0" # Use specific version
+          cache: "npm"
 
       - name: Verify Node setup
         run: |
           echo "=== Node/NPM Information ==="
-          echo "Node version: $(node --version)"
-          echo "NPM version: $(npm --version)"
-          which node
-          which npm
+          echo "Node version: $(node --version || echo 'node command failed')"
+          echo "NPM version: $(npm --version || echo 'npm command failed')"
+          echo "Node location: $(which node || echo 'node not found in PATH')"
+          echo "NPM location: $(which npm || echo 'npm not found in PATH')"
+          echo "PATH: $PATH"
 
       - name: Install Yarn
         run: |
           echo "=== Installing Yarn ==="
-          npm install -g yarn
-          echo "Yarn version: $(yarn --version)"
-          which yarn
+          npm install -g yarn || echo "Failed to install yarn globally"
+          echo "Yarn version: $(yarn --version 2>/dev/null || echo 'yarn not available')"
+          echo "Yarn location: $(which yarn 2>/dev/null || echo 'yarn not found in PATH')"
+
+      - name: Setup Node.js with Yarn cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.0"
+          cache: "yarn"
 
       - name: Simple install test
         run: |
           echo "=== Testing simple yarn install ==="
-          yarn install
-          echo "Install completed, checking node_modules:"
-          ls -la node_modules | head -10
+          if [ -f "yarn.lock" ]; then
+            echo "yarn.lock found, proceeding with install..."
+            yarn install --frozen-lockfile || echo "Yarn install failed, trying without frozen-lockfile..."
+            yarn install || echo "Yarn install completely failed"
+          else
+            echo "No yarn.lock found, trying npm install..."
+            npm install || echo "NPM install failed"
+          fi
+          echo "Checking for node_modules:"
+          if [ -d "node_modules" ]; then
+            echo "node_modules created successfully:"
+            ls -la node_modules | head -10
+          else
+            echo "node_modules directory not created"
+          fi

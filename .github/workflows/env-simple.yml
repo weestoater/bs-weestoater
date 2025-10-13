@@ -1,0 +1,59 @@
+name: Environment Test Simple
+
+on:
+  push:
+    branches: [main, github-actions]
+  pull_request:
+    branches: [main]
+
+jobs:
+  env-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Basic Environment
+        run: |
+          echo "Runner OS: $RUNNER_OS"
+          echo "GitHub Workspace: $GITHUB_WORKSPACE"
+          echo "GitHub Repository: $GITHUB_REPOSITORY"
+          echo "GitHub Ref: $GITHUB_REF"
+          echo "Current directory: $(pwd)"
+          echo "User: $(whoami)"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify checkout
+        run: |
+          echo "Files in repository root:"
+          ls -la
+          echo "package.json exists: $(test -f package.json && echo 'YES' || echo 'NO')"
+          echo "yarn.lock exists: $(test -f yarn.lock && echo 'YES' || echo 'NO')"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "yarn"
+
+      - name: Test Node.js
+        run: |
+          echo "Node.js version: $(node --version)"
+          echo "NPM version: $(npm --version)"
+
+      - name: Test Yarn
+        run: |
+          echo "Yarn version: $(yarn --version)"
+
+      - name: Install dependencies (basic)
+        run: |
+          echo "Starting yarn install..."
+          yarn install
+          echo "Installation completed"
+
+      - name: Verify installation
+        run: |
+          echo "node_modules exists: $(test -d node_modules && echo 'YES' || echo 'NO')"
+          if [ -d node_modules ]; then
+            echo "node_modules size: $(du -sh node_modules 2>/dev/null || echo 'unknown')"
+          fi
