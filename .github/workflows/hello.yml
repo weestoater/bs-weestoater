@@ -1,0 +1,27 @@
+name: Hello World Test
+
+on:
+  push:
+    branches: [main, github-actions]
+  pull_request:
+    branches: [main]
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Say Hello
+        run: |
+          echo "Hello World!"
+          echo "This workflow is working!"
+          date
+
+      - name: Check if repo exists
+        uses: actions/checkout@v4
+
+      - name: List files
+        run: |
+          echo "Repository files:"
+          ls -la
+          echo "We have $(ls -1 | wc -l) files/directories"
