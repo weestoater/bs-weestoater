@@ -28,9 +28,5 @@ coverage
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-cypress/videos
-cypress/screenshots
-cypress/examples
-
 
 e2e-tests/visual.specs*
