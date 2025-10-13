@@ -1,0 +1,60 @@
+name: Environment Test
+
+on:
+  push:
+    branches: [main, github-actions]
+  pull_request:
+    branches: [main]
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Environment Info
+        run: |
+          echo "=== Environment Information ==="
+          echo "OS: $(uname -a)"
+          echo "Available disk space:"
+          df -h
+          echo "Available memory:"
+          free -h
+          echo "Current user: $(whoami)"
+          echo "Current directory: $(pwd)"
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: List checkout contents
+        run: |
+          echo "=== Repository Contents ==="
+          ls -la
+          echo "=== Package.json first 20 lines ==="
+          head -20 package.json
+
+      - name: Setup Node.js with explicit version
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.0" # Use specific version
+
+      - name: Verify Node setup
+        run: |
+          echo "=== Node/NPM Information ==="
+          echo "Node version: $(node --version)"
+          echo "NPM version: $(npm --version)"
+          which node
+          which npm
+
+      - name: Install Yarn
+        run: |
+          echo "=== Installing Yarn ==="
+          npm install -g yarn
+          echo "Yarn version: $(yarn --version)"
+          which yarn
+
+      - name: Simple install test
+        run: |
+          echo "=== Testing simple yarn install ==="
+          yarn install
+          echo "Install completed, checking node_modules:"
+          ls -la node_modules | head -10

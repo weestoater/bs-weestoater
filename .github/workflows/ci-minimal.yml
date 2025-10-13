@@ -2,7 +2,7 @@ name: CI Minimal
 
 on:
   push:
-    branches: [main]
+    branches: [main, github-actions]
   pull_request:
     branches: [main]
 
@@ -22,10 +22,16 @@ jobs:
           cache: "yarn"
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: |
+          echo "Installing dependencies..."
+          yarn install --frozen-lockfile --network-timeout 300000
+          echo "Dependencies installed successfully"
 
       - name: Build project
-        run: yarn build
+        run: |
+          echo "Starting build process..."
+          yarn build
+          echo "Build completed successfully"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -49,8 +55,14 @@ jobs:
           cache: "yarn"
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: |
+          echo "Installing dependencies for tests..."
+          yarn install --frozen-lockfile --network-timeout 300000
+          echo "Dependencies installed successfully"
 
       - name: Run unit tests (allow failures)
-        run: yarn test || echo "Some tests failed - will fix later"
+        run: |
+          echo "Running unit tests (failures allowed)..."
+          yarn test || echo "Some tests failed - will fix later"
+          echo "Test run completed"
         continue-on-error: true
