@@ -1,0 +1,41 @@
+# Ignore AI model files (can be large)
+models/*.bin
+models/*.json
+models/*.pb
+models/*.tflite
+
+# Ignore test images and datasets
+assets/test-images/
+assets/datasets/
+assets/*.jpg
+assets/*.png
+assets/*.jpeg
+assets/*.gif
+assets/*.mp4
+assets/*.webm
+
+# Node modules for experiments
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build outputs
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
