@@ -79,17 +79,15 @@ describe("footballUtils", () => {
   describe("getGoalMinutes", () => {
     it("formats goal minutes in ascending order", () => {
       const goals: MatchGoal[] = [
-        { minute: 45, scorer: "Bob", assist: "Alice" },
-        { minute: 23, scorer: "Charlie", assist: "Dave" },
-        { minute: 89, scorer: "Alice", assist: undefined },
+        { mins: 45, player: "Bob", assist: "Alice" },
+        { mins: 23, player: "Charlie", assist: "Dave" },
+        { mins: 89, player: "Alice", assist: undefined },
       ];
       expect(getGoalMinutes(goals)).toBe("23, 45, 89");
     });
 
     it("handles single goal", () => {
-      const goals: MatchGoal[] = [
-        { minute: 45, scorer: "Bob", assist: "Alice" },
-      ];
+      const goals: MatchGoal[] = [{ mins: 45, player: "Bob", assist: "Alice" }];
       expect(getGoalMinutes(goals)).toBe("45");
     });
 
