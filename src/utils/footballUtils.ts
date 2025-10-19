@@ -29,7 +29,7 @@ export const sortGoalScorers = (scorers: GoalScorer[]): GoalScorer[] => {
 
 export const getGoalMinutes = (goals: MatchGoal[]): string => {
   return goals
-    .map((goal) => goal.minute.toString())
+    .map((goal) => goal.mins.toString())
     .sort((a, b) => parseInt(a) - parseInt(b))
     .join(", ");
 };

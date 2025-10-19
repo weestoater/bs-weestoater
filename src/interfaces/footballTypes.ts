@@ -17,8 +17,8 @@ export interface CardType {
 }
 
 export interface MatchGoal {
-  scorer: string;
-  minute: number;
+  player: string;
+  mins: number;
   assist?: string;
 }
 

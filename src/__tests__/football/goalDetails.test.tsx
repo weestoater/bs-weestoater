@@ -5,7 +5,7 @@ import { MatchGoal } from "../../interfaces/footballTypes";
 
 describe("Goals Details component", () => {
   test("Can show a goal scorer and his time", () => {
-    const mockGoals: MatchGoal[] = [{ scorer: "Mickey Mouse", minute: 5 }];
+    const mockGoals: MatchGoal[] = [{ player: "Mickey Mouse", mins: 5 }];
     render(<GoalsDetails goals={mockGoals} />);
     const player = screen.getByText(/mickey mouse/i);
     const time = screen.getByText(/5/i);
