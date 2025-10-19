@@ -13,7 +13,7 @@ export const GoalsDetails: React.FC<{ goals: MatchGoal[] }> = ({ goals }) => {
             <li key={key}>
               <SoccerBall size={24} />
               &nbsp;
-              <strong>{item.scorer}</strong> - {item.minute} mins
+              <strong>{item.player}</strong> - {item.mins} mins
             </li>
           );
         })}
