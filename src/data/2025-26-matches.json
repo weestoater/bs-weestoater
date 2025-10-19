@@ -3,6 +3,29 @@
     "season": "2025-26",
     "details": [
       {
+        "scored": 1,
+        "conceded": 2,
+        "date": "18/10/25",
+        "opposition": "Falkirk",
+        "venue": "Home",
+        "league": null,
+        "goals": [
+          {
+            "player": "Tawanda Maswanhise",
+            "mins": "22"
+          }
+        ],
+        "cards": [
+          {
+            "player": "Elliot Watt",
+            "mins": "45+1",
+            "card": "yellow"
+          }
+        ],
+        "video": null,
+        "notes": "Another defeat snatched from the jaws of victory. Brilliant first half, with lots of chances created and some dubious VAR decisions. But instead of coming out stronger and more determind in the second half we collectively switched off. Two goals disallowed and heads down - means we realistically got what we deserved out of it. #claret&amber  #COYW!!"
+      },
+      {
         "scored": 2,
         "conceded": 3,
         "date": "05/10/25",
