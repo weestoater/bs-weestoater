@@ -56,12 +56,19 @@
         background: #ccc;
         cursor: not-allowed;
       }
-      #video,
-      #canvas {
+      #video {
         max-width: 100%;
         border: 2px solid #ddd;
         border-radius: 8px;
         margin: 10px 0;
+      }
+      #canvas {
+        max-width: 100%;
+        border: none;
+        border-radius: 8px;
+        margin: 10px 0;
+        background: transparent !important;
+        opacity: 1;
       }
       .status {
         padding: 10px;
@@ -168,8 +175,20 @@
       >
         <h3>📹 Live Face Detection & Emotion Recognition</h3>
         <p>Detect faces and emotions in real-time using your webcam.</p>
-        <button id="startCamera">Start Camera</button>
-        <button id="stopCamera" disabled>Stop Camera</button>
+        <div style="margin-bottom: 15px">
+          <button id="startCamera">Start Camera</button>
+          <button id="stopCamera" disabled>Stop Camera</button>
+          <button
+            id="startMoodAnalysis"
+            disabled
+            style="background: #28a745; margin-left: 10px"
+          >
+            📊 Start 30s Mood Analysis
+          </button>
+          <button id="stopMoodAnalysis" disabled style="background: #dc3545">
+            ⏹️ Stop Analysis
+          </button>
+        </div>
         <div
           style="
             display: flex;
@@ -192,14 +211,20 @@
               id="canvas"
               width="640"
               height="480"
-              style="position: absolute; top: 0; left: 0; pointer-events: none"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                background: transparent;
+              "
             ></canvas>
           </div>
           <div
             id="emotionDisplay"
             style="
-              min-width: 250px;
-              max-width: 300px;
+              min-width: 200px;
+              max-width: 250px;
               text-align: center;
               flex-shrink: 0;
               background: #f8f9fa;
@@ -220,6 +245,46 @@
               id="emotionText"
               style="font-size: 14px; margin-top: 15px; color: #555"
             ></div>
+          </div>
+          <div
+            id="moodAnalysisPanel"
+            style="
+              min-width: 350px;
+              max-width: 400px;
+              flex-shrink: 0;
+              background: #ffffff;
+              border: 2px solid #007bff;
+              border-radius: 8px;
+              padding: 15px;
+              height: fit-content;
+            "
+          >
+            <h4 style="margin: 0 0 15px 0; font-size: 16px; color: #333">
+              📊 Mood Analysis
+            </h4>
+            <div
+              id="analysisCountdown"
+              style="
+                text-align: center;
+                font-size: 18px;
+                margin-bottom: 15px;
+                color: #666;
+              "
+            >
+              Ready to analyze
+            </div>
+            <canvas
+              id="moodChart"
+              width="320"
+              height="240"
+              style="border: 1px solid #ddd; border-radius: 4px; width: 100%"
+            ></canvas>
+            <div
+              id="moodSummary"
+              style="margin-top: 15px; font-size: 14px; color: #555"
+            >
+              <em>Start analysis to see mood trends over 30 seconds</em>
+            </div>
           </div>
         </div>
       </div>

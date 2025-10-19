@@ -13,6 +13,19 @@ class FacialRecognitionExperiments {
     this.modelsLoaded = false;
     this.detectionCount = 0;
 
+    // Scaling factors for canvas/video coordinate mapping
+    this.scaleX = 1;
+    this.scaleY = 1;
+
+    // Mood analysis state
+    this.isMoodAnalyzing = false;
+    this.moodData = [];
+    this.analysisStartTime = null;
+    this.analysisInterval = null;
+    this.countdownInterval = null;
+    this.moodChart = null;
+    this.moodChartCtx = null;
+
     // Configuration
     this.DETECTION_CONFIG = {
       primary: { inputSize: 416, scoreThreshold: 0.2 },
@@ -37,6 +50,7 @@ class FacialRecognitionExperiments {
   async init() {
     console.log("🤖 Initializing Facial Recognition Experiments");
     this.clearEmotionDisplay(); // Initialize emotion display
+    this.initializeMoodChart();
     await this.loadModels();
     this.setupEventListeners();
   }
@@ -91,7 +105,15 @@ class FacialRecognitionExperiments {
     // Face recognition (advanced)
     document
       .getElementById("enableRecognition")
-      .addEventListener("click", () => this.enableRecognition());
+      ?.addEventListener("click", () => this.enableRecognition());
+
+    // Mood analysis controls
+    document
+      .getElementById("startMoodAnalysis")
+      .addEventListener("click", () => this.startMoodAnalysis());
+    document
+      .getElementById("stopMoodAnalysis")
+      .addEventListener("click", () => this.stopMoodAnalysis());
   }
 
   async startCamera() {
@@ -118,6 +140,7 @@ class FacialRecognitionExperiments {
 
       document.getElementById("startCamera").disabled = true;
       document.getElementById("stopCamera").disabled = false;
+      document.getElementById("startMoodAnalysis").disabled = false;
 
       console.log("📹 Camera started");
 
@@ -145,6 +168,10 @@ class FacialRecognitionExperiments {
           "x",
           this.video.videoHeight
         );
+
+        // Synchronize canvas dimensions with video dimensions
+        this.syncCanvasWithVideo();
+
         this.isDetecting = true;
         // Wait a moment for video to fully initialize
         setTimeout(() => {
@@ -176,12 +203,63 @@ class FacialRecognitionExperiments {
 
     document.getElementById("startCamera").disabled = false;
     document.getElementById("stopCamera").disabled = true;
+    document.getElementById("startMoodAnalysis").disabled = true;
+
+    // Stop mood analysis if running
+    if (this.isMoodAnalyzing) {
+      this.stopMoodAnalysis();
+    }
 
     // Clear canvas and emotion display
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.clearEmotionDisplay();
 
     console.log("📹 Camera stopped");
+  }
+
+  syncCanvasWithVideo() {
+    // Get the actual displayed size of the video element
+    const videoRect = this.video.getBoundingClientRect();
+    const videoDisplayWidth = this.video.offsetWidth;
+    const videoDisplayHeight = this.video.offsetHeight;
+
+    // Get the actual video stream dimensions
+    const videoStreamWidth = this.video.videoWidth;
+    const videoStreamHeight = this.video.videoHeight;
+
+    console.log("🔄 Syncing canvas with video:");
+    console.log(
+      "  Video stream dimensions:",
+      videoStreamWidth,
+      "x",
+      videoStreamHeight
+    );
+    console.log(
+      "  Video display dimensions:",
+      videoDisplayWidth,
+      "x",
+      videoDisplayHeight
+    );
+
+    // Set canvas dimensions to match the video display size
+    this.canvas.width = videoDisplayWidth;
+    this.canvas.height = videoDisplayHeight;
+
+    // Also set the CSS dimensions to match
+    this.canvas.style.width = videoDisplayWidth + "px";
+    this.canvas.style.height = videoDisplayHeight + "px";
+
+    // Calculate scaling factors for face detection coordinates
+    this.scaleX = videoDisplayWidth / videoStreamWidth;
+    this.scaleY = videoDisplayHeight / videoStreamHeight;
+
+    console.log(
+      "  Canvas dimensions set to:",
+      this.canvas.width,
+      "x",
+      this.canvas.height
+    );
+    console.log("  Scale factors - X:", this.scaleX, ", Y:", this.scaleY);
   }
 
   async detectFaces() {
@@ -298,34 +376,53 @@ class FacialRecognitionExperiments {
   }
 
   drawFaceBoundingBox(box, faceNumber, confidence) {
+    // Apply scaling to coordinates
+    const scaledBox = {
+      x: box.x * (this.scaleX || 1),
+      y: box.y * (this.scaleY || 1),
+      width: box.width * (this.scaleX || 1),
+      height: box.height * (this.scaleY || 1),
+    };
+
     // Main bounding box
     this.ctx.strokeStyle = "#00ff00";
     this.ctx.lineWidth = 3;
-    this.ctx.strokeRect(box.x, box.y, box.width, box.height);
+    this.ctx.strokeRect(
+      scaledBox.x,
+      scaledBox.y,
+      scaledBox.width,
+      scaledBox.height
+    );
 
     // Corner markers
     const cornerSize = 15;
     this.ctx.lineWidth = 4;
     const corners = [
       [
-        [box.x, box.y + cornerSize],
-        [box.x, box.y],
-        [box.x + cornerSize, box.y],
+        [scaledBox.x, scaledBox.y + cornerSize],
+        [scaledBox.x, scaledBox.y],
+        [scaledBox.x + cornerSize, scaledBox.y],
       ],
       [
-        [box.x + box.width - cornerSize, box.y],
-        [box.x + box.width, box.y],
-        [box.x + box.width, box.y + cornerSize],
+        [scaledBox.x + scaledBox.width - cornerSize, scaledBox.y],
+        [scaledBox.x + scaledBox.width, scaledBox.y],
+        [scaledBox.x + scaledBox.width, scaledBox.y + cornerSize],
       ],
       [
-        [box.x, box.y + box.height - cornerSize],
-        [box.x, box.y + box.height],
-        [box.x + cornerSize, box.y + box.height],
+        [scaledBox.x, scaledBox.y + scaledBox.height - cornerSize],
+        [scaledBox.x, scaledBox.y + scaledBox.height],
+        [scaledBox.x + cornerSize, scaledBox.y + scaledBox.height],
       ],
       [
-        [box.x + box.width - cornerSize, box.y + box.height],
-        [box.x + box.width, box.y + box.height],
-        [box.x + box.width, box.y + box.height - cornerSize],
+        [
+          scaledBox.x + scaledBox.width - cornerSize,
+          scaledBox.y + scaledBox.height,
+        ],
+        [scaledBox.x + scaledBox.width, scaledBox.y + scaledBox.height],
+        [
+          scaledBox.x + scaledBox.width,
+          scaledBox.y + scaledBox.height - cornerSize,
+        ],
       ],
     ];
 
@@ -342,18 +439,28 @@ class FacialRecognitionExperiments {
     if (landmarks) {
       this.ctx.fillStyle = "#ffff00";
       landmarks.positions.forEach((point) => {
+        const scaledX = point.x * (this.scaleX || 1);
+        const scaledY = point.y * (this.scaleY || 1);
         this.ctx.beginPath();
-        this.ctx.arc(point.x, point.y, 2, 0, 2 * Math.PI);
+        this.ctx.arc(scaledX, scaledY, 2, 0, 2 * Math.PI);
         this.ctx.fill();
       });
     }
   }
 
   drawFaceInfo(box, faceNumber, confidence) {
+    // Apply scaling to coordinates
+    const scaledBox = {
+      x: box.x * (this.scaleX || 1),
+      y: box.y * (this.scaleY || 1),
+      width: box.width * (this.scaleX || 1),
+      height: box.height * (this.scaleY || 1),
+    };
+
     const infoWidth = 220;
     const infoHeight = 80;
-    const infoX = Math.min(box.x, this.canvas.width - infoWidth);
-    const infoY = Math.max(0, box.y - infoHeight - 10);
+    const infoX = Math.min(scaledBox.x, this.canvas.width - infoWidth);
+    const infoY = Math.max(0, scaledBox.y - infoHeight - 10);
 
     // Background
     this.ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
@@ -375,12 +482,12 @@ class FacialRecognitionExperiments {
     this.ctx.fillStyle = "#ffffff";
     this.ctx.font = "12px Arial";
     this.ctx.fillText(
-      `Size: ${Math.round(box.width)}×${Math.round(box.height)}px`,
+      `Size: ${Math.round(scaledBox.width)}×${Math.round(scaledBox.height)}px`,
       infoX + 10,
       infoY + 55
     );
     this.ctx.fillText(
-      `Pos: (${Math.round(box.x)}, ${Math.round(box.y)})`,
+      `Pos: (${Math.round(scaledBox.x)}, ${Math.round(scaledBox.y)})`,
       infoX + 10,
       infoY + 70
     );
@@ -388,6 +495,14 @@ class FacialRecognitionExperiments {
 
   drawEmotionInfo(box, expressions) {
     if (!expressions) return;
+
+    // Apply scaling to coordinates
+    const scaledBox = {
+      x: box.x * (this.scaleX || 1),
+      y: box.y * (this.scaleY || 1),
+      width: box.width * (this.scaleX || 1),
+      height: box.height * (this.scaleY || 1),
+    };
 
     const sortedExpressions = Object.entries(expressions).sort(
       ([, a], [, b]) => b - a
@@ -398,26 +513,35 @@ class FacialRecognitionExperiments {
     // Large emoji
     const emoji = this.emotionEmojis[topExpression[0]] || "😐";
     this.ctx.font = "36px Arial";
-    this.ctx.fillText(emoji, box.x + box.width + 15, box.y + 40);
+    this.ctx.fillText(
+      emoji,
+      scaledBox.x + scaledBox.width + 15,
+      scaledBox.y + 40
+    );
 
     // Emotion info background
-    const emotionInfoY = box.y + 50;
+    const emotionInfoY = scaledBox.y + 50;
     this.ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
-    this.ctx.fillRect(box.x + box.width + 60, emotionInfoY, 150, 60);
+    this.ctx.fillRect(
+      scaledBox.x + scaledBox.width + 60,
+      emotionInfoY,
+      150,
+      60
+    );
 
     // Primary emotion
     this.ctx.fillStyle = "#00ff00";
     this.ctx.font = "bold 14px Arial";
     this.ctx.fillText(
       topExpression[0].charAt(0).toUpperCase() + topExpression[0].slice(1),
-      box.x + box.width + 70,
+      scaledBox.x + scaledBox.width + 70,
       emotionInfoY + 20
     );
 
     this.ctx.font = "12px Arial";
     this.ctx.fillText(
       `${Math.round(topExpression[1] * 100)}% confidence`,
-      box.x + box.width + 70,
+      scaledBox.x + scaledBox.width + 70,
       emotionInfoY + 35
     );
 
@@ -428,7 +552,7 @@ class FacialRecognitionExperiments {
         `Also: ${secondExpression[0]} (${Math.round(
           secondExpression[1] * 100
         )}%)`,
-        box.x + box.width + 70,
+        scaledBox.x + scaledBox.width + 70,
         emotionInfoY + 50
       );
     }
@@ -773,6 +897,344 @@ class FacialRecognitionExperiments {
     } else {
       this.clearEmotionDisplay();
     }
+  }
+
+  // Mood Analysis Methods
+  initializeMoodChart() {
+    this.moodChart = document.getElementById("moodChart");
+    this.moodChartCtx = this.moodChart.getContext("2d");
+    this.drawEmptyChart();
+  }
+
+  drawEmptyChart() {
+    const ctx = this.moodChartCtx;
+    const width = this.moodChart.width;
+    const height = this.moodChart.height;
+
+    ctx.clearRect(0, 0, width, height);
+
+    // Draw grid lines
+    ctx.strokeStyle = "#e0e0e0";
+    ctx.lineWidth = 1;
+
+    // Horizontal grid lines
+    for (let i = 0; i <= 4; i++) {
+      const y = (height - 40) * (i / 4) + 20;
+      ctx.beginPath();
+      ctx.moveTo(40, y);
+      ctx.lineTo(width - 20, y);
+      ctx.stroke();
+    }
+
+    // Vertical grid lines
+    for (let i = 0; i <= 6; i++) {
+      const x = (width - 60) * (i / 6) + 40;
+      ctx.beginPath();
+      ctx.moveTo(x, 20);
+      ctx.lineTo(x, height - 20);
+      ctx.stroke();
+    }
+
+    // Labels
+    ctx.fillStyle = "#666";
+    ctx.font = "12px Arial";
+    ctx.textAlign = "center";
+
+    // X-axis labels (time)
+    for (let i = 0; i <= 6; i++) {
+      const x = (width - 60) * (i / 6) + 40;
+      ctx.fillText(`${i * 5}s`, x, height - 5);
+    }
+
+    // Y-axis labels (confidence)
+    ctx.textAlign = "right";
+    for (let i = 0; i <= 4; i++) {
+      const y = (height - 40) * (i / 4) + 25;
+      ctx.fillText(`${(1 - i / 4) * 100}%`, 35, y);
+    }
+
+    // Title
+    ctx.textAlign = "center";
+    ctx.font = "14px Arial";
+    ctx.fillStyle = "#333";
+    ctx.fillText("Mood Over Time", width / 2, 15);
+  }
+
+  startMoodAnalysis() {
+    if (!this.isDetecting) {
+      alert("Please start the camera first!");
+      return;
+    }
+
+    this.isMoodAnalyzing = true;
+    this.moodData = [];
+    this.analysisStartTime = Date.now();
+
+    // Update UI
+    document.getElementById("startMoodAnalysis").disabled = true;
+    document.getElementById("stopMoodAnalysis").disabled = false;
+
+    // Start countdown
+    this.startCountdown();
+
+    // Collect mood data every 5 seconds
+    this.analysisInterval = setInterval(() => {
+      this.collectMoodDataPoint();
+    }, 5000);
+
+    // Stop analysis after 30 seconds
+    setTimeout(() => {
+      if (this.isMoodAnalyzing) {
+        this.stopMoodAnalysis();
+      }
+    }, 30000);
+
+    console.log("📊 Started 30-second mood analysis");
+  }
+
+  stopMoodAnalysis() {
+    this.isMoodAnalyzing = false;
+
+    // Clear intervals
+    if (this.analysisInterval) {
+      clearInterval(this.analysisInterval);
+      this.analysisInterval = null;
+    }
+
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
+      this.countdownInterval = null;
+    }
+
+    // Update UI
+    document.getElementById("startMoodAnalysis").disabled = false;
+    document.getElementById("stopMoodAnalysis").disabled = true;
+    document.getElementById("analysisCountdown").textContent =
+      "Analysis complete";
+
+    // Generate summary
+    this.generateMoodSummary();
+
+    console.log("📊 Mood analysis stopped");
+  }
+
+  startCountdown() {
+    const updateCountdown = () => {
+      if (!this.isMoodAnalyzing) return;
+
+      const elapsed = Date.now() - this.analysisStartTime;
+      const remaining = Math.max(0, 30000 - elapsed);
+      const seconds = Math.ceil(remaining / 1000);
+
+      const countdownElement = document.getElementById("analysisCountdown");
+      if (seconds > 0) {
+        countdownElement.innerHTML = `
+          <div style="color: #007bff; font-weight: bold;">
+            ⏱️ Analyzing: ${seconds}s remaining
+          </div>
+          <div style="font-size: 12px; color: #666;">
+            Data points: ${this.moodData.length}/6
+          </div>
+        `;
+      } else {
+        countdownElement.textContent = "Processing results...";
+      }
+    };
+
+    updateCountdown();
+    this.countdownInterval = setInterval(updateCountdown, 1000);
+  }
+
+  getCurrentDominantEmotion() {
+    // Get the most recent face detection data from the emotion display
+    const emotionTextDiv = document.getElementById("emotionText");
+
+    // Parse current emotion from the display
+    const textContent = emotionTextDiv.textContent;
+    if (textContent && textContent.includes(":")) {
+      const lines = textContent.split("\n");
+      for (let line of lines) {
+        if (line.includes(":") && line.includes("%")) {
+          const match = line.match(/(\w+):\s*(\d+)%/);
+          if (match) {
+            return {
+              emotion: match[1],
+              confidence: parseInt(match[2]) / 100,
+            };
+          }
+        }
+      }
+    }
+
+    return { emotion: "neutral", confidence: 0.5 };
+  }
+
+  collectMoodDataPoint() {
+    if (!this.isMoodAnalyzing) return;
+
+    const currentEmotion = this.getCurrentDominantEmotion();
+    const timePoint = this.moodData.length * 5; // 0, 5, 10, 15, 20, 25 seconds
+
+    this.moodData.push({
+      time: timePoint,
+      emotion: currentEmotion.emotion,
+      confidence: currentEmotion.confidence,
+      timestamp: Date.now(),
+    });
+
+    console.log(
+      `📊 Collected mood data point ${this.moodData.length}: ${
+        currentEmotion.emotion
+      } (${Math.round(currentEmotion.confidence * 100)}%)`
+    );
+
+    // Update chart
+    this.updateMoodChart();
+  }
+
+  updateMoodChart() {
+    const ctx = this.moodChartCtx;
+    const width = this.moodChart.width;
+    const height = this.moodChart.height;
+
+    // Redraw empty chart
+    this.drawEmptyChart();
+
+    if (this.moodData.length === 0) return;
+
+    // Define emotion colors
+    const emotionColors = {
+      happy: "#28a745",
+      sad: "#6c757d",
+      angry: "#dc3545",
+      surprised: "#ffc107",
+      fearful: "#6f42c1",
+      disgusted: "#20c997",
+      neutral: "#007bff",
+    };
+
+    // Draw data points and lines
+    ctx.lineWidth = 3;
+
+    const emotions = [...new Set(this.moodData.map((d) => d.emotion))];
+
+    emotions.forEach((emotion) => {
+      const emotionData = this.moodData.filter((d) => d.emotion === emotion);
+      if (emotionData.length === 0) return;
+
+      ctx.strokeStyle = emotionColors[emotion] || "#000";
+      ctx.fillStyle = emotionColors[emotion] || "#000";
+
+      // Draw line
+      ctx.beginPath();
+      emotionData.forEach((point, index) => {
+        const x = (width - 60) * (point.time / 30) + 40;
+        const y = (height - 40) * (1 - point.confidence) + 20;
+
+        if (index === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      });
+      ctx.stroke();
+
+      // Draw points
+      emotionData.forEach((point) => {
+        const x = (width - 60) * (point.time / 30) + 40;
+        const y = (height - 40) * (1 - point.confidence) + 20;
+
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Add emoji above point
+        ctx.font = "16px Arial";
+        ctx.textAlign = "center";
+        const emoji = this.emotionEmojis[emotion] || "😐";
+        ctx.fillText(emoji, x, y - 8);
+      });
+    });
+  }
+
+  generateMoodSummary() {
+    if (this.moodData.length === 0) {
+      document.getElementById("moodSummary").innerHTML =
+        "<em>No mood data collected during analysis</em>";
+      return;
+    }
+
+    // Calculate dominant emotion
+    const emotionCounts = {};
+    let totalConfidence = 0;
+
+    this.moodData.forEach((point) => {
+      emotionCounts[point.emotion] = (emotionCounts[point.emotion] || 0) + 1;
+      totalConfidence += point.confidence;
+    });
+
+    const dominantEmotion = Object.entries(emotionCounts).sort(
+      ([, a], [, b]) => b - a
+    )[0][0];
+
+    const avgConfidence = totalConfidence / this.moodData.length;
+    const dominantEmoji = this.emotionEmojis[dominantEmotion] || "😐";
+
+    // Detect mood trends
+    let trend = "stable";
+    if (this.moodData.length >= 3) {
+      const firstHalf = this.moodData.slice(
+        0,
+        Math.floor(this.moodData.length / 2)
+      );
+      const secondHalf = this.moodData.slice(
+        Math.floor(this.moodData.length / 2)
+      );
+
+      const firstAvg =
+        firstHalf.reduce((sum, p) => sum + p.confidence, 0) / firstHalf.length;
+      const secondAvg =
+        secondHalf.reduce((sum, p) => sum + p.confidence, 0) /
+        secondHalf.length;
+
+      if (secondAvg > firstAvg + 0.1) trend = "improving";
+      else if (secondAvg < firstAvg - 0.1) trend = "declining";
+    }
+
+    const summaryHTML = `
+      <div style="background: #f0f8ff; padding: 12px; border-radius: 6px; border: 1px solid #007bff;">
+        <div style="font-weight: bold; color: #007bff; margin-bottom: 8px;">
+          📊 30-Second Analysis Summary
+        </div>
+        <div style="margin-bottom: 6px;">
+          <strong>Dominant Mood:</strong> ${dominantEmoji} ${
+      dominantEmotion.charAt(0).toUpperCase() + dominantEmotion.slice(1)
+    }
+        </div>
+        <div style="margin-bottom: 6px;">
+          <strong>Average Confidence:</strong> ${Math.round(
+            avgConfidence * 100
+          )}%
+        </div>
+        <div style="margin-bottom: 6px;">
+          <strong>Mood Trend:</strong> ${
+            trend.charAt(0).toUpperCase() + trend.slice(1)
+          }
+        </div>
+        <div style="font-size: 12px; color: #666;">
+          Data points collected: ${this.moodData.length}/6
+        </div>
+      </div>
+    `;
+
+    document.getElementById("moodSummary").innerHTML = summaryHTML;
+
+    console.log("📊 Mood summary generated:", {
+      dominantEmotion,
+      avgConfidence: Math.round(avgConfidence * 100),
+      trend,
+      dataPoints: this.moodData.length,
+    });
   }
 
   clearEmotionDisplay() {
