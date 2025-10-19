@@ -18,6 +18,7 @@ import wsIcon from "../assets/img/weestoater-icon.png";
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
   const items = [
     "Home",
     "About",
@@ -31,7 +32,7 @@ export const Header = () => {
 
   return (
     <>
-      <Navbar color="dark" dark expand="md">
+      <Navbar color="dark" dark expand="lg">
         <HashLinkSafe to="#content" className="skip-link">
           Skip to main content
         </HashLinkSafe>
@@ -50,6 +51,7 @@ export const Header = () => {
                   className={({ isActive }: { isActive: boolean }) =>
                     isActive ? "active nav-link" : "nav-link"
                   }
+                  onClick={closeMenu}
                 >
                   {item}
                 </RouterNavLink>
