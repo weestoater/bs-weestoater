@@ -30,3 +30,12 @@ coverage
 /playwright/.cache/
 
 e2e-tests/visual.specs*
+
+# AI Experiments - exclude large model files and test data
+ai-experiments/**/node_modules/
+ai-experiments/**/models/*.bin
+ai-experiments/**/models/*.json
+ai-experiments/**/models/*.pb
+ai-experiments/**/assets/test-images/
+ai-experiments/**/assets/datasets/
+ai-experiments/**/*.tmp
