@@ -3,6 +3,38 @@
     "season": "2025-26",
     "details": [
       {
+        "scored": 2,
+        "conceded": 1,
+        "date": "25/10/25",
+        "opposition": "Livingston",
+        "venue": "Away",
+        "league": null,
+        "goals": [
+          {
+            "player": "Apostolos Stamatelopoulos",
+            "mins": "59 (Pen)"
+          },
+          {
+            "player": "Elijah Just",
+            "mins": "90+3"
+          }
+        ],
+        "cards": [
+          {
+            "player": "Liam Gordon",
+            "mins": "47",
+            "card": "yellow"
+          },
+          {
+            "player": "Stephen O'Donnell",
+            "mins": "84",
+            "card": "yellow"
+          }
+        ],
+        "video": "https://youtu.be/HuUAbrekxaA?si=Sx1wQMhTt1QbEiG7",
+        "notes": "A promising start undone by a penalty from a tackle that didn't need to happen. But continued pressure from the 'Well and lots to be happy about. Just and Slattery paired up for a lot of the play, but a mad moment from Livi gave us the penalty and equaliser. Just got a goal chopped off, but didn't put his head down and his winner was a worthy reward for his efforts. #claret&amber  #COYW!!"
+      },
+      {
         "scored": 1,
         "conceded": 2,
         "date": "18/10/25",
