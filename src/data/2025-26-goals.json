@@ -31,7 +31,7 @@
       },
       {
         "player": "Tawanda Maswanhise",
-        "goals": 8,
+        "goals": 9,
         "assists": 1
       },
       {
@@ -49,11 +49,13 @@
       },
       {
         "player": "Apostolos Stamatelopoulos",
-        "goals": 5
+        "goals": 5,
+        "assists": 1
       },
       {
         "player": "Elliot Watt",
-        "assists": 1
+        "assists": 1,
+        "goals": 1
       }
     ]
   }
