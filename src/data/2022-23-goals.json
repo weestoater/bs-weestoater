@@ -1,61 +1,75 @@
-[{
+{
   "season": "2022-23",
-  "details": [
+  "topScorers": [
     {
       "player": "Kevin Van Veen",
-      "goals": 29
+      "goals": 29,
+      "assists": 0
     },
     {
       "player": "Blair Spittal",
-      "goals": 6
+      "goals": 6,
+      "assists": 0
     },
     {
       "player": "Stuart McKinstry",
-      "goals": 4
+      "goals": 4,
+      "assists": 0
     },
     {
       "player": "Callum Slattery",
-      "goals": 4
+      "goals": 4,
+      "assists": 0
     },
     {
       "player": "Max Johnston",
-      "goals": 3
+      "goals": 3,
+      "assists": 0
     },
     {
       "player": "Mikael Mandron",
-      "goals": 3
+      "goals": 3,
+      "assists": 0
     },
     {
       "player": "Ross Tierney",
-      "goals": 2
+      "goals": 2,
+      "assists": 0
     },
     {
       "player": "Joe Efford",
-      "goals": 1
+      "goals": 1,
+      "assists": 0
     },
     {
       "player": "Stephen O'Donnell",
-      "goals": 1
+      "goals": 1,
+      "assists": 0
     },
     {
       "player": "Sondre Johansen",
-      "goals": 1
+      "goals": 1,
+      "assists": 0
     },
     {
       "player": "Jonathan Obika",
-      "goals": 1
+      "goals": 1,
+      "assists": 0
     },
     {
       "player": "Louis Moult",
-      "goals": 1
+      "goals": 1,
+      "assists": 0
     },
     {
       "player": "Bevis Mugabi",
-      "goals": 1
+      "goals": 1,
+      "assists": 0
     },
     {
       "player": "Sean Goss",
-      "goals": 1
+      "goals": 1,
+      "assists": 0
     }
   ]
-}]
+}

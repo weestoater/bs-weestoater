@@ -1,1072 +1,1082 @@
-[
-  {
-    "season": "2024-25",
-    "details": [
-      {
-        "scored": 1,
-        "conceded": 1,
-        "date": "18/05/25",
-        "opposition": "Ross County",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Moses Ebiye",
-            "mins": "83"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Stephen O'Donnell",
-            "card": "yellow",
-            "mins": "90+5"
-          }
-        ],
-        "video": "https://youtu.be/st7e-7Myl5U?si=hrPvaMrcpx1YwWf1",
-        "notes": "A slow start for the Well - taking the second half before we really woke up, but what a half. Solidly camped in or around the Ross County box, with plenty of shots peppering the goal area. Eventually we got the goal that was well deserved and a draw was probably the fairest outcome. #COYW!!"
-      },
-      {
-        "scored": 3,
-        "conceded": 0,
-        "date": "14/05/25",
-        "opposition": "Kilmarnock",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Luke Armstrong",
-            "mins": "70"
-          },
-          { "player": "Callum Slattery", "mins": "83" },
-          {
-            "player": "Luke Armstrong",
-            "mins": "86"
-          }
-        ],
-        "cards": null,
-        "video": "https://youtu.be/evrAqUK14G4?si=z4RWvn45XM6ZJ_nN",
-        "notes": "A lot to be happy about for the last home game of the season. Red card for Killie didn't really help us that much, as they defended very well indeed. It was looking like a counter attack from them would break the deadlock. But then we made some good changes in the second half and justice was served. Slattery's efforts, somewhat skyward as they were, paid off with a superb give'n'go to a magical finish. Armstrong made his presence felt too and was a great addition to a team lacking that final touch. All in all a great result, even if it took it's time in coming. #COYW!!"
-      },
-      {
-        "scored": 0,
-        "conceded": 3,
-        "date": "10/05/25",
-        "opposition": "Hearts",
-        "venue": "Away",
-        "league": null,
-        "goals": null,
-        "cards": [
-          {
-            "player": "Andy Halliday",
-            "card": "yellow",
-            "mins": "45+1"
-          },
-          {
-            "player": "Lennon Miller",
-            "card": "yellow",
-            "mins": "54"
-          }
-        ],
-        "video": null,
-        "notes": "Soft goals meant the heads went down, especially after the goal was chopped off. Safely secure in the league, but would have been nice to have seen a bit more of a fight. #COYW!!"
-      },
-      {
-        "scored": 3,
-        "conceded": 2,
-        "date": "26/04/25",
-        "opposition": "St. Johnstone",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          { "mins": 39, "player": "Callum Slattery" },
-          { "mins": 40, "player": "S.Sprangler (O.G.)" },
-          { "mins": 48, "player": "Tom Sparrow" }
-        ],
-        "cards": [
-          {
-            "player": "Callum Slattery",
-            "card": "yellow",
-            "mins": "65"
-          },
-          {
-            "player": "Stephen O'Donnell",
-            "card": "yellow",
-            "mins": "66"
-          },
-          {
-            "player": "Andy Halliday",
-            "card": "yellow",
-            "mins": "68"
-          },
-          {
-            "player": "Tom Sparrow",
-            "card": "yellow",
-            "mins": "89"
-          }
-        ],
-        "video": null,
-        "notes": "Much better performance - AT LAST. We've proved we can win at home again, so that should hopefully get some of the gremlins off our backs. Four yellow cards and three goals gives me belief the effort was there. Need to take this spirit and attitude into the rest of the games going forward. #COYW!!"
-      },
-      {
-        "scored": 0,
-        "conceded": 0,
-        "date": "12/04/25",
-        "opposition": "Hearts",
-        "venue": "Home",
-        "league": null,
-        "goals": null,
-        "cards": null,
-        "video": "https://youtu.be/-zeSp3cBR1g?si=GLDU3HX4yH9A_H0A",
-        "notes": "Dismall performance. No yellow cards for the Well, shows there was little or no effort. That makes us firmly rooted in the bottom six post split and we just deserve that and no more. #COYW!!"
-      },
-      {
-        "scored": 0,
-        "conceded": 2,
-        "date": "05/04/25",
-        "opposition": "Kilmarnock",
-        "venue": "Away",
-        "league": null,
-        "goals": null,
-        "cards": [
-          {
-            "player": "Callum Slattery",
-            "card": "yellow",
-            "mins": "71"
-          },
-          {
-            "player": "Dominic Thompson",
-            "card": "yellow",
-            "mins": "64"
-          },
-          {
-            "player": "Kofi Balmer",
-            "card": "red",
-            "mins": "26"
-          },
-          {
-            "player": "Stephen O'Donnell",
-            "card": "yellow",
-            "mins": "12"
-          }
-        ],
-        "video": "https://youtu.be/qNt3R3jQ9X8?si=C7_bPE3SKrq1IZAh",
-        "notes": "Referee killed this match in a RED card happy frenzy. Didn't know the rules and was making them up as he went along. #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 4,
-        "date": "29/03/25",
-        "opposition": "Aberdeen",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Callum Slattery",
-            "mins": "5"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Callum Slattery",
-            "card": "yellow",
-            "mins": "68"
-          },
-          {
-            "player": "Tawanda Maswanhise",
-            "card": "yellow",
-            "mins": "81"
-          }
-        ],
-        "video": "https://youtu.be/6ozsGZSat4o?si=JqN2LN801FCORfUJ",
-        "notes": "Off to a good start with an early goal, but chronic defending made for painful viewing. Lucky to be only 2-1 down at half time. Will be very unlikely to get a top 6 slot before the split. #COYW!!"
-      },
-      {
-        "scored": 2,
-        "conceded": 2,
-        "date": "15/03/25",
-        "opposition": "St. Mirren",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Callum Slattery",
-            "mins": "35"
-          },
-          {
-            "player": "Callum Slattery",
-            "mins": "71"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Liam Gordon",
-            "card": "yellow",
-            "mins": "61"
-          },
-          {
-            "player": "Andy Halliday",
-            "card": "yellow",
-            "mins": "90+5"
-          },
-          {
-            "player": "Dan Casey",
-            "card": "yellow",
-            "mins": "90+10"
-          }
-        ],
-        "video": null,
-        "notes": " Two goals down in 30 mins, would normally be the end of the game for us. But there was a swift response from Slattery to the second goal which gave the team something to work with in the second half. Some strong challenges being made and a better desire from the Well. Good to salvage a point, pity not to get all three. Still a good watch but far from safe in the table yet #COYW!!"
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "01/03/25",
-        "opposition": "Rangers",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Luke Armstrong",
-            "mins": "9"
-          },
-          {
-            "player": "Tom Sparrow",
-            "mins": "30"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Andy Halliday",
-            "card": "yellow",
-            "mins": "45+6"
-          },
-          {
-            "player": "Tom Sparrow",
-            "card": "yellow",
-            "mins": "90+2"
-          }
-        ],
-        "video": "https://youtu.be/5Gb1LeKQFCI?si=K_26ruRu6RkCJqpd",
-        "notes": "Two newest managers in Scottish Premier League, meet for the first time at one of Scotlands 'biggest' stadiums. Nobody expected Motherwell to score first, but they did! Confidence and pressing football from the 'Well. Hounding Rangers players for the majority of the first half. A rare lapse in concentration from Dan Casey gave the home side an opening for their goal, but it was solid defending from Motherwell to claim all three points. Lots to be happy about -  long may this continue! #COYW!!"
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "26/02/25",
-        "opposition": "Dundee",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Dan Casey",
-            "mins": "12"
-          },
-          {
-            "player": "Dan Casey",
-            "mins": "84"
-          }
-        ],
-        "cards": null,
-        "video": "https://youtu.be/QD1I3KaNFew?si=ug5F4aMo4I4NGeae",
-        "notes": "New manager - at home, midweek, had all the makings of another poor performance. But someone clearly put something in the bovril cause the Well came out flying. Attacking, one-touch passing, lots to be happy about, especially if you're Dan Casey. Much improved and long may they continue like this! #COYW!!"
-      },
-      {
-        "scored": 0,
-        "conceded": 1,
-        "date": "22/02/25",
-        "opposition": "Dundee United",
-        "venue": "Away",
-        "league": null,
-        "goals": null,
-        "cards": null,
-        "video": null,
-        "notes": "New manager - same poor performance. Same lack of effort and desire from the same suspects! At least Miller is back in the fold, so something might begin to change when he gets up to speed #COYW!!"
-      },
-      {
-        "scored": 0,
-        "conceded": 3,
-        "date": "15/02/25",
-        "opposition": "Ross County",
-        "venue": "Home",
-        "league": null,
-        "goals": null,
-        "cards": null,
-        "video": null,
-        "notes": "Poor show - all too familiar lack of effort and desire from the usual suspects! #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 3,
-        "date": "2/02/25",
-        "opposition": "Celtic",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Luke Armstrong",
-            "mins": "23"
-          }
-        ],
-        "cards": null,
-        "video": null,
-        "notes": "Great debut from Luke Armstrong and some flashes of brilliance from the 'Well - just nowhere near enough compared to Celtic! #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 2,
-        "date": "25/01/25",
-        "opposition": "St. Johnstone",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Andy Halliday",
-            "mins": "4"
-          }
-        ],
-        "cards": null,
-        "video": null,
-        "notes": "Promising start, with the gift of a penalty in the first minute. But back to usual sleepy defence and lack of ambition. Some breakways, but not a single goal. Then in the second half everything goes to pot, with little effort or desire shown. Steelmen my backside! #COYW!!"
-      },
-      {
-        "scored": 0,
-        "conceded": 1,
-        "date": "18/01/25",
-        "opposition": "St. Johnstone",
-        "venue": "Away",
-        "league": "Scottish Cup - 4th Round",
-        "goals": null,
-        "cards": null,
-        "video": null,
-        "notes": "Woeful. Far too little, far too late. Doesn't bode well for the league match later this month. Steelmen my backside! #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 3,
-        "date": "11/01/25",
-        "opposition": "Hibernian",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Callum Slattery",
-            "mins": "76"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Shane Blaney",
-            "card": "yellow",
-            "mins": "42"
-          },
-          {
-            "player": "Dan Casey",
-            "card": "yellow",
-            "mins": "45+4"
-          },
-          {
-            "player": "Stephen O'Donnell",
-            "card": "yellow",
-            "mins": "80"
-          },
-          {
-            "player": "Jack Vale",
-            "card": "red",
-            "mins": "90+3"
-          }
-        ],
-        "video": null,
-        "notes": "Too little, too late. With injuries to Lennon Miller and goalkeeper Aston Oxborough the 'Well looked tired and at time lost. A flat performance only lightened by Callum Slattery's return to the score sheet. More of those please. One to forget. #COYW!!"
-      },
-      {
-        "scored": 0,
-        "conceded": 0,
-        "date": "08/01/25",
-        "opposition": "Kilmarnock",
-        "venue": "Away",
-        "league": null,
-        "goals": null,
-        "cards": [
-          {
-            "player": "Andy Halliday",
-            "card": "yellow",
-            "mins": "38"
-          },
-          {
-            "player": "Ewan Wilson",
-            "card": "yellow",
-            "mins": "71"
-          }
-        ],
-        "video": "https://youtu.be/JwhzK1chXD0?si=UGrxAA8zECBDZ1v1",
-        "notes": "Only thing worse than the game was the weather. Freezing cold, plastic pitch - not a worldy of a game. #COYW!!"
-      },
-      {
-        "scored": 2,
-        "conceded": 0,
-        "date": "05/01/25",
-        "opposition": "Aberdeen",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Ewan Wilson",
-            "mins": "34"
-          },
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "45"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Davor Zdravkoski",
-            "card": "yellow",
-            "mins": "8"
-          },
-          {
-            "player": "Tawanda Maswanhise",
-            "card": "yellow",
-            "mins": "15"
-          }
-        ],
-        "video": "https://youtu.be/k-5c8y-1dsk?si=vlow-c5agZXsjKYs",
-        "notes": "A grinding, stop-start kind of game in the first half, mainly due to `I'm the star Nick Walsh` as referee. 'Well were quick on the break and got some decent shots on goal, with the first goal coming from youngster Ewan Wilson. Then the fun started with a timely RED card for the Dons with some unsporting behaviour from Slobodan Rubezic. To compound matters after the dust settles Maswanhise scores a brilliant second goal. Very scrappy second half, with very little to write home about. A much needed 3 points to the 'Well. #COYW!!"
-      },
-      {
-        "scored": 0,
-        "conceded": 1,
-        "date": "02/01/25",
-        "opposition": "Hearts",
-        "venue": "Away",
-        "league": null,
-        "goals": null,
-        "cards": [
-          {
-            "player": "Dan Casey",
-            "card": "yellow",
-            "mins": "65"
-          }
-        ],
-        "video": "https://youtu.be/6v9bJ7MUe7s?si=O2MiAmGZFxkJVlRv",
-        "notes": "A performance Mark Knopfler would be proud of = DIRE! Worst game for a LONG time, nae desire, nae cohesion, nae points. 6 shots on goal for Motherwell for the whole game, regardless of forcing Craig Gordon into a couple of great saves - single figure efforts on goals IS NOT good enough. #COYW!!"
-      },
-      {
-        "scored": 2,
-        "conceded": 2,
-        "date": "29/12/24",
-        "opposition": "Rangers",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Apostolos Stamatelopoulos",
-            "mins": "16"
-          },
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "35"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Lennon Miller",
-            "card": "yellow",
-            "mins": "53"
-          },
-          {
-            "player": "Tom Sparrow",
-            "card": "yellow",
-            "mins": "90"
-          },
-          {
-            "player": "Tony Watt",
-            "card": "yellow",
-            "mins": "90+9"
-          },
-          {
-            "player": "Sam Nicholson",
-            "card": "yellow",
-            "mins": "90+12"
-          }
-        ],
-        "video": "https://youtu.be/5aw0kV8bdBs?si=goZVXFj6rMV_eEAx",
-        "notes": "Great start to the game, with the Glasgow team on the back foot after two Motherwell goals. Came out all guns blazing in the second half and pulled one back quite early on. Two more HORRENDOUS decisions from VAR where a perfectly decent goal is chopped off for encroachment to the goal keeper, after he palmed the ball into his own net and an incredible micrometer offside against Dan Casey. Manager red carded for praising the referee - Kevin Clancy is an absolute arse! 2 points STOLEN from Motherwell and we should be a position higher in the league.#COYW!!"
-      },
-      {
-        "scored": 0,
-        "conceded": 4,
-        "date": "26/12/24",
-        "opposition": "Celtic",
-        "venue": "Away",
-        "league": null,
-        "goals": null,
-        "cards": null,
-        "video": null,
-        "notes": "An expected defeat to the league leaders, some promising moments, but not enough to give any glimmers of hope. Onwards and upwards! #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 1,
-        "date": "20/12/24",
-        "opposition": "Kilmarnock",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Liam Gordon",
-            "mins": "1"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Dan Casey",
-            "card": "red",
-            "mins": "77"
-          }
-        ],
-        "video": "https://youtu.be/-i17UYpGIyc?si=xYVZWtY97dgq7VZp",
-        "notes": "Good goal from Motherwell early in the game, but little creativity thereafter. Game was dominated by rotten refereeing - the red card for Casey is embarrassing and trended quickly as one of the worst decisions ever in Scottish Football. Nothing more to do than chalk it up to poor stewarship. Chris Graham should be ashamed of himself! #COYW!!"
-      },
-      {
-        "scored": 4,
-        "conceded": 3,
-        "date": "14/12/24",
-        "opposition": "Dundee United",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Tom Sparrow",
-            "mins": "67"
-          },
-          {
-            "player": "Apostolos Stamatelopoulos",
-            "mins": "40"
-          },
-          {
-            "player": "Andy Halliday",
-            "mins": "33"
-          },
-          {
-            "player": "Apostolos Stamatelopoulos",
-            "mins": "1"
-          }
-        ],
-        "cards": null,
-        "video": "https://youtu.be/XOJdeSTyLfQ?si=-B8g32IEXhLcBHkD",
-        "notes": "Great start from the 'Well with a very early goal. Made all the more painfull by the softest of penalties straight after it. Another flap or two in the box making it nervous viewing and a embarrassing second goal for the visitors. Fair result in the end, despite NOT getting a penalty which had more obvious and clearcut contact than the one awarded in the first half to Dundee. #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 0,
-        "date": "7/12/24",
-        "opposition": "St. Mirren",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Tony Watt",
-            "mins": "90+3"
-          }
-        ],
-        "cards": null,
-        "video": "https://youtu.be/9TxVTWr1UEo?si=KD0WOUfKDUR5Ki4n",
-        "notes": "A very soft second yellow for the Buddies, gave us a free-kick and a man advantage in the box. Tony Watt stepped up and put the ball in the net! Hardly a world class game, but a good result for the 'Well in the end and a very welcomed three points. #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 4,
-        "date": "4/12/24",
-        "opposition": "Dundee",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Apostolos Stamatelopoulos",
-            "mins": "19"
-          }
-        ],
-        "cards": null,
-        "video": "https://youtu.be/SzRjK9XHMTM?si=28tOnYju3e2P9FqS",
-        "notes": "Dismal!"
-      },
-      {
-        "scored": 0,
-        "conceded": 3,
-        "date": "30/11/24",
-        "opposition": "Hibernian",
-        "venue": "Home",
-        "league": null,
-        "goals": null,
-        "cards": null,
-        "video": null,
-        "notes": "Two poor mistakes from Oxborough made it an uphill task to salvage anything from this game. That was made impossible with the lack of invention or creativity from the 'Well. Another loss signals a downward turn in the direction of points and the manager needs to stop the rot asap. #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 2,
-        "date": "23/11/24",
-        "opposition": "Ross County",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Zach Robinson",
-            "mins": "83"
-          }
-        ],
-        "cards": null,
-        "video": "https://youtu.be/TtgMg9puVU0?si=ddoXr1UfBuI8sNbK",
-        "notes": "A poor result after travelling in trecherous conditions for the supporters who braved the A9. Little to write home about and not much to take from it. Sparrow picked up a knock and looks doubtful for the next few games. Still in top 6 so can't complain too much. #COYW!!"
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "09/11/24",
-        "opposition": "St. Johnstone",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "20"
-          },
-          {
-            "player": "Tom Sparrow",
-            "mins": "34"
-          }
-        ],
-        "cards": null,
-        "video": "https://youtu.be/QXNHFUOVVbQ?si=m3w04-qjyu-hV1sM",
-        "notes": "Another great result for the 'Well.  Lennon Miller as captain again and crossing the ball brilliantly around the pitch. Two early goals, but no killer instinct, so a repeat of the nervous defending for the last 35+ mins. Important victory before the winter break. Keep up the good work boys."
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "30/10/24",
-        "opposition": "Dundee United",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "23"
-          },
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "74"
-          }
-        ],
-        "cards": null,
-        "video": "https://youtu.be/wsVdGeIoz3M?si=FDC38ZySJUxAUAxC",
-        "notes": "A somewhat messy affair up in Dundee, but shows the spirit of the team and their drive to defend and counter attack.  A defensive blunder cost United dearly for our second goal. Swap positions with United for us to go back into Fourth in the league!"
-      },
-      {
-        "scored": 0,
-        "conceded": 3,
-        "date": "27/10/24",
-        "opposition": "Celtic",
-        "venue": "Home",
-        "league": null,
-        "goals": null,
-        "cards": null,
-        "video": "https://youtu.be/ptGRflXTrQA?si=uXYJVJsvegGYx8Ho",
-        "notes": "Another home defeat made even more painful as we had a number of shots on target and hit the post on two occassions. Lennon Miller doing what he does best. Neverthless, Celtic are THE quality side and an expected loss for us. But we came close to spoiling the party a little..."
-      },
-      {
-        "scored": 0,
-        "conceded": 1,
-        "date": "19/10/24",
-        "opposition": "Dundee",
-        "venue": "Home",
-        "league": null,
-        "goals": null,
-        "cards": null,
-        "video": null,
-        "notes": "A home defeat at the hands of a strong Dundee.  Rallied in the second half to batter their defences, but unable to penetrate and sink a goal. Unfortunately, the whistle came before we were able to equalise. Onwards and upwards."
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "05/10/24",
-        "opposition": "Hibernian",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Andy Halliday",
-            "mins": "80"
-          },
-          {
-            "player": "Apostolos Stamatelopoulos",
-            "mins": "56"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Tom Sparrow",
-            "card": "yellow",
-            "mins": "83"
-          },
-          {
-            "player": "Ewan Wilson",
-            "card": "yellow",
-            "mins": "31"
-          },
-          {
-            "player": "Davor Zdravkoski",
-            "card": "yellow",
-            "mins": "22"
-          }
-        ],
-        "video": "https://youtu.be/rgQ8PVTTK-0?si=zqzlBHbRAwpR5NWm",
-        "notes": "Nightmare for Stephen O'Donnell in the box, couldn't clear his feet and Hibbies pounced. A red card for Hibs opens the game back up for the 'Well and Andy Halliday, of all people, steps up and nets a goal. #COYW 4th in the league!"
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "28/09/24",
-        "opposition": "St. Mirren",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Lennon Miller",
-            "mins": "44 (Pen)"
-          },
-          {
-            "player": "Lennon Miller",
-            "mins": "19"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Tony Watt",
-            "card": "yellow",
-            "mins": "90+4"
-          },
-          {
-            "player": "Kofi Balmer",
-            "card": "yellow",
-            "mins": "51"
-          },
-          {
-            "player": "Andy Halliday",
-            "card": "yellow",
-            "mins": "48"
-          },
-          {
-            "player": "Dan Casey",
-            "card": "red",
-            "mins": "47"
-          },
-          {
-            "player": "Stephen O'Donnell",
-            "card": "yellow",
-            "mins": "45+5"
-          }
-        ],
-        "video": "https://youtu.be/3OVjgoilj1g?si=H-KMO8Seg8P6FeBm",
-        "notes": "A great performance from Lennon Miller to secure all 3 points. Nervous moments with red cards for both teams, penalties and the one against us SAVED. Scrappy and somewhat ill-tempered with a fair number of the players having played against or alongside each other in previous Motherwell mateches. The team dug deep and pulled out a vital victory to continue a good run of form."
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "20/09/24",
-        "opposition": "Dundee United",
-        "venue": "Home",
-        "league": "League Cup - Quarter Finals",
-        "goals": [
-          {
-            "player": "Lennon Miller",
-            "mins": "90+1 (Pen)"
-          },
-          {
-            "player": "Zach Robinson",
-            "mins": "45+1"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Tony Watt",
-            "card": "yellow",
-            "mins": "90+4"
-          },
-          {
-            "player": "Kofi Balmer",
-            "card": "yellow",
-            "mins": "51"
-          },
-          {
-            "player": "Andy Halliday",
-            "card": "yellow",
-            "mins": "48"
-          },
-          {
-            "player": "Dan Casey",
-            "card": "red",
-            "mins": "47"
-          },
-          {
-            "player": "Stephen O'Donnell",
-            "card": "yellow",
-            "mins": "45+5"
-          }
-        ],
-        "video": "https://youtu.be/pAmzFcReEuk?si=AygiDx_CqGaPwK9E",
-        "notes": "Some brilliant passages of play when the 'Well were totally in control. A wonder strike from former Steelman Louis Moult put them under pressure but they rose to the occassion. None more so than the ever talented Lennon Miller. Slotting home a penalty to give the 'Well the ticket to Hampden.  Hard fought in places towards the end but excellent indication of what this group of players can achieve."
-      },
-      {
-        "scored": 1,
-        "conceded": 2,
-        "date": "14/09/24",
-        "opposition": "Aberdeen",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Moses Ebiye",
-            "mins": "88"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Paul McGinn",
-            "card": "yellow",
-            "mins": "85"
-          },
-          {
-            "player": "Jack Vale",
-            "card": "yellow",
-            "mins": "67"
-          },
-          {
-            "player": "Zach Robinson",
-            "card": "yellow",
-            "mins": "52"
-          },
-          {
-            "player": "Stephen O'Donnell",
-            "card": "yellow",
-            "mins": "23"
-          },
-          {
-            "player": "Davor Zdravkovskir",
-            "card": "yellow",
-            "mins": "23"
-          }
-        ],
-        "video": "https://youtu.be/eMGOrstwq8U?si=niwDMkmTvBKNVUqp",
-        "notes": "Some positives to take on the road back to Motherwell, but sadly not three points. A late effort from Moses got us on the score sheet, just a little too late in the game for any momentum. Aberdeen defended too strongly and by the number of cards dished out to 'Well players it was somewhat scrappy. Not crest fallen, but a bump in the road to consistency. #COYW - still 5th! "
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "31/08/24",
-        "opposition": "St. Johnstone",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Dan Casey",
-            "mins": 11
-          },
-          {
-            "player": "Moses Ebiye",
-            "mins": "90+4"
-          }
-        ],
-        "cards": null,
-        "video": null,
-        "notes": "Set pieces appear to be the road to success for the 'Well. Dan Casey making his presence felt in the box and slotting in a lovely headed effort. St. Johnstone came back into it, against the run of play but 'Well dug deep and made some informed subs. Life cam back into the game again and a worthy winner for Moses Ebiye to take all three points. It clearly meant a lot to the management team as they came onto the pitch to thank the travelling support. A great result - more of the same please. 5th in the league !"
-      },
-      {
-        "scored": 3,
-        "conceded": 1,
-        "date": "25/08/24",
-        "opposition": "Hearts",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Paul McGinn",
-            "mins": 24
-          },
-          {
-            "player": "Stephen O'Donnell",
-            "mins": "59"
-          },
-          {
-            "player": "Tom Sparrow",
-            "mins": 81
-          }
-        ],
-        "cards": [
-          {
-            "player": "Andy Halliday",
-            "card": "yellow",
-            "mins": "44"
-          }
-        ],
-        "video": "https://youtu.be/zg1cRCsZZMk?si=NKMuIpPfHrKnTSNU",
-        "notes": "Motherwell played some of the nicest football as they have in a LONG time.  The manager was very pleased as were the supporters. A rare captain and vice captain goal tally, with a very cheeky number from young Sparrow to round off the game.  Lots of positives to take away ! #COYW."
-      },
-      {
-        "scored": 1,
-        "conceded": 0,
-        "date": "18/08/24",
-        "opposition": "Kilmarnock",
-        "venue": "Home",
-        "league": "League Cup - 2nd Round",
-        "goals": [
-          {
-            "player": "Moses Ebiye",
-            "mins": "96' ET"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Tom Sparrow",
-            "card": "yellow",
-            "mins": "105' ET"
-          },
-          {
-            "player": "Dan Casey",
-            "card": "yellow",
-            "mins": "48"
-          }
-        ],
-        "video": null,
-        "notes": "Very scrappy game with Motherwell having a LOT of possession once Kilmarnock went down to ten men.  Some great chances for the majority of the second half, but no killer instinct or finishing touch. Extra time proved to be were the change happened and Moses Ebiye was the difference, with an excellent headed goal.  Lennon Miller played his socks off and rightly got a standing ovation from the Well supporters."
-      },
-      {
-        "scored": 1,
-        "conceded": 2,
-        "date": "10/08/24",
-        "opposition": "Rangers",
-        "venue": "Away",
-        "league": null,
-        "goals": null,
-        "cards": null,
-        "video": null,
-        "notes": "The big positive for Kettlewell will be his team's spirited second-half showing. The obvious negative is the injury to summer signing Stamatelopoulos.The Australia international, making his first start since April, had a limited pre-season but impressed with his link-up play early in the game, playing a role in a golden first-half chance for Lennon Miller.If the striker is to face any time on the sidelines, he will join an injury list that is getting out of hand.His replacement, Zach Robinson, also caused problems for the Rangers defence, firstly slicing over from inside the area before forcing Jack Butland to make a fine stop low to his left in the second half.The Motherwell forward line were guilty of passing up opportunities in last weekend's draw with Ross County, and the League Cup group game against Partick Thistle.That is an issue Kettlewell will be desperate to address immediately, given his side have now failed to score in their past three games."
-      },
-      {
-        "scored": 0,
-        "conceded": 0,
-        "date": "03/08/24",
-        "opposition": "Ross County",
-        "venue": "Home",
-        "league": null,
-        "goals": null,
-        "cards": null,
-        "video": "https://youtu.be/6keDq6WCTGM?si=GpAO6LfgPD4duvPa",
-        "notes": "A handful of chances from Motherwell but Ross Laidlaw in goals for County was having an outstanding match.  Some excellent saves and body positioning to make the 'Well players work hard for any chance of goals. Not a great match but a big improvement on Partick Thistle performance."
-      },
-      {
-        "scored": 0,
-        "conceded": 0,
-        "date": "28/07/24",
-        "opposition": "Partick Thistle",
-        "venue": "Home",
-        "league": "Scottish League Cup - Group G",
-        "goals": null,
-        "cards": null,
-        "video": null,
-        "notes": "A whole new level of awful. Stuart Kettlewell admitted he felt 'pure anger' with his teams performance, despite it being enough to progress to the Premier Sports Cup last 16. Getting beaten 3-1 on penalties isn't good enough. Not even on the same planet as acceptable. How can we possibly claim to be a top 6 level team if we can't convincingly win over teams like this. #needagoodshake"
-      },
-      {
-        "scored": 3,
-        "conceded": 1,
-        "date": "20/07/24",
-        "opposition": "Clyde",
-        "venue": "Away",
-        "league": "Scottish League Cup - Group G",
-        "goals": [
-          {
-            "player": "Moses Ebiye",
-            "mins": 12
-          },
-          {
-            "player": "Lennon Miller",
-            "mins": "65 (pen)"
-          },
-          {
-            "player": "Filip Stuparevic",
-            "mins": 86
-          }
-        ],
-        "cards": null,
-        "video": null,
-        "notes": "Motherwell got the better of Clyde in the Scottish League Cup, with Lennon Miller among the scorers. Moses Ebiye struck to give the visitors a 12th-minute lead only for Lee Hamilton to get Clyde back on terms just after the hour. Brian Kinnear fouled Miller, who netted the resulting penalty himself.And Filip Stuparevic netted his first Motherwell goal in added time. Stuart Kettlewell's side have eight points after three games, two more than second-placed Partick Thistle, who have played twice."
-      },
-      {
-        "scored": 1,
-        "conceded": 1,
-        "date": "16/07/24",
-        "opposition": "Montrose",
-        "venue": "Away",
-        "league": "Scottish League Cup - Group G",
-        "goals": [
-          {
-            "player": "Shane Blaney",
-            "mins": 31
-          }
-        ],
-        "cards": null,
-        "video": null,
-        "notes": "Horrendous display for a team of full-time professional players against part-time plumbers and sparkies. To go through on penalties is embarrassing frankly. Motherwell were denied a late Scottish League Cup group win away to Montrose but claimed a penalty shoot-out bonus point. Stuart Kettlewell's side looked set to make it two victories from two when defender Shane Blaney's first-half header went unanswered until late on. But midfielder Ali Shrive's finish on the spin meant the third-tier side would gain at least a draw while denying their top-flight visitors three points. However, Kettlewell's men ensured it was just one point they dropped, winning 5-4 on spot kicks after the full-time whistle. Edinburgh City and Clyde play the group's other midweek game on Wednesday."
-      },
-      {
-        "scored": 3,
-        "conceded": 0,
-        "date": "13/07/24",
-        "opposition": "Edinburgh City",
-        "venue": "Home",
-        "league": "Scottish League Cup - Group G",
-        "goals": [
-          {
-            "player": "Kofi Balmer",
-            "mins": 43
-          },
-          {
-            "player": "Dan Casey",
-            "mins": 56
-          },
-          {
-            "player": "Stephen O'Donnell",
-            "mins": 61
-          }
-        ],
-        "cards": null,
-        "video": null,
-        "notes": "A clean sheet at last but not as convincing a win as perhaps should have been. Motherwell got off to a strong start in their Scottish League Cup Group G campaign with a three-goal win over fourth-tier side Edinburgh City. Debutant Kofi Balmer, who left Crystal Palace this summer, got the visitors off the mark as he headed in from veteran Andy Halliday’s corner in the opening half. Fellow defender Dan Casey grabbed the second shortly after the break, once again finishing from a corner. Right-back Stephen O’Donnell delivered the third to secure the victory for Stuart Kettlewell's Premiership hosts."
-      },
-      {
-        "scored": 4,
-        "conceded": 2,
-        "date": "09/07/24",
-        "opposition": "Livingston",
-        "venue": "Away",
-        "league": "Club friendly",
-        "goals": null,
-        "cards": null,
-        "video": null,
-        "notes": "Again, hardly easy and worryingly not a clean sheet. But a good session in places and some nice interplay between some of the squad."
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "06/07/24",
-        "opposition": "Livingston",
-        "venue": "Home",
-        "league": "Club friendly",
-        "goals": null,
-        "cards": null,
-        "video": null,
-        "notes": "Not a convincing win by any means, but a good try-out for some of the players."
-      }
-    ]
-  }
-]
+{
+  "season": "2024-25",
+  "matches": [
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "2025-05-18",
+      "opposition": "Ross County",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Moses Ebiye",
+          "mins": "83"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Stephen O'Donnell",
+          "type": "yellow",
+          "minute": 90
+        }
+      ],
+      "video": "https://youtu.be/st7e-7Myl5U?si=hrPvaMrcpx1YwWf1",
+      "notes": "A slow start for the Well - taking the second half before we really woke up, but what a half. Solidly camped in or around the Ross County box, with plenty of shots peppering the goal area. Eventually we got the goal that was well deserved and a draw was probably the fairest outcome. #COYW!!"
+    },
+    {
+      "scored": 3,
+      "conceded": 0,
+      "date": "2025-05-14",
+      "opposition": "Kilmarnock",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Luke Armstrong",
+          "mins": "70"
+        },
+        {
+          "player": "Callum Slattery",
+          "mins": "83"
+        },
+        {
+          "player": "Luke Armstrong",
+          "mins": "86"
+        }
+      ],
+      "cards": null,
+      "video": "https://youtu.be/evrAqUK14G4?si=z4RWvn45XM6ZJ_nN",
+      "notes": "A lot to be happy about for the last home game of the season. Red card for Killie didn't really help us that much, as they defended very well indeed. It was looking like a counter attack from them would break the deadlock. But then we made some good changes in the second half and justice was served. Slattery's efforts, somewhat skyward as they were, paid off with a superb give'n'go to a magical finish. Armstrong made his presence felt too and was a great addition to a team lacking that final touch. All in all a great result, even if it took it's time in coming. #COYW!!"
+    },
+    {
+      "scored": 0,
+      "conceded": 3,
+      "date": "2025-05-10",
+      "opposition": "Hearts",
+      "venue": "Away",
+      "league": null,
+      "goals": null,
+      "cards": [
+        {
+          "player": "Andy Halliday",
+          "type": "yellow",
+          "minute": 45
+        },
+        {
+          "player": "Lennon Miller",
+          "type": "yellow",
+          "minute": 54
+        }
+      ],
+      "video": null,
+      "notes": "Soft goals meant the heads went down, especially after the goal was chopped off. Safely secure in the league, but would have been nice to have seen a bit more of a fight. #COYW!!"
+    },
+    {
+      "scored": 3,
+      "conceded": 2,
+      "date": "2025-04-26",
+      "opposition": "St. Johnstone",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "mins": 39,
+          "player": "Callum Slattery"
+        },
+        {
+          "mins": 40,
+          "player": "S.Sprangler (O.G.)"
+        },
+        {
+          "mins": 48,
+          "player": "Tom Sparrow"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Callum Slattery",
+          "type": "yellow",
+          "minute": 65
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "type": "yellow",
+          "minute": 66
+        },
+        {
+          "player": "Andy Halliday",
+          "type": "yellow",
+          "minute": 68
+        },
+        {
+          "player": "Tom Sparrow",
+          "type": "yellow",
+          "minute": 89
+        }
+      ],
+      "video": null,
+      "notes": "Much better performance - AT LAST. We've proved we can win at home again, so that should hopefully get some of the gremlins off our backs. Four yellow cards and three goals gives me belief the effort was there. Need to take this spirit and attitude into the rest of the games going forward. #COYW!!"
+    },
+    {
+      "scored": 0,
+      "conceded": 0,
+      "date": "2025-04-12",
+      "opposition": "Hearts",
+      "venue": "Home",
+      "league": null,
+      "goals": null,
+      "cards": null,
+      "video": "https://youtu.be/-zeSp3cBR1g?si=GLDU3HX4yH9A_H0A",
+      "notes": "Dismall performance. No yellow cards for the Well, shows there was little or no effort. That makes us firmly rooted in the bottom six post split and we just deserve that and no more. #COYW!!"
+    },
+    {
+      "scored": 0,
+      "conceded": 2,
+      "date": "2025-04-05",
+      "opposition": "Kilmarnock",
+      "venue": "Away",
+      "league": null,
+      "goals": null,
+      "cards": [
+        {
+          "player": "Callum Slattery",
+          "type": "yellow",
+          "minute": 71
+        },
+        {
+          "player": "Dominic Thompson",
+          "type": "yellow",
+          "minute": 64
+        },
+        {
+          "player": "Kofi Balmer",
+          "type": "red",
+          "minute": 26
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "type": "yellow",
+          "minute": 12
+        }
+      ],
+      "video": "https://youtu.be/qNt3R3jQ9X8?si=C7_bPE3SKrq1IZAh",
+      "notes": "Referee killed this match in a RED card happy frenzy. Didn't know the rules and was making them up as he went along. #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 4,
+      "date": "2025-03-29",
+      "opposition": "Aberdeen",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Callum Slattery",
+          "mins": "5"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Callum Slattery",
+          "type": "yellow",
+          "minute": 68
+        },
+        {
+          "player": "Tawanda Maswanhise",
+          "type": "yellow",
+          "minute": 81
+        }
+      ],
+      "video": "https://youtu.be/6ozsGZSat4o?si=JqN2LN801FCORfUJ",
+      "notes": "Off to a good start with an early goal, but chronic defending made for painful viewing. Lucky to be only 2-1 down at half time. Will be very unlikely to get a top 6 slot before the split. #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 2,
+      "date": "2025-03-15",
+      "opposition": "St. Mirren",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Callum Slattery",
+          "mins": "35"
+        },
+        {
+          "player": "Callum Slattery",
+          "mins": "71"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Liam Gordon",
+          "type": "yellow",
+          "minute": 61
+        },
+        {
+          "player": "Andy Halliday",
+          "type": "yellow",
+          "minute": 90
+        },
+        {
+          "player": "Dan Casey",
+          "type": "yellow",
+          "minute": 90
+        }
+      ],
+      "video": null,
+      "notes": " Two goals down in 30 mins, would normally be the end of the game for us. But there was a swift response from Slattery to the second goal which gave the team something to work with in the second half. Some strong challenges being made and a better desire from the Well. Good to salvage a point, pity not to get all three. Still a good watch but far from safe in the table yet #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2025-03-01",
+      "opposition": "Rangers",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Luke Armstrong",
+          "mins": "9"
+        },
+        {
+          "player": "Tom Sparrow",
+          "mins": "30"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Andy Halliday",
+          "type": "yellow",
+          "minute": 45
+        },
+        {
+          "player": "Tom Sparrow",
+          "type": "yellow",
+          "minute": 90
+        }
+      ],
+      "video": "https://youtu.be/5Gb1LeKQFCI?si=K_26ruRu6RkCJqpd",
+      "notes": "Two newest managers in Scottish Premier League, meet for the first time at one of Scotlands 'biggest' stadiums. Nobody expected Motherwell to score first, but they did! Confidence and pressing football from the 'Well. Hounding Rangers players for the majority of the first half. A rare lapse in concentration from Dan Casey gave the home side an opening for their goal, but it was solid defending from Motherwell to claim all three points. Lots to be happy about -  long may this continue! #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2025-02-26",
+      "opposition": "Dundee",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Dan Casey",
+          "mins": "12"
+        },
+        {
+          "player": "Dan Casey",
+          "mins": "84"
+        }
+      ],
+      "cards": null,
+      "video": "https://youtu.be/QD1I3KaNFew?si=ug5F4aMo4I4NGeae",
+      "notes": "New manager - at home, midweek, had all the makings of another poor performance. But someone clearly put something in the bovril cause the Well came out flying. Attacking, one-touch passing, lots to be happy about, especially if you're Dan Casey. Much improved and long may they continue like this! #COYW!!"
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "2025-02-22",
+      "opposition": "Dundee United",
+      "venue": "Away",
+      "league": null,
+      "goals": null,
+      "cards": null,
+      "video": null,
+      "notes": "New manager - same poor performance. Same lack of effort and desire from the same suspects! At least Miller is back in the fold, so something might begin to change when he gets up to speed #COYW!!"
+    },
+    {
+      "scored": 0,
+      "conceded": 3,
+      "date": "2025-02-15",
+      "opposition": "Ross County",
+      "venue": "Home",
+      "league": null,
+      "goals": null,
+      "cards": null,
+      "video": null,
+      "notes": "Poor show - all too familiar lack of effort and desire from the usual suspects! #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 3,
+      "date": "2025-02-02",
+      "opposition": "Celtic",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Luke Armstrong",
+          "mins": "23"
+        }
+      ],
+      "cards": null,
+      "video": null,
+      "notes": "Great debut from Luke Armstrong and some flashes of brilliance from the 'Well - just nowhere near enough compared to Celtic! #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 2,
+      "date": "2025-01-25",
+      "opposition": "St. Johnstone",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Andy Halliday",
+          "mins": "4"
+        }
+      ],
+      "cards": null,
+      "video": null,
+      "notes": "Promising start, with the gift of a penalty in the first minute. But back to usual sleepy defence and lack of ambition. Some breakways, but not a single goal. Then in the second half everything goes to pot, with little effort or desire shown. Steelmen my backside! #COYW!!"
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "2025-01-18",
+      "opposition": "St. Johnstone",
+      "venue": "Away",
+      "league": "Scottish Cup - 4th Round",
+      "goals": null,
+      "cards": null,
+      "video": null,
+      "notes": "Woeful. Far too little, far too late. Doesn't bode well for the league match later this month. Steelmen my backside! #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 3,
+      "date": "2025-01-11",
+      "opposition": "Hibernian",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Callum Slattery",
+          "mins": "76"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Shane Blaney",
+          "type": "yellow",
+          "minute": 42
+        },
+        {
+          "player": "Dan Casey",
+          "type": "yellow",
+          "minute": 45
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "type": "yellow",
+          "minute": 80
+        },
+        {
+          "player": "Jack Vale",
+          "type": "red",
+          "minute": 90
+        }
+      ],
+      "video": null,
+      "notes": "Too little, too late. With injuries to Lennon Miller and goalkeeper Aston Oxborough the 'Well looked tired and at time lost. A flat performance only lightened by Callum Slattery's return to the score sheet. More of those please. One to forget. #COYW!!"
+    },
+    {
+      "scored": 0,
+      "conceded": 0,
+      "date": "2025-01-08",
+      "opposition": "Kilmarnock",
+      "venue": "Away",
+      "league": null,
+      "goals": null,
+      "cards": [
+        {
+          "player": "Andy Halliday",
+          "type": "yellow",
+          "minute": 38
+        },
+        {
+          "player": "Ewan Wilson",
+          "type": "yellow",
+          "minute": 71
+        }
+      ],
+      "video": "https://youtu.be/JwhzK1chXD0?si=UGrxAA8zECBDZ1v1",
+      "notes": "Only thing worse than the game was the weather. Freezing cold, plastic pitch - not a worldy of a game. #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 0,
+      "date": "2025-01-05",
+      "opposition": "Aberdeen",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Ewan Wilson",
+          "mins": "34"
+        },
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "45"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Davor Zdravkoski",
+          "type": "yellow",
+          "minute": 8
+        },
+        {
+          "player": "Tawanda Maswanhise",
+          "type": "yellow",
+          "minute": 15
+        }
+      ],
+      "video": "https://youtu.be/k-5c8y-1dsk?si=vlow-c5agZXsjKYs",
+      "notes": "A grinding, stop-start kind of game in the first half, mainly due to `I'm the star Nick Walsh` as referee. 'Well were quick on the break and got some decent shots on goal, with the first goal coming from youngster Ewan Wilson. Then the fun started with a timely RED card for the Dons with some unsporting behaviour from Slobodan Rubezic. To compound matters after the dust settles Maswanhise scores a brilliant second goal. Very scrappy second half, with very little to write home about. A much needed 3 points to the 'Well. #COYW!!"
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "2025-01-02",
+      "opposition": "Hearts",
+      "venue": "Away",
+      "league": null,
+      "goals": null,
+      "cards": [
+        {
+          "player": "Dan Casey",
+          "type": "yellow",
+          "minute": 65
+        }
+      ],
+      "video": "https://youtu.be/6v9bJ7MUe7s?si=O2MiAmGZFxkJVlRv",
+      "notes": "A performance Mark Knopfler would be proud of = DIRE! Worst game for a LONG time, nae desire, nae cohesion, nae points. 6 shots on goal for Motherwell for the whole game, regardless of forcing Craig Gordon into a couple of great saves - single figure efforts on goals IS NOT good enough. #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 2,
+      "date": "2024-12-29",
+      "opposition": "Rangers",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "mins": "16"
+        },
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "35"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Lennon Miller",
+          "type": "yellow",
+          "minute": 53
+        },
+        {
+          "player": "Tom Sparrow",
+          "type": "yellow",
+          "minute": 90
+        },
+        {
+          "player": "Tony Watt",
+          "type": "yellow",
+          "minute": 90
+        },
+        {
+          "player": "Sam Nicholson",
+          "type": "yellow",
+          "minute": 90
+        }
+      ],
+      "video": "https://youtu.be/5aw0kV8bdBs?si=goZVXFj6rMV_eEAx",
+      "notes": "Great start to the game, with the Glasgow team on the back foot after two Motherwell goals. Came out all guns blazing in the second half and pulled one back quite early on. Two more HORRENDOUS decisions from VAR where a perfectly decent goal is chopped off for encroachment to the goal keeper, after he palmed the ball into his own net and an incredible micrometer offside against Dan Casey. Manager red carded for praising the referee - Kevin Clancy is an absolute arse! 2 points STOLEN from Motherwell and we should be a position higher in the league.#COYW!!"
+    },
+    {
+      "scored": 0,
+      "conceded": 4,
+      "date": "2024-12-26",
+      "opposition": "Celtic",
+      "venue": "Away",
+      "league": null,
+      "goals": null,
+      "cards": null,
+      "video": null,
+      "notes": "An expected defeat to the league leaders, some promising moments, but not enough to give any glimmers of hope. Onwards and upwards! #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "2024-12-20",
+      "opposition": "Kilmarnock",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Liam Gordon",
+          "mins": "1"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Dan Casey",
+          "type": "red",
+          "minute": 77
+        }
+      ],
+      "video": "https://youtu.be/-i17UYpGIyc?si=xYVZWtY97dgq7VZp",
+      "notes": "Good goal from Motherwell early in the game, but little creativity thereafter. Game was dominated by rotten refereeing - the red card for Casey is embarrassing and trended quickly as one of the worst decisions ever in Scottish Football. Nothing more to do than chalk it up to poor stewarship. Chris Graham should be ashamed of himself! #COYW!!"
+    },
+    {
+      "scored": 4,
+      "conceded": 3,
+      "date": "2024-12-14",
+      "opposition": "Dundee United",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Tom Sparrow",
+          "mins": "67"
+        },
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "mins": "40"
+        },
+        {
+          "player": "Andy Halliday",
+          "mins": "33"
+        },
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "mins": "1"
+        }
+      ],
+      "cards": null,
+      "video": "https://youtu.be/XOJdeSTyLfQ?si=-B8g32IEXhLcBHkD",
+      "notes": "Great start from the 'Well with a very early goal. Made all the more painfull by the softest of penalties straight after it. Another flap or two in the box making it nervous viewing and a embarrassing second goal for the visitors. Fair result in the end, despite NOT getting a penalty which had more obvious and clearcut contact than the one awarded in the first half to Dundee. #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 0,
+      "date": "2024-12-07",
+      "opposition": "St. Mirren",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Tony Watt",
+          "mins": "90+3"
+        }
+      ],
+      "cards": null,
+      "video": "https://youtu.be/9TxVTWr1UEo?si=KD0WOUfKDUR5Ki4n",
+      "notes": "A very soft second yellow for the Buddies, gave us a free-kick and a man advantage in the box. Tony Watt stepped up and put the ball in the net! Hardly a world class game, but a good result for the 'Well in the end and a very welcomed three points. #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 4,
+      "date": "2024-12-04",
+      "opposition": "Dundee",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "mins": "19"
+        }
+      ],
+      "cards": null,
+      "video": "https://youtu.be/SzRjK9XHMTM?si=28tOnYju3e2P9FqS",
+      "notes": "Dismal!"
+    },
+    {
+      "scored": 0,
+      "conceded": 3,
+      "date": "2024-11-30",
+      "opposition": "Hibernian",
+      "venue": "Home",
+      "league": null,
+      "goals": null,
+      "cards": null,
+      "video": null,
+      "notes": "Two poor mistakes from Oxborough made it an uphill task to salvage anything from this game. That was made impossible with the lack of invention or creativity from the 'Well. Another loss signals a downward turn in the direction of points and the manager needs to stop the rot asap. #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 2,
+      "date": "2024-11-23",
+      "opposition": "Ross County",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Zach Robinson",
+          "mins": "83"
+        }
+      ],
+      "cards": null,
+      "video": "https://youtu.be/TtgMg9puVU0?si=ddoXr1UfBuI8sNbK",
+      "notes": "A poor result after travelling in trecherous conditions for the supporters who braved the A9. Little to write home about and not much to take from it. Sparrow picked up a knock and looks doubtful for the next few games. Still in top 6 so can't complain too much. #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2024-11-09",
+      "opposition": "St. Johnstone",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "20"
+        },
+        {
+          "player": "Tom Sparrow",
+          "mins": "34"
+        }
+      ],
+      "cards": null,
+      "video": "https://youtu.be/QXNHFUOVVbQ?si=m3w04-qjyu-hV1sM",
+      "notes": "Another great result for the 'Well.  Lennon Miller as captain again and crossing the ball brilliantly around the pitch. Two early goals, but no killer instinct, so a repeat of the nervous defending for the last 35+ mins. Important victory before the winter break. Keep up the good work boys."
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2024-10-30",
+      "opposition": "Dundee United",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "23"
+        },
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "74"
+        }
+      ],
+      "cards": null,
+      "video": "https://youtu.be/wsVdGeIoz3M?si=FDC38ZySJUxAUAxC",
+      "notes": "A somewhat messy affair up in Dundee, but shows the spirit of the team and their drive to defend and counter attack.  A defensive blunder cost United dearly for our second goal. Swap positions with United for us to go back into Fourth in the league!"
+    },
+    {
+      "scored": 0,
+      "conceded": 3,
+      "date": "2024-10-27",
+      "opposition": "Celtic",
+      "venue": "Home",
+      "league": null,
+      "goals": null,
+      "cards": null,
+      "video": "https://youtu.be/ptGRflXTrQA?si=uXYJVJsvegGYx8Ho",
+      "notes": "Another home defeat made even more painful as we had a number of shots on target and hit the post on two occassions. Lennon Miller doing what he does best. Neverthless, Celtic are THE quality side and an expected loss for us. But we came close to spoiling the party a little..."
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "2024-10-19",
+      "opposition": "Dundee",
+      "venue": "Home",
+      "league": null,
+      "goals": null,
+      "cards": null,
+      "video": null,
+      "notes": "A home defeat at the hands of a strong Dundee.  Rallied in the second half to batter their defences, but unable to penetrate and sink a goal. Unfortunately, the whistle came before we were able to equalise. Onwards and upwards."
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2024-10-05",
+      "opposition": "Hibernian",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Andy Halliday",
+          "mins": "80"
+        },
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "mins": "56"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Tom Sparrow",
+          "type": "yellow",
+          "minute": 83
+        },
+        {
+          "player": "Ewan Wilson",
+          "type": "yellow",
+          "minute": 31
+        },
+        {
+          "player": "Davor Zdravkoski",
+          "type": "yellow",
+          "minute": 22
+        }
+      ],
+      "video": "https://youtu.be/rgQ8PVTTK-0?si=zqzlBHbRAwpR5NWm",
+      "notes": "Nightmare for Stephen O'Donnell in the box, couldn't clear his feet and Hibbies pounced. A red card for Hibs opens the game back up for the 'Well and Andy Halliday, of all people, steps up and nets a goal. #COYW 4th in the league!"
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2024-09-28",
+      "opposition": "St. Mirren",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Lennon Miller",
+          "mins": "44 (Pen)"
+        },
+        {
+          "player": "Lennon Miller",
+          "mins": "19"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Tony Watt",
+          "type": "yellow",
+          "minute": 90
+        },
+        {
+          "player": "Kofi Balmer",
+          "type": "yellow",
+          "minute": 51
+        },
+        {
+          "player": "Andy Halliday",
+          "type": "yellow",
+          "minute": 48
+        },
+        {
+          "player": "Dan Casey",
+          "type": "red",
+          "minute": 47
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "type": "yellow",
+          "minute": 45
+        }
+      ],
+      "video": "https://youtu.be/3OVjgoilj1g?si=H-KMO8Seg8P6FeBm",
+      "notes": "A great performance from Lennon Miller to secure all 3 points. Nervous moments with red cards for both teams, penalties and the one against us SAVED. Scrappy and somewhat ill-tempered with a fair number of the players having played against or alongside each other in previous Motherwell mateches. The team dug deep and pulled out a vital victory to continue a good run of form."
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2024-09-20",
+      "opposition": "Dundee United",
+      "venue": "Home",
+      "league": "League Cup - Quarter Finals",
+      "goals": [
+        {
+          "player": "Lennon Miller",
+          "mins": "90+1 (Pen)"
+        },
+        {
+          "player": "Zach Robinson",
+          "mins": "45+1"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Tony Watt",
+          "type": "yellow",
+          "minute": 90
+        },
+        {
+          "player": "Kofi Balmer",
+          "type": "yellow",
+          "minute": 51
+        },
+        {
+          "player": "Andy Halliday",
+          "type": "yellow",
+          "minute": 48
+        },
+        {
+          "player": "Dan Casey",
+          "type": "red",
+          "minute": 47
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "type": "yellow",
+          "minute": 45
+        }
+      ],
+      "video": "https://youtu.be/pAmzFcReEuk?si=AygiDx_CqGaPwK9E",
+      "notes": "Some brilliant passages of play when the 'Well were totally in control. A wonder strike from former Steelman Louis Moult put them under pressure but they rose to the occassion. None more so than the ever talented Lennon Miller. Slotting home a penalty to give the 'Well the ticket to Hampden.  Hard fought in places towards the end but excellent indication of what this group of players can achieve."
+    },
+    {
+      "scored": 1,
+      "conceded": 2,
+      "date": "2024-09-14",
+      "opposition": "Aberdeen",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Moses Ebiye",
+          "mins": "88"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Paul McGinn",
+          "type": "yellow",
+          "minute": 85
+        },
+        {
+          "player": "Jack Vale",
+          "type": "yellow",
+          "minute": 67
+        },
+        {
+          "player": "Zach Robinson",
+          "type": "yellow",
+          "minute": 52
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "type": "yellow",
+          "minute": 23
+        },
+        {
+          "player": "Davor Zdravkovskir",
+          "type": "yellow",
+          "minute": 23
+        }
+      ],
+      "video": "https://youtu.be/eMGOrstwq8U?si=niwDMkmTvBKNVUqp",
+      "notes": "Some positives to take on the road back to Motherwell, but sadly not three points. A late effort from Moses got us on the score sheet, just a little too late in the game for any momentum. Aberdeen defended too strongly and by the number of cards dished out to 'Well players it was somewhat scrappy. Not crest fallen, but a bump in the road to consistency. #COYW - still 5th! "
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2024-08-31",
+      "opposition": "St. Johnstone",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Dan Casey",
+          "mins": 11
+        },
+        {
+          "player": "Moses Ebiye",
+          "mins": "90+4"
+        }
+      ],
+      "cards": null,
+      "video": null,
+      "notes": "Set pieces appear to be the road to success for the 'Well. Dan Casey making his presence felt in the box and slotting in a lovely headed effort. St. Johnstone came back into it, against the run of play but 'Well dug deep and made some informed subs. Life cam back into the game again and a worthy winner for Moses Ebiye to take all three points. It clearly meant a lot to the management team as they came onto the pitch to thank the travelling support. A great result - more of the same please. 5th in the league !"
+    },
+    {
+      "scored": 3,
+      "conceded": 1,
+      "date": "2024-08-25",
+      "opposition": "Hearts",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Paul McGinn",
+          "mins": 24
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "mins": "59"
+        },
+        {
+          "player": "Tom Sparrow",
+          "mins": 81
+        }
+      ],
+      "cards": [
+        {
+          "player": "Andy Halliday",
+          "type": "yellow",
+          "minute": 44
+        }
+      ],
+      "video": "https://youtu.be/zg1cRCsZZMk?si=NKMuIpPfHrKnTSNU",
+      "notes": "Motherwell played some of the nicest football as they have in a LONG time.  The manager was very pleased as were the supporters. A rare captain and vice captain goal tally, with a very cheeky number from young Sparrow to round off the game.  Lots of positives to take away ! #COYW."
+    },
+    {
+      "scored": 1,
+      "conceded": 0,
+      "date": "2024-08-18",
+      "opposition": "Kilmarnock",
+      "venue": "Home",
+      "league": "League Cup - 2nd Round",
+      "goals": [
+        {
+          "player": "Moses Ebiye",
+          "mins": "96' ET"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Tom Sparrow",
+          "type": "yellow",
+          "minute": 105
+        },
+        {
+          "player": "Dan Casey",
+          "type": "yellow",
+          "minute": 48
+        }
+      ],
+      "video": null,
+      "notes": "Very scrappy game with Motherwell having a LOT of possession once Kilmarnock went down to ten men.  Some great chances for the majority of the second half, but no killer instinct or finishing touch. Extra time proved to be were the change happened and Moses Ebiye was the difference, with an excellent headed goal.  Lennon Miller played his socks off and rightly got a standing ovation from the Well supporters."
+    },
+    {
+      "scored": 1,
+      "conceded": 2,
+      "date": "2024-08-10",
+      "opposition": "Rangers",
+      "venue": "Away",
+      "league": null,
+      "goals": null,
+      "cards": null,
+      "video": null,
+      "notes": "The big positive for Kettlewell will be his team's spirited second-half showing. The obvious negative is the injury to summer signing Stamatelopoulos.The Australia international, making his first start since April, had a limited pre-season but impressed with his link-up play early in the game, playing a role in a golden first-half chance for Lennon Miller.If the striker is to face any time on the sidelines, he will join an injury list that is getting out of hand.His replacement, Zach Robinson, also caused problems for the Rangers defence, firstly slicing over from inside the area before forcing Jack Butland to make a fine stop low to his left in the second half.The Motherwell forward line were guilty of passing up opportunities in last weekend's draw with Ross County, and the League Cup group game against Partick Thistle.That is an issue Kettlewell will be desperate to address immediately, given his side have now failed to score in their past three games."
+    },
+    {
+      "scored": 0,
+      "conceded": 0,
+      "date": "2024-08-03",
+      "opposition": "Ross County",
+      "venue": "Home",
+      "league": null,
+      "goals": null,
+      "cards": null,
+      "video": "https://youtu.be/6keDq6WCTGM?si=GpAO6LfgPD4duvPa",
+      "notes": "A handful of chances from Motherwell but Ross Laidlaw in goals for County was having an outstanding match.  Some excellent saves and body positioning to make the 'Well players work hard for any chance of goals. Not a great match but a big improvement on Partick Thistle performance."
+    },
+    {
+      "scored": 0,
+      "conceded": 0,
+      "date": "2024-07-28",
+      "opposition": "Partick Thistle",
+      "venue": "Home",
+      "league": "Scottish League Cup - Group G",
+      "goals": null,
+      "cards": null,
+      "video": null,
+      "notes": "A whole new level of awful. Stuart Kettlewell admitted he felt 'pure anger' with his teams performance, despite it being enough to progress to the Premier Sports Cup last 16. Getting beaten 3-1 on penalties isn't good enough. Not even on the same planet as acceptable. How can we possibly claim to be a top 6 level team if we can't convincingly win over teams like this. #needagoodshake"
+    },
+    {
+      "scored": 3,
+      "conceded": 1,
+      "date": "2024-07-20",
+      "opposition": "Clyde",
+      "venue": "Away",
+      "league": "Scottish League Cup - Group G",
+      "goals": [
+        {
+          "player": "Moses Ebiye",
+          "mins": 12
+        },
+        {
+          "player": "Lennon Miller",
+          "mins": "65 (pen)"
+        },
+        {
+          "player": "Filip Stuparevic",
+          "mins": 86
+        }
+      ],
+      "cards": null,
+      "video": null,
+      "notes": "Motherwell got the better of Clyde in the Scottish League Cup, with Lennon Miller among the scorers. Moses Ebiye struck to give the visitors a 12th-minute lead only for Lee Hamilton to get Clyde back on terms just after the hour. Brian Kinnear fouled Miller, who netted the resulting penalty himself.And Filip Stuparevic netted his first Motherwell goal in added time. Stuart Kettlewell's side have eight points after three games, two more than second-placed Partick Thistle, who have played twice."
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "2024-07-16",
+      "opposition": "Montrose",
+      "venue": "Away",
+      "league": "Scottish League Cup - Group G",
+      "goals": [
+        {
+          "player": "Shane Blaney",
+          "mins": 31
+        }
+      ],
+      "cards": null,
+      "video": null,
+      "notes": "Horrendous display for a team of full-time professional players against part-time plumbers and sparkies. To go through on penalties is embarrassing frankly. Motherwell were denied a late Scottish League Cup group win away to Montrose but claimed a penalty shoot-out bonus point. Stuart Kettlewell's side looked set to make it two victories from two when defender Shane Blaney's first-half header went unanswered until late on. But midfielder Ali Shrive's finish on the spin meant the third-tier side would gain at least a draw while denying their top-flight visitors three points. However, Kettlewell's men ensured it was just one point they dropped, winning 5-4 on spot kicks after the full-time whistle. Edinburgh City and Clyde play the group's other midweek game on Wednesday."
+    },
+    {
+      "scored": 3,
+      "conceded": 0,
+      "date": "2024-07-13",
+      "opposition": "Edinburgh City",
+      "venue": "Home",
+      "league": "Scottish League Cup - Group G",
+      "goals": [
+        {
+          "player": "Kofi Balmer",
+          "mins": 43
+        },
+        {
+          "player": "Dan Casey",
+          "mins": 56
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "mins": 61
+        }
+      ],
+      "cards": null,
+      "video": null,
+      "notes": "A clean sheet at last but not as convincing a win as perhaps should have been. Motherwell got off to a strong start in their Scottish League Cup Group G campaign with a three-goal win over fourth-tier side Edinburgh City. Debutant Kofi Balmer, who left Crystal Palace this summer, got the visitors off the mark as he headed in from veteran Andy Halliday’s corner in the opening half. Fellow defender Dan Casey grabbed the second shortly after the break, once again finishing from a corner. Right-back Stephen O’Donnell delivered the third to secure the victory for Stuart Kettlewell's Premiership hosts."
+    },
+    {
+      "scored": 4,
+      "conceded": 2,
+      "date": "2024-07-09",
+      "opposition": "Livingston",
+      "venue": "Away",
+      "league": "Club friendly",
+      "goals": null,
+      "cards": null,
+      "video": null,
+      "notes": "Again, hardly easy and worryingly not a clean sheet. But a good session in places and some nice interplay between some of the squad."
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2024-07-06",
+      "opposition": "Livingston",
+      "venue": "Home",
+      "league": "Club friendly",
+      "goals": null,
+      "cards": null,
+      "video": null,
+      "notes": "Not a convincing win by any means, but a good try-out for some of the players."
+    }
+  ]
+}

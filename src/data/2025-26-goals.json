@@ -1,62 +1,65 @@
-[
-  {
-    "season": "2025-26",
-    "details": [
-      {
-        "player": "Regan Charles-Cook",
-        "goals": 1
-      },
-      {
-        "player": "Lukas Fadinger",
-        "goals": 2,
-        "assists": 2
-      },
-      {
-        "player": "Liam Gordon",
-        "assists": 1
-      },
-      {
-        "player": "Elijah Just",
-        "assists": 3,
-        "goals": 1
-      },
-      {
-        "player": "Johnny Koutrombis",
-        "goals": 1
-      },
-      {
-        "player": "Emmanuel Longelo",
-        "goals": 4,
-        "assists": 2
-      },
-      {
-        "player": "Tawanda Maswanhise",
-        "goals": 9,
-        "assists": 1
-      },
-      {
-        "player": "Paul McGinn",
-        "assists": 1
-      },
-      {
-        "player": "Stephen O'Donnell",
-        "goals": 1
-      },
-      {
-        "player": "Callum Slattery",
-        "assists": 3,
-        "goals": 1
-      },
-      {
-        "player": "Apostolos Stamatelopoulos",
-        "goals": 5,
-        "assists": 1
-      },
-      {
-        "player": "Elliot Watt",
-        "assists": 1,
-        "goals": 1
-      }
-    ]
-  }
-]
+{
+  "season": "2025-26",
+  "topScorers": [
+    {
+      "player": "Regan Charles-Cook",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Lukas Fadinger",
+      "goals": 2,
+      "assists": 2
+    },
+    {
+      "player": "Liam Gordon",
+      "assists": 1,
+      "goals": 0
+    },
+    {
+      "player": "Elijah Just",
+      "assists": 3,
+      "goals": 1
+    },
+    {
+      "player": "Johnny Koutrombis",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Emmanuel Longelo",
+      "goals": 4,
+      "assists": 2
+    },
+    {
+      "player": "Tawanda Maswanhise",
+      "goals": 9,
+      "assists": 1
+    },
+    {
+      "player": "Paul McGinn",
+      "assists": 1,
+      "goals": 0
+    },
+    {
+      "player": "Stephen O'Donnell",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Callum Slattery",
+      "assists": 3,
+      "goals": 1
+    },
+    {
+      "player": "Apostolos Stamatelopoulos",
+      "goals": 5,
+      "assists": 1
+    },
+    {
+      "player": "Elliot Watt",
+      "assists": 1,
+      "goals": 1
+    }
+  ]
+}

@@ -16,17 +16,20 @@ vi.mock("../../components/football/matchDetails", () => ({
 describe("FootballSeasonResults", () => {
   const mockGoals = [
     {
+      season: "2023-24",
       details: [{ player: "John", goals: 5, assists: 2 }],
     },
   ];
 
   const mockMatches = [
     {
+      season: "2023-24",
+      startDate: "2023-08-01",
       details: [
         {
           date: "01/01/2024",
           venue: "home",
-          opponent: "Team A",
+          opposition: "Team A",
           scored: 2,
           conceded: 1,
           notes: "Great game",

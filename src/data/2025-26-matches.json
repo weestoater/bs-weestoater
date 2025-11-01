@@ -1,416 +1,414 @@
-[
-  {
-    "season": "2025-26",
-    "details": [
-      {
-        "scored": 2,
-        "conceded": 0,
-        "date": "29/10/25",
-        "opposition": "Dundee United",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "42"
-          },
-          {
-            "player": "Elliot Watt",
-            "mins": "77"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Callum Hendry",
-            "mins": "63",
-            "card": "yellow"
-          }
-        ],
-        "video": "https://youtu.be/6PDveqcPXzU?si=mWKrqpOpdHWCLPNN",
-        "notes": "A slow mid week start, but still dominant in possession for the first half. Chances going stray and some tightness needed, then a nicely worked goal before the break settled some nerves. United came back into it in the second half, but the 'Well stood strong and defended nicely. A peach of a hit from Elliot Watt to open his account and the game was put to bed. Steadily seen out with more determined defence work. #claret&amber  #COYW!!"
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "25/10/25",
-        "opposition": "Livingston",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Apostolos Stamatelopoulos",
-            "mins": "59 (Pen)"
-          },
-          {
-            "player": "Elijah Just",
-            "mins": "90+3"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Liam Gordon",
-            "mins": "47",
-            "card": "yellow"
-          },
-          {
-            "player": "Stephen O'Donnell",
-            "mins": "84",
-            "card": "yellow"
-          }
-        ],
-        "video": "https://youtu.be/HuUAbrekxaA?si=Sx1wQMhTt1QbEiG7",
-        "notes": "A promising start undone by a penalty from a tackle that didn't need to happen. But continued pressure from the 'Well and lots to be happy about. Just and Slattery paired up for a lot of the play, but a mad moment from Livi gave us the penalty and equaliser. Just got a goal chopped off, but didn't put his head down and his winner was a worthy reward for his efforts. #claret&amber  #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 2,
-        "date": "18/10/25",
-        "opposition": "Falkirk",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "22"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Elliot Watt",
-            "mins": "45+1",
-            "card": "yellow"
-          }
-        ],
-        "video": null,
-        "notes": "Another defeat snatched from the jaws of victory. Brilliant first half, with lots of chances created and some dubious VAR decisions. But instead of coming out stronger and more determind in the second half we collectively switched off. Two goals disallowed and heads down - means we realistically got what we deserved out of it. #claret&amber  #COYW!!"
-      },
-      {
-        "scored": 2,
-        "conceded": 3,
-        "date": "05/10/25",
-        "opposition": "Celtic",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Apostolos Stamatelopoulos",
-            "mins": "40"
-          },
-          {
-            "player": "Apostolos Stamatelopoulos",
-            "mins": "56 (Pen)"
-          }
-        ],
-        "cards": null,
-        "video": "https://youtu.be/ImGxTPQ9lQM?si=WQf8Ktsj0gqrFUID",
-        "notes": "Couldn't watch the game live, I was just too nervous. Ward made another howler, how many has that been this season. In a game that everyone has to be at their best, he passes the ball out to a Celtic player - I give up. A good performance, other than that, with Celtic being pushed more than by other teams for sure. #claret&amber  #COYW!!"
-      },
-      {
-        "scored": 2,
-        "conceded": 0,
-        "date": "27/09/25",
-        "opposition": "Aberdeen",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Johnny Koutrombis",
-            "mins": "90+2"
-          },
-          {
-            "player": "Apostolos Stamatelopoulos",
-            "mins": "90+7 (Pen)"
-          }
-        ],
-        "cards": null,
-        "video": null,
-        "notes": "Back to majority share of possession (63.5%), but began with a nervy few minutes. Calum Ward being called upon to make a save from an effort from Nisbet. Some crunching tackles let go by the referee, but eventually he found his cards and produced yellow a couple of times for some of the Dons players - who got subbed off shortly afterwards. It took into stoppage time for Motherwell to find the net, though they had been dominant for large periods of the first and second halves.  An horrendous error from the Dons keeper let an easy stop trickle through for our opening goal. Instead of playing out the clock the 'Well went for another goal and were rewarded with a penalty, slightly soft to be fair, but taken very convincingly by Stamatelopoulos. Puts us 4th in the league. #claret&amber  #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 0,
-        "date": "20/09/25",
-        "opposition": "Aberdeen",
-        "venue": "Away",
-        "league": "League Cup - Quarter-finals",
-        "goals": [
-          {
-            "player": "Regan Charles-Cook",
-            "mins": "63"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Ibrahim Said",
-            "mins": "58",
-            "card": "yellow"
-          },
-          {
-            "player": "Lukas Fadinger",
-            "mins": "72",
-            "card": "yellow"
-          },
-          {
-            "player": "Emmanuel Longelo",
-            "mins": "73",
-            "card": "yellow"
-          }
-        ],
-        "video": null,
-        "notes": "Much lower possession for the match than we have had during league games so far this season, but that doesn't matter a jot - we won a game! Clean sheet and more goals than the opposition. Job done !!! Semi-finals here we come - Hampden here we come!!! #claret&amber  #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 1,
-        "date": "13/09/25",
-        "opposition": "Dundee",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "33"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Emmanuel Longelo",
-            "mins": "89",
-            "card": "yellow"
-          }
-        ],
-        "video": null,
-        "notes": "Described by Askou after the match as the best and worst he's seen them play this season. First half was free flowing and owned the game. Second half a total lack of concentration from all the players on a set piece and we lose a very soft goal. Being a man up should have put us back in the drivers seat, but we looked more nervy if anything. #claret&amber  #COYW!!"
-      },
-      {
-        "scored": 2,
-        "conceded": 2,
-        "date": "30/08/25",
-        "opposition": "Kilmarnock",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "45+1"
-          },
-          {
-            "player": "Emmanuel Longelo",
-            "mins": "62"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Elliot Watt",
-            "mins": "43",
-            "card": "yellow"
-          },
-          {
-            "player": "Liam Gordon",
-            "mins": "90+4",
-            "card": "yellow"
-          }
-        ],
-        "video": "https://youtu.be/B7x4hkY14lg?si=nEcZq9s4BUpWXa7f",
-        "notes": "Perhaps showed Killie too much respect in the opening half hour, but got our equaliser on half time. Same story as last week, get a lead then unable to hold onto it. It's great to have exciting football and to remain unbeaten, but it would be really nice to win a game in the league too.  #claret&amber  #COYW!!"
-      },
-      {
-        "scored": 3,
-        "conceded": 3,
-        "date": "23/08/25",
-        "opposition": "Heart of Midlothian",
-        "venue": "Away",
-        "league": null,
-        "goals": [
-          {
-            "player": "Callum Slattery",
-            "mins": "21"
-          },
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "49"
-          },
-          {
-            "player": "Emmanuel Longelo",
-            "mins": "62"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Callum Slattery",
-            "mins": "24",
-            "card": "yellow"
-          },
-          {
-            "player": "Callum Hendry",
-            "mins": "78",
-            "card": "yellow"
-          }
-        ],
-        "video": "https://youtu.be/e3lFfwgVH8U?si=Iuyk4P_ZUmcJAG9z",
-        "notes": "Lions share of possession in the first half and a score of goals, what is not to like. But the last 25 minutes will need a serious review to see what went wrong and how to improve. As before the managers interview after the match was the definition of coaching - nothing to be dissappointed with, only opportunities to improve. We are all learning the new playing style and I for one am happy with the results. A win would be nice, but very nice to watch and great to see Derek McInnes sweating in the home dugout. #claret&amber  #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 0,
-        "date": "15/08/25",
-        "opposition": "St. Johnstone",
-        "venue": "Away",
-        "league": "League Cup",
-        "goals": [
-          {
-            "player": "Lukas Fadinger",
-            "mins": "109"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Stephen O'Donnell",
-            "mins": "50",
-            "card": "yellow"
-          }
-        ],
-        "video": null,
-        "notes": "Once again - lots of possession but not any precision in the final third. First game since the record transfer fee from Lennon Miller going to Udinese, but we need to fill the void and get a striker or two on the squad. No use having 70% possession, but 0-0 draw after 90 minutes. Through the the quarter-finals and onwards from there hopefully. #claret&amber  #COYW!!"
-      },
-      {
-        "scored": 0,
-        "conceded": 0,
-        "date": "09/08/25",
-        "opposition": "St. Mirren",
-        "venue": "Away",
-        "league": null,
-        "goals": null,
-        "cards": [
-          {
-            "player": "Paul McGinn",
-            "mins": "86",
-            "card": "yellow"
-          }
-        ],
-        "video": null,
-        "notes": "A lot of possession but not any precision. Sad story from an otherwise impressive display from the Well. A few good chances that came to nothing, but not a game to remember. Windy conditions ruined the game, but a share of the points is better than a loss. #claret&amber  #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 1,
-        "date": "02/08/25",
-        "opposition": "Rangers",
-        "venue": "Home",
-        "league": null,
-        "goals": [
-          {
-            "player": "Emmanuel Longelo",
-            "mins": "87"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Elliot Watt",
-            "mins": "60",
-            "card": "yellow"
-          }
-        ],
-        "iplayer": "https://www.bbc.co.uk/iplayer/episode/m002h34g/sportscene-premiership-highlights-202526-motherwell-v-rangers-highlights",
-        "video": "https://youtu.be/x4VDauwzGEk?si=XvpCGL1S_UHNTjIJ",
-        "notes": "A sloppy goal conceded from self inflicted corner, was not part of the game plan. But since when do Motherwell make it easy on themselves. They held out for the remainder of the first have, with a smattering of opportunities to speak of themselves. But the plan was fully executed for the majority of the second half. Dominant, free flowing and most of all joyous to watch. Rangers were not just on the back foot, they were beaten to every ball, every half chance. Their own manager expressed his lack of confidence in post match interviews, saying they were lucky to get a point. Jens Berthel Askou was genuinely disappointed with the result, half expecting to get all three points. But it was not to be, either way if this is the future - bring in on! #claret&amber  #COYW!!"
-      },
-      {
-        "scored": 3,
-        "conceded": 0,
-        "date": "22/07/25",
-        "opposition": "Greenock Morton",
-        "venue": "Home",
-        "league": "League Cup",
-        "goals": [
-          {
-            "player": "Apostolos Stamatelopoulos",
-            "mins": "52"
-          },
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "83"
-          },
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "90+3"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Callum Slattery",
-            "mins": "34",
-            "card": "yellow"
-          }
-        ],
-        "video": null,
-        "notes": "At last. A game that Motherwell have controlled and looked close to comfortable, for the majority of play.  Many commentators praised the team for commited and progressive play, with the manager saying he'd rather they made mistake for being to adventurous than from sitting back and being safe.  An easy tap in for Stamatelopoulos and a double for Maswanhise - his second goal was an absolute SCREAMER.  If this is the way we can play against one of the first 'proper' teams we've faced, then we should be in good shape for the season ahead. Let's just hope its a taste of things to come under our new manager.  #COYW!!"
-      },
-      {
-        "scored": 1,
-        "conceded": 0,
-        "date": "19/07/25",
-        "opposition": "Stenhousemuir",
-        "venue": "Away",
-        "league": "League Cup",
-        "goals": [
-          {
-            "player": "Stephen O'Donnell",
-            "mins": "41"
-          }
-        ],
-        "cards": null,
-        "video": null,
-        "notes": "Third painful game in a row. Weather played a big part in the match, as well as the tattie field they called a pitch. Write it up as a win, but nothing to celebrate on the road back home.  #COYW!!"
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "15/07/25",
-        "opposition": "Peterhead",
-        "venue": "Home",
-        "league": "League Cup",
-        "goals": [
-          {
-            "player": "Emmanuel Longelo",
-            "mins": "28"
-          },
-          {
-            "player": "Lukas Fadinger",
-            "mins": "90+1"
-          }
-        ],
-        "cards": [
-          {
-            "player": "Callum Slattery",
-            "mins": "32",
-            "card": "yellow"
-          }
-        ],
-        "video": null,
-        "notes": "Another nervy performance from a team clearly finding it's way through the game. The Longelo goal was a screamer and gives me hope for better things to come. But we can only pray this is pre-season jitters and the team will come good in the league.  #COYW!!"
-      },
-      {
-        "scored": 2,
-        "conceded": 2,
-        "date": "12/07/25",
-        "opposition": "Clyde",
-        "venue": "Away",
-        "league": "League Cup",
-        "goals": [
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "21"
-          },
-          {
-            "player": "Tawanda Maswanhise",
-            "mins": "48"
-          }
-        ],
-        "cards": null,
-        "video": null,
-        "notes": "Far from convincing, slightly worrying to be fair. To get the bonus point and win penalties is good, but should never have needed to take that long. #COYW!!"
-      }
-    ]
-  }
-]
+{
+  "season": "2025-26",
+  "matches": [
+    {
+      "scored": 2,
+      "conceded": 0,
+      "date": "2025-10-29",
+      "opposition": "Dundee United",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "42"
+        },
+        {
+          "player": "Elliot Watt",
+          "mins": "77"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Callum Hendry",
+          "type": "yellow",
+          "minute": 63
+        }
+      ],
+      "video": "https://youtu.be/6PDveqcPXzU?si=mWKrqpOpdHWCLPNN",
+      "notes": "A slow mid week start, but still dominant in possession for the first half. Chances going stray and some tightness needed, then a nicely worked goal before the break settled some nerves. United came back into it in the second half, but the 'Well stood strong and defended nicely. A peach of a hit from Elliot Watt to open his account and the game was put to bed. Steadily seen out with more determined defence work. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2025-10-25",
+      "opposition": "Livingston",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "mins": "59 (Pen)"
+        },
+        {
+          "player": "Elijah Just",
+          "mins": "90+3"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Liam Gordon",
+          "type": "yellow",
+          "minute": 47
+        },
+        {
+          "player": "Stephen O'Donnell",
+          "type": "yellow",
+          "minute": 84
+        }
+      ],
+      "video": "https://youtu.be/HuUAbrekxaA?si=Sx1wQMhTt1QbEiG7",
+      "notes": "A promising start undone by a penalty from a tackle that didn't need to happen. But continued pressure from the 'Well and lots to be happy about. Just and Slattery paired up for a lot of the play, but a mad moment from Livi gave us the penalty and equaliser. Just got a goal chopped off, but didn't put his head down and his winner was a worthy reward for his efforts. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 2,
+      "date": "2025-10-18",
+      "opposition": "Falkirk",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "22"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Elliot Watt",
+          "type": "yellow",
+          "minute": 45
+        }
+      ],
+      "video": null,
+      "notes": "Another defeat snatched from the jaws of victory. Brilliant first half, with lots of chances created and some dubious VAR decisions. But instead of coming out stronger and more determind in the second half we collectively switched off. Two goals disallowed and heads down - means we realistically got what we deserved out of it. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 3,
+      "date": "2025-10-05",
+      "opposition": "Celtic",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "mins": "40"
+        },
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "mins": "56 (Pen)"
+        }
+      ],
+      "cards": null,
+      "video": "https://youtu.be/ImGxTPQ9lQM?si=WQf8Ktsj0gqrFUID",
+      "notes": "Couldn't watch the game live, I was just too nervous. Ward made another howler, how many has that been this season. In a game that everyone has to be at their best, he passes the ball out to a Celtic player - I give up. A good performance, other than that, with Celtic being pushed more than by other teams for sure. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 0,
+      "date": "2025-09-27",
+      "opposition": "Aberdeen",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Johnny Koutrombis",
+          "mins": "90+2"
+        },
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "mins": "90+7 (Pen)"
+        }
+      ],
+      "cards": null,
+      "video": null,
+      "notes": "Back to majority share of possession (63.5%), but began with a nervy few minutes. Calum Ward being called upon to make a save from an effort from Nisbet. Some crunching tackles let go by the referee, but eventually he found his cards and produced yellow a couple of times for some of the Dons players - who got subbed off shortly afterwards. It took into stoppage time for Motherwell to find the net, though they had been dominant for large periods of the first and second halves.  An horrendous error from the Dons keeper let an easy stop trickle through for our opening goal. Instead of playing out the clock the 'Well went for another goal and were rewarded with a penalty, slightly soft to be fair, but taken very convincingly by Stamatelopoulos. Puts us 4th in the league. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 0,
+      "date": "2025-09-20",
+      "opposition": "Aberdeen",
+      "venue": "Away",
+      "league": "League Cup - Quarter-finals",
+      "goals": [
+        {
+          "player": "Regan Charles-Cook",
+          "mins": "63"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Ibrahim Said",
+          "type": "yellow",
+          "minute": 58
+        },
+        {
+          "player": "Lukas Fadinger",
+          "type": "yellow",
+          "minute": 72
+        },
+        {
+          "player": "Emmanuel Longelo",
+          "type": "yellow",
+          "minute": 73
+        }
+      ],
+      "video": null,
+      "notes": "Much lower possession for the match than we have had during league games so far this season, but that doesn't matter a jot - we won a game! Clean sheet and more goals than the opposition. Job done !!! Semi-finals here we come - Hampden here we come!!! #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "2025-09-13",
+      "opposition": "Dundee",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "33"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Emmanuel Longelo",
+          "type": "yellow",
+          "minute": 89
+        }
+      ],
+      "video": null,
+      "notes": "Described by Askou after the match as the best and worst he's seen them play this season. First half was free flowing and owned the game. Second half a total lack of concentration from all the players on a set piece and we lose a very soft goal. Being a man up should have put us back in the drivers seat, but we looked more nervy if anything. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 2,
+      "date": "2025-08-30",
+      "opposition": "Kilmarnock",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "45+1"
+        },
+        {
+          "player": "Emmanuel Longelo",
+          "mins": "62"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Elliot Watt",
+          "type": "yellow",
+          "minute": 43
+        },
+        {
+          "player": "Liam Gordon",
+          "type": "yellow",
+          "minute": 90
+        }
+      ],
+      "video": "https://youtu.be/B7x4hkY14lg?si=nEcZq9s4BUpWXa7f",
+      "notes": "Perhaps showed Killie too much respect in the opening half hour, but got our equaliser on half time. Same story as last week, get a lead then unable to hold onto it. It's great to have exciting football and to remain unbeaten, but it would be really nice to win a game in the league too.  #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 3,
+      "conceded": 3,
+      "date": "2025-08-23",
+      "opposition": "Heart of Midlothian",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Callum Slattery",
+          "mins": "21"
+        },
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "49"
+        },
+        {
+          "player": "Emmanuel Longelo",
+          "mins": "62"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Callum Slattery",
+          "type": "yellow",
+          "minute": 24
+        },
+        {
+          "player": "Callum Hendry",
+          "type": "yellow",
+          "minute": 78
+        }
+      ],
+      "video": "https://youtu.be/e3lFfwgVH8U?si=Iuyk4P_ZUmcJAG9z",
+      "notes": "Lions share of possession in the first half and a score of goals, what is not to like. But the last 25 minutes will need a serious review to see what went wrong and how to improve. As before the managers interview after the match was the definition of coaching - nothing to be dissappointed with, only opportunities to improve. We are all learning the new playing style and I for one am happy with the results. A win would be nice, but very nice to watch and great to see Derek McInnes sweating in the home dugout. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 0,
+      "date": "2025-08-15",
+      "opposition": "St. Johnstone",
+      "venue": "Away",
+      "league": "League Cup",
+      "goals": [
+        {
+          "player": "Lukas Fadinger",
+          "mins": "109"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Stephen O'Donnell",
+          "type": "yellow",
+          "minute": 50
+        }
+      ],
+      "video": null,
+      "notes": "Once again - lots of possession but not any precision in the final third. First game since the record transfer fee from Lennon Miller going to Udinese, but we need to fill the void and get a striker or two on the squad. No use having 70% possession, but 0-0 draw after 90 minutes. Through the the quarter-finals and onwards from there hopefully. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 0,
+      "conceded": 0,
+      "date": "2025-08-09",
+      "opposition": "St. Mirren",
+      "venue": "Away",
+      "league": null,
+      "goals": null,
+      "cards": [
+        {
+          "player": "Paul McGinn",
+          "type": "yellow",
+          "minute": 86
+        }
+      ],
+      "video": null,
+      "notes": "A lot of possession but not any precision. Sad story from an otherwise impressive display from the Well. A few good chances that came to nothing, but not a game to remember. Windy conditions ruined the game, but a share of the points is better than a loss. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "2025-08-02",
+      "opposition": "Rangers",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Emmanuel Longelo",
+          "mins": "87"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Elliot Watt",
+          "type": "yellow",
+          "minute": 60
+        }
+      ],
+      "iplayer": "https://www.bbc.co.uk/iplayer/episode/m002h34g/sportscene-premiership-highlights-202526-motherwell-v-rangers-highlights",
+      "video": "https://youtu.be/x4VDauwzGEk?si=XvpCGL1S_UHNTjIJ",
+      "notes": "A sloppy goal conceded from self inflicted corner, was not part of the game plan. But since when do Motherwell make it easy on themselves. They held out for the remainder of the first have, with a smattering of opportunities to speak of themselves. But the plan was fully executed for the majority of the second half. Dominant, free flowing and most of all joyous to watch. Rangers were not just on the back foot, they were beaten to every ball, every half chance. Their own manager expressed his lack of confidence in post match interviews, saying they were lucky to get a point. Jens Berthel Askou was genuinely disappointed with the result, half expecting to get all three points. But it was not to be, either way if this is the future - bring in on! #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 3,
+      "conceded": 0,
+      "date": "2025-07-22",
+      "opposition": "Greenock Morton",
+      "venue": "Home",
+      "league": "League Cup",
+      "goals": [
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "mins": "52"
+        },
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "83"
+        },
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "90+3"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Callum Slattery",
+          "type": "yellow",
+          "minute": 34
+        }
+      ],
+      "video": null,
+      "notes": "At last. A game that Motherwell have controlled and looked close to comfortable, for the majority of play.  Many commentators praised the team for commited and progressive play, with the manager saying he'd rather they made mistake for being to adventurous than from sitting back and being safe.  An easy tap in for Stamatelopoulos and a double for Maswanhise - his second goal was an absolute SCREAMER.  If this is the way we can play against one of the first 'proper' teams we've faced, then we should be in good shape for the season ahead. Let's just hope its a taste of things to come under our new manager.  #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 0,
+      "date": "2025-07-19",
+      "opposition": "Stenhousemuir",
+      "venue": "Away",
+      "league": "League Cup",
+      "goals": [
+        {
+          "player": "Stephen O'Donnell",
+          "mins": "41"
+        }
+      ],
+      "cards": null,
+      "video": null,
+      "notes": "Third painful game in a row. Weather played a big part in the match, as well as the tattie field they called a pitch. Write it up as a win, but nothing to celebrate on the road back home.  #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2025-07-15",
+      "opposition": "Peterhead",
+      "venue": "Home",
+      "league": "League Cup",
+      "goals": [
+        {
+          "player": "Emmanuel Longelo",
+          "mins": "28"
+        },
+        {
+          "player": "Lukas Fadinger",
+          "mins": "90+1"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Callum Slattery",
+          "type": "yellow",
+          "minute": 32
+        }
+      ],
+      "video": null,
+      "notes": "Another nervy performance from a team clearly finding it's way through the game. The Longelo goal was a screamer and gives me hope for better things to come. But we can only pray this is pre-season jitters and the team will come good in the league.  #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 2,
+      "date": "2025-07-12",
+      "opposition": "Clyde",
+      "venue": "Away",
+      "league": "League Cup",
+      "goals": [
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "21"
+        },
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "48"
+        }
+      ],
+      "cards": null,
+      "video": null,
+      "notes": "Far from convincing, slightly worrying to be fair. To get the bonus point and win penalties is good, but should never have needed to take that long. #COYW!!"
+    }
+  ]
+}
