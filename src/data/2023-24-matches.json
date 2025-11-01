@@ -1,10 +1,10 @@
-[{
+{
   "season": "2023-24",
-  "details": [
+  "matches": [
     {
       "scored": 0,
       "conceded": 3,
-      "date": "15/05/24",
+      "date": "2024-05-15",
       "opposition": "Hibernian",
       "venue": "Away",
       "league": null,
@@ -12,8 +12,8 @@
       "cards": [
         {
           "player": "Georgie Gent",
-          "card": "yellow",
-          "mins": "28"
+          "type": "yellow",
+          "minute": 28
         }
       ],
       "video": "https://youtu.be/bQvQEFczWis?si=YwkmjN_K3OYP5LaE",
@@ -22,7 +22,7 @@
     {
       "scored": 5,
       "conceded": 1,
-      "date": "11/05/24",
+      "date": "2024-05-11",
       "opposition": "Ross County",
       "venue": "Away",
       "league": null,
@@ -51,13 +51,13 @@
       "cards": [
         {
           "player": "Davor Zdravkovskir",
-          "card": "yellow",
-          "mins": "71"
+          "type": "yellow",
+          "minute": 71
         },
         {
           "player": "Georgie Gent",
-          "card": "yellow",
-          "mins": "57"
+          "type": "yellow",
+          "minute": 57
         }
       ],
       "video": "https://www.youtube.com/watch?v=l0aLkdti9gI",
@@ -66,7 +66,7 @@
     {
       "scored": 4,
       "conceded": 1,
-      "date": "04/05/24",
+      "date": "2024-05-04",
       "opposition": "Livingston",
       "venue": "Home",
       "league": null,
@@ -91,13 +91,13 @@
       "cards": [
         {
           "player": "Davor Zdravkovskir",
-          "card": "yellow",
-          "mins": "86"
+          "type": "yellow",
+          "minute": 86
         },
         {
           "player": "Lennon Miller",
-          "card": "yellow",
-          "mins": "70"
+          "type": "yellow",
+          "minute": 70
         }
       ],
       "video": "https://youtu.be/QOCHnJ47mbU?si=xSspqDQnBuR-w4Kc",
@@ -106,7 +106,7 @@
     {
       "scored": 0,
       "conceded": 1,
-      "date": "27/04/24",
+      "date": "2024-04-27",
       "opposition": "Aberdeen",
       "venue": "Away",
       "league": null,
@@ -114,8 +114,8 @@
       "cards": [
         {
           "player": "Jack Vale",
-          "card": "red",
-          "mins": "56"
+          "type": "red",
+          "minute": 56
         }
       ],
       "notes": "An unimpressive start to the post-split games, and a long journey home to lick our wounds. Commentary says referee was not great, but that's no excuse. No goals scored and a man down for the majority of the second half - however reckless or not - isn't the performance the manager or supporters are expecting."
@@ -123,7 +123,7 @@
     {
       "scored": 1,
       "conceded": 1,
-      "date": "13/04/24",
+      "date": "2024-04-13",
       "opposition": "Hibernian",
       "venue": "Home",
       "league": null,
@@ -136,13 +136,13 @@
       "cards": [
         {
           "player": "Blair Spittal",
-          "card": "yellow",
-          "mins": "56"
+          "type": "yellow",
+          "minute": 56
         },
         {
           "player": "Jack Vale",
-          "card": "yellow",
-          "mins": "45"
+          "type": "yellow",
+          "minute": 45
         }
       ],
       "notes": "A scrappy affair by the radio commentary, with a fair few bookings for the visitors. A much deserved equaliser from the 'Well in the last minute of the game. Both teams landing in the bottom six for the final games."
@@ -150,7 +150,7 @@
     {
       "scored": 3,
       "conceded": 2,
-      "date": "06/04/24",
+      "date": "2024-04-06",
       "opposition": "Dundee",
       "venue": "Away",
       "league": null,
@@ -174,7 +174,7 @@
     {
       "scored": 1,
       "conceded": 1,
-      "date": "30/03/24",
+      "date": "2024-03-30",
       "opposition": "St. Mirren",
       "venue": "Home",
       "league": null,
@@ -189,7 +189,7 @@
     {
       "scored": 0,
       "conceded": 1,
-      "date": "16/03/24",
+      "date": "2024-03-16",
       "opposition": "Aberdeen",
       "venue": "Home",
       "league": null,
@@ -198,7 +198,7 @@
     {
       "scored": 2,
       "conceded": 1,
-      "date": "02/03/24",
+      "date": "2024-03-02",
       "opposition": "Rangers",
       "venue": "Away",
       "league": null,
@@ -218,7 +218,7 @@
     {
       "scored": 3,
       "conceded": 1,
-      "date": "28/02/24",
+      "date": "2024-02-28",
       "opposition": "Livingston",
       "venue": "Away",
       "league": null,
@@ -240,7 +240,7 @@
     {
       "scored": 1,
       "conceded": 3,
-      "date": "25/02/24",
+      "date": "2024-02-25",
       "opposition": "Celtic",
       "venue": "Home",
       "league": null,
@@ -254,7 +254,7 @@
     {
       "scored": 0,
       "conceded": 2,
-      "date": "17/02/24",
+      "date": "2024-02-17",
       "opposition": "Hearts",
       "venue": "Away",
       "league": null,
@@ -263,7 +263,7 @@
     {
       "scored": 3,
       "conceded": 3,
-      "date": "14/02/24",
+      "date": "2024-02-14",
       "opposition": "Aberdeen",
       "venue": "Away",
       "league": null,
@@ -285,7 +285,7 @@
     {
       "scored": 1,
       "conceded": 2,
-      "date": "09/02/24",
+      "date": "2024-02-09",
       "opposition": "Greenock Morton",
       "venue": "Away",
       "video": null,
@@ -293,18 +293,18 @@
       "cards": [
         {
           "player": "Calum Butcher",
-          "card": "yellow",
-          "mins": "90+2"
+          "type": "yellow",
+          "minute": 90
         },
         {
           "player": "Bevis Mugabi",
-          "card": "yellow",
-          "mins": "87"
+          "type": "yellow",
+          "minute": 87
         },
         {
           "player": "Liam Kelly",
-          "card": "yellow",
-          "mins": "4"
+          "type": "yellow",
+          "minute": 4
         }
       ],
       "goals": [
@@ -322,7 +322,7 @@
     {
       "scored": 5,
       "conceded": 0,
-      "date": "05/02/24",
+      "date": "2024-02-05",
       "opposition": "Ross County",
       "venue": "Home",
       "video": "https://youtu.be/QElr7c96Ex8?si=sSwiZTzPcRPiDRnS",
@@ -330,18 +330,18 @@
       "cards": [
         {
           "player": "Lennon Miller",
-          "card": "yellow",
-          "mins": "80"
+          "type": "yellow",
+          "minute": 80
         },
         {
           "player": "Calum Butcher",
-          "card": "yellow",
-          "mins": "65"
+          "type": "yellow",
+          "minute": 65
         },
         {
           "player": "Liam Kelly",
-          "card": "yellow",
-          "mins": "4"
+          "type": "yellow",
+          "minute": 4
         }
       ],
       "goals": [
@@ -371,7 +371,7 @@
     {
       "scored": 1,
       "conceded": 1,
-      "date": "03/02/24",
+      "date": "2024-02-03",
       "opposition": "Kilmarnock",
       "venue": "Home",
       "video": null,
@@ -379,13 +379,13 @@
       "cards": [
         {
           "player": "Blair Spittal",
-          "card": "yellow",
-          "mins": "85"
+          "type": "yellow",
+          "minute": 85
         },
         {
           "player": "Calum Butcher",
-          "card": "yellow",
-          "mins": "80"
+          "type": "yellow",
+          "minute": 80
         }
       ],
       "goals": [
@@ -399,7 +399,7 @@
     {
       "scored": 1,
       "conceded": 1,
-      "date": "27/01/24",
+      "date": "2024-01-27",
       "opposition": "St. Johnstone",
       "venue": "Away",
       "video": null,
@@ -407,18 +407,18 @@
       "cards": [
         {
           "player": "Andy Halliday",
-          "card": "yellow",
-          "mins": "45+5"
+          "type": "yellow",
+          "minute": 45
         },
         {
           "player": "Davor Zdravkovskir",
-          "card": "yellow",
-          "mins": "45"
+          "type": "yellow",
+          "minute": 45
         },
         {
           "player": "Liam Kelly",
-          "card": "yellow",
-          "mins": "4"
+          "type": "yellow",
+          "minute": 4
         }
       ],
       "goals": [
@@ -432,7 +432,7 @@
     {
       "scored": 3,
       "conceded": 1,
-      "date": "20/01/24",
+      "date": "2024-01-20",
       "opposition": "Alloa Athletic",
       "venue": "Home",
       "video": null,
@@ -457,7 +457,7 @@
     {
       "scored": 2,
       "conceded": 2,
-      "date": "02/01/24",
+      "date": "2024-01-02",
       "opposition": "Hibernian",
       "venue": "Away",
       "video": null,
@@ -465,18 +465,18 @@
       "cards": [
         {
           "player": "Harry Paton",
-          "card": "yellow",
-          "mins": "88"
+          "type": "yellow",
+          "minute": 88
         },
         {
           "player": "Georgie Gent",
-          "card": "yellow",
-          "mins": "48"
+          "type": "yellow",
+          "minute": 48
         },
         {
           "player": "Liam Kelly",
-          "card": "yellow",
-          "mins": "4"
+          "type": "yellow",
+          "minute": 4
         }
       ],
       "goals": [
@@ -494,7 +494,7 @@
     {
       "scored": 3,
       "conceded": 1,
-      "date": "30/12/23",
+      "date": "2023-12-30",
       "opposition": "Livingston",
       "venue": "Home",
       "video": null,
@@ -502,23 +502,23 @@
       "cards": [
         {
           "player": "Callum Slattery",
-          "card": "yellow",
-          "mins": "84"
+          "type": "yellow",
+          "minute": 84
         },
         {
           "player": "Bevis Mugabi",
-          "card": "yellow",
-          "mins": "71"
+          "type": "yellow",
+          "minute": 71
         },
         {
           "player": "Brodie Spencer",
-          "card": "yellow",
-          "mins": "59"
+          "type": "yellow",
+          "minute": 59
         },
         {
           "player": "Mika Biereth",
-          "card": "yellow",
-          "mins": "45"
+          "type": "yellow",
+          "minute": 45
         }
       ],
       "goals": [
@@ -540,7 +540,7 @@
     {
       "scored": 1,
       "conceded": 1,
-      "date": "25/11/23",
+      "date": "2023-11-25",
       "opposition": "Celtic",
       "venue": "Away",
       "video": null,
@@ -548,23 +548,23 @@
       "cards": [
         {
           "player": "Calum Butcher",
-          "card": "yellow",
-          "mins": "85"
+          "type": "yellow",
+          "minute": 85
         },
         {
           "player": "Bevis Mugabi",
-          "card": "yellow",
-          "mins": "64"
+          "type": "yellow",
+          "minute": 64
         },
         {
           "player": "Stephen O'Donnell",
-          "card": "yellow",
-          "mins": "41"
+          "type": "yellow",
+          "minute": 41
         },
         {
           "player": "Callum Slattery",
-          "card": "yellow",
-          "mins": "14"
+          "type": "yellow",
+          "minute": 14
         }
       ],
       "goals": [
@@ -578,7 +578,7 @@
     {
       "scored": 2,
       "conceded": 2,
-      "date": "07/11/23",
+      "date": "2023-11-07",
       "opposition": "St. Johnstone",
       "venue": "Away",
       "video": null,
@@ -586,13 +586,13 @@
       "cards": [
         {
           "player": "Harry Paton",
-          "card": "yellow",
-          "mins": "47"
+          "type": "yellow",
+          "minute": 47
         },
         {
           "player": "Callum Slattery",
-          "card": "yellow",
-          "mins": "37"
+          "type": "yellow",
+          "minute": 37
         }
       ],
       "goals": [
@@ -610,7 +610,7 @@
     {
       "scored": 0,
       "conceded": 1,
-      "date": "04/11/23",
+      "date": "2023-11-04",
       "opposition": "Kilmarnock",
       "venue": "Away",
       "video": null,
@@ -618,8 +618,8 @@
       "cards": [
         {
           "player": "Dan Casey",
-          "card": "yellow",
-          "mins": "32"
+          "type": "yellow",
+          "minute": 32
         }
       ],
       "goals": null,
@@ -628,7 +628,7 @@
     {
       "scored": 2,
       "conceded": 4,
-      "date": "01/11/23",
+      "date": "2023-11-01",
       "opposition": "Aberdeen",
       "venue": "Home",
       "video": "https://youtu.be/dmo8Bsyhbzs?si=OxTmyTleMnHY7fyy",
@@ -636,33 +636,33 @@
       "cards": [
         {
           "player": "Davor Zdravkovskir",
-          "card": "yellow",
-          "mins": "90+4"
+          "type": "yellow",
+          "minute": 90
         },
         {
           "player": "Liam Kelly",
-          "card": "yellow",
-          "mins": "69"
+          "type": "yellow",
+          "minute": 69
         },
         {
           "player": "Mika Biereth",
-          "card": "yellow",
-          "mins": "59"
+          "type": "yellow",
+          "minute": 59
         },
         {
           "player": "Brodie Spencer",
-          "card": "yellow",
-          "mins": "54"
+          "type": "yellow",
+          "minute": 54
         },
         {
           "player": "Conor Wilkinson",
-          "card": "yellow",
-          "mins": "52"
+          "type": "yellow",
+          "minute": 52
         },
         {
           "player": "Calum Butcher",
-          "card": "yellow",
-          "mins": "51"
+          "type": "yellow",
+          "minute": 51
         }
       ],
       "goals": [
@@ -680,7 +680,7 @@
     {
       "scored": 3,
       "conceded": 3,
-      "date": "28/10/23",
+      "date": "2023-10-28",
       "opposition": "Ross County",
       "venue": "Home",
       "video": "https://youtu.be/JvRED3DcScI?si=XuCf1nRaNE-BCIvj",
@@ -688,13 +688,13 @@
       "cards": [
         {
           "player": "Callum Slattery",
-          "card": "yellow",
-          "mins": "85"
+          "type": "yellow",
+          "minute": 85
         },
         {
           "player": "Brodie Spencer",
-          "card": "yellow",
-          "mins": "70"
+          "type": "yellow",
+          "minute": 70
         }
       ],
       "goals": [
@@ -716,7 +716,7 @@
     {
       "scored": 1,
       "conceded": 2,
-      "date": "30/09/23",
+      "date": "2023-09-30",
       "opposition": "Celtic",
       "venue": "Home",
       "video": null,
@@ -724,18 +724,18 @@
       "cards": [
         {
           "player": "Brodie Spencer",
-          "card": "yellow",
-          "mins": "90"
+          "type": "yellow",
+          "minute": 90
         },
         {
           "player": "Stephen O'Donnell",
-          "card": "yellow",
-          "mins": "54"
+          "type": "yellow",
+          "minute": 54
         },
         {
           "player": "Callum Slattery",
-          "card": "yellow",
-          "mins": "10"
+          "type": "yellow",
+          "minute": 10
         }
       ],
       "goals": [
@@ -749,7 +749,7 @@
     {
       "scored": 0,
       "conceded": 1,
-      "date": "24/09/23",
+      "date": "2023-09-24",
       "opposition": "Rangers",
       "venue": "Away",
       "video": null,
@@ -757,13 +757,13 @@
       "cards": [
         {
           "player": "Lennon Miller",
-          "card": "yellow",
-          "mins": "58"
+          "type": "yellow",
+          "minute": 58
         },
         {
           "player": "Dan Casey",
-          "card": "yellow",
-          "mins": "32"
+          "type": "yellow",
+          "minute": 32
         }
       ],
       "goals": null,
@@ -772,7 +772,7 @@
     {
       "scored": 0,
       "conceded": 1,
-      "date": "16/09/23",
+      "date": "2023-09-16",
       "opposition": "St. Mirren",
       "venue": "Home",
       "video": null,
@@ -784,7 +784,7 @@
     {
       "scored": 1,
       "conceded": 0,
-      "date": "3/09/23",
+      "date": "2023-09-03",
       "opposition": "Hearts",
       "venue": "Away",
       "video": "https://youtu.be/pe9iscTmRO4?si=0ARNsG-wNkaJrnS0",
@@ -792,23 +792,23 @@
       "cards": [
         {
           "player": "Oli Shaw",
-          "card": "yellow",
-          "mins": "90"
+          "type": "yellow",
+          "minute": 90
         },
         {
           "player": "Dan Casey",
-          "card": "yellow",
-          "mins": "71"
+          "type": "yellow",
+          "minute": 71
         },
         {
           "player": "Paul McGinn",
-          "card": "red",
-          "mins": "69"
+          "type": "red",
+          "minute": 69
         },
         {
           "player": "Paul McGinn",
-          "card": "yellow",
-          "mins": "36"
+          "type": "yellow",
+          "minute": 36
         }
       ],
       "goals": [
@@ -822,7 +822,7 @@
     {
       "scored": 2,
       "conceded": 1,
-      "date": "26/08/23",
+      "date": "2023-08-26",
       "opposition": "Kilmarnock",
       "venue": "Home",
       "video": null,
@@ -830,33 +830,33 @@
       "cards": [
         {
           "player": "Paul McGinn",
-          "card": "yellow",
-          "mins": "90+2"
+          "type": "yellow",
+          "minute": 90
         },
         {
           "player": "Dan Casey",
-          "card": "yellow",
-          "mins": "71"
+          "type": "yellow",
+          "minute": 71
         },
         {
           "player": "Harry Paton",
-          "card": "yellow",
-          "mins": "66"
+          "type": "yellow",
+          "minute": 66
         },
         {
           "player": "Callum Slattery",
-          "card": "yellow",
-          "mins": "57"
+          "type": "yellow",
+          "minute": 57
         },
         {
           "player": "Brodie Spencer",
-          "card": "yellow",
-          "mins": "52"
+          "type": "yellow",
+          "minute": 52
         },
         {
           "player": "Stephen O'Donnell",
-          "card": "yellow",
-          "mins": "43"
+          "type": "yellow",
+          "minute": 43
         }
       ],
       "goals": [
@@ -874,7 +874,7 @@
     {
       "scored": 0,
       "conceded": 1,
-      "date": "19/08/23",
+      "date": "2023-08-19",
       "opposition": "St. Mirren",
       "venue": "Away",
       "video": null,
@@ -882,18 +882,18 @@
       "cards": [
         {
           "player": "Paul McGinn",
-          "card": "yellow",
-          "mins": "90+3"
+          "type": "yellow",
+          "minute": 90
         },
         {
           "player": "Bevis Mugabi",
-          "card": "yellow",
-          "mins": "89"
+          "type": "yellow",
+          "minute": 89
         },
         {
           "player": "Stephen O'Donnell",
-          "card": "yellow",
-          "mins": "53"
+          "type": "yellow",
+          "minute": 53
         }
       ],
       "goals": [],
@@ -902,7 +902,7 @@
     {
       "scored": 2,
       "conceded": 1,
-      "date": "13/08/23",
+      "date": "2023-08-13",
       "opposition": "Hibernian",
       "venue": "Home",
       "video": "https://www.youtube.com/watch?v=u7F64WiYunk",
@@ -910,8 +910,8 @@
       "cards": [
         {
           "player": "Blair Spittal",
-          "card": "yellow",
-          "mins": "90+6"
+          "type": "yellow",
+          "minute": 90
         }
       ],
       "goals": [
@@ -929,7 +929,7 @@
     {
       "scored": 1,
       "conceded": 1,
-      "date": "05/08/23",
+      "date": "2023-08-05",
       "opposition": "Dundee",
       "venue": "Away",
       "video": null,
@@ -937,18 +937,18 @@
       "cards": [
         {
           "player": "Nathan McGinley",
-          "card": "yellow",
-          "mins": "79"
+          "type": "yellow",
+          "minute": 79
         },
         {
           "player": "Pape Souare",
-          "card": "yellow",
-          "mins": "72"
+          "type": "yellow",
+          "minute": 72
         },
         {
           "player": "Paul McGinn",
-          "card": "yellow",
-          "mins": "32"
+          "type": "yellow",
+          "minute": 32
         }
       ],
       "goals": [
@@ -962,7 +962,7 @@
     {
       "scored": 3,
       "conceded": 0,
-      "date": "29/07/23",
+      "date": "2023-07-29",
       "opposition": "East Fife",
       "venue": "Home",
       "video": null,
@@ -970,18 +970,18 @@
       "cards": [
         {
           "player": "Bevis Mugabi",
-          "card": "yellow",
-          "mins": "71"
+          "type": "yellow",
+          "minute": 71
         },
         {
           "player": "Conor Wilkinson",
-          "card": "yellow",
-          "mins": "62"
+          "type": "yellow",
+          "minute": 62
         },
         {
           "player": "Paul McGinn",
-          "card": "yellow",
-          "mins": "32"
+          "type": "yellow",
+          "minute": 32
         }
       ],
       "goals": [
@@ -1003,7 +1003,7 @@
     {
       "scored": 1,
       "conceded": 0,
-      "date": "22/07/23",
+      "date": "2023-07-22",
       "opposition": "Queen's Park",
       "venue": "Home",
       "video": null,
@@ -1011,8 +1011,8 @@
       "cards": [
         {
           "player": "Stephen O'Donnell",
-          "card": "yellow",
-          "mins": "72"
+          "type": "yellow",
+          "minute": 72
         }
       ],
       "goals": [
@@ -1026,7 +1026,7 @@
     {
       "scored": 3,
       "conceded": 3,
-      "date": "18/07/23",
+      "date": "2023-07-18",
       "opposition": "Queen of the South",
       "venue": "Away",
       "video": null,
@@ -1034,18 +1034,18 @@
       "cards": [
         {
           "player": "Ricki Lamie",
-          "card": "red",
-          "mins": "90+1"
+          "type": "red",
+          "minute": 90
         },
         {
           "player": "Conor Wilkinson",
-          "card": "yellow",
-          "mins": "88"
+          "type": "yellow",
+          "minute": 88
         },
         {
           "player": "Ricki Lamie",
-          "card": "yellow",
-          "mins": "84"
+          "type": "yellow",
+          "minute": 84
         }
       ],
       "goals": [
@@ -1067,7 +1067,7 @@
     {
       "scored": 2,
       "conceded": 0,
-      "date": "15/07/23",
+      "date": "2023-07-15",
       "opposition": "Elgin City",
       "venue": "Away",
       "video": null,
@@ -1075,8 +1075,8 @@
       "cards": [
         {
           "player": "Lennon Miller",
-          "card": "yellow",
-          "mins": "68"
+          "type": "yellow",
+          "minute": 68
         }
       ],
       "goals": [
@@ -1092,4 +1092,4 @@
       "notes": "Great performance."
     }
   ]
-}]
+}

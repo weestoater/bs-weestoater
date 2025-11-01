@@ -1,55 +1,65 @@
-[
-  {
-    "season": "2020-21",
-    "details": [
-      {
-        "player": "Devante Cole",
-        "goals": 12
-      },
-      {
-        "player": "Tony Watt",
-        "goals": 6
-      },
-      {
-        "player": "Christopher Long",
-        "goals": 6
-      },
-      {
-        "player": "Alan Campbell",
-        "goals": 5
-      },
-      {
-        "player": "Mark O'Hara",
-        "goals": 4
-      },
-      {
-        "player": "Jordan Roberts",
-        "goals": 3
-      },
-      {
-        "player": "Stephen O'Donnell",
-        "goals": 3
-      },
-      {
-        "player": "Bevis Mugabi",
-        "goals": 2
-      },
-      {
-        "player": "Liam Polwarth",
-        "goals": 1
-      },
-      {
-        "player": "Barry Maguire",
-        "goals": 1
-      },
-      {
-        "player": "Declan Gallagher",
-        "goals": 1
-      },
-      {
-        "player": "Sam Foley",
-        "goals": 1
-      }
-    ]
-  }
-]
+{
+  "season": "2020-21",
+  "topScorers": [
+    {
+      "player": "Devante Cole",
+      "goals": 12,
+      "assists": 0
+    },
+    {
+      "player": "Tony Watt",
+      "goals": 6,
+      "assists": 0
+    },
+    {
+      "player": "Christopher Long",
+      "goals": 6,
+      "assists": 0
+    },
+    {
+      "player": "Alan Campbell",
+      "goals": 5,
+      "assists": 0
+    },
+    {
+      "player": "Mark O'Hara",
+      "goals": 4,
+      "assists": 0
+    },
+    {
+      "player": "Jordan Roberts",
+      "goals": 3,
+      "assists": 0
+    },
+    {
+      "player": "Stephen O'Donnell",
+      "goals": 3,
+      "assists": 0
+    },
+    {
+      "player": "Bevis Mugabi",
+      "goals": 2,
+      "assists": 0
+    },
+    {
+      "player": "Liam Polwarth",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Barry Maguire",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Declan Gallagher",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Sam Foley",
+      "goals": 1,
+      "assists": 0
+    }
+  ]
+}

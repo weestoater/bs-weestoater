@@ -1,81 +1,95 @@
-[
-  {
-    "season": "2024-25",
-    "details": [
-      {
-        "player": "Callum Slattery",
-        "goals": 6
-      },
-      {
-        "player": "Moses Ebiye",
-        "goals": 5
-      },
-      {
-        "player": "Tawanda Maswanhise",
-        "goals": 5
-      },
-      {
-        "player": "Tom Sparrow",
-        "goals": 5
-      },
-      {
-        "player": "Apostolos Stamatelopoulos",
-        "goals": 5
-      },
-      {
-        "player": "Luke Armstrong",
-        "goals": 4
-      },
-      {
-        "player": "Dan Casey",
-        "goals": 4
-      },
-      {
-        "player": "Lennon Miller",
-        "goals": 4
-      },
-      {
-        "player": "Andy Halliday",
-        "goals": 3
-      },
-
-      {
-        "player": "Stephen O'Donnell",
-        "goals": 2
-      },
-      {
-        "player": "Zack Robinson",
-        "goals": 2
-      },
-      {
-        "player": "Kofi Balmer",
-        "goals": 1
-      },
-      {
-        "player": "Shane Blaney",
-        "goals": 1
-      },
-      {
-        "player": "Liam Gordon",
-        "goals": 1
-      },
-      {
-        "player": "Paul McGinn",
-        "goals": 1
-      },
-
-      {
-        "player": "Filip Stuperavic",
-        "goals": 1
-      },
-      {
-        "player": "Tony Watt",
-        "goals": 1
-      },
-      {
-        "player": "Ewan Wilson",
-        "goals": 1
-      }
-    ]
-  }
-]
+{
+  "season": "2024-25",
+  "topScorers": [
+    {
+      "player": "Callum Slattery",
+      "goals": 6,
+      "assists": 0
+    },
+    {
+      "player": "Moses Ebiye",
+      "goals": 5,
+      "assists": 0
+    },
+    {
+      "player": "Tawanda Maswanhise",
+      "goals": 5,
+      "assists": 0
+    },
+    {
+      "player": "Tom Sparrow",
+      "goals": 5,
+      "assists": 0
+    },
+    {
+      "player": "Apostolos Stamatelopoulos",
+      "goals": 5,
+      "assists": 0
+    },
+    {
+      "player": "Luke Armstrong",
+      "goals": 4,
+      "assists": 0
+    },
+    {
+      "player": "Dan Casey",
+      "goals": 4,
+      "assists": 0
+    },
+    {
+      "player": "Lennon Miller",
+      "goals": 4,
+      "assists": 0
+    },
+    {
+      "player": "Andy Halliday",
+      "goals": 3,
+      "assists": 0
+    },
+    {
+      "player": "Stephen O'Donnell",
+      "goals": 2,
+      "assists": 0
+    },
+    {
+      "player": "Zack Robinson",
+      "goals": 2,
+      "assists": 0
+    },
+    {
+      "player": "Kofi Balmer",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Shane Blaney",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Liam Gordon",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Paul McGinn",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Filip Stuperavic",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Tony Watt",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Ewan Wilson",
+      "goals": 1,
+      "assists": 0
+    }
+  ]
+}

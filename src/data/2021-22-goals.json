@@ -1,76 +1,90 @@
-[
-  {
-    "season": "2021-22",
-    "details": [
-      {
-        "player": "Kevin Van Veen",
-        "goals": 11
-      },
-      {
-        "player": "Ricki Lamie",
-        "goals": 4
-      },
-      {
-        "player": "Connor Shields",
-        "goals": 3
-      },
-      {
-        "player": "Joe Efford",
-        "goals": 3
-      },
-      {
-        "player": "Ross Tierney",
-        "goals": 2
-      },
-      {
-        "player": "Callum Slattery",
-        "goals": 2
-      },
-      {
-        "player": "Dean Cornelius",
-        "goals": 2
-      },
-      {
-        "player": "Kaiyne Woolery",
-        "goals": 2
-      },
-      {
-        "player": "Bevis Mugabi",
-        "goals": 2
-      },
-      {
-        "player": "Jordan Roberts",
-        "goals": 2
-      },
-      {
-        "player": "Juhani Ojala",
-        "goals": 1
-      },
-      {
-        "player": "Liam Grimshaw",
-        "goals": 1
-      },
-      {
-        "player": "Barry Maguire",
-        "goals": 1
-      },
-
-      {
-        "player": "Mark O'Hara",
-        "goals": 1
-      },
-      {
-        "player": "Liam Donnelly",
-        "goals": 1
-      },
-      {
-        "player": "Sean Goss",
-        "goals": 1
-      },
-      {
-        "player": "Justin Amaluzor",
-        "goals": 1
-      }
-    ]
-  }
-]
+{
+  "season": "2021-22",
+  "topScorers": [
+    {
+      "player": "Kevin Van Veen",
+      "goals": 11,
+      "assists": 0
+    },
+    {
+      "player": "Ricki Lamie",
+      "goals": 4,
+      "assists": 0
+    },
+    {
+      "player": "Connor Shields",
+      "goals": 3,
+      "assists": 0
+    },
+    {
+      "player": "Joe Efford",
+      "goals": 3,
+      "assists": 0
+    },
+    {
+      "player": "Ross Tierney",
+      "goals": 2,
+      "assists": 0
+    },
+    {
+      "player": "Callum Slattery",
+      "goals": 2,
+      "assists": 0
+    },
+    {
+      "player": "Dean Cornelius",
+      "goals": 2,
+      "assists": 0
+    },
+    {
+      "player": "Kaiyne Woolery",
+      "goals": 2,
+      "assists": 0
+    },
+    {
+      "player": "Bevis Mugabi",
+      "goals": 2,
+      "assists": 0
+    },
+    {
+      "player": "Jordan Roberts",
+      "goals": 2,
+      "assists": 0
+    },
+    {
+      "player": "Juhani Ojala",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Liam Grimshaw",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Barry Maguire",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Mark O'Hara",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Liam Donnelly",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Sean Goss",
+      "goals": 1,
+      "assists": 0
+    },
+    {
+      "player": "Justin Amaluzor",
+      "goals": 1,
+      "assists": 0
+    }
+  ]
+}

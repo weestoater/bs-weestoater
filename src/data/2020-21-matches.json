@@ -1,273 +1,271 @@
-[
-  {
-    "season": "2020-21",
-    "details": [
-      {
-        "scored": 0,
-        "conceded": 1,
-        "date": "01/08/21",
-        "opposition": "Ross County",
-        "venue": "Away"
-      },
-      {
-        "scored": 0,
-        "conceded": 1,
-        "date": "08/08/20",
-        "opposition": "Dundee United",
-        "venue": "Home"
-      },
-      {
-        "scored": 2,
-        "conceded": 2,
-        "date": "12/08/20",
-        "opposition": "Livingston",
-        "venue": "Home"
-      },
-      {
-        "scored": 0,
-        "conceded": 0,
-        "date": "15/08/20",
-        "opposition": "Hibernian",
-        "venue": "Away"
-      },
-      {
-        "scored": 0,
-        "conceded": 1,
-        "date": "22/08/20",
-        "opposition": "Hamilton Academical",
-        "venue": "Home"
-      },
-      {
-        "scored": 0,
-        "conceded": 3,
-        "date": "30/08/20",
-        "opposition": "Celtic",
-        "venue": "Away"
-      },
-      {
-        "scored": 1,
-        "conceded": 0,
-        "date": "12/09/20",
-        "opposition": "St. Johnstone",
-        "venue": "Home"
-      },
-      {
-        "scored": 3,
-        "conceded": 0,
-        "date": "20/09/20",
-        "opposition": "Aberdeen",
-        "venue": "Away"
-      },
-      {
-        "scored": 1,
-        "conceded": 5,
-        "date": "27/09/20",
-        "opposition": "Rangers",
-        "venue": "Home"
-      },
-      {
-        "scored": 4,
-        "conceded": 0,
-        "date": "24/10/20",
-        "opposition": "Ross County",
-        "venue": "Home"
-      },
-      {
-        "scored": 2,
-        "conceded": 0,
-        "date": "31/10/20",
-        "opposition": "Livingston",
-        "venue": "Away"
-      },
-      {
-        "scored": 1,
-        "conceded": 4,
-        "date": "08/11/20",
-        "opposition": "Celtic",
-        "venue": "Away"
-      },
-      {
-        "scored": 1,
-        "conceded": 1,
-        "date": "21/11/20",
-        "opposition": "St. Johnstone",
-        "venue": "Away"
-      },
-      {
-        "scored": 0,
-        "conceded": 3,
-        "date": "05/12/20",
-        "opposition": "Hibernian",
-        "venue": "Home"
-      },
-      {
-        "scored": 0,
-        "conceded": 1,
-        "date": "12/12/20",
-        "opposition": "St. Mirren",
-        "venue": "Home"
-      },
-      {
-        "scored": 1,
-        "conceded": 3,
-        "date": "19/12/20",
-        "opposition": "Rangers",
-        "venue": "Away"
-      },
-      {
-        "scored": 0,
-        "conceded": 0,
-        "date": "23/12/20",
-        "opposition": "Aberdeen",
-        "venue": "Home"
-      },
-      {
-        "scored": 1,
-        "conceded": 1,
-        "date": "26/12/20",
-        "opposition": "Dundee United",
-        "venue": "Away"
-      },
-      {
-        "scored": 0,
-        "conceded": 2,
-        "date": "30/12/20",
-        "opposition": "Kilmarnock",
-        "venue": "Away"
-      },
-      {
-        "scored": 0,
-        "conceded": 2,
-        "date": "02/01/21",
-        "opposition": "Hamilton Academical",
-        "venue": "Away"
-      },
-      {
-        "scored": 1,
-        "conceded": 1,
-        "date": "09/01/21",
-        "opposition": "Hamilton Academical",
-        "venue": "Away"
-      },
-      {
-        "scored": 1,
-        "conceded": 1,
-        "date": "17/01/21",
-        "opposition": "Rangers",
-        "venue": "Home"
-      },
-      {
-        "scored": 0,
-        "conceded": 2,
-        "date": "23/01/21",
-        "opposition": "Aberdeen",
-        "venue": "Away"
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "27/01/21",
-        "opposition": "Ross County",
-        "venue": "Away"
-      },
-      {
-        "scored": 2,
-        "conceded": 1,
-        "date": "03/02/21",
-        "opposition": "Dundee United",
-        "venue": "Home"
-      },
-      {
-        "scored": 1,
-        "conceded": 2,
-        "date": "06/02/21",
-        "opposition": "Celtic",
-        "venue": "Away"
-      },
-      {
-        "scored": 0,
-        "conceded": 1,
-        "date": "10/02/21",
-        "opposition": "Kilmarnock",
-        "venue": "Away"
-      },
-      {
-        "scored": 1,
-        "conceded": 4,
-        "date": "13/02/21",
-        "opposition": "Hamilton Academical",
-        "venue": "Home"
-      },
-      {
-        "scored": 0,
-        "conceded": 3,
-        "date": "20/02/21",
-        "opposition": "St. Johnstone",
-        "venue": "Home"
-      },
-      {
-        "scored": 0,
-        "conceded": 0,
-        "date": "24/02/21",
-        "opposition": "St. Mirren",
-        "venue": "Away"
-      },
-      {
-        "scored": 2,
-        "conceded": 0,
-        "date": "27/02/21",
-        "opposition": "Hibernian",
-        "venue": "Away"
-      },
-      {
-        "scored": 3,
-        "conceded": 1,
-        "date": "06/03/21",
-        "opposition": "Livingston",
-        "venue": "Home"
-      },
-      {
-        "scored": 1,
-        "conceded": 4,
-        "date": "20/03/21",
-        "opposition": "Kilmarnock",
-        "venue": "Away"
-      },
-      {
-        "scored": 1,
-        "conceded": 0,
-        "date": "10/04/21",
-        "opposition": "St. Mirren",
-        "venue": "Home"
-      },
-      {
-        "scored": 1,
-        "conceded": 0,
-        "date": "21/04/21",
-        "opposition": "Hamilton Academical",
-        "venue": "Away"
-      },
-      {
-        "scored": 2,
-        "conceded": 0,
-        "date": "01/05/21",
-        "opposition": "Kilmarnock",
-        "venue": "Home"
-      },
-      {
-        "scored": 2,
-        "conceded": 2,
-        "date": "12/05/21",
-        "opposition": "Dundee United",
-        "venue": "Away"
-      },
-      {
-        "scored": 1,
-        "conceded": 2,
-        "date": "16/05/21",
-        "opposition": "Ross County",
-        "venue": "Home"
-      }
-    ]
-  }
-]
+{
+  "season": "2020-21",
+  "matches": [
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "2021-08-01",
+      "opposition": "Ross County",
+      "venue": "Away"
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "2020-08-08",
+      "opposition": "Dundee United",
+      "venue": "Home"
+    },
+    {
+      "scored": 2,
+      "conceded": 2,
+      "date": "2020-08-12",
+      "opposition": "Livingston",
+      "venue": "Home"
+    },
+    {
+      "scored": 0,
+      "conceded": 0,
+      "date": "2020-08-15",
+      "opposition": "Hibernian",
+      "venue": "Away"
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "2020-08-22",
+      "opposition": "Hamilton Academical",
+      "venue": "Home"
+    },
+    {
+      "scored": 0,
+      "conceded": 3,
+      "date": "2020-08-30",
+      "opposition": "Celtic",
+      "venue": "Away"
+    },
+    {
+      "scored": 1,
+      "conceded": 0,
+      "date": "2020-09-12",
+      "opposition": "St. Johnstone",
+      "venue": "Home"
+    },
+    {
+      "scored": 3,
+      "conceded": 0,
+      "date": "2020-09-20",
+      "opposition": "Aberdeen",
+      "venue": "Away"
+    },
+    {
+      "scored": 1,
+      "conceded": 5,
+      "date": "2020-09-27",
+      "opposition": "Rangers",
+      "venue": "Home"
+    },
+    {
+      "scored": 4,
+      "conceded": 0,
+      "date": "2020-10-24",
+      "opposition": "Ross County",
+      "venue": "Home"
+    },
+    {
+      "scored": 2,
+      "conceded": 0,
+      "date": "2020-10-31",
+      "opposition": "Livingston",
+      "venue": "Away"
+    },
+    {
+      "scored": 1,
+      "conceded": 4,
+      "date": "2020-11-08",
+      "opposition": "Celtic",
+      "venue": "Away"
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "2020-11-21",
+      "opposition": "St. Johnstone",
+      "venue": "Away"
+    },
+    {
+      "scored": 0,
+      "conceded": 3,
+      "date": "2020-12-05",
+      "opposition": "Hibernian",
+      "venue": "Home"
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "2020-12-12",
+      "opposition": "St. Mirren",
+      "venue": "Home"
+    },
+    {
+      "scored": 1,
+      "conceded": 3,
+      "date": "2020-12-19",
+      "opposition": "Rangers",
+      "venue": "Away"
+    },
+    {
+      "scored": 0,
+      "conceded": 0,
+      "date": "2020-12-23",
+      "opposition": "Aberdeen",
+      "venue": "Home"
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "2020-12-26",
+      "opposition": "Dundee United",
+      "venue": "Away"
+    },
+    {
+      "scored": 0,
+      "conceded": 2,
+      "date": "2020-12-30",
+      "opposition": "Kilmarnock",
+      "venue": "Away"
+    },
+    {
+      "scored": 0,
+      "conceded": 2,
+      "date": "2021-01-02",
+      "opposition": "Hamilton Academical",
+      "venue": "Away"
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "2021-01-09",
+      "opposition": "Hamilton Academical",
+      "venue": "Away"
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "2021-01-17",
+      "opposition": "Rangers",
+      "venue": "Home"
+    },
+    {
+      "scored": 0,
+      "conceded": 2,
+      "date": "2021-01-23",
+      "opposition": "Aberdeen",
+      "venue": "Away"
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2021-01-27",
+      "opposition": "Ross County",
+      "venue": "Away"
+    },
+    {
+      "scored": 2,
+      "conceded": 1,
+      "date": "2021-02-03",
+      "opposition": "Dundee United",
+      "venue": "Home"
+    },
+    {
+      "scored": 1,
+      "conceded": 2,
+      "date": "2021-02-06",
+      "opposition": "Celtic",
+      "venue": "Away"
+    },
+    {
+      "scored": 0,
+      "conceded": 1,
+      "date": "2021-02-10",
+      "opposition": "Kilmarnock",
+      "venue": "Away"
+    },
+    {
+      "scored": 1,
+      "conceded": 4,
+      "date": "2021-02-13",
+      "opposition": "Hamilton Academical",
+      "venue": "Home"
+    },
+    {
+      "scored": 0,
+      "conceded": 3,
+      "date": "2021-02-20",
+      "opposition": "St. Johnstone",
+      "venue": "Home"
+    },
+    {
+      "scored": 0,
+      "conceded": 0,
+      "date": "2021-02-24",
+      "opposition": "St. Mirren",
+      "venue": "Away"
+    },
+    {
+      "scored": 2,
+      "conceded": 0,
+      "date": "2021-02-27",
+      "opposition": "Hibernian",
+      "venue": "Away"
+    },
+    {
+      "scored": 3,
+      "conceded": 1,
+      "date": "2021-03-06",
+      "opposition": "Livingston",
+      "venue": "Home"
+    },
+    {
+      "scored": 1,
+      "conceded": 4,
+      "date": "2021-03-20",
+      "opposition": "Kilmarnock",
+      "venue": "Away"
+    },
+    {
+      "scored": 1,
+      "conceded": 0,
+      "date": "2021-04-10",
+      "opposition": "St. Mirren",
+      "venue": "Home"
+    },
+    {
+      "scored": 1,
+      "conceded": 0,
+      "date": "2021-04-21",
+      "opposition": "Hamilton Academical",
+      "venue": "Away"
+    },
+    {
+      "scored": 2,
+      "conceded": 0,
+      "date": "2021-05-01",
+      "opposition": "Kilmarnock",
+      "venue": "Home"
+    },
+    {
+      "scored": 2,
+      "conceded": 2,
+      "date": "2021-05-12",
+      "opposition": "Dundee United",
+      "venue": "Away"
+    },
+    {
+      "scored": 1,
+      "conceded": 2,
+      "date": "2021-05-16",
+      "opposition": "Ross County",
+      "venue": "Home"
+    }
+  ]
+}
