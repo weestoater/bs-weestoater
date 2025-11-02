@@ -1,4 +1,5 @@
 import MobRuleImg from "../../assets/img/mob-programming.jpg";
+import MobRuleWebP from "../../assets/img/mob-programming.webp";
 
 export const MobRulesContent = () => {
   return (
@@ -9,7 +10,10 @@ export const MobRulesContent = () => {
         </h2>
       </div>
       <div className="card-body">
-        <img src={MobRuleImg} alt="" className="fluid" />
+        <picture>
+          <source srcSet={MobRuleWebP} type="image/webp" />
+          <img src={MobRuleImg} alt="" className="fluid" />
+        </picture>
         <p>
           In early July 2019, I worked in a different team at my firm. We used
           mob programming for a variety of reasons, which I’d like to share.

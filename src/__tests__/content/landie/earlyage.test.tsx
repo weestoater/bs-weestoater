@@ -2,9 +2,12 @@ import { render, screen } from "@testing-library/react";
 import { describe, test, expect, vi } from "vitest";
 import { EarlyAge } from "../../../content/landie/earlyage";
 
-// Mock the image import
+// Mock the image imports
 vi.mock("../../../assets/img/Landie/lightweight.jpg", () => ({
   default: "lightweight.jpg",
+}));
+vi.mock("../../../assets/img/Landie/lightweight.webp", () => ({
+  default: "lightweight.webp",
 }));
 
 describe("Early Age Content", () => {
@@ -21,6 +24,14 @@ describe("Early Age Content", () => {
     expect(container.querySelector(".card")).toBeInTheDocument();
     expect(container.querySelector(".card-header")).toBeInTheDocument();
     expect(container.querySelector(".card-body")).toBeInTheDocument();
+
+    // Test picture element with WebP support
+    const picture = container.querySelector("picture");
+    expect(picture).toBeInTheDocument();
+    const source = picture?.querySelector("source");
+    expect(source).toHaveAttribute("srcSet", "lightweight.webp");
+    expect(source).toHaveAttribute("type", "image/webp");
+
     const img = screen.getByAltText(
       /Land Rover Lightweight in Royal Air Force/i
     );

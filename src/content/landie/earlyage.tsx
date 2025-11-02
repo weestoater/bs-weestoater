@@ -1,4 +1,5 @@
 import LightweightImg from "../../assets/img/Landie/lightweight.jpg";
+import LightweightWebP from "../../assets/img/Landie/lightweight.webp";
 
 export const EarlyAge = () => {
   return (
@@ -9,11 +10,14 @@ export const EarlyAge = () => {
         </h2>
       </div>
       <div className="card-body">
-        <img
-          src={LightweightImg}
-          className="fluid"
-          alt="Land Rover Lightweight in Royal Air Force camouflauge"
-        />
+        <picture>
+          <source srcSet={LightweightWebP} type="image/webp" />
+          <img
+            src={LightweightImg}
+            className="fluid"
+            alt="Land Rover Lightweight in Royal Air Force camouflauge"
+          />
+        </picture>
         <p>
           In my early teenage years, I was lucky enough to be in the Air Cadets
           and visited one of our local Royal Air Force bases, Kinloss. We were

@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
-import { AgGridReact } from "ag-grid-react";
 import { goalScorersGridConfig } from "../../config/gridConfig";
 import { GoalScorer } from "../../interfaces/footballTypes";
+
+// Lazy load AgGridReact
+const AgGridReact = lazy(() =>
+  import("ag-grid-react").then((m) => ({ default: m.AgGridReact }))
+);
 
 // Register all Community features
 ModuleRegistry.registerModules([AllCommunityModule]);
@@ -16,7 +20,17 @@ export const GoalScorersGrid = ({ details }: Props) => {
 
   return (
     <div className="goal-scorers-grid">
-      <AgGridReact {...goalScorersGridConfig} rowData={rowData} />
+      <Suspense
+        fallback={
+          <div className="text-center p-5">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading grid...</span>
+            </div>
+          </div>
+        }
+      >
+        <AgGridReact {...goalScorersGridConfig} rowData={rowData} />
+      </Suspense>
     </div>
   );
 };

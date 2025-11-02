@@ -1,5 +1,6 @@
 import burtIcon from "../../assets/img/burt.png";
 import busterPic from "../../assets/img/buster.jpg";
+import busterWebP from "../../assets/img/buster.webp";
 
 export const WhoIsWeestoater = () => {
   return (
@@ -27,11 +28,10 @@ export const WhoIsWeestoater = () => {
           suffering wife. We have an adorable dog called Buster and he is the
           absolutely best boy ever - spoilt and loved to bits.
         </p>
-        <img
-          src={busterPic}
-          alt="Our golden lab Buster"
-          className="fluid"
-        />
+        <picture>
+          <source srcSet={busterWebP} type="image/webp" />
+          <img src={busterPic} alt="Our golden lab Buster" className="fluid" />
+        </picture>
         <p>
           When not working or ferrying my kids to one of their many clubs, I
           like to tinker with code / websites; listen to 'rubbish' music; watch

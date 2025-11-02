@@ -1,8 +1,13 @@
-import { AgCharts } from "ag-charts-react";
+import { lazy, Suspense } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { SWDataTable } from "../components/sw/swDataTable";
 import { createSwChartOptions } from "../config/swChartConfig";
 import swData from "../data/slimmingWorldData.json";
+
+// Lazy load ag-charts to reduce initial bundle size
+const AgCharts = lazy(() =>
+  import("ag-charts-react").then((module) => ({ default: module.AgCharts }))
+);
 
 export const SlimmingWorld = () => {
   const _options = createSwChartOptions(swData[0].data);
@@ -21,7 +26,17 @@ export const SlimmingWorld = () => {
         </div>
         <div className="col-lg-8 col-md-6 col-sm-6 col-xs-12 mb-4">
           <div className="sw-chart">
-            <AgCharts options={_options} />
+            <Suspense
+              fallback={
+                <div className="text-center p-5">
+                  <div className="spinner-border" role="status">
+                    <span className="visually-hidden">Loading chart...</span>
+                  </div>
+                </div>
+              }
+            >
+              <AgCharts options={_options} />
+            </Suspense>
           </div>
         </div>
       </div>
