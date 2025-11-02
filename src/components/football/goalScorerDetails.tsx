@@ -1,8 +1,13 @@
-import { AgCharts } from "ag-charts-react";
+import { lazy, memo, Suspense } from "react";
 import type { GoalScorer } from "../../interfaces/footballTypes";
 import { GoalScorersGrid } from "./goalScorersGrid";
 
-export const GoalScorerDetails = (props: any) => {
+// Lazy load ag-charts to reduce initial bundle size
+const AgCharts = lazy(() =>
+  import("ag-charts-react").then((module) => ({ default: module.AgCharts }))
+);
+
+export const GoalScorerDetails = memo((props: any) => {
   const details: GoalScorer[] = props.details ? props.details : [];
 
   const _options: any = {
@@ -71,10 +76,20 @@ export const GoalScorerDetails = (props: any) => {
   return (
     <>
       <div className="goal-scorers" data-testid="goalscorers-pie-chart">
-        <AgCharts options={_options} />
+        <Suspense
+          fallback={
+            <div className="text-center p-3">
+              <div className="spinner-border spinner-border-sm" role="status">
+                <span className="visually-hidden">Loading chart...</span>
+              </div>
+            </div>
+          }
+        >
+          <AgCharts options={_options} />
+        </Suspense>
       </div>
 
       <GoalScorersGrid details={details} />
     </>
   );
-};
+});

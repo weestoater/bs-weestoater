@@ -12,8 +12,8 @@ describe("MatchDetails", () => {
     league: "Premier League",
     video: "https://example.com/video",
     goals: [
-      { minute: 15, scorer: "Player 1", assist: "Player 2" },
-      { minute: 75, scorer: "Player 3", assist: undefined },
+      { mins: 15, player: "Player 1", assist: "Player 2" },
+      { mins: 75, player: "Player 3", assist: undefined },
     ],
     cards: [{ type: "yellow", player: "Player 4", minute: 30 }],
     notes: "Great performance by the team",

@@ -1,10 +1,11 @@
+import { memo } from "react";
 import { ScoreDetails } from "./scoreDetails";
 import { GoalsDetails } from "./goalsDetails";
 import { VideoLink } from "./videoLinkDetails";
 import { CardsDetails } from "./cardsDetails";
 import { NotesDetails } from "./notesDetails";
 
-export const MatchDetails = (props: any) => {
+export const MatchDetails = memo((props: any) => {
   const details = props.details ? props.details : null;
   return (
     <>
@@ -57,4 +58,4 @@ export const MatchDetails = (props: any) => {
         })}
     </>
   );
-};
+});

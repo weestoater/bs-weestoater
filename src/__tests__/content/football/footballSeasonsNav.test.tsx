@@ -11,27 +11,27 @@ describe("FootballSeasonsNav", () => {
       </TestWrapper>
     );
 
-    // Check for all season links
+    // Check for all season links with dynamic routes
     expect(screen.getByText("2025-26")).toHaveAttribute("href", "/football");
     expect(screen.getByText("2024-25")).toHaveAttribute(
       "href",
-      "/2024-25-season"
+      "/season/2024-25"
     );
     expect(screen.getByText("2023-24")).toHaveAttribute(
       "href",
-      "/2023-24-season"
+      "/season/2023-24"
     );
     expect(screen.getByText("2022-23")).toHaveAttribute(
       "href",
-      "/2022-23-season"
+      "/season/2022-23"
     );
     expect(screen.getByText("2021-22")).toHaveAttribute(
       "href",
-      "/2021-22-season"
+      "/season/2021-22"
     );
     expect(screen.getByText("2020-21")).toHaveAttribute(
       "href",
-      "/2020-21-season"
+      "/season/2020-21"
     );
   });
 

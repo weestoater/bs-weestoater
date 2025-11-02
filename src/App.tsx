@@ -22,36 +22,16 @@ const FootballPage = lazy(() =>
     default: module.FootballPage,
   }))
 );
+const SeasonPage = lazy(() =>
+  import("./pages/SeasonPage").then((module) => ({
+    default: module.SeasonPage,
+  }))
+);
 const ReactPage = lazy(() =>
   import("./pages/React").then((module) => ({ default: module.ReactPage }))
 );
 const LandiePage = lazy(() =>
   import("./pages/Landie").then((module) => ({ default: module.LandiePage }))
-);
-const FootballSeason202425 = lazy(() =>
-  import("./pages/2024-25-season").then((module) => ({
-    default: module.FootballSeason202425,
-  }))
-);
-const FootballSeason202324 = lazy(() =>
-  import("./pages/2023-24-season").then((module) => ({
-    default: module.FootballSeason202324,
-  }))
-);
-const FootballSeason202223 = lazy(() =>
-  import("./pages/2022-23-season").then((module) => ({
-    default: module.FootballSeason202223,
-  }))
-);
-const FootballSeason202122 = lazy(() =>
-  import("./pages/2021-22-season").then((module) => ({
-    default: module.FootballSeason202122,
-  }))
-);
-const FootballSeason202021 = lazy(() =>
-  import("./pages/2020-21-season").then((module) => ({
-    default: module.FootballSeason202021,
-  }))
 );
 const SlimmingWorld = lazy(() =>
   import("./pages/SlimmingWorld").then((module) => ({
@@ -81,11 +61,7 @@ export const App = () => {
             <Route path="/agile" element={<AgilePage />} />
             <Route path="/landie" element={<LandiePage />} />
             <Route path="/football" element={<FootballPage />} />
-            <Route path="/2024-25-season" element={<FootballSeason202425 />} />
-            <Route path="/2023-24-season" element={<FootballSeason202324 />} />
-            <Route path="/2022-23-season" element={<FootballSeason202223 />} />
-            <Route path="/2021-22-season" element={<FootballSeason202122 />} />
-            <Route path="/2020-21-season" element={<FootballSeason202021 />} />
+            <Route path="/season/:seasonId" element={<SeasonPage />} />
             <Route path="/react" element={<ReactPage />} />
             <Route path="/sw" element={<SlimmingWorld />} />
           </Routes>

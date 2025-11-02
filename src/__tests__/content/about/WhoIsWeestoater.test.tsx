@@ -15,6 +15,12 @@ vi.mock("../../../assets/img/buster.jpg", () => {
   };
 });
 
+vi.mock("../../../assets/img/buster.webp", () => {
+  return {
+    default: "buster-image.webp",
+  };
+});
+
 describe("WhoIsWeestoater", () => {
   it("renders the card with correct header", () => {
     render(<WhoIsWeestoater />);
