@@ -2,6 +2,29 @@
   "season": "2025-26",
   "matches": [
     {
+      "scored": 1,
+      "conceded": 4,
+      "date": "2025-11-01",
+      "opposition": "St. Mirren",
+      "venue": "Away",
+      "league": "League Cup - Semi-finals",
+      "goals": [
+        {
+          "player": "Callum Hendry",
+          "mins": "83"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Tom Sparrow",
+          "type": "yellow",
+          "minute": 82
+        }
+      ],
+      "video": null,
+      "notes": "A dire performance. Far too much respect and fear shown towards St. Mirren. Goodness knows why, but the back passing and dithering was woeful. Once again our player in the goals, not a goalkeeper in my opinion, was useless. But he is not alone in his incompetence. Some players could barely pass a ball to their own teammates, or when they did, it was so slow or obvious an interception was coming. Didn't deserve anything from this game and best of luck to St. Mirren in the final. #claret&amber  #COYW!!"
+    },
+    {
       "scored": 2,
       "conceded": 0,
       "date": "2025-10-29",

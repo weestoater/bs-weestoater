@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { describe, test, expect } from "vitest";
 import { CardsDetails } from "../../components/football/cardsDetails";
-import { CardType } from "../../interfaces/footballTypes";
+import { MatchCard } from "../../interfaces/footballTypes";
 
 describe("Cards Details component", () => {
   test("Can show a red card", () => {
-    const mockCard: CardType[] = [
-      { player: "Mickey Mouse", card: "red", mins: "5" },
+    const mockCard: MatchCard[] = [
+      { player: "Mickey Mouse", type: "red", minute: 5 },
     ];
     render(<CardsDetails cards={mockCard} />);
     const card = screen.getByTestId("redcard0");
@@ -17,8 +17,8 @@ describe("Cards Details component", () => {
   });
 
   test("Can show a yellow card", () => {
-    const mockCard: CardType[] = [
-      { player: "Goofy", card: "yellow", mins: "72" },
+    const mockCard: MatchCard[] = [
+      { player: "Goofy", type: "yellow", minute: 72 },
     ];
     render(<CardsDetails cards={mockCard} />);
     const card = screen.getByTestId("yellowcard0");

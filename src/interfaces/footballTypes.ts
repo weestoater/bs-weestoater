@@ -4,8 +4,8 @@
 
 export interface GoalScorer {
   player: string;
-  goals: number;
-  assists: number;
+  goals?: number; // Optional for flexibility
+  assists?: number; // Optional for flexibility
 }
 
 export interface MatchGoal {
@@ -38,8 +38,8 @@ export interface Match {
   date: string; // ISO format: YYYY-MM-DD
   opposition: string;
   venue: string;
-  scored: number;
-  conceded: number;
+  scored?: number; // Optional for upcoming/incomplete matches
+  conceded?: number; // Optional for upcoming/incomplete matches
   league?: string | null; // Allow null for flexibility
   video?: string | null; // Allow null
   iplayer?: string | null; // Allow null

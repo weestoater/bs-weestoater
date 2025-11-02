@@ -1,21 +1,24 @@
-import { Card } from "../../interfaces/interfaces";
+import { MatchCard } from "../../interfaces/footballTypes";
 
-export const CardsDetails = (props: any) => {
-  const cards: any = props.cards ? props.cards : null;
+interface CardsDetailsProps {
+  cards: MatchCard[];
+}
+
+export const CardsDetails = ({ cards }: CardsDetailsProps) => {
   return (
     <>
       <p>
         <strong>Cards</strong>:
       </p>
       <ul className="no-bullets">
-        {cards.map((item: Card, key: number) => {
+        {cards.map((item, key) => {
           return (
             <li key={key}>
               <div
-                className={`cards ${item.card}`}
-                data-testid={`${item.card}card${key}`}
+                className={`cards ${item.type}`}
+                data-testid={`${item.type}card${key}`}
               ></div>
-              <strong>{item.player}</strong> - {item.mins} mins
+              <strong>{item.player}</strong> - {item.minute} mins
             </li>
           );
         })}

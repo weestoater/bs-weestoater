@@ -17,6 +17,10 @@
       "goals": 0
     },
     {
+      "player": "Callum Hendry",
+      "goals": 1
+    },
+    {
       "player": "Elijah Just",
       "assists": 3,
       "goals": 1
@@ -50,6 +54,11 @@
       "player": "Callum Slattery",
       "assists": 3,
       "goals": 1
+    },
+    {
+      "player": "Tom Sparrow",
+      "assists": 1,
+      "goals": 0
     },
     {
       "player": "Apostolos Stamatelopoulos",

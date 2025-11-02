@@ -21,8 +21,13 @@ export const formatScore = (
 
 export const sortGoalScorers = (scorers: GoalScorer[]): GoalScorer[] => {
   return [...scorers].sort((a, b) => {
-    if (a.goals !== b.goals) return b.goals - a.goals;
-    if (a.assists !== b.assists) return b.assists - a.assists;
+    const aGoals = a.goals ?? 0;
+    const bGoals = b.goals ?? 0;
+    const aAssists = a.assists ?? 0;
+    const bAssists = b.assists ?? 0;
+
+    if (aGoals !== bGoals) return bGoals - aGoals;
+    if (aAssists !== bAssists) return bAssists - aAssists;
     return a.player.localeCompare(b.player);
   });
 };
