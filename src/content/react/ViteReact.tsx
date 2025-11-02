@@ -16,7 +16,7 @@ export const ViteContent = () => {
         </h2>
       </div>
       <div className="card-body">
-        <img src={viteLogo} className="right w10" alt="Vite logo" />
+        <img src={viteLogo} className="shape-rounded-rect right shape-md" alt="Vite logo" />
         <p>
           I've been messing about with{" "}
           <a href="http://vite.dev" target="_blank" rel="noreferrer">

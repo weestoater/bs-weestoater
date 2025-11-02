@@ -1,0 +1,331 @@
+@use "variables" as *;
+
+// CSS Shape Functions for non-square images and icons
+// These create rounded spaces around images allowing text to flow naturally
+
+// ====================================
+// Circle Shapes
+// ====================================
+
+.shape-circle {
+  border-radius: 50%;
+  shape-outside: circle(50% at center);
+  object-fit: cover;
+  display: block;
+  max-width: none; // Override any global max-width on images
+  box-shadow: -0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
+  overflow: hidden; // Ensures content respects border-radius
+
+  &.right {
+    float: right;
+    shape-margin: 0.5rem;
+    margin: 0 0 0.5rem 0.5rem;
+  }
+
+  &.left {
+    float: left;
+    shape-margin: 0.5rem;
+    margin: 0 0.5rem 0.5rem 0;
+  }
+}
+
+// ====================================
+// Ellipse Shapes (for portrait/landscape images)
+// ====================================
+
+.shape-ellipse-vertical {
+  border-radius: 50%;
+  clip-path: ellipse(40% 50%);
+  shape-outside: ellipse(40% 50%);
+  object-fit: cover;
+
+  &.right {
+    float: right;
+    shape-margin: 1.25rem;
+    margin: 0 0 1.25rem 1.25rem;
+  }
+
+  &.left {
+    float: left;
+    shape-margin: 1.25rem;
+    margin: 0 1.25rem 1.25rem 0;
+  }
+}
+
+.shape-ellipse-horizontal {
+  border-radius: 50%;
+  clip-path: ellipse(50% 40%);
+  shape-outside: ellipse(50% 40%);
+  object-fit: cover;
+
+  &.right {
+    float: right;
+    shape-margin: 1.25rem;
+    margin: 0 0 1.25rem 1.25rem;
+  }
+
+  &.left {
+    float: left;
+    shape-margin: 1.25rem;
+    margin: 0 1.25rem 1.25rem 0;
+  }
+}
+
+// ====================================
+// Rounded Rectangle Shapes
+// ====================================
+
+.shape-rounded-rect {
+  border-radius: 1.25rem;
+  clip-path: inset(0 round 1.25rem);
+  shape-outside: inset(0 round 1.25rem);
+  object-fit: cover;
+
+  &.right {
+    float: right;
+    shape-margin: 1.25rem;
+    margin: 0 0 1.25rem 1.25rem;
+  }
+
+  &.left {
+    float: left;
+    shape-margin: 1.25rem;
+    margin: 0 1.25rem 1.25rem 0;
+  }
+}
+
+// Extra rounded for more dramatic effect
+.shape-rounded-rect-soft {
+  border-radius: 2.5rem;
+  clip-path: inset(0 round 2.5rem);
+  shape-outside: inset(0 round 2.5rem);
+  object-fit: cover;
+
+  &.right {
+    float: right;
+    shape-margin: 1.25rem;
+    margin: 0 0 1.25rem 1.25rem;
+  }
+
+  &.left {
+    float: left;
+    shape-margin: 1.25rem;
+    margin: 0 1.25rem 1.25rem 0;
+  }
+}
+
+// ====================================
+// Polygon Shapes (for creative layouts)
+// ====================================
+
+// Octagon shape
+.shape-octagon {
+  clip-path: polygon(
+    30% 0%,
+    70% 0%,
+    100% 30%,
+    100% 70%,
+    70% 100%,
+    30% 100%,
+    0% 70%,
+    0% 30%
+  );
+  shape-outside: polygon(
+    30% 0%,
+    70% 0%,
+    100% 30%,
+    100% 70%,
+    70% 100%,
+    30% 100%,
+    0% 70%,
+    0% 30%
+  );
+  object-fit: cover;
+
+  &.right {
+    float: right;
+    shape-margin: 1.25rem;
+    margin: 0 0 1.25rem 1.25rem;
+  }
+
+  &.left {
+    float: left;
+    shape-margin: 1.25rem;
+    margin: 0 1.25rem 1.25rem 0;
+  }
+}
+
+// Hexagon shape (great for badges/logos)
+.shape-hexagon {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  shape-outside: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  object-fit: cover;
+
+  &.right {
+    float: right;
+    shape-margin: 1.25rem;
+    margin: 0 0 1.25rem 1.25rem;
+  }
+
+  &.left {
+    float: left;
+    shape-margin: 1.25rem;
+    margin: 0 1.25rem 1.25rem 0;
+  }
+}
+
+// Shield shape (perfect for football badges!)
+.shape-shield {
+  clip-path: polygon(50% 0%, 100% 20%, 100% 60%, 50% 100%, 0% 60%, 0% 20%);
+  shape-outside: polygon(50% 0%, 100% 20%, 100% 60%, 50% 100%, 0% 60%, 0% 20%);
+  object-fit: cover;
+
+  &.right {
+    float: right;
+    shape-margin: 1.25rem;
+    margin: 0 0 1.25rem 1.25rem;
+  }
+
+  &.left {
+    float: left;
+    shape-margin: 1.25rem;
+    margin: 0 1.25rem 1.25rem 0;
+  }
+}
+
+// ====================================
+// Icon Specific Shapes (for logos and badges)
+// ====================================
+
+// Football badge style with enhanced shadow
+.shape-football-badge {
+  border-radius: 1.25rem;
+  clip-path: inset(0 round 1.25rem);
+  shape-outside: inset(0 round 1.25rem);
+  object-fit: contain;
+  background: white;
+  padding: 0.625rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+
+  &.right {
+    float: right;
+    shape-margin: 1.25rem;
+    margin: 0 0 1.25rem 1.25rem;
+  }
+
+  &.left {
+    float: left;
+    shape-margin: 1.25rem;
+    margin: 0 1.25rem 1.25rem 0;
+  }
+}
+
+// ====================================
+// Avatar Enhancements
+// ====================================
+
+.avatar-enhanced {
+  border-radius: 50%;
+  clip-path: circle(50%);
+  shape-outside: circle(50%);
+  object-fit: cover;
+  border: 0.1875rem solid white;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+
+  &.right {
+    float: right;
+    shape-margin: 1.25rem;
+    margin: 0 0 1.25rem 1.25rem;
+  }
+
+  &.left {
+    float: left;
+    shape-margin: 1.25rem;
+    margin: 0 1.25rem 1.25rem 0;
+  }
+}
+
+// ====================================
+// Size Variants
+// ====================================
+
+.shape-sm {
+  width: 6.25rem;
+  height: 6.25rem;
+}
+
+.shape-md {
+  width: 9.375rem;
+  height: 9.375rem;
+}
+
+.shape-lg {
+  width: 12.5rem;
+  height: 12.5rem;
+}
+
+.shape-xl {
+  width: 15.625rem;
+  height: 15.625rem;
+}
+
+// ====================================
+// Responsive Adjustments
+// ====================================
+
+@media (max-width: 768px) {
+  // Reduce shape margins on mobile
+  [class*="shape-"] {
+    &.right,
+    &.left {
+      shape-margin: 0.625rem;
+      margin: 0 0.625rem 0.625rem 0.625rem;
+      max-width: 7.5rem;
+    }
+  }
+}
+
+// ====================================
+// Image URL based shapes (for transparent PNGs)
+// ====================================
+
+// Use this when you have transparent PNG images
+// and want text to wrap around the actual visible shape
+// Note: You need to set the shape-outside property manually in inline styles
+// Example: <img src="image.png" class="shape-from-image right" style="shape-outside: url('image.png')" />
+.shape-from-image {
+  shape-image-threshold: 0.5;
+  shape-margin: 0.5rem;
+
+  &.right {
+    float: right;
+    margin: 0 0 0.5rem 0.5rem;
+  }
+
+  &.left {
+    float: left;
+    margin: 0 0.5rem 0.5rem 0;
+  }
+}
+
+// ====================================
+// Utility Classes
+// ====================================
+
+// Add breathing room around shaped images
+.shape-spacious {
+  shape-margin: 1.875rem !important;
+}
+
+.shape-tight {
+  shape-margin: 0.625rem !important;
+}
+
+// Ensure images maintain aspect ratio
+.shape-contain {
+  object-fit: contain !important;
+}
+
+.shape-cover {
+  object-fit: cover !important;
+}
