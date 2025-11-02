@@ -9,7 +9,7 @@ export const NextThingPost = () => {
         </h2>
       </div>
       <div className="card-body">
-        <img src={NextJSLogo} alt="NextJS logo" className="right w10" />
+        <img src={NextJSLogo} alt="NextJS logo" className="shape-rounded-rect right shape-md" />
         <p>
           On a recent works 'global hackathon' I did a small PoC using NextJS
           and Bootstrap. I really wasn't sure what to expect with NextJS, but

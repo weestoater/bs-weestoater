@@ -19,7 +19,7 @@ export function FootballIntro() {
               <img
                 src={motherwell}
                 alt="Motherwell F.C. Logo"
-                className="img-responsive"
+                className="shape-football-badge right shape-lg"
               />
             </div>
           </div>
