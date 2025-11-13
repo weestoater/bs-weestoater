@@ -3,6 +3,29 @@
   "matches": [
     {
       "scored": 1,
+      "conceded": 1,
+      "date": "2025-11-09",
+      "opposition": "Aberdeen",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Elijah Just",
+          "mins": "64"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Elliot Watt",
+          "type": "yellow",
+          "minute": 51
+        }
+      ],
+      "video": null,
+      "notes": "Another game of high possession, but not enough goals. 65% overall, more shots on goal but only one in the back of the net. Lots to enjoy, but still frustrating to not be taking all three points back to Fir Park. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 1,
       "conceded": 4,
       "date": "2025-11-01",
       "opposition": "St. Mirren",
