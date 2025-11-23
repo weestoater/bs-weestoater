@@ -2,6 +2,57 @@
   "season": "2025-26",
   "matches": [
     {
+      "scored": 3,
+      "conceded": 1,
+      "date": "2025-11-22",
+      "opposition": "Kilmarnock",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "21"
+        },
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "45+2"
+        },
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "mins": "68 (Pen)"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Johnny Koutrombis",
+          "type": "yellow",
+          "minute": 21
+        },
+        {
+          "player": "Callum Hendry",
+          "type": "yellow",
+          "minute": 47
+        },
+        {
+          "player": "Callum Slattery",
+          "type": "yellow",
+          "minute": 57
+        },
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "type": "yellow",
+          "minute": 80
+        },
+        {
+          "player": "Liam Gordon",
+          "type": "yellow",
+          "minute": 81
+        }
+      ],
+      "video": null,
+      "notes": "Possession at 59%, but fewer total shots or shots on target than Kilmarnock shows this wasn't perhaps as positive a result as the score would make you think. A very dubious penalty decision that didn't go Killies way and as usual some calamitous work from Calum Ward between the sticks for us. But most incredibly Elijah Just played, having just returned from international duties for New Zealand, and made an important impact too.  Our first two goals, from Maswanhise were well taken opportunities, with the second coming from a set piece straight off the training grounds. Much needed three points - but still no clean sheet in goals. #claret&amber  #COYW!!"
+    },
+    {
       "scored": 1,
       "conceded": 1,
       "date": "2025-11-09",
@@ -21,7 +72,7 @@
           "minute": 51
         }
       ],
-      "video": null,
+      "video": "https://youtu.be/mH8W_GxAmk8?si=QqYg3_rXor9jSOwj",
       "notes": "Another game of high possession, but not enough goals. 65% overall, more shots on goal but only one in the back of the net. Lots to enjoy, but still frustrating to not be taking all three points back to Fir Park. #claret&amber  #COYW!!"
     },
     {

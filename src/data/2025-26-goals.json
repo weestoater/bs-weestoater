@@ -18,7 +18,8 @@
     },
     {
       "player": "Callum Hendry",
-      "goals": 1
+      "goals": 1,
+      "assists": 0
     },
     {
       "player": "Elijah Just",
@@ -33,11 +34,11 @@
     {
       "player": "Emmanuel Longelo",
       "goals": 4,
-      "assists": 2
+      "assists": 3
     },
     {
       "player": "Tawanda Maswanhise",
-      "goals": 9,
+      "goals": 11,
       "assists": 1
     },
     {
@@ -62,7 +63,7 @@
     },
     {
       "player": "Apostolos Stamatelopoulos",
-      "goals": 5,
+      "goals": 6,
       "assists": 1
     },
     {
