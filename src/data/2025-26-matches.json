@@ -2,6 +2,27 @@
   "season": "2025-26",
   "matches": [
     {
+      "scored": 2,
+      "conceded": 0,
+      "date": "2025-11-25",
+      "opposition": "Hibernian",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "19 (Pen)"
+        },
+        {
+          "player": "Elijah Just",
+          "mins": "22"
+        }
+      ],
+      "cards": null,
+      "video": "https://youtu.be/-uwgfAQ7XJQ?si=zCWmEAbL9LYb8LJe",
+      "notes": "70% possession, 16 total shots and 5 shots on target made for some exciting viewing. Grant Hanley had a mare of a night, giving away a penalty then picking up a red card - he should have stayed at home. But Motherwell shut Hibs down before all that had happened. Fresh legs from a change in lineup and some fantastic passing football was on display. If we can keep playing like that for the rest of the season, it will be a joy to weatch. That said Calum Ward was found out by Boyle and it was only the incredible back tracking from Koutrombis that kept it a clean sheet - extra shredded wheat for him ! #claret&amber  #COYW!!"
+    },
+    {
       "scored": 3,
       "conceded": 1,
       "date": "2025-11-22",
@@ -49,7 +70,7 @@
           "minute": 81
         }
       ],
-      "video": null,
+      "video": "https://youtu.be/rMMULcaNpkA?si=c5c_GBVFFRQ88XQ9",
       "notes": "Possession at 59%, but fewer total shots or shots on target than Kilmarnock shows this wasn't perhaps as positive a result as the score would make you think. A very dubious penalty decision that didn't go Killies way and as usual some calamitous work from Calum Ward between the sticks for us. But most incredibly Elijah Just played, having just returned from international duties for New Zealand, and made an important impact too.  Our first two goals, from Maswanhise were well taken opportunities, with the second coming from a set piece straight off the training grounds. Much needed three points - but still no clean sheet in goals. #claret&amber  #COYW!!"
     },
     {
