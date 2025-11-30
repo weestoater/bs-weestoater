@@ -19,25 +19,26 @@
     a {
       border: 3px solid transparent;
       border-radius: 0.75rem;
-      color: white;
+      color: var(--theme-navbar-color);
       display: block;
       margin: 0;
       padding: 0.5rem 1rem !important;
       text-decoration: none;
-      transition: ease-in-out 0.3s;
+      transition: background-color 0.3s ease, border-color 0.3s ease,
+        color 0.3s ease;
 
       &:focus,
       &:hover {
-        background: $chuck;
-        border-color: white;
-        color: $vscode;
+        background: var(--theme-nav-hover-bg);
+        border-color: var(--theme-nav-hover-border);
+        color: var(--theme-nav-hover-color);
         font-weight: bold;
       }
 
       &.active {
-        background: white;
-        border: 3px solid $chuck !important;
-        color: $vscode;
+        background: var(--theme-nav-active-bg) !important;
+        border: 3px solid var(--theme-nav-active-border) !important;
+        color: var(--theme-nav-active-color) !important;
         font-weight: bold;
       }
     }
