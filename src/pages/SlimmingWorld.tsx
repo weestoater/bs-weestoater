@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { SWDataTable } from "../components/sw/swDataTable";
 import { createSwChartOptions } from "../config/swChartConfig";
@@ -10,7 +10,23 @@ const AgCharts = lazy(() =>
 );
 
 export const SlimmingWorld = () => {
-  const _options = createSwChartOptions(swData[0].data);
+  const [chartOptions, setChartOptions] = useState(() =>
+    createSwChartOptions(swData[0].data)
+  );
+
+  useEffect(() => {
+    // Watch for theme changes
+    const observer = new MutationObserver(() => {
+      setChartOptions(createSwChartOptions(swData[0].data));
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
@@ -35,7 +51,7 @@ export const SlimmingWorld = () => {
                 </div>
               }
             >
-              <AgCharts options={_options} />
+              <AgCharts options={chartOptions} />
             </Suspense>
           </div>
         </div>

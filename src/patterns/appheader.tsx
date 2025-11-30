@@ -14,6 +14,7 @@ import { HashLink } from "react-router-hash-link";
 // Type assertion to fix HashLink typing issue
 const HashLinkSafe = HashLink as React.ComponentType<any>;
 import wsIcon from "../assets/img/weestoater-icon.png";
+import { ThemeSwitcher } from "../components/global/ThemeSwitcher";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,6 +58,11 @@ export const Header = () => {
                 </RouterNavLink>
               </NavItem>
             ))}
+          </Nav>
+          <Nav navbar>
+            <NavItem>
+              <ThemeSwitcher />
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>

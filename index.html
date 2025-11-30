@@ -11,6 +11,25 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
+    <!-- Initialize theme before page renders to prevent flash -->
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("weestoater:theme");
+          if (
+            !theme &&
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          ) {
+            theme = "dark";
+          }
+          if (theme) {
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <title>weestoater</title>
   </head>
   <body>
