@@ -22,6 +22,7 @@
     grid-template-columns: 3fr 1fr;
     margin: 0 0 0.25rem;
     padding: 0.5rem;
+    transition: background-color 300ms ease, color 300ms ease;
 
     .venue,
     .score {
@@ -66,10 +67,13 @@
         text-align: center;
       }
       td {
-        background: $grey700;
-        border: 1px solid $claret;
+        background: var(--theme-card-bg);
+        border: 1px solid var(--theme-border);
+        color: var(--theme-color);
         padding: 1rem;
         font-size: 1.15rem;
+        transition: background-color 300ms ease, border-color 300ms ease,
+          color 300ms ease;
       }
     }
   }
@@ -87,14 +91,15 @@
 }
 
 .cards {
-  border: 2px solid $grey400;
-  box-shadow: 0 0 0.333rem $grey400;
+  border: 2px solid var(--theme-border);
+  box-shadow: 0 0 0.333rem var(--theme-border);
   display: block;
   float: left;
   height: 1.75rem;
   line-height: 1.5rem;
   margin: 0 0.5rem 0 0;
   width: 1.25rem;
+  transition: border-color 300ms ease, box-shadow 300ms ease;
 
   &.red {
     background: $red;
@@ -111,9 +116,11 @@
   height: 500px;
   padding: 0.5rem 2rem;
   margin: 0 0 1rem;
-  border: 1px solid $grey500;
-  box-shadow: 0 0 0.333rem $grey500;
-  background: transparent;
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 0 0.333rem var(--theme-border);
+  background: var(--theme-card-bg);
+  transition: border-color 300ms ease, box-shadow 300ms ease,
+    background-color 300ms ease;
 
   .ag-charts-wrapper {
     height: 450px !important;
@@ -121,13 +128,23 @@
 }
 
 .goal-scorers-grid {
-  border: 1px solid $grey500;
-  box-shadow: 0 0 0.333rem $grey500;
-  background: transparent;
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 0 0.333rem var(--theme-border);
+  background: var(--theme-card-bg);
+  color: var(--theme-color);
   height: 45vh;
   margin: 2rem 0;
   max-width: 95%;
   padding: 1rem;
+  transition: border-color 300ms ease, box-shadow 300ms ease,
+    background-color 300ms ease, color 300ms ease;
+}
+
+@media (max-width: 992px) {
+  .goal-scorers {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 @media (max-width: 616px) {
@@ -142,6 +159,56 @@
   clear: both;
   margin: 2.5rem 0 0 2rem;
   width: 80%;
+
+  .table {
+    --bs-table-bg: var(--theme-table-bg);
+    --bs-table-color: var(--theme-color);
+    --bs-table-border-color: var(--theme-table-border);
+    --bs-table-striped-bg: var(--theme-table-stripe-bg);
+    --bs-table-hover-bg: var(--theme-table-stripe-bg);
+    background-color: var(--theme-table-bg) !important;
+    color: var(--theme-color) !important;
+  }
+
+  .table-dark {
+    --bs-table-bg: var(--theme-card-header-bg) !important;
+    --bs-table-color: var(--theme-card-header-color) !important;
+    --bs-table-border-color: var(--theme-border) !important;
+  }
+
+  thead,
+  thead.table-dark {
+    background-color: var(--theme-card-header-bg) !important;
+    color: var(--theme-card-header-color) !important;
+
+    th {
+      background-color: var(--theme-card-header-bg) !important;
+      color: var(--theme-card-header-color) !important;
+      border-color: var(--theme-border) !important;
+    }
+  }
+
+  tbody {
+    tr {
+      background-color: var(--theme-table-bg) !important;
+      color: var(--theme-color) !important;
+
+      &:nth-of-type(odd) {
+        background-color: var(--theme-table-stripe-bg) !important;
+      }
+
+      &:hover {
+        background-color: var(--theme-table-stripe-bg) !important;
+        color: var(--theme-color) !important;
+      }
+    }
+
+    td {
+      background-color: inherit !important;
+      color: inherit !important;
+      border-color: var(--theme-border) !important;
+    }
+  }
 }
 
 .seasons-nav {
@@ -157,12 +224,14 @@
     margin: 0 0 0.25rem;
     padding: 0;
     text-align: center;
+    transition: background-color 300ms ease;
   }
   a {
-    color: black;
+    color: $vscode;
     display: block;
     padding: 0.25rem auto;
     text-decoration: none;
+    transition: background-color 300ms ease, color 300ms ease;
 
     &:hover {
       background: $claret;
@@ -190,18 +259,20 @@
 
     li {
       background: $amber;
-      border: 1px solid $grey500;
+      border: 1px solid var(--theme-border);
       border-radius: 0.5rem;
       display: inline-block;
       margin: 0 1rem 0 0;
       padding: 0;
+      transition: border-color 300ms ease;
 
       a {
-        color: black;
+        color: $vscode;
         font-size: 1.4rem;
         font-weight: 400;
         padding: 0.5rem 1rem;
         text-decoration: none;
+        transition: background-color 300ms ease, color 300ms ease;
 
         &:hover {
           background: $claret;

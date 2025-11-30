@@ -1,6 +1,7 @@
 import { lazy, Suspense, useState, useEffect } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { SWDataTable } from "../components/sw/swDataTable";
+import { SwDataGrid } from "../components/sw/swDataGrid";
 import { createSwChartOptions } from "../config/swChartConfig";
 import swData from "../data/slimmingWorldData.json";
 
@@ -55,6 +56,25 @@ export const SlimmingWorld = () => {
             </Suspense>
           </div>
         </div>
+      </div>
+
+      <div className="row mt-4">
+        <div className="col-12">
+          <h2 className="mb-3">Weight Loss History</h2>
+          <div style={{ height: "500px" }}>
+            <SwDataGrid data={swData[0].data} />
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center my-4">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="btn btn-outline-secondary"
+        >
+          <i className="bi bi-arrow-up-circle me-2"></i>
+          Back to Top
+        </button>
       </div>
     </>
   );

@@ -1,11 +1,45 @@
+import { useState, useEffect } from "react";
+
 export const GoalScorersDetailsTable = (props: any) => {
   const details = props.details ? props.details : null;
+  const [theme, setTheme] = useState(
+    document.documentElement.getAttribute("data-theme") || "light"
+  );
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setTheme(document.documentElement.getAttribute("data-theme") || "light");
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="goal-scorers-table" data-testid="goal-scorers-table">
-      <div className="table-responsive">
-        <table className="table table-hover table-striped table-bordered">
-          <thead className="table-dark">
+    <div
+      className="goal-scorers-table"
+      data-testid="goal-scorers-table"
+      data-theme={theme}
+    >
+      <div className="table-responsive" key={`table-${theme}`}>
+        <table
+          className="table table-hover table-striped table-bordered"
+          style={{
+            backgroundColor: "var(--theme-table-bg)",
+            color: "var(--theme-color)",
+            borderColor: "var(--theme-border)",
+          }}
+        >
+          <thead
+            style={{
+              backgroundColor: "var(--theme-card-header-bg)",
+              color: "var(--theme-card-header-color)",
+            }}
+          >
             <tr>
               <th scope="col">Player</th>
               <th scope="col" className="text-center">
