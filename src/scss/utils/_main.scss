@@ -25,13 +25,15 @@ main {
     width: 100%;
     margin: 0 0.5rem 2rem -0.5rem;
     img {
-      border: 10px solid white;
-      box-shadow: 0 0 0.5rem $grey550;
+      border: 10px solid var(--theme-card-bg);
+      box-shadow: 0 0 0.5rem var(--theme-border);
+      transition: border-color 300ms ease, box-shadow 300ms ease;
     }
     figcaption {
-      background: $grey650;
-      color: $black200;
+      background: var(--theme-blockquote-bg);
+      color: var(--theme-color);
       padding: 0.5rem;
+      transition: background-color 300ms ease, color 300ms ease;
     }
   }
   .card {
@@ -48,13 +50,14 @@ main {
     }
   }
   .code-sample {
-    background: $vscode;
-    border: 1px solid;
+    background: var(--theme-card-header-bg);
+    border: 1px solid var(--theme-border);
     border-radius: 0.5rem;
     color: $chuck;
     font-family: "Gabriela", serif;
     padding: 1rem 2rem 0.25rem;
     margin: 0 0 1rem;
+    transition: background-color 300ms ease, border-color 300ms ease;
 
     p {
       font-size: 1.35rem;
