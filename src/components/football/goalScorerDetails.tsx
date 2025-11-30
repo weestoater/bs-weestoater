@@ -1,4 +1,4 @@
-import { lazy, memo, Suspense } from "react";
+import { lazy, memo, Suspense, useState, useEffect } from "react";
 import type { GoalScorer } from "../../interfaces/footballTypes";
 import { GoalScorersGrid } from "./goalScorersGrid";
 
@@ -7,71 +7,148 @@ const AgCharts = lazy(() =>
   import("ag-charts-react").then((module) => ({ default: module.AgCharts }))
 );
 
+// Get theme-aware colors
+const getThemeColors = () => {
+  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+  return {
+    text: isDark ? "#c9d1d9" : "#212529",
+    gridLine: isDark ? "#30363d" : "#dee2e6",
+    background: isDark ? "transparent" : "transparent",
+  };
+};
+
 export const GoalScorerDetails = memo((props: any) => {
   const details: GoalScorer[] = props.details ? props.details : [];
 
-  const _options: any = {
-    data: details,
-    title: {
-      enabled: true,
-      text: "No. of Goals & Assists",
-    },
-    series: [
-      {
-        type: "bar",
-        xKey: "player",
-        xName: "Players",
-        yKey: "goals",
-        yName: "Goals Scored",
-        fill: "#fd9402",
-        stroke: "#6a0117",
-        showInMiniChart: true,
+  const createChartOptions = () => {
+    const themeColors = getThemeColors();
+
+    return {
+      data: details,
+      background: {
+        fill: themeColors.background,
       },
-      {
-        type: "line",
-        xKey: "player",
-        xName: "Players",
-        yKey: "assists",
-        yName: "Assists ",
-        strokeWidth: 0,
-        marker: {
-          enabled: true,
-          shape: "star",
-          size: 15, // Make marker large
-          fill: "#6a0117", // Optional: color of diamond
+      title: {
+        enabled: true,
+        text: "No. of Goals & Assists",
+        color: themeColors.text,
+      },
+      series: [
+        {
+          type: "bar",
+          xKey: "player",
+          xName: "Players",
+          yKey: "goals",
+          yName: "Goals Scored",
+          fill: "#fd9402",
+          stroke: "#6a0117",
+          showInMiniChart: true,
         },
-        showInMiniChart: true,
+        {
+          type: "line",
+          xKey: "player",
+          xName: "Players",
+          yKey: "assists",
+          yName: "Assists ",
+          strokeWidth: 0,
+          marker: {
+            enabled: true,
+            shape: "star",
+            size: 15,
+            fill: "#6a0117",
+          },
+          showInMiniChart: true,
+        },
+      ],
+      axes: [
+        {
+          type: "category",
+          position: "bottom",
+          title: {
+            text: "Players",
+            color: themeColors.text,
+          },
+          label: {
+            color: themeColors.text,
+          },
+          gridLine: {
+            style: [
+              {
+                stroke: themeColors.gridLine,
+              },
+            ],
+          },
+        },
+        {
+          type: "number",
+          position: "left",
+          title: {
+            text: "No. of Goals",
+            color: themeColors.text,
+          },
+          label: {
+            color: themeColors.text,
+          },
+          gridLine: {
+            style: [
+              {
+                stroke: themeColors.gridLine,
+              },
+            ],
+          },
+        },
+        {
+          type: "number",
+          position: "right",
+          title: {
+            text: "No. of Assists",
+            color: themeColors.text,
+          },
+          label: {
+            color: themeColors.text,
+          },
+          gridLine: {
+            style: [
+              {
+                stroke: themeColors.gridLine,
+              },
+            ],
+          },
+        },
+      ],
+      padding: {
+        top: 5,
+        right: 5,
+        bottom: 5,
+        left: 5,
       },
-    ],
-    axes: [
-      {
-        type: "category",
-        position: "bottom",
-        title: { text: "Players" },
+      legend: {
+        position: "top",
+        spacing: 5,
+        item: {
+          label: {
+            color: themeColors.text,
+          },
+        },
       },
-      {
-        type: "number",
-        position: "left",
-        title: { text: "No. of Goals" },
-      },
-      {
-        type: "number",
-        position: "right",
-        title: { text: "No. of Assists" },
-      },
-    ],
-    padding: {
-      top: 5,
-      right: 5,
-      bottom: 5,
-      left: 5,
-    },
-    legend: {
-      position: "top",
-      spacing: 5,
-    },
-    theme: {},
+    };
   };
+
+  const [chartOptions, setChartOptions] = useState(createChartOptions);
+
+  useEffect(() => {
+    // Watch for theme changes
+    const observer = new MutationObserver(() => {
+      setChartOptions(createChartOptions());
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, [details]);
 
   return (
     <>
@@ -85,7 +162,7 @@ export const GoalScorerDetails = memo((props: any) => {
             </div>
           }
         >
-          <AgCharts options={_options} />
+          <AgCharts options={chartOptions as any} />
         </Suspense>
       </div>
 

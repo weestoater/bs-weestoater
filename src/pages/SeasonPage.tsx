@@ -76,7 +76,7 @@ export const SeasonPage = () => {
   }
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid" id="top">
       <PageTitleH1 title="Football Seasons" />
 
       <div className="row">
@@ -92,6 +92,16 @@ export const SeasonPage = () => {
           goals={goals}
         />
       )}
+
+      <div className="text-center my-4">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="btn btn-outline-secondary"
+        >
+          <i className="bi bi-arrow-up-circle me-2"></i>
+          Back to Top
+        </button>
+      </div>
     </div>
   );
 };

@@ -29,9 +29,9 @@
 
       &:focus,
       &:hover {
-        background: var(--theme-nav-hover-bg);
-        border-color: var(--theme-nav-hover-border);
-        color: var(--theme-nav-hover-color);
+        background: var(--theme-nav-hover-bg) !important;
+        border-color: var(--theme-nav-hover-border) !important;
+        color: var(--theme-nav-hover-color) !important;
         font-weight: bold;
       }
 
