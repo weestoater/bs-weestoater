@@ -2,6 +2,29 @@
   "season": "2025-26",
   "matches": [
     {
+      "scored": 0,
+      "conceded": 0,
+      "date": "2025-11-29",
+      "opposition": "Heart of Midlothian",
+      "venue": "Home",
+      "league": null,
+      "goals": null,
+      "cards": [
+        {
+          "player": "Emmanuel Longelo",
+          "type": "yellow",
+          "minute": 73
+        },
+        {
+          "player": "Stephen Welsh",
+          "type": "yellow",
+          "minute": 88
+        }
+      ],
+      "video": null,
+      "notes": "55.3% possession, 9 total shots and 5 shots on target but not a goal on the final scoresheet. Two chopped off and countless other chances for the Steelmen. Just and Hendry both having great games, unfortunately without any eventual winners. Another excellent goal line clearance required, but not to take anything away from the team. Both Edinburgh side have come to Fir Park and left without winning. Will take that any day of the week. #claret&amber  #COYW!!"
+    },
+    {
       "scored": 2,
       "conceded": 0,
       "date": "2025-11-25",
