@@ -8,7 +8,7 @@ export const AgentAIWork = () => {
       </div>
       <div className="card-body">
         <div className="right">
-          <i className="bi bi-braces" style={{ fontSize: "4rem" }}></i>
+          <i className="bi bi-braces icon-large"></i>
         </div>
 
         <p>
@@ -22,7 +22,7 @@ export const AgentAIWork = () => {
         </p>
 
         <div className="left">
-          <i className="bi bi-code-slash" style={{ fontSize: "4rem" }}></i>
+          <i className="bi bi-code-slash icon-large"></i>
         </div>
 
         <p>
@@ -40,10 +40,7 @@ export const AgentAIWork = () => {
         </p>
 
         <div className="left">
-          <i
-            className="bi bi-universal-access"
-            style={{ fontSize: "4rem" }}
-          ></i>
+          <i className="bi bi-universal-access icon-large"></i>
         </div>
 
         <p>

@@ -61,7 +61,7 @@ export const SlimmingWorld = () => {
       <div className="row mt-4">
         <div className="col-12">
           <h2 className="mb-3">Weight Loss History</h2>
-          <div style={{ height: "500px" }}>
+          <div className="sw-grid-container">
             <SwDataGrid data={swData[0].data} />
           </div>
         </div>
