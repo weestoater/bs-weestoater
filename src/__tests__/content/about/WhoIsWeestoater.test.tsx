@@ -31,7 +31,8 @@ describe("WhoIsWeestoater", () => {
     render(<WhoIsWeestoater />);
     const avatar = screen.getByRole("img", { name: "avatar of weestoater" });
     expect(avatar).toBeInTheDocument();
-    expect(avatar).toHaveClass("avatar");
+    expect(avatar).toHaveClass("shape-circle");
+    expect(avatar).toHaveClass("shape-md");
   });
 
   it("renders Buster's image with correct alt text", () => {

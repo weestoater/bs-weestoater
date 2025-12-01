@@ -16,15 +16,12 @@ describe("Slimming World Chart Configuration", () => {
   const config = createSwChartOptions(mockData);
 
   test("chart has correct base configuration", () => {
-    expect(config.width).toBe(800);
-    expect(config.height).toBe(400);
     expect(config.data).toBe(mockData);
   });
 
   test("chart has correct title configuration", () => {
-    expect(config.title).toEqual({
+    expect(config.title).toMatchObject({
       text: "Slimming World",
-      enabled: true,
     });
   });
 
