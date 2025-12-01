@@ -166,9 +166,16 @@ blockquote {
 }
 
 code {
+  background: var(--theme-code-bg);
+  color: var(--code-light);
   font-family: "Courier New", Courier, monospace;
   font-size: 0.95rem !important;
   margin: 0 0.25rem;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+[data-theme="dark"] code {
+  color: var(--code-dark);
 }
 
 .card {
@@ -183,12 +190,26 @@ code {
       font-size: 1.4rem !important;
 
       code {
+        background: transparent;
         color: var(--theme-card-header-color);
         font-family: "Lucida Sans", Arial, sans-serif;
         font-size: 1.25rem !important;
         text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
       }
     }
+  }
+}
+
+.btn-outline-secondary {
+  background: var(--theme-btn-bg);
+  border-color: var(--theme-btn-border);
+  color: var(--theme-btn-color);
+  transition: all 300ms ease;
+
+  &:hover {
+    background: var(--theme-btn-hover-bg);
+    border-color: var(--theme-btn-hover-border);
+    color: var(--theme-btn-hover-color);
   }
 }
 

@@ -1,6 +1,6 @@
 :root {
-  --code-light: #00681e;
-  --code-dark: #00be1e;
+  --code-light: #006400;
+  --code-dark: #00ff00;
 
   // Theme variables (light defaults)
   --theme-bg: #ffffff;
@@ -30,6 +30,12 @@
   --theme-nav-hover-bg: #bada55;
   --theme-nav-hover-color: #000000;
   --theme-nav-hover-border: #ffffff;
+  --theme-btn-bg: #212529;
+  --theme-btn-color: #ffffff;
+  --theme-btn-border: #212529;
+  --theme-btn-hover-bg: #000000;
+  --theme-btn-hover-color: #ffffff;
+  --theme-btn-hover-border: #000000;
 }
 
 // Dark theme overrides
@@ -61,6 +67,12 @@
   --theme-nav-hover-bg: #bada55;
   --theme-nav-hover-color: #000000;
   --theme-nav-hover-border: #c9d1d9;
+  --theme-btn-bg: #f0f6fc;
+  --theme-btn-color: #0d1117;
+  --theme-btn-border: #f0f6fc;
+  --theme-btn-hover-bg: #ffffff;
+  --theme-btn-hover-color: #0d1117;
+  --theme-btn-hover-border: #ffffff;
 }
 
 //--    Colours

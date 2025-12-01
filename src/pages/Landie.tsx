@@ -1,5 +1,5 @@
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
-
+import { BackToTop } from "../components/global/BackToTop";
 import { EarlyAge } from "../content/landie/earlyage";
 import { BirthdayTreat } from "../content/landie/birthdaytreat";
 
@@ -16,15 +16,7 @@ export const LandiePage = () => {
         </div>
       </div>
 
-      <div className="text-center my-4">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="btn btn-outline-secondary"
-        >
-          <i className="bi bi-arrow-up-circle me-2"></i>
-          Back to Top
-        </button>
-      </div>
+      <BackToTop />
     </>
   );
 };
