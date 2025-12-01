@@ -2,7 +2,6 @@ import { describe, it, expect } from "vitest";
 import {
   getSeasonById,
   isValidSeasonId,
-  getAllSeasons,
   getCurrentSeason,
   getPreviousSeasons,
 } from "../../config/footballSeasons";
@@ -49,7 +48,7 @@ describe("footballSeasons", () => {
     it("returns the current season", () => {
       const current = getCurrentSeason();
       expect(current).toBeDefined();
-      expect(current.id).toBe("2025-26");
+      expect(current?.id).toBe("2025-26");
     });
   });
 
@@ -64,7 +63,7 @@ describe("footballSeasons", () => {
       const previous = getPreviousSeasons();
       const current = getCurrentSeason();
       const hasCurrentSeason = previous.some(
-        (season) => season.id === current.id
+        (season) => season.id === current?.id
       );
       expect(hasCurrentSeason).toBe(false);
     });
