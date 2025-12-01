@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const THEME_KEY = "weestoater:theme";
 type Theme = "light" | "dark";
@@ -23,10 +23,18 @@ export const ThemeSwitcher = () => {
   const [theme, setTheme] = useState<Theme>(() =>
     typeof window !== "undefined" ? getPreferredTheme() : "light"
   );
+  const announcementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem(THEME_KEY, theme);
+
+    // Announce theme change to screen readers
+    if (announcementRef.current) {
+      announcementRef.current.textContent = `${
+        theme === "dark" ? "Dark" : "Light"
+      } mode activated`;
+    }
   }, [theme]);
 
   const toggleTheme = () => {
@@ -34,28 +42,39 @@ export const ThemeSwitcher = () => {
   };
 
   return (
-    <div className="form-check form-switch theme-switcher">
-      <input
-        className="form-check-input"
-        type="checkbox"
-        role="switch"
-        id="themeSwitch"
-        aria-label="Toggle dark mode"
-        aria-checked={theme === "dark"}
-        checked={theme === "dark"}
-        onChange={toggleTheme}
+    <>
+      <div className="form-check form-switch theme-switcher">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="themeSwitch"
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          aria-checked={theme === "dark"}
+          checked={theme === "dark"}
+          onChange={toggleTheme}
+        />
+        <label className="form-check-label" htmlFor="themeSwitch">
+          <i
+            className={`bi bi-${
+              theme === "dark" ? "moon-stars-fill" : "sun-fill"
+            }`}
+            aria-hidden="true"
+          ></i>
+          <span className="visually-hidden">
+            {theme === "dark" ? "Dark" : "Light"} mode active
+          </span>
+        </label>
+      </div>
+      {/* Live region for screen reader announcements */}
+      <div
+        ref={announcementRef}
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="visually-hidden"
       />
-      <label className="form-check-label" htmlFor="themeSwitch">
-        <i
-          className={`bi bi-${
-            theme === "dark" ? "moon-stars-fill" : "sun-fill"
-          }`}
-        ></i>
-        <span className="visually-hidden">
-          {theme === "dark" ? "Dark" : "Light"} mode
-        </span>
-      </label>
-    </div>
+    </>
   );
 };
 

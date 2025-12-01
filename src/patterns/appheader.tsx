@@ -43,7 +43,7 @@ export const Header = () => {
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="me-auto" navbar>
+          <Nav className="me-auto" navbar aria-label="Main navigation">
             {items.map((item, key) => (
               <NavItem key={key}>
                 <RouterNavLink
@@ -59,11 +59,9 @@ export const Header = () => {
               </NavItem>
             ))}
           </Nav>
-          <Nav navbar>
-            <NavItem>
-              <ThemeSwitcher />
-            </NavItem>
-          </Nav>
+          <div className="ms-auto">
+            <ThemeSwitcher />
+          </div>
         </Collapse>
       </Navbar>
     </>
