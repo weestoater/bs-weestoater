@@ -17,7 +17,7 @@ export const MyOwnTimeLine = () => {
         </p>
 
         <div className="right">
-          <i className="bi bi-bootstrap" style={{ fontSize: "4rem" }}></i>
+          <i className="bi bi-bootstrap icon-large"></i>
         </div>
 
         <p>
@@ -27,7 +27,7 @@ export const MyOwnTimeLine = () => {
         </p>
 
         <div className="left">
-          <i className="bi bi-code-slash" style={{ fontSize: "4rem" }}></i>
+          <i className="bi bi-code-slash icon-large"></i>
         </div>
 
         <p>

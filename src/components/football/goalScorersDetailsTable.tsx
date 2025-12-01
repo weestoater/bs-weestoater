@@ -26,20 +26,8 @@ export const GoalScorersDetailsTable = (props: any) => {
       data-theme={theme}
     >
       <div className="table-responsive" key={`table-${theme}`}>
-        <table
-          className="table table-hover table-striped table-bordered"
-          style={{
-            backgroundColor: "var(--theme-table-bg)",
-            color: "var(--theme-color)",
-            borderColor: "var(--theme-border)",
-          }}
-        >
-          <thead
-            style={{
-              backgroundColor: "var(--theme-card-header-bg)",
-              color: "var(--theme-card-header-color)",
-            }}
-          >
+        <table className="table table-hover table-striped table-bordered">
+          <thead>
             <tr>
               <th scope="col">Player</th>
               <th scope="col" className="text-center">

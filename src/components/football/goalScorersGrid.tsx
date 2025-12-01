@@ -52,8 +52,8 @@ export const GoalScorersGrid = ({ details }: Props) => {
       borderColor: theme === "dark" ? "#30363d" : "#dee2e6",
       headerBackgroundColor: theme === "dark" ? "#161b22" : "#f8f9fa",
       headerTextColor: theme === "dark" ? "#c9d1d9" : "#212529",
-      oddRowBackgroundColor: theme === "dark" ? "#0d1117" : "#ffffff",
-      rowHoverColor: theme === "dark" ? "#161b22" : "#f8f9fa",
+      oddRowBackgroundColor: theme === "dark" ? "#161b22" : "#f8f9fa",
+      rowHoverColor: theme === "dark" ? "#21262d" : "#e9ecef",
     }),
   };
 

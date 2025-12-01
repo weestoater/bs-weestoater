@@ -18,6 +18,12 @@ body {
   transition: background-color 300ms ease, border-color 300ms ease;
 }
 
+.card-body {
+  .icon-large {
+    font-size: 4rem;
+  }
+}
+
 .navbar {
   background-color: var(--theme-navbar-bg) !important;
   color: var(--theme-navbar-color);
@@ -220,6 +226,24 @@ code {
   padding: 1rem;
   transition: border-color 300ms ease, box-shadow 300ms ease,
     background-color 300ms ease, color 300ms ease;
+}
+
+.sw-grid-container {
+  height: 500px;
+  max-width: 850px;
+}
+
+.goal-scorers-table {
+  .table {
+    background-color: var(--theme-table-bg);
+    color: var(--theme-color);
+    border-color: var(--theme-border);
+  }
+
+  thead {
+    background-color: var(--theme-card-header-bg);
+    color: var(--theme-card-header-color);
+  }
 }
 
 // Table theme support

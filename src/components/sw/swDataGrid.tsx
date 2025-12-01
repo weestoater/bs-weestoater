@@ -43,7 +43,7 @@ export const SwDataGrid = ({ data }: Props) => {
 
   // Column definitions
   const columnDefs = [
-    { field: "date" as const, headerName: "Weigh in date", flex: 1.5 },
+    { field: "date" as const, headerName: "Weigh in date", flex: 1 },
     {
       field: "change" as const,
       headerName: "Amount Lost (lbs)",
@@ -57,7 +57,7 @@ export const SwDataGrid = ({ data }: Props) => {
     {
       field: "weight" as const,
       headerName: "Weight (st/lbs)",
-      flex: 1.2,
+      flex: 1,
       valueFormatter: (params: { value: number }) => {
         const totalPounds = params.value;
         const stones = Math.floor(totalPounds / 14);
@@ -74,8 +74,8 @@ export const SwDataGrid = ({ data }: Props) => {
     borderColor: theme === "dark" ? "#30363d" : "#dee2e6",
     headerBackgroundColor: theme === "dark" ? "#161b22" : "#f8f9fa",
     headerTextColor: theme === "dark" ? "#c9d1d9" : "#212529",
-    oddRowBackgroundColor: theme === "dark" ? "#0d1117" : "#ffffff",
-    rowHoverColor: theme === "dark" ? "#161b22" : "#f8f9fa",
+    oddRowBackgroundColor: theme === "dark" ? "#161b22" : "#f8f9fa",
+    rowHoverColor: theme === "dark" ? "#21262d" : "#e9ecef",
   });
 
   return (
