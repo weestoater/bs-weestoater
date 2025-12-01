@@ -35,7 +35,9 @@ describe("AboutPage", () => {
   it("renders in the correct layout structure", () => {
     const { container } = render(<AboutPage />);
 
-    const columns = container.querySelectorAll(".col-lg-3.col-sm-12.mb-4");
+    const columns = container.querySelectorAll(
+      ".col-xxl-3.col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.mb-4"
+    );
     expect(columns).toHaveLength(3);
   });
 });

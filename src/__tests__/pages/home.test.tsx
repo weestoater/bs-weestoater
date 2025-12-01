@@ -42,10 +42,9 @@ describe("HomePage", () => {
   it("renders the page with correct title and components", () => {
     render(<HomePage />);
 
-    // Check if title is present but hidden
-    const title = screen.getByText("Welcome");
+    // Check if title is present
+    const title = screen.getByText("Welcome to weestoater");
     expect(title).toBeInTheDocument();
-    expect(title).toHaveClass("visually-hidden");
 
     // Check if all cards are rendered
     expect(screen.getByText("Slim Line")).toBeInTheDocument();
@@ -56,7 +55,9 @@ describe("HomePage", () => {
   it("renders in the correct layout structure", () => {
     const { container } = render(<HomePage />);
 
-    const columns = container.querySelectorAll(".col-lg-3.col-sm-12.mb-4");
+    const columns = container.querySelectorAll(
+      ".col-xxl-3.col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.mb-4"
+    );
     expect(columns).toHaveLength(3);
   });
 });

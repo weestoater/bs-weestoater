@@ -65,16 +65,22 @@ describe("ThemeSwitcher", () => {
   });
 
   it("displays correct icon for theme", () => {
+    // Set localStorage to light theme before render
+    localStorage.setItem("weestoater:theme", "light");
+    document.documentElement.setAttribute("data-theme", "light");
+
     const { container } = render(<ThemeSwitcher />);
 
     // Light theme should show sun icon
-    expect(container.querySelector(".bi-sun-fill")).toBeInTheDocument();
+    const iconElement = container.querySelector("i[class*='bi-']");
+    expect(iconElement).toHaveClass("bi-sun-fill");
 
     // Toggle to dark
     const switchInput = screen.getByRole("switch");
     fireEvent.click(switchInput);
 
     // Dark theme should show moon icon
-    expect(container.querySelector(".bi-moon-stars-fill")).toBeInTheDocument();
+    const darkIconElement = container.querySelector("i[class*='bi-']");
+    expect(darkIconElement).toHaveClass("bi-moon-stars-fill");
   });
 });
