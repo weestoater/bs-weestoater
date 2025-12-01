@@ -1,4 +1,5 @@
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
+import { BackToTop } from "../components/global/BackToTop";
 import { A11yMe } from "../content/a11y/a11yme";
 import { A11yPromotion } from "../content/a11y/a11ypromotion";
 import { AxePlugin } from "../content/a11y/axeplugin";
@@ -31,15 +32,7 @@ export const A11yPage = () => {
         </div>
       </div>
 
-      <div className="text-center my-4">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="btn btn-outline-secondary"
-        >
-          <i className="bi bi-arrow-up-circle me-2"></i>
-          Back to Top
-        </button>
-      </div>
+      <BackToTop />
     </>
   );
 };

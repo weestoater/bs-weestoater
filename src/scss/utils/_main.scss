@@ -5,10 +5,17 @@ main {
   padding: 2rem;
 
   code {
+    background: var(--theme-code-bg);
     border-radius: 0.5rem;
+    color: var(--code-light);
     font-size: 1.3rem;
     font-weight: 600;
     padding: 0.15rem 0.25rem;
+    transition: background-color 300ms ease, color 300ms ease;
+  }
+
+  [data-theme="dark"] & code {
+    color: var(--code-dark);
   }
   img {
     &.avatar {

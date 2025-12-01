@@ -1,6 +1,7 @@
 import { useParams, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
+import { BackToTop } from "../components/global/BackToTop";
 import { FootballSeasonsNav } from "../content/football/footballSeasonsNav";
 import { FootballSeasonResults } from "../components/football/footballSeasonResults";
 import { getSeasonById, isValidSeasonId } from "../config/footballSeasons";
@@ -93,15 +94,7 @@ export const SeasonPage = () => {
         />
       )}
 
-      <div className="text-center my-4">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="btn btn-outline-secondary"
-        >
-          <i className="bi bi-arrow-up-circle me-2"></i>
-          Back to Top
-        </button>
-      </div>
+      <BackToTop />
     </div>
   );
 };

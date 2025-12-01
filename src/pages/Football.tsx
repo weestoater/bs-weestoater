@@ -1,4 +1,5 @@
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
+import { BackToTop } from "../components/global/BackToTop";
 import mfcGoals from "../data/2025-26-goals.json";
 import mfcMatches from "../data/2025-26-matches.json";
 import { FootballIntro } from "../content/football/footballIntro";
@@ -19,15 +20,7 @@ export const FootballPage = () => {
         />
       </div>
 
-      <div className="text-center my-4">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="btn btn-outline-secondary"
-        >
-          <i className="bi bi-arrow-up-circle me-2"></i>
-          Back to Top
-        </button>
-      </div>
+      <BackToTop />
     </div>
   );
 };
