@@ -58,10 +58,19 @@ describe("ThemeSwitcher", () => {
   });
 
   it("has proper accessibility attributes", () => {
+    localStorage.setItem("weestoater:theme", "light");
+    document.documentElement.setAttribute("data-theme", "light");
+
     render(<ThemeSwitcher />);
     const switchInput = screen.getByRole("switch");
-    expect(switchInput).toHaveAttribute("aria-label", "Toggle dark mode");
+    expect(switchInput).toHaveAttribute("aria-label", "Switch to dark mode");
     expect(switchInput).toHaveAttribute("aria-checked");
+
+    // Check for live region
+    const liveRegion = document.querySelector(
+      '[role="status"][aria-live="polite"]'
+    );
+    expect(liveRegion).toBeInTheDocument();
   });
 
   it("displays correct icon for theme", () => {
