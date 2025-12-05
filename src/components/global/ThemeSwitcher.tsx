@@ -44,6 +44,10 @@ export const ThemeSwitcher = () => {
   return (
     <>
       <div className="form-check form-switch theme-switcher">
+        <label htmlFor="themeSwitch" className="theme-label">
+          <i className="bi bi-sun-fill" aria-hidden="true"></i>
+          <span className="label-text">Light</span>
+        </label>
         <input
           className="form-check-input"
           type="checkbox"
@@ -54,16 +58,9 @@ export const ThemeSwitcher = () => {
           checked={theme === "dark"}
           onChange={toggleTheme}
         />
-        <label className="form-check-label" htmlFor="themeSwitch">
-          <i
-            className={`bi bi-${
-              theme === "dark" ? "moon-stars-fill" : "sun-fill"
-            }`}
-            aria-hidden="true"
-          ></i>
-          <span className="visually-hidden">
-            {theme === "dark" ? "Dark" : "Light"} mode active
-          </span>
+        <label htmlFor="themeSwitch" className="theme-label">
+          <i className="bi bi-moon-stars-fill" aria-hidden="true"></i>
+          <span className="label-text">Dark</span>
         </label>
       </div>
       {/* Live region for screen reader announcements */}
