@@ -11,7 +11,7 @@ export const FootballIntro = () => {
               <img
                 src={mfcLogo}
                 alt="Motherwell F.C. Logo"
-                className="shape-from-image right shape-md"
+                className="circle"
               />
             </div>
             <p>

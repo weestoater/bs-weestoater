@@ -20,7 +20,7 @@ describe("WeightConverter", () => {
   it("handles decimal values correctly", () => {
     render(<WeightConverter lbs={156.7} />);
     expect(
-      screen.getByText("11 st 2.7 lbs (156.7 lbs) | 71.08 kgs")
+      screen.getByText("11 st 2.5 lbs (156.5 lbs) | 71.08 kgs")
     ).toBeInTheDocument();
   });
 
@@ -37,14 +37,14 @@ describe("WeightConverter", () => {
   it("prefers kilograms input when both kgs and lbs are provided", () => {
     render(<WeightConverter kgs={50} lbs={150} />);
     expect(
-      screen.getByText("7 st 12.2 lbs (110.2 lbs) | 50.00 kgs")
+      screen.getByText("7 st 12.0 lbs (110.0 lbs) | 50.00 kgs")
     ).toBeInTheDocument();
   });
 
   it("rounds kilograms to 2 decimal places", () => {
     render(<WeightConverter lbs={150.333} />);
     expect(
-      screen.getByText("10 st 10.3 lbs (150.3 lbs) | 68.19 kgs")
+      screen.getByText("10 st 10.5 lbs (150.5 lbs) | 68.19 kgs")
     ).toBeInTheDocument();
   });
 });

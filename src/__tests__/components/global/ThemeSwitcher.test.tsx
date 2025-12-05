@@ -80,16 +80,14 @@ describe("ThemeSwitcher", () => {
 
     const { container } = render(<ThemeSwitcher />);
 
-    // Light theme should show sun icon
-    const iconElement = container.querySelector("i[class*='bi-']");
-    expect(iconElement).toHaveClass("bi-sun-fill");
+    // Both icons should be present (sun for light, moon for dark)
+    const sunIcon = container.querySelector("i.bi-sun-fill");
+    const moonIcon = container.querySelector("i.bi-moon-stars-fill");
+    expect(sunIcon).toBeInTheDocument();
+    expect(moonIcon).toBeInTheDocument();
 
-    // Toggle to dark
-    const switchInput = screen.getByRole("switch");
-    fireEvent.click(switchInput);
-
-    // Dark theme should show moon icon
-    const darkIconElement = container.querySelector("i[class*='bi-']");
-    expect(darkIconElement).toHaveClass("bi-moon-stars-fill");
+    // Verify labels are present
+    const labels = screen.getAllByText(/Light|Dark/i);
+    expect(labels.length).toBeGreaterThanOrEqual(2);
   });
 });

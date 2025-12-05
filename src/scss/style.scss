@@ -55,17 +55,24 @@ a {
 .theme-switcher {
   margin: 0;
   padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
 
   .form-check-input {
     cursor: pointer;
     width: 3rem;
     height: 1.5rem;
-    background-color: $vscode;
-    border-color: $vscode;
+    background-color: #ffffff;
+    border-color: #000000;
+    border-width: 2px;
+    margin: 0;
+    transition: background-color 300ms ease, border-color 300ms ease;
 
     &:checked {
-      background-color: $chuck;
-      border-color: $chuck;
+      background-color: #000000;
+      border-color: #ffffff;
     }
 
     &:focus {
@@ -74,15 +81,33 @@ a {
     }
   }
 
-  .form-check-label {
+  .theme-label {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #ffffff;
+    font-size: 0.875rem;
     cursor: pointer;
-    margin-left: 0.5rem;
-    font-size: 1.25rem;
-    color: var(--theme-navbar-color);
+    transition: color 200ms ease;
 
     i {
+      font-size: 1.125rem;
       transition: color 200ms ease;
     }
+
+    .label-text {
+      @media (max-width: 991px) {
+        display: inline;
+      }
+    }
+  }
+
+  // Center on mobile when navbar is collapsed
+  @media (max-width: 991px) {
+    justify-content: center;
+    padding: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 0.5rem;
   }
 }
 
@@ -324,10 +349,18 @@ code {
 ///--    circular image
 
 img.circle {
-  border-radius: 50%;
-  clip-path: circle(); /* This makes the image appear circular */
-  margin: 0 20px 20px 0; /* Spacing around the image */
-  max-width: 100%;
-  object-fit: cover;
-  shape-outside: circle(); /* This makes the text wrap around the circle */
+  border-radius: 50% !important;
+  clip-path: circle(50%) !important; /* This makes the image appear circular */
+  display: block !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+}
+
+.left img.circle,
+div.left.w10 {
+  float: left !important;
+  margin: 0 1rem 1rem 0 !important;
+  shape-outside: circle(
+    50%
+  ) !important; /* This makes the text wrap around the circle with margin */
 } ///

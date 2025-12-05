@@ -10,9 +10,12 @@ export const WeightConverter = (props: any) => {
 
   // Calculate stones and remaining lbs
   const stones = Math.floor(weightInLbs / 14);
-  const remainingLbs = (weightInLbs % 14).toFixed(1);
+  const remainingLbsRaw = weightInLbs % 14;
+  // Round to nearest 0.5
+  const remainingLbs = (Math.round(remainingLbsRaw * 2) / 2).toFixed(1);
   const weightInKgs = (weightInLbs * 0.45359237).toFixed(2);
-  const roundedLbs = weightInLbs.toFixed(1);
+  // Round total lbs to nearest 0.5
+  const roundedLbs = (Math.round(weightInLbs * 2) / 2).toFixed(1);
 
   // Format output string
   const result = `${stones} st ${remainingLbs} lbs (${roundedLbs} lbs) | ${weightInKgs} kgs`;

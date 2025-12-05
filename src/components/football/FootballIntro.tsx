@@ -16,11 +16,7 @@ export function FootballIntro() {
             <div>
               This is the Motherwell section, where I keep a record of all the
               first team matches I attend at Fir Park.
-              <img
-                src={motherwell}
-                alt="Motherwell F.C. Logo"
-                className="shape-football-badge right shape-lg"
-              />
+              <img src={motherwell} alt="Motherwell F.C. Logo" />
             </div>
           </div>
         </div>
