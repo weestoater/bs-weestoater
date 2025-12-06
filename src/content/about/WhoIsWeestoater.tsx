@@ -14,7 +14,7 @@ export const WhoIsWeestoater = () => {
         <img
           src={burtIcon}
           alt="avatar of weestoater"
-          className="right circle"
+          className="shape-circle right"
         />
         <p>
           I am Ian Burrett, an Accessibility Lead, working in Glasgow, UK and
