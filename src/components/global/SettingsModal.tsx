@@ -14,7 +14,7 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 const SETTINGS_KEY = "weestoater:settings";
 
 export interface UserSettings {
-  font: "default" | "serif" | "sans-serif" | "monospace" | "dyslexic";
+  font: "default" | "serif" | "sans-serif" | "dyslexic";
   fontSize: "small" | "medium" | "large" | "x-large";
   theme: "light" | "dark";
   highContrast: boolean;
@@ -57,10 +57,9 @@ export const SettingsModal = ({
 
     // Apply font
     const fontMap = {
-      default: "system-ui, -apple-system, sans-serif",
+      default: "'Jost', sans-serif",
       serif: "Georgia, 'Times New Roman', serif",
-      "sans-serif": "Arial, Helvetica, sans-serif",
-      monospace: "'Courier New', Courier, monospace",
+      "sans-serif": "'Ubuntu', sans-serif",
       dyslexic: "OpenDyslexic, 'Comic Sans MS', sans-serif",
     };
     root.style.setProperty("--user-font", fontMap[settings.font]);
@@ -75,7 +74,7 @@ export const SettingsModal = ({
     root.style.setProperty("--user-font-size", fontSizeMap[settings.fontSize]);
 
     // Apply high contrast mode
-    if (settings.highContrast && settings.font === "dyslexic") {
+    if (settings.highContrast) {
       root.setAttribute("data-high-contrast", "true");
     } else {
       root.removeAttribute("data-high-contrast");
@@ -111,7 +110,7 @@ export const SettingsModal = ({
       <ModalBody>
         <FormGroup>
           <Label for="fontSelect">
-            <strong>Font Family</strong>
+            <strong>Font</strong>
           </Label>
           <Input
             type="select"
@@ -122,8 +121,7 @@ export const SettingsModal = ({
           >
             <option value="default">Default (System)</option>
             <option value="serif">Serif (Georgia)</option>
-            <option value="sans-serif">Sans-Serif (Arial)</option>
-            <option value="monospace">Monospace (Courier)</option>
+            <option value="sans-serif">Sans-Serif (Ubuntu)</option>
             <option value="dyslexic">Dyslexia Friendly (OpenDyslexic)</option>
           </Input>
           <small className="text-muted">
@@ -154,34 +152,28 @@ export const SettingsModal = ({
           <Label>
             <strong>Theme</strong>
           </Label>
-          <div className="theme-switcher-container">
-            <ThemeSwitcher />
-          </div>
-          <small className="text-muted d-block mt-2">
-            Choose your preferred color theme
+          <small className="text-muted d-block mb-2">
+            Choose your preferred colour theme
           </small>
+          <div className="d-flex gap-4 align-items-center">
+            <div className="theme-switcher-container">
+              <ThemeSwitcher />
+            </div>
+            <FormGroup check className="mb-0">
+              <Input
+                type="checkbox"
+                id="highContrastCheck"
+                checked={settings.highContrast}
+                onChange={handleHighContrastChange}
+                aria-label="Enable high contrast mode"
+              />
+              <Label check for="highContrastCheck" className="ms-2">
+                <i className="bi bi-circle-half me-2" aria-hidden="true"></i>
+                High Contrast
+              </Label>
+            </FormGroup>
+          </div>
         </FormGroup>
-
-        {settings.font === "dyslexic" && (
-          <FormGroup
-            check
-            className="mt-3 p-3 border rounded dyslexia-option-box"
-          >
-            <Input
-              type="checkbox"
-              id="highContrastCheck"
-              checked={settings.highContrast}
-              onChange={handleHighContrastChange}
-              aria-label="Enable high contrast dyslexia-friendly colors"
-            />
-            <Label check for="highContrastCheck" className="ms-2">
-              <strong>Enable High Contrast Colors</strong>
-              <small className="d-block text-muted mt-1">
-                Blue and yellow color scheme optimized for dyslexia
-              </small>
-            </Label>
-          </FormGroup>
-        )}
 
         <div className="alert alert-info mt-3" role="status" aria-live="polite">
           <i className="bi bi-info-circle me-2" aria-hidden="true"></i>
@@ -194,7 +186,7 @@ export const SettingsModal = ({
             className="bi bi-arrow-counterclockwise me-2"
             aria-hidden="true"
           ></i>
-          Reset to Defaults
+          Reset to defaults
         </Button>
         <Button color="primary" onClick={toggle}>
           <i className="bi bi-check-lg me-2" aria-hidden="true"></i>

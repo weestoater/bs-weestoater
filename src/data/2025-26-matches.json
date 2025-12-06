@@ -2,6 +2,37 @@
   "season": "2025-26",
   "matches": [
     {
+      "scored": 3,
+      "conceded": 0,
+      "date": "2025-12-06",
+      "opposition": "Livingston",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Elliot Watt",
+          "mins": "18"
+        },
+        {
+          "player": "Apostolos Stamatelopoulos",
+          "mins": "60 (Pen)"
+        },
+        {
+          "player": "Emmanuel Longelo",
+          "mins": "88"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Regan Charles-Cook",
+          "type": "yellow",
+          "minute": 39
+        }
+      ],
+      "video": null,
+      "notes": "Cracking result - another clean sheet too. #claret&amber  #COYW!!"
+    },
+    {
       "scored": 0,
       "conceded": 0,
       "date": "2025-12-03",
