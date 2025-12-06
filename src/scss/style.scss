@@ -157,7 +157,7 @@ a {
 
 // Apply user settings
 body {
-  font-family: var(--user-font, system-ui, -apple-system, sans-serif);
+  font-family: var(--user-font, "Jost", sans-serif);
   font-size: var(--user-font-size, 16px);
 }
 
@@ -499,6 +499,87 @@ div.left.w10 {
     background-color: var(--dyslexia-card-header) !important;
     color: var(--dyslexia-text) !important;
   }
+
+  // Modal high contrast support
+  .modal-content {
+    background-color: var(--dyslexia-card-bg) !important;
+    border-color: var(--dyslexia-border) !important;
+    color: var(--dyslexia-text) !important;
+  }
+
+  .modal-header {
+    background-color: var(--dyslexia-card-header) !important;
+    color: var(--dyslexia-text) !important;
+    border-bottom-color: var(--dyslexia-border) !important;
+  }
+
+  .modal-body {
+    background-color: var(--dyslexia-card-bg) !important;
+    color: var(--dyslexia-text) !important;
+
+    .form-label,
+    label,
+    strong {
+      color: var(--dyslexia-text) !important;
+    }
+
+    .form-control,
+    .form-select {
+      background-color: var(--dyslexia-card-header) !important;
+      border-color: var(--dyslexia-border) !important;
+      color: var(--dyslexia-text) !important;
+
+      option {
+        background-color: var(--dyslexia-card-header) !important;
+        color: var(--dyslexia-text) !important;
+      }
+    }
+
+    .text-muted {
+      color: var(--dyslexia-text) !important;
+      opacity: 0.8;
+    }
+
+    .alert-info {
+      background-color: var(--dyslexia-card-header) !important;
+      border-color: var(--dyslexia-border) !important;
+      color: var(--dyslexia-text) !important;
+    }
+
+    .theme-switcher {
+      .theme-label {
+        color: var(--dyslexia-text) !important;
+      }
+
+      .form-check-input {
+        background-color: var(--dyslexia-card-header) !important;
+        border-color: var(--dyslexia-border) !important;
+
+        &:checked {
+          background-color: var(--dyslexia-text) !important;
+          border-color: var(--dyslexia-text) !important;
+        }
+      }
+    }
+  }
+
+  .modal-footer {
+    background-color: var(--dyslexia-card-bg) !important;
+    border-top-color: var(--dyslexia-border) !important;
+
+    .btn {
+      background-color: var(--dyslexia-card-header) !important;
+      border-color: var(--dyslexia-border) !important;
+      color: var(--dyslexia-text) !important;
+
+      &:hover,
+      &:focus {
+        background-color: var(--dyslexia-text) !important;
+        color: var(--dyslexia-card-header) !important;
+        border-color: var(--dyslexia-text) !important;
+      }
+    }
+  }
 }
 
 // Modal theme support
@@ -514,8 +595,14 @@ div.left.w10 {
   background-color: var(--theme-card-header-bg);
   color: var(--theme-card-header-color);
   border-bottom-color: var(--theme-border);
+  padding: 1rem 1rem 0 1rem;
+  align-items: center;
   transition: background-color 300ms ease, color 300ms ease,
     border-color 300ms ease;
+
+  h5 {
+    margin-bottom: 0;
+  }
 
   .btn-close {
     filter: var(

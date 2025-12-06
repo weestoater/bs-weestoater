@@ -42,8 +42,7 @@ describe("SettingsModal", () => {
 
     expect(screen.getByText("Default (System)")).toBeInTheDocument();
     expect(screen.getByText("Serif (Georgia)")).toBeInTheDocument();
-    expect(screen.getByText("Sans-Serif (Arial)")).toBeInTheDocument();
-    expect(screen.getByText("Monospace (Courier)")).toBeInTheDocument();
+    expect(screen.getByText("Sans-Serif (Ubuntu)")).toBeInTheDocument();
     expect(
       screen.getByText("Dyslexia Friendly (OpenDyslexic)")
     ).toBeInTheDocument();
@@ -115,7 +114,7 @@ describe("SettingsModal", () => {
       />
     );
 
-    const resetButton = screen.getByText("Reset to Defaults");
+    const resetButton = screen.getByText("Reset to defaults");
     fireEvent.click(resetButton);
 
     expect(mockOnThemeChange).toHaveBeenCalledWith("light");
@@ -150,7 +149,7 @@ describe("SettingsModal", () => {
     ).toBeInTheDocument();
   });
 
-  it("shows high contrast checkbox when dyslexic font is selected", () => {
+  it("shows high contrast option", () => {
     render(
       <SettingsModal
         isOpen={true}
@@ -159,18 +158,10 @@ describe("SettingsModal", () => {
       />
     );
 
-    // Initially, high contrast checkbox should not be visible
+    // High contrast checkbox should always be visible
     expect(
-      screen.queryByLabelText("Enable high contrast dyslexia-friendly colors")
-    ).not.toBeInTheDocument();
-
-    // Select dyslexic font
-    const fontSelect = screen.getByLabelText("Select font family");
-    fireEvent.change(fontSelect, { target: { value: "dyslexic" } });
-
-    // Now high contrast checkbox should be visible
-    expect(
-      screen.getByLabelText("Enable high contrast dyslexia-friendly colors")
+      screen.getByLabelText("Enable high contrast mode")
     ).toBeInTheDocument();
+    expect(screen.getByText("High Contrast")).toBeInTheDocument();
   });
 });
