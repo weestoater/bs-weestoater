@@ -34,19 +34,7 @@
     }
   }
 
-  ul.no-bullets {
-    display: block;
-    margin: -0.5rem 0 2rem;
-    padding: 0;
-
-    li {
-      display: inline-table;
-      list-style-type: none;
-      margin-left: 0;
-      padding: 0.25rem 1rem 0.25rem 0;
-      line-height: 1rem;
-    }
-  }
+  // Removed .no-bullets class - now using Bootstrap .list-unstyled
 
   table {
     margin: 0 0 1rem;
@@ -88,6 +76,17 @@
     grid-template-columns: 1fr;
     grid-template-rows: 2;
   }
+}
+
+// Home and away match card header colors
+.match-home .card-header {
+  background: $amber !important;
+  color: black !important;
+}
+
+.match-away .card-header {
+  background: $claret !important;
+  color: white !important;
 }
 
 .cards {

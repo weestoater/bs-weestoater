@@ -36,6 +36,7 @@
   --theme-btn-hover-bg: #000000;
   --theme-btn-hover-color: #ffffff;
   --theme-btn-hover-border: #000000;
+  --theme-close-btn-filter: invert(1) grayscale(100%) brightness(200%);
 }
 
 // Dark theme overrides
@@ -73,6 +74,7 @@
   --theme-btn-hover-bg: #ffffff;
   --theme-btn-hover-color: #0d1117;
   --theme-btn-hover-border: #ffffff;
+  --theme-close-btn-filter: invert(1) grayscale(100%) brightness(200%);
 }
 
 //--    Colours
