@@ -5,9 +5,9 @@ export const VideoLink = (props: any) => {
 
   if (video) {
     return (
-      <p>
-        <YoutubeLogo size={24} />
-        &nbsp; Watch the{" "}
+      <p className="mb-3">
+        <YoutubeLogo size={24} className="me-2" />
+        Watch the{" "}
         <a href={`${video}`} target="_blank" rel="noreferrer">
           video highlights
         </a>

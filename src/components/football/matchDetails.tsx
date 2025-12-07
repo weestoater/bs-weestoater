@@ -14,36 +14,38 @@ export const MatchDetails = memo((props: any) => {
           const league = item.league ? item.league : "SPFL";
           return (
             <div
-              className={`match-details ${item.venue.toLowerCase()}`}
+              className={`card mb-3 match-${item.venue.toLowerCase()}`}
               key={key}
             >
-              <h3>
-                <div className="venue">
-                  {item.venue} to {item.opposition}
-                </div>
-                <div className="score">
+              <div className="card-header">
+                <div className="d-flex justify-content-between align-items-center">
+                  <span className="fw-bold">
+                    {item.venue} to {item.opposition}
+                  </span>
                   <ScoreDetails
                     conceded={item.conceded}
                     scored={item.scored}
                     venue={item.venue}
                   />
                 </div>
-              </h3>
-              <div className="card-content">
-                <table>
-                  <thead>
-                    <tr>
-                      <th scope="col">Date</th>
-                      <th scope="col">Competition</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{item.date}</td>
-                      <td>{league}</td>
-                    </tr>
-                  </tbody>
-                </table>
+              </div>
+              <div className="card-body">
+                <div className="table-responsive">
+                  <table className="table table-sm mb-3">
+                    <thead>
+                      <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Competition</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{item.date}</td>
+                        <td>{league}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
 
                 {item.video && <VideoLink url={item.video} />}
 
