@@ -4,7 +4,7 @@
     {
       "player": "Regan Charles-Cook",
       "goals": 1,
-      "assists": 0
+      "assists": 1
     },
     {
       "player": "Lukas Fadinger",
@@ -33,7 +33,7 @@
     },
     {
       "player": "Emmanuel Longelo",
-      "goals": 4,
+      "goals": 5,
       "assists": 3
     },
     {
@@ -63,13 +63,13 @@
     },
     {
       "player": "Apostolos Stamatelopoulos",
-      "goals": 6,
+      "goals": 7,
       "assists": 1
     },
     {
       "player": "Elliot Watt",
       "assists": 1,
-      "goals": 1
+      "goals": 2
     }
   ]
 }

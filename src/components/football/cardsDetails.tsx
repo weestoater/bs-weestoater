@@ -6,16 +6,14 @@ interface CardsDetailsProps {
 
 export const CardsDetails = ({ cards }: CardsDetailsProps) => {
   return (
-    <>
-      <p>
-        <strong>Cards</strong>:
-      </p>
-      <ul className="no-bullets">
+    <div className="mb-3">
+      <p className="fw-bold mb-2">Cards:</p>
+      <ul className="list-unstyled">
         {cards.map((item, key) => {
           return (
-            <li key={key}>
+            <li key={key} className="d-flex align-items-center mb-1">
               <div
-                className={`cards ${item.type}`}
+                className={`cards ${item.type} me-2`}
                 data-testid={`${item.type}card${key}`}
               ></div>
               <strong>{item.player}</strong> - {item.minute} mins
@@ -23,6 +21,6 @@ export const CardsDetails = ({ cards }: CardsDetailsProps) => {
           );
         })}
       </ul>
-    </>
+    </div>
   );
 };

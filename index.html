@@ -11,6 +11,24 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
+    <!-- OpenDyslexic font for accessibility -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/opendyslexic@3.0.1/opendyslexic-regular.min.css"
+    />
+
+    <!-- Ubuntu font for Sans-Serif option -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+    />
+
+    <!-- Jost font for default text -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap"
+    />
+
     <!-- Initialize theme before page renders to prevent flash -->
     <script>
       (function () {
@@ -25,6 +43,50 @@
           }
           if (theme) {
             document.documentElement.setAttribute("data-theme", theme);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Initialize user settings -->
+    <script>
+      (function () {
+        try {
+          var settings = localStorage.getItem("weestoater:settings");
+          if (settings) {
+            settings = JSON.parse(settings);
+            var root = document.documentElement;
+
+            // Font map
+            var fontMap = {
+              default: "'Jost', sans-serif",
+              serif: "Georgia, 'Times New Roman', serif",
+              "sans-serif": "'Ubuntu', sans-serif",
+              dyslexic: "OpenDyslexic, 'Comic Sans MS', sans-serif",
+            };
+
+            // Font size map
+            var fontSizeMap = {
+              small: "14px",
+              medium: "16px",
+              large: "18px",
+              "x-large": "20px",
+            };
+
+            if (settings.font) {
+              root.style.setProperty("--user-font", fontMap[settings.font]);
+            }
+            if (settings.fontSize) {
+              root.style.setProperty(
+                "--user-font-size",
+                fontSizeMap[settings.fontSize]
+              );
+            }
+
+            // Apply high contrast mode if enabled
+            if (settings.highContrast) {
+              root.setAttribute("data-high-contrast", "true");
+            }
           }
         } catch (e) {}
       })();
