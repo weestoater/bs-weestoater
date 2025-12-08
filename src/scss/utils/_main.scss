@@ -71,3 +71,72 @@ main {
     }
   }
 }
+
+// Settings Modal Button Grid
+.settings-button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+
+  @media (max-width: 399px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 274px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Settings Modal Theme Grid
+.settings-theme-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+
+  @media (max-width: 399px) {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+// Settings Modal Button Styles
+.settings-font-btn {
+  border-radius: 0.5rem;
+
+  &.font-default {
+    font-family: "Jost", sans-serif;
+  }
+
+  &.font-serif {
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  &.font-sans-serif {
+    font-family: "Ubuntu", sans-serif;
+  }
+
+  &.font-dyslexic {
+    font-family: OpenDyslexic, "Comic Sans MS", sans-serif;
+  }
+}
+
+.settings-size-btn {
+  border-radius: 0.5rem;
+
+  &.size-smaller {
+    font-size: 0.8rem;
+  }
+
+  &.size-medium {
+    font-size: 1rem;
+  }
+
+  &.size-large {
+    font-size: 1.2rem;
+  }
+
+  &.size-huge {
+    font-size: 1.5rem;
+  }
+}

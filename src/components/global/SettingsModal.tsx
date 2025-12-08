@@ -84,12 +84,12 @@ export const SettingsModal = ({
     localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
   }, [settings]);
 
-  const handleFontChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSettings((prev) => ({ ...prev, font: e.target.value as any }));
+  const handleFontChange = (font: UserSettings["font"]) => {
+    setSettings((prev) => ({ ...prev, font }));
   };
 
-  const handleFontSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSettings((prev) => ({ ...prev, fontSize: e.target.value as any }));
+  const handleFontSizeChange = (fontSize: UserSettings["fontSize"]) => {
+    setSettings((prev) => ({ ...prev, fontSize }));
   };
 
   const handleHighContrastChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -109,43 +109,107 @@ export const SettingsModal = ({
       </ModalHeader>
       <ModalBody>
         <FormGroup>
-          <Label for="fontSelect">
+          <Label>
             <strong>Font</strong>
           </Label>
-          <Input
-            type="select"
-            id="fontSelect"
-            value={settings.font}
-            onChange={handleFontChange}
-            aria-label="Select font family"
-          >
-            <option value="default">Default (System)</option>
-            <option value="serif">Serif (Georgia)</option>
-            <option value="sans-serif">Sans-Serif (Ubuntu)</option>
-            <option value="dyslexic">Dyslexia Friendly (OpenDyslexic)</option>
-          </Input>
-          <small className="text-muted">
+          <small className="text-muted d-block mb-2">
             Choose a font that's comfortable for reading
           </small>
+          <div className="settings-button-grid">
+            <Button
+              color={
+                settings.font === "default" ? "success" : "outline-secondary"
+              }
+              onClick={() => handleFontChange("default")}
+              className="settings-font-btn font-default"
+              aria-pressed={settings.font === "default"}
+            >
+              Default
+            </Button>
+            <Button
+              color={
+                settings.font === "serif" ? "success" : "outline-secondary"
+              }
+              onClick={() => handleFontChange("serif")}
+              className="settings-font-btn font-serif"
+              aria-pressed={settings.font === "serif"}
+            >
+              Serif
+            </Button>
+            <Button
+              color={
+                settings.font === "sans-serif" ? "success" : "outline-secondary"
+              }
+              onClick={() => handleFontChange("sans-serif")}
+              className="settings-font-btn font-sans-serif"
+              aria-pressed={settings.font === "sans-serif"}
+            >
+              Sans-Serif
+            </Button>
+            <Button
+              color={
+                settings.font === "dyslexic" ? "success" : "outline-secondary"
+              }
+              onClick={() => handleFontChange("dyslexic")}
+              className="settings-font-btn font-dyslexic"
+              aria-pressed={settings.font === "dyslexic"}
+            >
+              Dyslexic
+            </Button>
+          </div>
         </FormGroup>
 
         <FormGroup>
-          <Label for="fontSizeSelect">
+          <Label>
             <strong>Text Size</strong>
           </Label>
-          <Input
-            type="select"
-            id="fontSizeSelect"
-            value={settings.fontSize}
-            onChange={handleFontSizeChange}
-            aria-label="Select text size"
-          >
-            <option value="smaller">Smaller</option>
-            <option value="medium">Default</option>
-            <option value="large">Larger</option>
-            <option value="huge">Huge</option>
-          </Input>
-          <small className="text-muted">Adjust the base text size</small>
+          <small className="text-muted d-block mb-2">
+            Adjust the base text size
+          </small>
+          <div className="settings-button-grid">
+            <Button
+              color={
+                settings.fontSize === "smaller"
+                  ? "success"
+                  : "outline-secondary"
+              }
+              onClick={() => handleFontSizeChange("smaller")}
+              className="settings-size-btn size-smaller"
+              aria-pressed={settings.fontSize === "smaller"}
+            >
+              Smaller
+            </Button>
+            <Button
+              color={
+                settings.fontSize === "medium" ? "success" : "outline-secondary"
+              }
+              onClick={() => handleFontSizeChange("medium")}
+              className="settings-size-btn size-medium"
+              aria-pressed={settings.fontSize === "medium"}
+            >
+              Default
+            </Button>
+            <Button
+              color={
+                settings.fontSize === "large" ? "success" : "outline-secondary"
+              }
+              onClick={() => handleFontSizeChange("large")}
+              className="settings-size-btn size-large"
+              aria-pressed={settings.fontSize === "large"}
+            >
+              Larger
+            </Button>
+            <Button
+              color={
+                settings.fontSize === "huge" ? "success" : "outline-secondary"
+              }
+              onClick={() => handleFontSizeChange("huge")}
+              className="settings-size-btn size-huge"
+              aria-pressed={settings.fontSize === "huge"}
+            >
+              Huge
+            </Button>
+          </div>
         </FormGroup>
 
         <FormGroup>
@@ -155,7 +219,7 @@ export const SettingsModal = ({
           <small className="text-muted d-block mb-2">
             Choose your preferred colour theme
           </small>
-          <div className="d-flex gap-4 align-items-center">
+          <div className="settings-theme-grid">
             <div className="theme-switcher-container">
               <ThemeSwitcher />
             </div>
@@ -181,14 +245,14 @@ export const SettingsModal = ({
         </div>
       </ModalBody>
       <ModalFooter>
-        <Button color="tertiary" onClick={handleReset}>
+        <Button color="secondary" onClick={handleReset}>
           <i
             className="bi bi-arrow-counterclockwise me-2"
             aria-hidden="true"
           ></i>
           Reset to defaults
         </Button>
-        <Button color="primary" onClick={toggle}>
+        <Button color="success" onClick={toggle}>
           <i className="bi bi-check-lg me-2" aria-hidden="true"></i>
           Done
         </Button>
