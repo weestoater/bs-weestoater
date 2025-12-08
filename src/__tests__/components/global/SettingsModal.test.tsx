@@ -26,8 +26,8 @@ describe("SettingsModal", () => {
     );
 
     expect(screen.getByText("Settings")).toBeInTheDocument();
-    expect(screen.getByLabelText("Select font family")).toBeInTheDocument();
-    expect(screen.getByLabelText("Select text size")).toBeInTheDocument();
+    expect(screen.getByText("Font")).toBeInTheDocument();
+    expect(screen.getByText("Text Size")).toBeInTheDocument();
     expect(screen.getByTestId("theme-switcher")).toBeInTheDocument();
   });
 
@@ -40,12 +40,11 @@ describe("SettingsModal", () => {
       />
     );
 
-    expect(screen.getByText("Default (System)")).toBeInTheDocument();
-    expect(screen.getByText("Serif (Georgia)")).toBeInTheDocument();
-    expect(screen.getByText("Sans-Serif (Ubuntu)")).toBeInTheDocument();
-    expect(
-      screen.getByText("Dyslexia Friendly (OpenDyslexic)")
-    ).toBeInTheDocument();
+    const buttons = screen.getAllByText("Default");
+    expect(buttons.length).toBeGreaterThan(0);
+    expect(screen.getByText("Serif")).toBeInTheDocument();
+    expect(screen.getByText("Sans-Serif")).toBeInTheDocument();
+    expect(screen.getByText("Dyslexic")).toBeInTheDocument();
   });
 
   it("displays all font size options", () => {
@@ -58,7 +57,8 @@ describe("SettingsModal", () => {
     );
 
     expect(screen.getByText("Smaller")).toBeInTheDocument();
-    expect(screen.getByText("Default")).toBeInTheDocument();
+    const defaultButtons = screen.getAllByText("Default");
+    expect(defaultButtons.length).toBeGreaterThan(0);
     expect(screen.getByText("Larger")).toBeInTheDocument();
     expect(screen.getByText("Huge")).toBeInTheDocument();
   });
@@ -72,10 +72,10 @@ describe("SettingsModal", () => {
       />
     );
 
-    const fontSelect = screen.getByLabelText("Select font family");
-    fireEvent.change(fontSelect, { target: { value: "dyslexic" } });
+    const dyslexicButton = screen.getByText("Dyslexic");
+    fireEvent.click(dyslexicButton);
 
-    expect(fontSelect).toHaveValue("dyslexic");
+    expect(dyslexicButton).toHaveAttribute("aria-pressed", "true");
   });
 
   it("changes font size when selected", () => {
@@ -87,10 +87,10 @@ describe("SettingsModal", () => {
       />
     );
 
-    const fontSizeSelect = screen.getByLabelText("Select text size");
-    fireEvent.change(fontSizeSelect, { target: { value: "large" } });
+    const largerButton = screen.getByText("Larger");
+    fireEvent.click(largerButton);
 
-    expect(fontSizeSelect).toHaveValue("large");
+    expect(largerButton).toHaveAttribute("aria-pressed", "true");
   });
 
   it("shows theme switcher component", () => {
