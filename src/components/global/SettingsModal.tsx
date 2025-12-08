@@ -15,7 +15,7 @@ const SETTINGS_KEY = "weestoater:settings";
 
 export interface UserSettings {
   font: "default" | "serif" | "sans-serif" | "dyslexic";
-  fontSize: "small" | "medium" | "large" | "x-large";
+  fontSize: "smaller" | "medium" | "large" | "huge";
   theme: "light" | "dark";
   highContrast: boolean;
 }
@@ -64,12 +64,12 @@ export const SettingsModal = ({
     };
     root.style.setProperty("--user-font", fontMap[settings.font]);
 
-    // Apply font size
+    // Apply font size (rem-based)
     const fontSizeMap = {
-      small: "14px",
-      medium: "16px",
-      large: "18px",
-      "x-large": "20px",
+      smaller: "0.8rem",
+      medium: "1rem",
+      large: "1.2rem",
+      huge: "1.5rem",
     };
     root.style.setProperty("--user-font-size", fontSizeMap[settings.fontSize]);
 
@@ -140,10 +140,10 @@ export const SettingsModal = ({
             onChange={handleFontSizeChange}
             aria-label="Select text size"
           >
-            <option value="small">Small (14px)</option>
-            <option value="medium">Medium (16px)</option>
-            <option value="large">Large (18px)</option>
-            <option value="x-large">Extra Large (20px)</option>
+            <option value="smaller">Smaller</option>
+            <option value="medium">Default</option>
+            <option value="large">Larger</option>
+            <option value="huge">Huge</option>
           </Input>
           <small className="text-muted">Adjust the base text size</small>
         </FormGroup>
@@ -181,7 +181,7 @@ export const SettingsModal = ({
         </div>
       </ModalBody>
       <ModalFooter>
-        <Button color="secondary" onClick={handleReset}>
+        <Button color="tertiary" onClick={handleReset}>
           <i
             className="bi bi-arrow-counterclockwise me-2"
             aria-hidden="true"

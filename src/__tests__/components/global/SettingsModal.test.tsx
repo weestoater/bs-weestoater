@@ -57,10 +57,10 @@ describe("SettingsModal", () => {
       />
     );
 
-    expect(screen.getByText("Small (14px)")).toBeInTheDocument();
-    expect(screen.getByText("Medium (16px)")).toBeInTheDocument();
-    expect(screen.getByText("Large (18px)")).toBeInTheDocument();
-    expect(screen.getByText("Extra Large (20px)")).toBeInTheDocument();
+    expect(screen.getByText("Smaller")).toBeInTheDocument();
+    expect(screen.getByText("Default")).toBeInTheDocument();
+    expect(screen.getByText("Larger")).toBeInTheDocument();
+    expect(screen.getByText("Huge")).toBeInTheDocument();
   });
 
   it("changes font when selected", () => {
