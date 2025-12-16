@@ -3,6 +3,7 @@ import { BackToTop } from "../components/global/BackToTop";
 import { WhatIsWeestoater } from "../content/about/WhatIsWeestoater";
 import { WhoIsWeestoater } from "../content/about/WhoIsWeestoater";
 import { SadMessage } from "../content/about/SadMessage";
+import { DoingWhatWeCan } from "../content/about/DoingWhatWeCan";
 
 export const AboutPage = () => {
   return (
@@ -17,6 +18,9 @@ export const AboutPage = () => {
         </div>
         <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <SadMessage />
+        </div>
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
+          <DoingWhatWeCan />
         </div>
       </div>
 

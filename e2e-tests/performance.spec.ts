@@ -28,10 +28,22 @@ test.describe("Performance and Error Handling", () => {
 
   test("handles 404 routes gracefully", async ({ page }) => {
     // Navigate to non-existent route
-    await page.goto("/non-existent-route");
+    await page.goto("/#/non-existent-route");
 
-    // Should redirect to home or show 404
-    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    // Wait for page to load
+    await page.waitForLoadState("networkidle");
+
+    // Should show 404 page
+    await expect(
+      page.getByRole("heading", { name: /404 - Page Not Found/i })
+    ).toBeVisible();
+    await expect(page.getByText(/Page Not Found/i)).toBeVisible();
+    await expect(page.getByText(/doesn't exist/i)).toBeVisible();
+
+    // Should have link back to homepage
+    await expect(
+      page.getByRole("link", { name: /Go to Homepage/i })
+    ).toBeVisible();
   });
 
   //   test("football data loads and displays correctly", async ({ page }) => {
