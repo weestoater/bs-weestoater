@@ -13,7 +13,7 @@ import {
 const SETTINGS_KEY = "weestoater:settings";
 
 export interface UserSettings {
-  font: "default" | "serif" | "sans-serif" | "dyslexic";
+  font: "default" | "calibri" | "ubuntu" | "dyslexic";
   fontSize: "smaller" | "medium" | "large" | "huge";
   theme: "light" | "dark" | "high-contrast";
 }
@@ -55,8 +55,8 @@ export const SettingsModal = ({
     // Apply font
     const fontMap = {
       default: "'Jost', sans-serif",
-      serif: "Georgia, 'Times New Roman', serif",
-      "sans-serif": "'Ubuntu', sans-serif",
+      calibri: "Calibri, 'Segoe UI', sans-serif",
+      ubuntu: "'Ubuntu', sans-serif",
       dyslexic: "OpenDyslexic, 'Comic Sans MS', sans-serif",
     };
     root.style.setProperty("--user-font", fontMap[settings.font]);
@@ -129,23 +129,23 @@ export const SettingsModal = ({
             </Button>
             <Button
               color={
-                settings.font === "serif" ? "success" : "outline-secondary"
+                settings.font === "calibri" ? "success" : "outline-secondary"
               }
-              onClick={() => handleFontChange("serif")}
-              className="settings-font-btn font-serif"
-              aria-pressed={settings.font === "serif"}
+              onClick={() => handleFontChange("calibri")}
+              className="settings-font-btn font-calibri"
+              aria-pressed={settings.font === "calibri"}
             >
-              Serif
+              Calibri
             </Button>
             <Button
               color={
-                settings.font === "sans-serif" ? "success" : "outline-secondary"
+                settings.font === "ubuntu" ? "success" : "outline-secondary"
               }
-              onClick={() => handleFontChange("sans-serif")}
-              className="settings-font-btn font-sans-serif"
-              aria-pressed={settings.font === "sans-serif"}
+              onClick={() => handleFontChange("ubuntu")}
+              className="settings-font-btn font-ubuntu"
+              aria-pressed={settings.font === "ubuntu"}
             >
-              Sans-Serif
+              Ubuntu
             </Button>
             <Button
               color={
