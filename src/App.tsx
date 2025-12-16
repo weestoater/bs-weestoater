@@ -3,6 +3,8 @@ import { Suspense, lazy } from "react";
 
 //--  patterns
 import { Header } from "./patterns/appheader";
+import { SkeletonCard } from "./components/global/SkeletonLoaders";
+import { ErrorBoundary } from "./components/global/ErrorBoundary";
 
 // Lazy load all pages
 const HomePage = lazy(() =>
@@ -49,29 +51,23 @@ export const App = () => {
     <HashRouter>
       <Header />
       <main className="container-fluid" id="content">
-        <Suspense
-          fallback={
-            <div className="text-center p-5">
-              <div className="spinner-border text-primary" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            </div>
-          }
-        >
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/a11y" element={<A11yPage />} />
-            <Route path="/agile" element={<AgilePage />} />
-            <Route path="/landie" element={<LandiePage />} />
-            <Route path="/football" element={<FootballPage />} />
-            <Route path="/season/:seasonId" element={<SeasonPage />} />
-            <Route path="/react" element={<ReactPage />} />
-            <Route path="/sw" element={<SlimmingWorld />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<SkeletonCard />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/a11y" element={<A11yPage />} />
+              <Route path="/agile" element={<AgilePage />} />
+              <Route path="/landie" element={<LandiePage />} />
+              <Route path="/football" element={<FootballPage />} />
+              <Route path="/season/:seasonId" element={<SeasonPage />} />
+              <Route path="/react" element={<ReactPage />} />
+              <Route path="/sw" element={<SlimmingWorld />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </main>
     </HashRouter>
   );

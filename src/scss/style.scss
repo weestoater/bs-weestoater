@@ -2,6 +2,18 @@
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+// Respect user's motion preferences
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 // Apply theme variables
 body {
   background-color: var(--theme-bg);

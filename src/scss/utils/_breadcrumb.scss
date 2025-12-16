@@ -1,0 +1,41 @@
+@use "variables" as *;
+
+.breadcrumb-nav {
+  margin-bottom: 1.5rem;
+
+  .breadcrumb {
+    background-color: transparent;
+    padding: 0.75rem 0;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+
+    .breadcrumb-item {
+      a {
+        color: var(--theme-link);
+        text-decoration: none;
+        transition: color 200ms ease;
+
+        &:hover {
+          color: var(--theme-link-hover);
+          text-decoration: underline;
+        }
+      }
+
+      &.active {
+        color: var(--theme-text);
+      }
+
+      + .breadcrumb-item::before {
+        color: var(--theme-text-muted);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .breadcrumb-nav {
+    .breadcrumb {
+      font-size: 0.85rem;
+    }
+  }
+}

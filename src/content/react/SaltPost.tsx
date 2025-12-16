@@ -1,7 +1,6 @@
 import SaltDSImg from "../../assets/img/salt-ds.png";
 import { Armchair, Engine } from "@phosphor-icons/react";
 
-
 export const SaltPost = () => {
   return (
     <div className="card">
@@ -15,6 +14,7 @@ export const SaltPost = () => {
           src={SaltDSImg}
           className="fluid"
           alt="Salt Design System homepage screenshot"
+          loading="lazy"
         />
         <p>
           In a recent change of plan I've decided to ditch my AWS hosting for

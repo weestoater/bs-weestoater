@@ -4,6 +4,7 @@ import { BackToTop } from "../components/global/BackToTop";
 import { SWDataTable } from "../components/sw/swDataTable";
 import { SwDataGrid } from "../components/sw/swDataGrid";
 import { createSwChartOptions } from "../config/swChartConfig";
+import { SkeletonChart } from "../components/global/SkeletonLoaders";
 import swData from "../data/slimmingWorldData.json";
 
 // Lazy load ag-charts to reduce initial bundle size
@@ -44,15 +45,7 @@ export const SlimmingWorld = () => {
         </div>
         <div className="col-lg-8 col-md-6 col-sm-6 col-xs-12 mb-4">
           <div className="sw-chart">
-            <Suspense
-              fallback={
-                <div className="text-center p-5">
-                  <div className="spinner-border" role="status">
-                    <span className="visually-hidden">Loading chart...</span>
-                  </div>
-                </div>
-              }
-            >
+            <Suspense fallback={<SkeletonChart />}>
               <AgCharts options={chartOptions} />
             </Suspense>
           </div>

@@ -16,6 +16,7 @@ import { HashLink } from "react-router-hash-link";
 const HashLinkSafe = HashLink as React.ComponentType<any>;
 import wsIcon from "../assets/img/weestoater-icon.png";
 import { SettingsModal } from "../components/global/SettingsModal";
+// import { SearchBar } from "../components/global/SearchBar"; // Hidden pending expansion
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,6 +77,7 @@ export const Header = () => {
             ))}
           </Nav>
           <div className="ms-auto d-flex align-items-center gap-2">
+            {/* <SearchBar /> */}
             <Button
               color="link"
               className="settings-button"

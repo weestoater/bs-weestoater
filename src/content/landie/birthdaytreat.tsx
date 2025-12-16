@@ -53,28 +53,28 @@ export const BirthdayTreat = () => {
           down the slope with barely any input on steering required.
         </p>
         <figure>
-          <img src={Landie2img} className="fluid" alt="" />
+          <img src={Landie2img} className="fluid" alt="" loading="lazy" />
           <figcaption>
             Enjoying the view from the back seat - lovely gentle slope...
           </figcaption>
         </figure>
 
         <figure>
-          <img src={Landie3img} className="fluid" alt="" />
+          <img src={Landie3img} className="fluid" alt="" loading="lazy" />
           <figcaption>
             Bumpier rutted track with some interesting camber
           </figcaption>
         </figure>
 
         <figure>
-          <img src={Landie4img} className="fluid" alt="" />
+          <img src={Landie4img} className="fluid" alt="" loading="lazy" />
           <figcaption>
             Heading down a rutted track after cresting the summit
           </figcaption>
         </figure>
 
         <figure>
-          <img src={Landie5img} className="fluid" alt="" />
+          <img src={Landie5img} className="fluid" alt="" loading="lazy" />
           <figcaption>Me standing next to the vehicle</figcaption>
         </figure>
       </div>

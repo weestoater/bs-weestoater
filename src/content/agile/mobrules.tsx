@@ -12,7 +12,7 @@ export const MobRulesContent = () => {
       <div className="card-body">
         <picture>
           <source srcSet={MobRuleWebP} type="image/webp" />
-          <img src={MobRuleImg} alt="" className="fluid" />
+          <img src={MobRuleImg} alt="" className="fluid" loading="lazy" />
         </picture>
         <p>
           In early July 2019, I worked in a different team at my firm. We used

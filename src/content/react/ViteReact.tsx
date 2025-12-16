@@ -6,6 +6,7 @@ import {
   WifiHigh,
 } from "@phosphor-icons/react";
 import viteLogo from "../../assets/img/logo-with-shadow.png";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const ViteContent = () => {
   return (
@@ -16,7 +17,21 @@ export const ViteContent = () => {
         </h2>
       </div>
       <div className="card-body">
-        <img src={viteLogo} className="shape-rounded-rect right shape-md" alt="Vite logo" />
+        <ArticleMeta
+          metadata={{
+            title: "Vite & React-ts",
+            publishedDate: "2024-03-15",
+            readingTime: 4,
+            tags: ["Vite", "React", "TypeScript", "Build Tools"],
+            category: "React",
+          }}
+        />
+        <img
+          src={viteLogo}
+          className="shape-rounded-rect right shape-md"
+          alt="Vite logo"
+          loading="lazy"
+        />
         <p>
           I've been messing about with{" "}
           <a href="http://vite.dev" target="_blank" rel="noreferrer">

@@ -5,6 +5,77 @@
     <link rel="icon" type="image/png" href="/icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Barry Stoddard's personal website showcasing web development projects, football statistics tracking, and accessibility-focused design. Built with React, TypeScript, and modern web technologies."
+    />
+    <meta
+      name="keywords"
+      content="web development, React, TypeScript, accessibility, football statistics, Motherwell FC, data visualization, ag-grid, progressive web app"
+    />
+    <meta name="author" content="Barry Stoddard" />
+    <meta name="robots" content="index, follow" />
+    <link
+      rel="canonical"
+      href="https://barrystoddard.github.io/bs-weestoater/"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://barrystoddard.github.io/bs-weestoater/"
+    />
+    <meta
+      property="og:title"
+      content="Barry Stoddard - Web Developer & Accessibility Specialist"
+    />
+    <meta
+      property="og:description"
+      content="Personal portfolio and projects showcasing modern web development with a focus on accessibility and performance."
+    />
+    <meta
+      property="og:image"
+      content="https://barrystoddard.github.io/bs-weestoater/icon.png"
+    />
+    <meta property="og:site_name" content="Barry Stoddard Portfolio" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:url"
+      content="https://barrystoddard.github.io/bs-weestoater/"
+    />
+    <meta
+      name="twitter:title"
+      content="Barry Stoddard - Web Developer & Accessibility Specialist"
+    />
+    <meta
+      name="twitter:description"
+      content="Personal portfolio and projects showcasing modern web development with a focus on accessibility and performance."
+    />
+    <meta
+      name="twitter:image"
+      content="https://barrystoddard.github.io/bs-weestoater/icon.png"
+    />
+
+    <!-- Google Analytics (Privacy-focused configuration) -->
+    <!-- Replace G-XXXXXXXXXX with your actual Google Analytics ID -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'anonymize_ip': true,
+        'allow_google_signals': false,
+        'allow_ad_personalization_signals': false
+      });
+    </script>
+    -->
+
     <!-- Resource hints for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -92,7 +163,27 @@
       })();
     </script>
 
-    <title>weestoater</title>
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Barry Stoddard",
+        "url": "https://barrystoddard.github.io/bs-weestoater/",
+        "jobTitle": "Web Developer",
+        "description": "Web developer specializing in accessible, performant web applications using React and TypeScript",
+        "knowsAbout": [
+          "Web Development",
+          "React",
+          "TypeScript",
+          "Accessibility",
+          "Data Visualization"
+        ],
+        "sameAs": ["https://github.com/barrystoddard"]
+      }
+    </script>
+
+    <title>Barry Stoddard - Web Developer Portfolio</title>
   </head>
   <body>
     <div id="root"></div>

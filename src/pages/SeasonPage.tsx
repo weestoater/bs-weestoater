@@ -2,9 +2,11 @@ import { useParams, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { BackToTop } from "../components/global/BackToTop";
+import { Breadcrumb } from "../components/global/Breadcrumb";
 import { FootballSeasonsNav } from "../content/football/footballSeasonsNav";
 import { FootballSeasonResults } from "../components/football/footballSeasonResults";
 import { getSeasonById, isValidSeasonId } from "../config/footballSeasons";
+import { SkeletonCard } from "../components/global/SkeletonLoaders";
 import type {
   SeasonMatchData,
   SeasonGoalsData,
@@ -57,11 +59,7 @@ export const SeasonPage = () => {
   if (loading) {
     return (
       <div className="container-fluid">
-        <div className="text-center mt-5">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        </div>
+        <SkeletonCard />
       </div>
     );
   }
@@ -78,6 +76,13 @@ export const SeasonPage = () => {
 
   return (
     <div className="container-fluid" id="top">
+      <Breadcrumb
+        customItems={[
+          { label: "Home", path: "/" },
+          { label: "Football", path: "/football" },
+          { label: seasonDisplayName, path: `/football/season/${seasonId}` },
+        ]}
+      />
       <PageTitleH1 title="Football Seasons" />
 
       <div className="row">
