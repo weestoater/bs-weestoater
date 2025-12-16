@@ -85,6 +85,77 @@ main {
   @media (max-width: 274px) {
     grid-template-columns: 1fr;
   }
+
+  // Style radio button groups in the grid
+  .form-check {
+    padding: 0.5rem;
+    border: 1px solid var(--theme-border);
+    border-radius: 0.5rem;
+    background-color: var(--theme-card-bg);
+    transition: background-color 200ms ease, border-color 200ms ease;
+
+    &:hover {
+      background-color: var(--theme-bg);
+      border-color: var(--theme-link);
+    }
+
+    input[type="radio"]:checked + label {
+      font-weight: 600;
+    }
+
+    label {
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+  }
+}
+
+// Settings Modal Theme Radio Grid
+.settings-theme-radio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max-content, 1fr));
+  gap: 0.5rem;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+
+  // Style radio button groups in the grid
+  .form-check {
+    padding: 0.75rem;
+    border: 1px solid var(--theme-border);
+    border-radius: 0.5rem;
+    background-color: var(--theme-card-bg);
+    transition: background-color 200ms ease, border-color 200ms ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover {
+      background-color: var(--theme-bg);
+      border-color: var(--theme-link);
+    }
+
+    input[type="radio"] {
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    input[type="radio"]:checked + label {
+      font-weight: 600;
+    }
+
+    label {
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 
 // Settings Modal Theme Grid
