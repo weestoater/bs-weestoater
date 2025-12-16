@@ -16,6 +16,7 @@ export const EarlyAge = () => {
             src={LightweightImg}
             className="fluid"
             alt="Land Rover Lightweight in Royal Air Force camouflauge"
+            loading="lazy"
           />
         </picture>
         <p>

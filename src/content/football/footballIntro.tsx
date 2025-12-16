@@ -12,6 +12,7 @@ export const FootballIntro = () => {
                 src={mfcLogo}
                 alt="Motherwell F.C. Logo"
                 className="circle"
+                loading="lazy"
               />
             </div>
             <p>

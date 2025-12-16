@@ -1,0 +1,90 @@
+@use "variables" as *;
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--theme-bg) 0%,
+    var(--theme-card-bg) 50%,
+    var(--theme-bg) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+  border-radius: 0.25rem;
+}
+
+// Respect prefers-reduced-motion
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+    background: var(--theme-card-bg);
+  }
+}
+
+.skeleton-card {
+  margin-bottom: 2rem;
+}
+
+.skeleton-title {
+  height: 2rem;
+  width: 60%;
+  margin-bottom: 1rem;
+}
+
+.skeleton-text {
+  height: 1rem;
+  margin-bottom: 0.75rem;
+  width: 100%;
+
+  &.skeleton-text-short {
+    width: 70%;
+  }
+}
+
+.skeleton-grid {
+  min-height: 400px;
+  padding: 1rem;
+  background-color: var(--theme-card-bg);
+  border: 1px solid var(--theme-card-border);
+  border-radius: 0.5rem;
+}
+
+.skeleton-grid-header {
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.skeleton-grid-row {
+  height: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-chart {
+  padding: 1rem;
+  background-color: var(--theme-card-bg);
+  border: 1px solid var(--theme-card-border);
+  border-radius: 0.5rem;
+}
+
+.skeleton-chart-title {
+  height: 2rem;
+  width: 40%;
+  margin-bottom: 1.5rem;
+}
+
+.skeleton-chart-body {
+  height: 300px;
+}
+
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(90deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+  background-size: 1000px 100%;
+}

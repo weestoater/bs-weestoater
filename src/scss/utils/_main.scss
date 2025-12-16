@@ -1,4 +1,9 @@
 @use "variables" as *;
+@use "search";
+@use "article";
+@use "skeleton";
+@use "breadcrumb";
+@use "error-boundary";
 @import url("https://fonts.cdnfonts.com/css/namdhinggo");
 
 main {

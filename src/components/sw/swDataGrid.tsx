@@ -1,14 +1,26 @@
 import { lazy, Suspense, useState, useEffect } from "react";
-import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
+import {
+  ModuleRegistry,
+  ClientSideRowModelModule,
+  TextFilterModule,
+  NumberFilterModule,
+  ValidationModule,
+} from "ag-grid-community";
 import { themeAlpine } from "ag-grid-community";
+import { SkeletonGrid } from "../global/SkeletonLoaders";
 
 // Lazy load AgGridReact
 const AgGridReact = lazy(() =>
   import("ag-grid-react").then((m) => ({ default: m.AgGridReact }))
 );
 
-// Register all Community features
-ModuleRegistry.registerModules([AllCommunityModule]);
+// Register only the modules we need
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  TextFilterModule,
+  NumberFilterModule,
+  ValidationModule,
+]);
 
 interface SwDataItem {
   date: string;
@@ -80,15 +92,7 @@ export const SwDataGrid = ({ data }: Props) => {
 
   return (
     <div className="sw-data-grid">
-      <Suspense
-        fallback={
-          <div className="text-center p-5">
-            <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading grid...</span>
-            </div>
-          </div>
-        }
-      >
+      <Suspense fallback={<SkeletonGrid />}>
         <AgGridReact
           rowData={rowData}
           columnDefs={columnDefs as any}

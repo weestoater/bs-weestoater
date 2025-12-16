@@ -1,5 +1,6 @@
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { BackToTop } from "../components/global/BackToTop";
+import { Breadcrumb } from "../components/global/Breadcrumb";
 import mfcGoals from "../data/2025-26-goals.json";
 import mfcMatches from "../data/2025-26-matches.json";
 import { FootballIntro } from "../content/football/footballIntro";
@@ -10,6 +11,7 @@ export const FootballPage = () => {
 
   return (
     <div className="container-fluid" id="top">
+      <Breadcrumb />
       <PageTitleH1 title="Football" />
       <div className="row">
         <FootballIntro />
