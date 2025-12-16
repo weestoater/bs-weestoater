@@ -1,14 +1,25 @@
 import AgileImg from "../../assets/img/agile.png";
 
-export const AgilePractices = () => {
+import { ArticleMeta } from "../../components/global/ArticleMeta";
+
+export const AgilePracticesContent = () => {
   return (
     <div className="card">
       <div className="card-header">
         <h2>
-          <i className="bi bi-cup-hot me-2"></i> Agile practices
+          <i className="bi bi-lightning me-2"></i> Agile Practices
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Agile Practices",
+            publishedDate: "2020-01-10",
+            readingTime: 4,
+            tags: ["Agile", "Scrum", "Kanban", "Best Practices", "Methodology"],
+            category: "Agile",
+          }}
+        />
         <img src={AgileImg} alt="" className="fluid" />
         <p>
           Having worked in the IT Industry since goodness knows when I'm a

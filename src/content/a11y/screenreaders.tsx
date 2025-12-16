@@ -1,4 +1,5 @@
 import { Binoculars, Monitor } from "@phosphor-icons/react";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const ScreenReaders = () => {
   return (
@@ -10,6 +11,15 @@ export const ScreenReaders = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Use Screen Readers",
+            publishedDate: "2024-12-02",
+            readingTime: 3,
+            tags: ["Screen Readers", "NVDA", "JAWS", "Accessibility Testing"],
+            category: "Accessibility",
+          }}
+        />
         <div className="right">
           <Binoculars size={64} />
         </div>

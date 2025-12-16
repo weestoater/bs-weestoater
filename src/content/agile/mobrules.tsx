@@ -1,5 +1,6 @@
 import MobRuleImg from "../../assets/img/mob-programming.jpg";
 import MobRuleWebP from "../../assets/img/mob-programming.webp";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const MobRulesContent = () => {
   return (
@@ -10,6 +11,20 @@ export const MobRulesContent = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Mob Rules",
+            publishedDate: "2019-07-15",
+            readingTime: 3,
+            tags: [
+              "Mob Programming",
+              "Team Collaboration",
+              "Agile",
+              "Pair Programming",
+            ],
+            category: "Agile",
+          }}
+        />
         <picture>
           <source srcSet={MobRuleWebP} type="image/webp" />
           <img src={MobRuleImg} alt="" className="fluid" loading="lazy" />

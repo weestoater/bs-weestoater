@@ -1,3 +1,5 @@
+import { ArticleMeta } from "../../components/global/ArticleMeta";
+
 export const AgentAIWork = () => {
   return (
     <div className="card">
@@ -7,6 +9,15 @@ export const AgentAIWork = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Claude to the rescue",
+            publishedDate: "2024-11-25",
+            readingTime: 3,
+            tags: ["AI", "Claude", "Automation", "Code Review", "Testing"],
+            category: "React",
+          }}
+        />
         <div className="right">
           <i className="bi bi-braces icon-large"></i>
         </div>

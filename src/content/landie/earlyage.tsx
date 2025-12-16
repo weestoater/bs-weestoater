@@ -1,5 +1,6 @@
 import LightweightImg from "../../assets/img/Landie/lightweight.jpg";
 import LightweightWebP from "../../assets/img/Landie/lightweight.webp";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const EarlyAge = () => {
   return (
@@ -10,6 +11,15 @@ export const EarlyAge = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Early age",
+            publishedDate: "2010-08-20",
+            readingTime: 2,
+            tags: ["Land Rover", "Lightweight", "RAF", "Childhood"],
+            category: "Landie",
+          }}
+        />
         <picture>
           <source srcSet={LightweightWebP} type="image/webp" />
           <img

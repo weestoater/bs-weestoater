@@ -1,3 +1,5 @@
+import { ArticleMeta } from "../../components/global/ArticleMeta";
+
 export const A11yPromotion = () => {
   return (
     <div className="card">
@@ -7,6 +9,15 @@ export const A11yPromotion = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "A11y Promotion",
+            publishedDate: "2023-03-20",
+            readingTime: 2,
+            tags: ["Career", "Leadership", "Vice President", "Advocacy"],
+            category: "Accessibility",
+          }}
+        />
         <p>
           I am incredibly lucky to work for a company who support and encourage
           my passion for A11y. I was promoted to Vice President for the work

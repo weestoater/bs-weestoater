@@ -21,7 +21,7 @@ export const ViteContent = () => {
           metadata={{
             title: "Vite & React-ts",
             publishedDate: "2024-03-15",
-            readingTime: 4,
+            readingTime: 2,
             tags: ["Vite", "React", "TypeScript", "Build Tools"],
             category: "React",
           }}
