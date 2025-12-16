@@ -258,8 +258,10 @@ code {
   .card-header {
     background: var(--theme-card-header-bg);
     color: var(--theme-card-header-color);
+    border-bottom: 1px solid var(--theme-card-header-border);
     padding-top: 1rem;
-    transition: background-color 300ms ease, color 300ms ease;
+    transition: background-color 300ms ease, color 300ms ease,
+      border-color 300ms ease;
     font-family: var(--user-font, "Namdhinggo", "Times New Roman", serif);
 
     h2 {
