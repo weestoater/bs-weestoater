@@ -1,3 +1,5 @@
+import { ArticleMeta } from "../../components/global/ArticleMeta";
+
 export const A11yMe = () => {
   return (
     <div className="card">
@@ -7,6 +9,15 @@ export const A11yMe = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "A11y & me",
+            publishedDate: "2021-09-10",
+            readingTime: 2,
+            tags: ["Personal Story", "Career Journey", "UX", "SME"],
+            category: "Accessibility",
+          }}
+        />
         <p>
           I <strong>really care</strong> about Accessibility (a11y) online and
           have done for 20+ years now.

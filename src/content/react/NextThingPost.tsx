@@ -1,4 +1,5 @@
 import NextJSLogo from "../../assets/img/nextjs-logo.png";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const NextThingPost = () => {
   return (
@@ -9,6 +10,15 @@ export const NextThingPost = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "NextJS things Next",
+            publishedDate: "2024-01-20",
+            readingTime: 2,
+            tags: ["Next.js", "React", "Server-Side Rendering", "Hackathon"],
+            category: "React",
+          }}
+        />
         <img
           src={NextJSLogo}
           alt="NextJS logo"

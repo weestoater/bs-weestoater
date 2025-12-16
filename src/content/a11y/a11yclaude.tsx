@@ -1,4 +1,5 @@
 import { Robot, Palette, PuzzlePiece } from "@phosphor-icons/react";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const A11yClaude = () => {
   return (
@@ -11,6 +12,15 @@ export const A11yClaude = () => {
           </h2>
         </div>
         <div className="card-body">
+          <ArticleMeta
+            metadata={{
+              title: "Claude Sonnet Surprises",
+              publishedDate: "2024-11-20",
+              readingTime: 3,
+              tags: ["AI", "Claude", "Accessibility", "Automation", "Testing"],
+              category: "Accessibility",
+            }}
+          />
           <div className="right">
             <Robot size={64} />
           </div>

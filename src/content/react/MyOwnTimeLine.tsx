@@ -1,3 +1,5 @@
+import { ArticleMeta } from "../../components/global/ArticleMeta";
+
 export const MyOwnTimeLine = () => {
   return (
     <div className="card">
@@ -7,6 +9,15 @@ export const MyOwnTimeLine = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "My Own Timeline",
+            publishedDate: "2024-09-15",
+            readingTime: 2,
+            tags: ["Bootstrap", "Salt Design System", "Migration", "Testing"],
+            category: "React",
+          }}
+        />
         <p>
           With a move away from a specific 'application' team in work, I'm
           concentrating more on testing technologies and Accessibility, so

@@ -1,3 +1,5 @@
+import { ArticleMeta } from "../../components/global/ArticleMeta";
+
 export const AxePlugin = () => {
   return (
     <div className="card">
@@ -7,6 +9,15 @@ export const AxePlugin = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Axe Plugin",
+            publishedDate: "2021-10-15",
+            readingTime: 2,
+            tags: ["Axe Tools", "Browser Extensions", "Testing", "Compliance"],
+            category: "Accessibility",
+          }}
+        />
         <p>
           I believe in clean easy to read code, especially in my html. As part
           of my day job I help teams building web applications to make sure they

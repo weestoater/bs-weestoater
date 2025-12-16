@@ -1,4 +1,5 @@
 import { Biohazard, Binoculars, Rocket } from "@phosphor-icons/react";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const A11yTech = () => {
   return (
@@ -10,6 +11,15 @@ export const A11yTech = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "A11y technicIAN",
+            publishedDate: "2024-10-05",
+            readingTime: 4,
+            tags: ["Accessibility", "Code Quality", "Best Practices", "ARIA"],
+            category: "Accessibility",
+          }}
+        />
         <div className="right">
           <Biohazard size={64} />
         </div>

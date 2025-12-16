@@ -1,3 +1,5 @@
+import { ArticleMeta } from "../../components/global/ArticleMeta";
+
 export const ReactHooksPost = () => {
   return (
     <div className="card">
@@ -7,6 +9,15 @@ export const ReactHooksPost = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "hook, line & sinker",
+            publishedDate: "2023-11-15",
+            readingTime: 3,
+            tags: ["React", "Hooks", "useState", "useEffect", "Full Stack"],
+            category: "React",
+          }}
+        />
         <p>
           Since moving teams and re-learning Angular I’ve had the chance to work
           recently on a rather nice ReactJS project. It gave me my first real

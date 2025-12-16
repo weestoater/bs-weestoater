@@ -1,14 +1,25 @@
 import LessonsLearnedImg from "../../assets/img/lessons-learned.jpg";
 
+import { ArticleMeta } from "../../components/global/ArticleMeta";
+
 export const LessonsLearnedContent = () => {
   return (
     <div className="card">
       <div className="card-header">
         <h2>
-          <i className="bi bi-award me-2"></i> Lessons Learned
+          <i className="bi bi-mortarboard me-2"></i> Lessons Learned
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Lessons Learned",
+            publishedDate: "2019-08-20",
+            readingTime: 5,
+            tags: ["Agile", "Retrospective", "Learning", "Team Development"],
+            category: "Agile",
+          }}
+        />
         <img src={LessonsLearnedImg} alt="" className="fluid" />
         <p>
           Over the last few sprints I've been allocated what should have been a

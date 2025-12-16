@@ -1,5 +1,6 @@
 import SaltDSImg from "../../assets/img/salt-ds.png";
 import { Armchair, Engine } from "@phosphor-icons/react";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const SaltPost = () => {
   return (
@@ -10,6 +11,20 @@ export const SaltPost = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Needs a little Salt",
+            publishedDate: "2024-02-10",
+            readingTime: 3,
+            tags: [
+              "Salt Design System",
+              "J.P.Morgan",
+              "Open Source",
+              "UI Components",
+            ],
+            category: "React",
+          }}
+        />
         <img
           src={SaltDSImg}
           className="fluid"

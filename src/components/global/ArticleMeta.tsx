@@ -16,7 +16,7 @@ interface ArticleMetaProps {
 
 export const ArticleMeta = ({ metadata }: ArticleMetaProps) => {
   const {
-    author = "Burt Smith",
+    author = "Ian Burrett",
     publishedDate,
     updatedDate,
     readingTime,

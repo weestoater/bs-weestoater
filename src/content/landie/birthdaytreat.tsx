@@ -3,6 +3,7 @@ import Landie2img from "../../assets/img/Landie/2011/cimg2870.jpg";
 import Landie3img from "../../assets/img/Landie/2011/cimg2884.jpg";
 import Landie4img from "../../assets/img/Landie/2011/cimg2890.jpg";
 import Landie5img from "../../assets/img/Landie/2011/cimg2894.jpg";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const BirthdayTreat = () => {
   return (
@@ -13,6 +14,15 @@ export const BirthdayTreat = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Birthday Treat 1",
+            publishedDate: "2011-06-15",
+            readingTime: 3,
+            tags: ["Land Rover", "Defender", "Off-Road", "Experience"],
+            category: "Landie",
+          }}
+        />
         <img
           src={BirthdayTreatOne}
           className="fluid"
