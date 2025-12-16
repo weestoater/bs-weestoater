@@ -30,6 +30,22 @@ body {
   transition: background-color 300ms ease;
 }
 
+.navbar-toggler {
+  border-color: var(--theme-navbar-color);
+
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgba(33, 37, 41, 0.25);
+  }
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(33, 37, 41, 0.95)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+[data-theme="dark"] .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(201, 209, 217, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 .navbar-brand,
 .nav-link {
   color: var(--theme-navbar-color) !important;
