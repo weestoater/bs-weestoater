@@ -25,8 +25,14 @@ export const Header = () => {
   const closeMenu = () => setIsOpen(false);
   const toggleSettings = () => setSettingsOpen(!settingsOpen);
 
-  const handleThemeChange = (newTheme: "light" | "dark") => {
-    document.documentElement.setAttribute("data-theme", newTheme);
+  const handleThemeChange = (newTheme: "light" | "dark" | "high-contrast") => {
+    if (newTheme === "high-contrast") {
+      document.documentElement.setAttribute("data-theme", "dark");
+      document.documentElement.setAttribute("data-high-contrast", "true");
+    } else {
+      document.documentElement.setAttribute("data-theme", newTheme);
+      document.documentElement.removeAttribute("data-high-contrast");
+    }
     localStorage.setItem("weestoater:theme", newTheme);
   };
 

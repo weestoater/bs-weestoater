@@ -9,28 +9,25 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const SETTINGS_KEY = "weestoater:settings";
 
 export interface UserSettings {
   font: "default" | "serif" | "sans-serif" | "dyslexic";
   fontSize: "smaller" | "medium" | "large" | "huge";
-  theme: "light" | "dark";
-  highContrast: boolean;
+  theme: "light" | "dark" | "high-contrast";
 }
 
 const defaultSettings: UserSettings = {
   font: "default",
   fontSize: "medium",
   theme: "light",
-  highContrast: false,
 };
 
 interface SettingsModalProps {
   isOpen: boolean;
   toggle: () => void;
-  onThemeChange: (theme: "light" | "dark") => void;
+  onThemeChange: (theme: "light" | "dark" | "high-contrast") => void;
 }
 
 export const SettingsModal = ({
@@ -73,10 +70,12 @@ export const SettingsModal = ({
     };
     root.style.setProperty("--user-font-size", fontSizeMap[settings.fontSize]);
 
-    // Apply high contrast mode
-    if (settings.highContrast) {
+    // Apply theme
+    if (settings.theme === "high-contrast") {
+      root.setAttribute("data-theme", "dark");
       root.setAttribute("data-high-contrast", "true");
     } else {
+      root.setAttribute("data-theme", settings.theme);
       root.removeAttribute("data-high-contrast");
     }
 
@@ -92,8 +91,10 @@ export const SettingsModal = ({
     setSettings((prev) => ({ ...prev, fontSize }));
   };
 
-  const handleHighContrastChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSettings((prev) => ({ ...prev, highContrast: e.target.checked }));
+  const handleThemeChange = (theme: UserSettings["theme"]) => {
+    setSettings((prev) => ({ ...prev, theme }));
+    // Also notify parent component for backward compatibility
+    onThemeChange(theme);
   };
 
   const handleReset = () => {
@@ -219,19 +220,45 @@ export const SettingsModal = ({
           <small className="text-muted d-block mb-2">
             Choose your preferred colour theme
           </small>
-          <div className="settings-theme-grid">
-            <div className="theme-switcher-container">
-              <ThemeSwitcher />
-            </div>
+          <div className="settings-theme-radio-grid">
             <FormGroup check className="mb-0">
               <Input
-                type="checkbox"
-                id="highContrastCheck"
-                checked={settings.highContrast}
-                onChange={handleHighContrastChange}
-                aria-label="Enable high contrast mode"
+                type="radio"
+                name="theme"
+                id="themeLight"
+                checked={settings.theme === "light"}
+                onChange={() => handleThemeChange("light")}
               />
-              <Label check for="highContrastCheck" className="ms-2">
+              <Label check for="themeLight">
+                <i className="bi bi-sun-fill me-2" aria-hidden="true"></i>
+                Light
+              </Label>
+            </FormGroup>
+            <FormGroup check className="mb-0">
+              <Input
+                type="radio"
+                name="theme"
+                id="themeDark"
+                checked={settings.theme === "dark"}
+                onChange={() => handleThemeChange("dark")}
+              />
+              <Label check for="themeDark">
+                <i
+                  className="bi bi-moon-stars-fill me-2"
+                  aria-hidden="true"
+                ></i>
+                Dark
+              </Label>
+            </FormGroup>
+            <FormGroup check className="mb-0">
+              <Input
+                type="radio"
+                name="theme"
+                id="themeHighContrast"
+                checked={settings.theme === "high-contrast"}
+                onChange={() => handleThemeChange("high-contrast")}
+              />
+              <Label check for="themeHighContrast">
                 <i className="bi bi-circle-half me-2" aria-hidden="true"></i>
                 High Contrast
               </Label>

@@ -37,8 +37,10 @@ test.describe("Performance and Error Handling", () => {
     await expect(
       page.getByRole("heading", { name: /404 - Page Not Found/i })
     ).toBeVisible();
-    await expect(page.getByText(/Page Not Found/i)).toBeVisible();
-    await expect(page.getByText(/doesn't exist/i)).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: /Oops! Page Not Found/i })
+    ).toBeVisible();
+    await expect(page.getByText(/non-existent-route/i)).toBeVisible();
 
     // Should have link back to homepage
     await expect(
