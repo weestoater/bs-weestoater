@@ -188,6 +188,14 @@
         "change": -0.5,
         "lost": 36.5,
         "target": 196
+      },
+      {
+        "date": "16/12/2025",
+        "weight": 242,
+        "change": -4,
+        "lost": 40.5,
+        "target": 196,
+        "sotw": 100
       }
     ]
   }
