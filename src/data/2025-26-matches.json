@@ -2,6 +2,24 @@
   "season": "2025-26",
   "matches": [
     {
+      "scored": 0,
+      "conceded": 0,
+      "date": "2025-12-13",
+      "opposition": "Dundee United",
+      "venue": "Away",
+      "league": null,
+      "goals": null,
+      "cards": [
+        {
+          "player": "Tawanda Maswanhise",
+          "type": "yellow",
+          "minute": 34
+        }
+      ],
+      "video": "https://youtu.be/7c1KG4Bb0cc?si=kEhealhtSf-rIFQ7",
+      "notes": "Horrendous weather meant no team really got a hold on the game. Swirling winds and driving rain gave neither side an advantage. 69% possession and a smattering of shots, but no winning goal. Still in 3rd spot. #claret&amber  #COYW!!"
+    },
+    {
       "scored": 3,
       "conceded": 0,
       "date": "2025-12-06",
