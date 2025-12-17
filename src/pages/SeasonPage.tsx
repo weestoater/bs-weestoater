@@ -2,7 +2,6 @@ import { useParams, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { BackToTop } from "../components/global/BackToTop";
-import { Breadcrumb } from "../components/global/Breadcrumb";
 import { FootballSeasonsNav } from "../content/football/footballSeasonsNav";
 import { FootballSeasonResults } from "../components/football/footballSeasonResults";
 import { getSeasonById, isValidSeasonId } from "../config/footballSeasons";
@@ -76,13 +75,6 @@ export const SeasonPage = () => {
 
   return (
     <div className="container-fluid" id="top">
-      <Breadcrumb
-        customItems={[
-          { label: "Home", path: "/" },
-          { label: "Football", path: "/football" },
-          { label: seasonDisplayName, path: `/football/season/${seasonId}` },
-        ]}
-      />
       <PageTitleH1 title="Football Seasons" />
 
       <div className="row">
