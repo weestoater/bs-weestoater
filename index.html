@@ -6,75 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO Meta Tags -->
+    <meta name="author" content="Ian Burrett" />
     <meta
       name="description"
-      content="Barry Stoddard's personal website showcasing web development projects, football statistics tracking, and accessibility-focused design. Built with React, TypeScript, and modern web technologies."
+      content="Ian Burrett's portfolio - Full-stack web developer specializing in React, TypeScript, and accessible web design. Featuring football statistics tracking for Motherwell FC and modern web development projects."
     />
     <meta
       name="keywords"
-      content="web development, React, TypeScript, accessibility, football statistics, Motherwell FC, data visualization, ag-grid, progressive web app"
+      content="Ian Burrett, web developer, React developer, TypeScript, accessibility specialist, WCAG, football statistics, Motherwell FC, data visualization, ag-grid, progressive web app, full-stack developer"
     />
-    <meta name="author" content="Barry Stoddard" />
     <meta name="robots" content="index, follow" />
-    <link
-      rel="canonical"
-      href="https://barrystoddard.github.io/bs-weestoater/"
-    />
+    <link rel="canonical" href="https://weestoater.github.io/bs-weestoater/" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content="https://barrystoddard.github.io/bs-weestoater/"
+      content="https://weestoater.github.io/bs-weestoater/"
     />
     <meta
       property="og:title"
-      content="Barry Stoddard - Web Developer & Accessibility Specialist"
+      content="Ian Burrett - Web Developer & Accessibility Specialist"
     />
     <meta
       property="og:description"
-      content="Personal portfolio and projects showcasing modern web development with a focus on accessibility and performance."
+      content="Full-stack web developer specializing in React, TypeScript, and accessible web design. Portfolio featuring football statistics tracking and modern web development projects."
     />
+    <meta property="og:site_name" content="Ian Burrett - Web Developer" />
     <meta
       property="og:image"
-      content="https://barrystoddard.github.io/bs-weestoater/icon.png"
+      content="https://weestoater.github.io/bs-weestoater/icon.png"
     />
-    <meta property="og:site_name" content="Barry Stoddard Portfolio" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="Weestoater logo" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary" />
     <meta
       name="twitter:url"
-      content="https://barrystoddard.github.io/bs-weestoater/"
+      content="https://weestoater.github.io/bs-weestoater/"
     />
     <meta
       name="twitter:title"
-      content="Barry Stoddard - Web Developer & Accessibility Specialist"
+      content="Ian Burrett - Web Developer & Accessibility Specialist"
     />
     <meta
       name="twitter:description"
-      content="Personal portfolio and projects showcasing modern web development with a focus on accessibility and performance."
+      content="Full-stack web developer specializing in React, TypeScript, and accessible web design."
     />
     <meta
       name="twitter:image"
-      content="https://barrystoddard.github.io/bs-weestoater/icon.png"
+      content="https://weestoater.github.io/bs-weestoater/icon.png"
     />
-
-    <!-- Google Analytics (Privacy-focused configuration) -->
-    <!-- Replace G-XXXXXXXXXX with your actual Google Analytics ID -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', {
-        'anonymize_ip': true,
-        'allow_google_signals': false,
-        'allow_ad_personalization_signals': false
-      });
-    </script>
-    -->
 
     <!-- Resource hints for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -100,6 +84,15 @@
       href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap"
     />
 
+    <!-- Cloudflare Web Analytics -->
+    <!-- PASTE YOUR CLOUDFLARE SNIPPET HERE -->
+    <!-- Cloudflare Web Analytics -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "07932622637c4059803372b1ed2a7681"}'
+    ></script>
+    <!-- End Cloudflare Web Analytics -->
     <!-- Initialize theme before page renders to prevent flash -->
     <script>
       (function () {
@@ -163,27 +156,32 @@
       })();
     </script>
 
+    <title>
+      Ian Burrett - Web Developer & Accessibility Specialist | weestoater
+    </title>
+
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
-        "name": "Barry Stoddard",
-        "url": "https://barrystoddard.github.io/bs-weestoater/",
+        "name": "Ian Burrett",
+        "url": "https://weestoater.github.io/bs-weestoater/",
+        "image": "https://weestoater.github.io/bs-weestoater/icon.png",
         "jobTitle": "Web Developer",
-        "description": "Web developer specializing in accessible, performant web applications using React and TypeScript",
+        "description": "Full-stack web developer specializing in React, TypeScript, and accessible web design",
         "knowsAbout": [
-          "Web Development",
           "React",
           "TypeScript",
-          "Accessibility",
+          "JavaScript",
+          "Web Accessibility",
+          "WCAG",
+          "Progressive Web Apps",
           "Data Visualization"
         ],
-        "sameAs": ["https://github.com/barrystoddard"]
+        "sameAs": ["https://github.com/weestoater"]
       }
     </script>
-
-    <title>Barry Stoddard - Web Developer Portfolio</title>
   </head>
   <body>
     <div id="root"></div>

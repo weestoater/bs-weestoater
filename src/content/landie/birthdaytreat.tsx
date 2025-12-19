@@ -63,28 +63,48 @@ export const BirthdayTreat = () => {
           down the slope with barely any input on steering required.
         </p>
         <figure>
-          <img src={Landie2img} className="fluid" alt="" loading="lazy" />
+          <img
+            src={Landie2img}
+            className="fluid"
+            alt="View from back seat of Land Rover Defender on gentle slope"
+            loading="lazy"
+          />
           <figcaption>
             Enjoying the view from the back seat - lovely gentle slope...
           </figcaption>
         </figure>
 
         <figure>
-          <img src={Landie3img} className="fluid" alt="" loading="lazy" />
+          <img
+            src={Landie3img}
+            className="fluid"
+            alt="Land Rover Defender on bumpy rutted track with interesting camber"
+            loading="lazy"
+          />
           <figcaption>
             Bumpier rutted track with some interesting camber
           </figcaption>
         </figure>
 
         <figure>
-          <img src={Landie4img} className="fluid" alt="" loading="lazy" />
+          <img
+            src={Landie4img}
+            className="fluid"
+            alt="Land Rover heading down rutted track after cresting the summit"
+            loading="lazy"
+          />
           <figcaption>
             Heading down a rutted track after cresting the summit
           </figcaption>
         </figure>
 
         <figure>
-          <img src={Landie5img} className="fluid" alt="" loading="lazy" />
+          <img
+            src={Landie5img}
+            className="fluid"
+            alt="Ian Burrett standing next to a Land Rover Defender"
+            loading="lazy"
+          />
           <figcaption>Me standing next to the vehicle</figcaption>
         </figure>
       </div>

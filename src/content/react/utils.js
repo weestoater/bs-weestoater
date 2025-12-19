@@ -6,10 +6,7 @@
      * @function
      */
     test: function () {
-      /**
-       * Logs a message to the console
-       */
-      console.log("This is a test for the IIFE");
+      // Test function - logs removed for production
     },
   };
 

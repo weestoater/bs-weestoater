@@ -5,7 +5,7 @@ import type { ArticleMetadata } from "../../components/global/ArticleMeta";
 
 describe("ArticleMeta", () => {
   const mockMetadata: ArticleMetadata = {
-    author: "Barry Stoddard",
+    author: "Test Author",
     publishedDate: "2024-03-15",
     readingTime: 5,
     tags: ["React", "TypeScript", "Testing"],
@@ -15,7 +15,7 @@ describe("ArticleMeta", () => {
   it("renders article metadata", () => {
     render(<ArticleMeta metadata={mockMetadata} />);
 
-    expect(screen.getByText(/Barry Stoddard/i)).toBeInTheDocument();
+    expect(screen.getByText(/Test Author/i)).toBeInTheDocument();
     expect(screen.getByText(/5 min read/i)).toBeInTheDocument();
   });
 
@@ -86,6 +86,6 @@ describe("ArticleMeta", () => {
     render(<ArticleMeta metadata={noTagsMetadata} />);
 
     // Should still render without errors
-    expect(screen.getByText(/Barry Stoddard/i)).toBeInTheDocument();
+    expect(screen.getByText(/Test Author/i)).toBeInTheDocument();
   });
 });

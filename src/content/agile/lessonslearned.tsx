@@ -20,7 +20,11 @@ export const LessonsLearnedContent = () => {
             category: "Agile",
           }}
         />
-        <img src={LessonsLearnedImg} alt="" className="fluid" />
+        <img
+          src={LessonsLearnedImg}
+          alt="Lessons learned from agile development experience"
+          className="fluid"
+        />
         <p>
           Over the last few sprints I've been allocated what should have been a
           relatively straightforward piece of work. We did our sprint planning
