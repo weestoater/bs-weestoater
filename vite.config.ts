@@ -8,6 +8,14 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ["import", "global-builtin", "color-functions"],
+        quietDeps: true,
+      },
+    },
+  },
   plugins: [
     react(),
     ViteImageOptimizer({
@@ -117,6 +125,15 @@ export default defineConfig({
             if (id.includes("bootstrap")) return "vendor-bootstrap";
             return "vendor"; // all other vendor modules
           }
+          // Split out football data by season for lazy loading
+          if (id.includes("src/data/") && id.includes("-matches")) {
+            const match = id.match(/(\d{4}-\d{2})-matches/);
+            if (match) return `data-matches-${match[1]}`;
+          }
+          if (id.includes("src/data/") && id.includes("-goals")) {
+            const match = id.match(/(\d{4}-\d{2})-goals/);
+            if (match) return `data-goals-${match[1]}`;
+          }
         },
         assetFileNames: (assetInfo: { name?: string }) => {
           if (assetInfo.name?.endsWith(".css")) {
@@ -126,5 +143,6 @@ export default defineConfig({
         },
       },
     },
+    chunkSizeWarningLimit: 1000, // ag-grid and ag-charts are large but lazy-loaded
   },
 });

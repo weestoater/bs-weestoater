@@ -20,7 +20,11 @@ export const AgilePracticesContent = () => {
             category: "Agile",
           }}
         />
-        <img src={AgileImg} alt="" className="fluid" />
+        <img
+          src={AgileImg}
+          alt="Agile methodology concepts and practices illustration"
+          className="fluid"
+        />
         <p>
           Having worked in the IT Industry since goodness knows when I'm a
           recent convert to the Agile methodology.

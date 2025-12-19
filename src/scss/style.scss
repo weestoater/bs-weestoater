@@ -1,6 +1,6 @@
 @use "utils" as *;
 
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@use "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 // Respect user's motion preferences
 @media (prefers-reduced-motion: reduce) {

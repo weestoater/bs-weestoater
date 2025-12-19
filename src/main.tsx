@@ -12,7 +12,7 @@ registerSW({
     // Auto-update without prompting
   },
   onOfflineReady() {
-    console.log("App is ready to work offline");
+    // App is ready to work offline
   },
 });
 
