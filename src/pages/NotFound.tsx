@@ -7,7 +7,10 @@ export const NotFoundPage = () => {
 
   return (
     <>
-      <PageTitleH1 title="404 - Page Not Found" />
+      <PageTitleH1
+        title="404 - Page Not Found"
+        description="The page you are looking for could not be found."
+      />
       <div className="row">
         <div className="col-12">
           <div className="card">

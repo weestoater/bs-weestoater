@@ -10,7 +10,11 @@ import { A11yClaude } from "../content/a11y/a11yclaude";
 export const A11yPage = () => {
   return (
     <>
-      <PageTitleH1 title="Accessibility (a11y)" />
+      <PageTitleH1
+        title="Accessibility (a11y)"
+        description="Web accessibility resources, tools, and best practices. Learn about WCAG compliance, screen readers, and creating inclusive web experiences."
+        keywords="accessibility, a11y, WCAG, screen readers, inclusive design, web accessibility, axe DevTools"
+      />
       <div className="row">
         <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <A11yClaude />

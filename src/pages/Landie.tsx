@@ -6,7 +6,11 @@ import { BirthdayTreat } from "../content/landie/birthdaytreat";
 export const LandiePage = () => {
   return (
     <>
-      <PageTitleH1 title="Land Rovers" />
+      <PageTitleH1
+        title="Land Rovers"
+        description="Personal collection and experiences with Land Rover vehicles and off-road adventures."
+        keywords="Land Rover, off-road, vehicles, automotive"
+      />
       <div className="row">
         <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <EarlyAge />

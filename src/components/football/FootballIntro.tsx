@@ -1,12 +1,7 @@
 import motherwell from "../../assets/img/motherwell.png";
-import { useEffect } from "react";
 import { FootballSeasonsNav } from "../nav/FootballSeasonsNav";
 
 export function FootballIntro() {
-  useEffect(() => {
-    document.title = "Football Section";
-  }, []);
-
   return (
     <div className="container">
       <div className="row">

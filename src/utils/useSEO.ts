@@ -23,7 +23,7 @@ export const useSEO = ({
     // Update document title
     document.title = title.includes("weestoater")
       ? title
-      : `${title} | weestoater`;
+      : `${title} - weestoater`;
 
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
