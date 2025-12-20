@@ -2,6 +2,29 @@
   "season": "2025-26",
   "matches": [
     {
+      "scored": 1,
+      "conceded": 0,
+      "date": "2025-12-20",
+      "opposition": "Dundee",
+      "venue": "home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Callum Slattery",
+          "mins": "82"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Callum Slattery",
+          "type": "yellow",
+          "minute": 32
+        }
+      ],
+      "video": null,
+      "notes": "60% possession, 17 shots & 7 on target but only ONE goal. Clean sheet and turned around another potential nil nil draw. All good. #claret&amber  #COYW!!"
+    },
+    {
       "scored": 0,
       "conceded": 0,
       "date": "2025-12-13",
