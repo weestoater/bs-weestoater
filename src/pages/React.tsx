@@ -11,7 +11,11 @@ import { AgentAIWork } from "../content/react/AgentAIWork";
 export const ReactPage = () => {
   return (
     <>
-      <PageTitleH1 title="React & JS articles" />
+      <PageTitleH1
+        title="React"
+        description="Articles and tutorials about React, JavaScript, and modern web development techniques, patterns, and best practices."
+        keywords="React, JavaScript, web development, tutorials, coding articles, frontend development"
+      />
       <div className="row">
         <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <AgentAIWork />

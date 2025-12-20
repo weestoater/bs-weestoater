@@ -75,7 +75,11 @@ export const SeasonPage = () => {
 
   return (
     <div className="container-fluid" id="top">
-      <PageTitleH1 title="Football Seasons" />
+      <PageTitleH1
+        title="Football Seasons"
+        description="Detailed Motherwell FC season statistics, match results, and player performance data."
+        keywords="Motherwell FC, season statistics, football matches, SPFL season data"
+      />
 
       <div className="row">
         <div className="previous-seasons">

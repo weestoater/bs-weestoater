@@ -33,7 +33,11 @@ export const SlimmingWorld = () => {
 
   return (
     <>
-      <PageTitleH1 title="Slimming World" />
+      <PageTitleH1
+        title="Slimming World"
+        description="Personal weight tracking and progress visualization for Slimming World journey."
+        keywords="Slimming World, weight tracking, health, fitness, progress tracking"
+      />
       <div className="row">
         <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <SWDataTable

@@ -7,7 +7,11 @@ import { LessonsLearnedContent } from "../content/agile/lessonslearned";
 export const AgilePage = () => {
   return (
     <>
-      <PageTitleH1 title="Agile articles" />
+      <PageTitleH1
+        title="Agile"
+        description="Insights and lessons learned from agile software development practices, including mob programming, sprint planning, and team collaboration."
+        keywords="agile, scrum, mob programming, software development, team practices, agile methodology"
+      />
       <div className="row">
         <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
           <AgilePracticesContent />
