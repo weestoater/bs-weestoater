@@ -11,6 +11,9 @@ export const calculateReadingTime = (
   // Remove HTML tags and extra whitespace
   const cleanText = text.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ");
 
+  // Handle empty string
+  if (cleanText.trim() === "") return 0;
+
   // Count words
   const wordCount = cleanText.trim().split(/\s+/).length;
 

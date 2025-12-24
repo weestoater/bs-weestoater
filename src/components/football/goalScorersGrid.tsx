@@ -72,7 +72,10 @@ export const GoalScorersGrid = ({ details }: Props) => {
   return (
     <div className="goal-scorers-grid">
       <Suspense fallback={<SkeletonGrid />}>
-        <AgGridReact {...(gridConfig as any)} rowData={rowData} />
+        <AgGridReact
+          {...(gridConfig as Record<string, unknown>)}
+          rowData={rowData}
+        />
       </Suspense>
     </div>
   );

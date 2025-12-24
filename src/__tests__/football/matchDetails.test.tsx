@@ -68,7 +68,7 @@ describe("MatchDetails", () => {
   });
 
   it("handles null details prop", () => {
-    render(<MatchDetails details={null} />);
+    render(<MatchDetails />);
     expect(screen.queryByText(/to/)).not.toBeInTheDocument();
   });
 });

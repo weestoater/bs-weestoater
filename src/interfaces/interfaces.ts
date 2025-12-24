@@ -15,20 +15,20 @@ export interface Card {
 }
 
 export interface ScoreDetails {
-    scored: number;
-    conceded: number;
-    venue: string;
+  scored: number;
+  conceded: number;
+  venue: string;
 }
 
 export interface MatchDetails {
-    date: string;
-    venue: string;
-    league: string;
-    opposition: string;
-    conceded: number;
-    scored: number;
-    video: string;
-    goals: any;
-    cards: any;
-    notes: string;
+  date: string;
+  venue: string;
+  league: string;
+  opposition: string;
+  conceded: number;
+  scored: number;
+  video: string;
+  goals: unknown[];
+  cards: unknown[];
+  notes: string;
 }

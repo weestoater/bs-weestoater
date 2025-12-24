@@ -4,13 +4,18 @@ import { GoalsDetails } from "./goalsDetails";
 import { VideoLink } from "./videoLinkDetails";
 import { CardsDetails } from "./cardsDetails";
 import { NotesDetails } from "./notesDetails";
+import { Match } from "../../interfaces/footballTypes";
 
-export const MatchDetails = memo((props: any) => {
+interface MatchDetailsProps {
+  details?: Match[];
+}
+
+export const MatchDetails = memo((props: MatchDetailsProps) => {
   const details = props.details ? props.details : null;
   return (
     <>
       {details !== null &&
-        details.map((item: any, key: number) => {
+        details.map((item: Match, key: number) => {
           const league = item.league ? item.league : "SPFL";
           return (
             <div

@@ -1,4 +1,12 @@
-import { lazy, memo, Suspense, useState, useEffect } from "react";
+import {
+  lazy,
+  memo,
+  Suspense,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from "react";
 import type { GoalScorer } from "../../interfaces/footballTypes";
 import { GoalScorersGrid } from "./goalScorersGrid";
 
@@ -17,10 +25,17 @@ const getThemeColors = () => {
   };
 };
 
-export const GoalScorerDetails = memo((props: any) => {
-  const details: GoalScorer[] = props.details ? props.details : [];
+interface GoalScorerDetailsProps {
+  details?: GoalScorer[];
+}
 
-  const createChartOptions = () => {
+export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
+  const details: GoalScorer[] = useMemo(
+    () => props.details ?? [],
+    [props.details]
+  );
+
+  const createChartOptions = useCallback(() => {
     const themeColors = getThemeColors();
 
     return {
@@ -132,7 +147,7 @@ export const GoalScorerDetails = memo((props: any) => {
         },
       },
     };
-  };
+  }, [details]);
 
   const [chartOptions, setChartOptions] = useState(createChartOptions);
 
@@ -148,7 +163,7 @@ export const GoalScorerDetails = memo((props: any) => {
     });
 
     return () => observer.disconnect();
-  }, [details]);
+  }, [details, createChartOptions]);
 
   return (
     <>
@@ -162,7 +177,7 @@ export const GoalScorerDetails = memo((props: any) => {
             </div>
           }
         >
-          <AgCharts options={chartOptions as any} />
+          <AgCharts options={chartOptions as Record<string, unknown>} />
         </Suspense>
       </div>
 

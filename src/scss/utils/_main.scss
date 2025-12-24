@@ -120,11 +120,13 @@ main {
 // Settings Modal Theme Radio Grid
 .settings-theme-radio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(max-content, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
 
   @media (max-width: 576px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.25rem;
+    font-size: 0.875rem;
   }
 
   // Style radio button groups in the grid
@@ -137,6 +139,17 @@ main {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+
+    @media (max-width: 576px) {
+      padding: 0.5rem 0.25rem;
+      flex-direction: column;
+      text-align: center;
+      gap: 0.25rem;
+
+      i {
+        margin-right: 0 !important;
+      }
+    }
 
     &:hover {
       background-color: var(--theme-bg);

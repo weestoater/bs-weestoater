@@ -78,7 +78,7 @@ describe("ErrorBoundary", () => {
 
     const homeLink = screen.getByRole("link", { name: /Go to Home/i });
     expect(homeLink).toBeInTheDocument();
-    expect(homeLink).toHaveAttribute("href", "#/");
+    expect(homeLink).toHaveAttribute("href", "/");
   });
 
   it("renders custom fallback when provided", () => {

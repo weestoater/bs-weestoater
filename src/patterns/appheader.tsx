@@ -13,7 +13,9 @@ import { NavLink as RouterNavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 // Type assertion to fix HashLink typing issue
-const HashLinkSafe = HashLink as React.ComponentType<any>;
+const HashLinkSafe = HashLink as unknown as React.ComponentType<
+  Record<string, unknown>
+>;
 import wsIcon from "../assets/img/weestoater-icon.png";
 import { SettingsModal } from "../components/global/SettingsModal";
 // import { SearchBar } from "../components/global/SearchBar"; // Hidden pending expansion

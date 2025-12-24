@@ -1,4 +1,8 @@
-export const NotesDetails = (props: any) => {
+interface NotesDetailsProps {
+  notes?: string;
+}
+
+export const NotesDetails = (props: NotesDetailsProps) => {
   const notes = props.notes ? props.notes : null;
   return (
     <div className="mt-3 pt-3 border-top">

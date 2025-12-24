@@ -1,4 +1,9 @@
-export const WeightConverter = (props: any) => {
+interface WeightConverterProps {
+  lbs?: number;
+  kgs?: number;
+}
+
+export const WeightConverter = (props: WeightConverterProps) => {
   const { lbs, kgs } = props;
   // Convert kgs to lbs if only kgs is provided
   const weightInLbs = kgs ? kgs * 2.20462 : lbs;

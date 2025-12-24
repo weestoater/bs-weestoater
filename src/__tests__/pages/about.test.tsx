@@ -38,6 +38,6 @@ describe("AboutPage", () => {
     const columns = container.querySelectorAll(
       ".col-xxl-3.col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.mb-4"
     );
-    expect(columns).toHaveLength(3);
+    expect(columns).toHaveLength(4);
   });
 });

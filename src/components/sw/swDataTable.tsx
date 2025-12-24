@@ -1,6 +1,21 @@
 import { WeightConverter } from "./WeightConverter";
 
-export const SWDataTable = (props: any) => {
+interface SwDataItem {
+  date: string;
+  weight: number;
+  change: number;
+  lost: number;
+  target: number;
+}
+
+interface SWDataTableProps {
+  data: SwDataItem[];
+  startWeight: number;
+  startDate: string;
+  targetWeight: number;
+}
+
+export const SWDataTable = (props: SWDataTableProps) => {
   const { data, startWeight, startDate, targetWeight } = props;
 
   const joinDate = startDate ? startDate : undefined;
@@ -16,9 +31,6 @@ export const SWDataTable = (props: any) => {
       parseDateString(b.date).getTime() - parseDateString(a.date).getTime()
   )[0];
 
-  const totalLost = startWeight - mostRecent.weight;
-  const totalLostFormatted = totalLost;
-
   return (
     <div className="card">
       <div className="card-header">Slimming World details</div>
@@ -29,10 +41,10 @@ export const SWDataTable = (props: any) => {
           Start weight: <WeightConverter lbs={startWeight} />
           <br />
           Target weight: <WeightConverter lbs={targetWeight} />
-        </p>
-        <p>
-          Last weigh-in: <WeightConverter lbs={mostRecent.weight} /> <br />
-          Total lost: <WeightConverter lbs={totalLostFormatted} />
+          <hr />
+          Last weigh-in: <WeightConverter lbs={mostRecent.weight} />
+          {/* <br />
+          Total lost: <WeightConverter lbs={totalLostFormatted} /> */}
         </p>
       </div>
     </div>

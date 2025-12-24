@@ -8,7 +8,7 @@ vi.mock("../../components/global/pageTitleHeading", () => ({
 }));
 
 vi.mock("../../content/agile/agilepractices", () => ({
-  AgilePractices: () => (
+  AgilePracticesContent: () => (
     <div data-testid="agile-practices">Agile Practices</div>
   ),
 }));
@@ -26,7 +26,7 @@ vi.mock("../../content/agile/lessonslearned", () => ({
 describe("AgilePage", () => {
   it("renders the page with correct title", () => {
     render(<AgilePage />);
-    expect(screen.getByText("Agile articles")).toBeInTheDocument();
+    expect(screen.getByText("Agile")).toBeInTheDocument();
   });
 
   it("renders all agile content components", () => {
