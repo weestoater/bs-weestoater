@@ -2,8 +2,8 @@ import { HouseLine, Barn } from "@phosphor-icons/react";
 import { calculateMatchResult, formatScore } from "../../utils/footballUtils";
 
 interface Props {
-  scored: number;
-  conceded: number;
+  scored?: number;
+  conceded?: number;
   venue: string;
 }
 

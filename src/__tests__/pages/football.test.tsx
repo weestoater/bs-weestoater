@@ -41,7 +41,9 @@ vi.mock("../../data/2025-26-matches.json", () => ({
 describe("FootballPage", () => {
   it("renders the page with correct title", () => {
     render(<FootballPage />);
-    expect(screen.getByText("Football")).toBeInTheDocument();
+    expect(
+      screen.getByText("Motherwell FC Stats & Results")
+    ).toBeInTheDocument();
   });
 
   it("renders football intro section", () => {

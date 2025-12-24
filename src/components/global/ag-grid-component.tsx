@@ -2,7 +2,11 @@
 // import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the Data Grid
 // import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the Data Grid
 
-export const WSGridComponent = (props: any) => {
+interface WSGridComponentProps {
+  data?: unknown[];
+}
+
+export const WSGridComponent = (props: WSGridComponentProps) => {
   const gridData = props.data ? props.data : null;
 
   return (

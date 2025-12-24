@@ -38,6 +38,9 @@
   --theme-btn-hover-color: #ffffff;
   --theme-btn-hover-border: #000000;
   --theme-close-btn-filter: invert(1) grayscale(100%) brightness(200%);
+  --theme-banner-gradient-start: #4a90e2;
+  --theme-banner-gradient-end: #5e72e4;
+  --theme-banner-text: #ffffff;
 }
 
 // Dark theme overrides
@@ -77,6 +80,9 @@
   --theme-btn-hover-color: #0d1117;
   --theme-btn-hover-border: #ffffff;
   --theme-close-btn-filter: invert(1) grayscale(100%) brightness(200%);
+  --theme-banner-gradient-start: #1e3a8a;
+  --theme-banner-gradient-end: #7c3aed;
+  --theme-banner-text: #e0e7ff;
 }
 
 //--    Colours

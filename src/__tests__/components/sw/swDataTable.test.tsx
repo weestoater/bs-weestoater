@@ -11,9 +11,9 @@ vi.mock("../../../components/sw/WeightConverter", () => ({
 
 describe("SWDataTable", () => {
   const mockData = [
-    { date: "01/10/2023", weight: 180 },
-    { date: "08/10/2023", weight: 178 },
-    { date: "15/10/2023", weight: 175 },
+    { date: "01/10/2023", weight: 180, change: -2, lost: 10, target: 170 },
+    { date: "08/10/2023", weight: 178, change: -2, lost: 12, target: 170 },
+    { date: "15/10/2023", weight: 175, change: -3, lost: 15, target: 170 },
   ];
 
   const defaultProps = {
@@ -63,16 +63,9 @@ describe("SWDataTable", () => {
     expect(recentWeightConverters[2].textContent).toBe("175");
   });
 
-  it("calculates and displays total weight lost", () => {
-    render(<SWDataTable {...defaultProps} />);
-    const weightConverters = screen.getAllByTestId("weight-converter");
-    // Total lost should be startWeight (190) - most recent weight (175) = 15
-    expect(weightConverters[3].textContent).toBe("15");
-  });
-
   it("handles undefined start date", () => {
     const { container } = render(
-      <SWDataTable {...defaultProps} startDate={undefined} />
+      <SWDataTable {...defaultProps} startDate={""} />
     );
     const joinDateText = container.querySelector(".card-body p");
     expect(joinDateText).toBeInTheDocument();
@@ -81,9 +74,9 @@ describe("SWDataTable", () => {
 
   it("sorts dates correctly to find most recent weight", () => {
     const unsortedData = [
-      { date: "15/10/2023", weight: 175 },
-      { date: "01/10/2023", weight: 180 },
-      { date: "08/10/2023", weight: 178 },
+      { date: "15/10/2023", weight: 175, change: -3, lost: 15, target: 170 },
+      { date: "01/10/2023", weight: 180, change: -2, lost: 10, target: 170 },
+      { date: "08/10/2023", weight: 178, change: -2, lost: 12, target: 170 },
     ];
     render(<SWDataTable {...defaultProps} data={unsortedData} />);
     const weightConverters = screen.getAllByTestId("weight-converter");

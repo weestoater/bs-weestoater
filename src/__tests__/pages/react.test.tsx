@@ -34,7 +34,9 @@ vi.mock("../../content/react/MyOwnTimeLine", () => ({
 describe("ReactPage", () => {
   it("renders the page with correct title", () => {
     render(<ReactPage />);
-    expect(screen.getByText("React & JS articles")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "React", level: 1 })
+    ).toBeInTheDocument();
   });
 
   it("renders all React content components", () => {

@@ -2,6 +2,25 @@
 
 @use "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+// CSS Custom Properties for theming
+:root {
+  --theme-banner-bg: #198754;
+  --theme-banner-text: #ffffff;
+  --theme-banner-border: #146c43;
+}
+
+[data-theme="dark"] {
+  --theme-banner-bg: #58a6ff;
+  --theme-banner-text: #0d1117;
+  --theme-banner-border: #79c0ff;
+}
+
+[data-high-contrast="true"] {
+  --theme-banner-bg: #ffff00;
+  --theme-banner-text: #000000;
+  --theme-banner-border: #ffffff;
+}
+
 // Respect user's motion preferences
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -354,6 +373,58 @@ code {
   padding: 1rem;
   transition: border-color 300ms ease, box-shadow 300ms ease,
     background-color 300ms ease, color 300ms ease;
+}
+
+.total-lost-banner {
+  background: var(--theme-banner-bg);
+  color: var(--theme-banner-text);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--theme-banner-border);
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 300ms ease, color 300ms ease, border-color 300ms ease;
+
+  h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .total-lost-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: nowrap;
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+
+      .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 0.75rem;
+        opacity: 0.9;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    }
+
+    .stat-divider {
+      font-size: 1.25rem;
+      opacity: 0.5;
+    }
+  }
 }
 
 .sw-grid-container {

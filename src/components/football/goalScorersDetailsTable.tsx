@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
+import { GoalScorer } from "../../interfaces/footballTypes";
 
-export const GoalScorersDetailsTable = (props: any) => {
+interface GoalScorersDetailsTableProps {
+  details?: GoalScorer[];
+}
+
+export const GoalScorersDetailsTable = (
+  props: GoalScorersDetailsTableProps
+) => {
   const details = props.details ? props.details : null;
   const [theme, setTheme] = useState(
     document.documentElement.getAttribute("data-theme") || "light"
@@ -40,7 +47,7 @@ export const GoalScorersDetailsTable = (props: any) => {
           </thead>
           <tbody>
             {details !== null &&
-              details.map((item: any, index: number) => (
+              details.map((item: GoalScorer, index: number) => (
                 <tr key={index}>
                   <td>{item.player ? item.player : " - "}</td>
                   <td className="text-center">

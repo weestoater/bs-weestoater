@@ -2,11 +2,6 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { SettingsModal } from "../../../components/global/SettingsModal";
 
-// Mock the ThemeSwitcher component
-vi.mock("../../../components/global/ThemeSwitcher", () => ({
-  ThemeSwitcher: () => <div data-testid="theme-switcher">Theme Switcher</div>,
-}));
-
 describe("SettingsModal", () => {
   const mockToggle = vi.fn();
   const mockOnThemeChange = vi.fn();
@@ -28,7 +23,7 @@ describe("SettingsModal", () => {
     expect(screen.getByText("Settings")).toBeInTheDocument();
     expect(screen.getByText("Font")).toBeInTheDocument();
     expect(screen.getByText("Text Size")).toBeInTheDocument();
-    expect(screen.getByTestId("theme-switcher")).toBeInTheDocument();
+    expect(screen.getByText("Theme")).toBeInTheDocument();
   });
 
   it("displays all font options", () => {
@@ -42,8 +37,8 @@ describe("SettingsModal", () => {
 
     const buttons = screen.getAllByText("Default");
     expect(buttons.length).toBeGreaterThan(0);
-    expect(screen.getByText("Serif")).toBeInTheDocument();
-    expect(screen.getByText("Sans-Serif")).toBeInTheDocument();
+    expect(screen.getByText("Calibri")).toBeInTheDocument();
+    expect(screen.getByText("Ubuntu")).toBeInTheDocument();
     expect(screen.getByText("Dyslexic")).toBeInTheDocument();
   });
 
@@ -102,7 +97,9 @@ describe("SettingsModal", () => {
       />
     );
 
-    expect(screen.getByTestId("theme-switcher")).toBeInTheDocument();
+    expect(screen.getByText("Light")).toBeInTheDocument();
+    expect(screen.getByText("Dark")).toBeInTheDocument();
+    expect(screen.getByText("High Contrast")).toBeInTheDocument();
   });
 
   it("resets to defaults when reset button is clicked", () => {
@@ -158,10 +155,7 @@ describe("SettingsModal", () => {
       />
     );
 
-    // High contrast checkbox should always be visible
-    expect(
-      screen.getByLabelText("Enable high contrast mode")
-    ).toBeInTheDocument();
-    expect(screen.getByText("High Contrast")).toBeInTheDocument();
+    // High contrast radio button should be visible
+    expect(screen.getByLabelText(/High Contrast/i)).toBeInTheDocument();
   });
 });

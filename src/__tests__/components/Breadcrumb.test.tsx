@@ -67,7 +67,7 @@ describe("Breadcrumb", () => {
     const homeLink = screen.getByRole("link", { name: "Home" });
     const footballLink = screen.getByRole("link", { name: "Football" });
 
-    expect(homeLink).toHaveAttribute("href", "#/");
-    expect(footballLink).toHaveAttribute("href", "#/football");
+    expect(homeLink).toHaveAttribute("href", "/");
+    expect(footballLink).toHaveAttribute("href", "/football");
   });
 });

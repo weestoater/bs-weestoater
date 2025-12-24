@@ -31,11 +31,11 @@ interface SwDataItem {
 }
 
 interface Props {
-  data: SwDataItem[];
+  details: SwDataItem[];
 }
 
-export const SwDataGrid = ({ data }: Props) => {
-  const [rowData] = useState(data);
+export const SwDataGrid = ({ details }: Props) => {
+  const [rowData] = useState(details);
   const [theme, setTheme] = useState(
     document.documentElement.getAttribute("data-theme") || "light"
   );
@@ -55,26 +55,60 @@ export const SwDataGrid = ({ data }: Props) => {
 
   // Column definitions
   const columnDefs = [
-    { field: "date" as const, headerName: "Weigh in date", flex: 1 },
+    { 
+      field: "date" as const, 
+      headerName: "Weigh in date", 
+      width: 150,
+      minWidth: 150
+    },
     {
       field: "change" as const,
-      headerName: "Amount Lost (lbs)",
-      flex: 1,
+      headerName: "Lost (lbs)",
+      width: 110,
+      minWidth: 110,
       valueFormatter: (params: { value: number }) => {
         const value = params.value;
         return value === 0 ? "0" : value > 0 ? `+${value}` : `${value}`;
       },
     },
-    { field: "weight" as const, headerName: "New Weight (lbs)", flex: 1 },
+    { 
+      field: "weight" as const, 
+      headerName: "Weight (lbs)", 
+      width: 120,
+      minWidth: 120
+    },
     {
       field: "weight" as const,
       headerName: "Weight (st/lbs)",
-      flex: 1,
+      width: 140,
+      minWidth: 140,
       valueFormatter: (params: { value: number }) => {
         const totalPounds = params.value;
         const stones = Math.floor(totalPounds / 14);
         const pounds = Math.round(totalPounds % 14);
         return `${stones}st ${pounds}lbs`;
+      },
+    },
+    {
+      field: "change" as const,
+      headerName: "Lost (kg)",
+      width: 110,
+      minWidth: 110,
+      valueFormatter: (params: { value: number }) => {
+        const valueKg = params.value * 0.453592;
+        if (Math.abs(valueKg) < 0.005) return "0"; // Less than 0.01 rounds to 0
+        const formatted = valueKg.toFixed(2);
+        return valueKg > 0 ? `+${formatted}` : formatted;
+      },
+    },
+    {
+      field: "weight" as const,
+      headerName: "Weight (kg)",
+      width: 120,
+      minWidth: 120,
+      valueFormatter: (params: { value: number }) => {
+        const weightKg = params.value * 0.453592;
+        return weightKg.toFixed(2);
       },
     },
   ];
@@ -95,6 +129,7 @@ export const SwDataGrid = ({ data }: Props) => {
       <Suspense fallback={<SkeletonGrid />}>
         <AgGridReact
           rowData={rowData}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           columnDefs={columnDefs as any}
           defaultColDef={{
             sortable: true,

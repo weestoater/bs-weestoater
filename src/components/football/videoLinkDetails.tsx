@@ -1,6 +1,10 @@
 import { YoutubeLogo } from "@phosphor-icons/react";
 
-export const VideoLink = (props: any) => {
+interface VideoLinkProps {
+  url?: string;
+}
+
+export const VideoLink = (props: VideoLinkProps) => {
   const video = props.url ? props.url : null;
 
   if (video) {

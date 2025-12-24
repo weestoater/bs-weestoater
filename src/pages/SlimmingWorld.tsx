@@ -17,6 +17,13 @@ export const SlimmingWorld = () => {
     createSwChartOptions(swData[0].data)
   );
 
+  // Calculate total lost from most recent entry
+  const totalLost =
+    swData[0].data.length > 0
+      ? swData[0].data[swData[0].data.length - 1].lost
+      : 0;
+  const totalLostKg = totalLost * 0.453592;
+
   useEffect(() => {
     // Watch for theme changes
     const observer = new MutationObserver(() => {
@@ -46,6 +53,27 @@ export const SlimmingWorld = () => {
             targetWeight={swData[0].targetWeight}
             data={swData[0].data}
           />
+          <div className="total-lost-banner mt-4">
+            <h2>Total Lost to Date</h2>
+            <div className="total-lost-stats">
+              <div className="stat-item">
+                <span className="stat-value">{totalLost}</span>
+                <span className="stat-label">lbs</span>
+              </div>
+              <div className="stat-divider">•</div>
+              <div className="stat-item">
+                <span className="stat-value">{totalLostKg.toFixed(2)}</span>
+                <span className="stat-label">kg</span>
+              </div>
+              <div className="stat-divider">•</div>
+              <div className="stat-item">
+                <span className="stat-value">
+                  {Math.floor(totalLost / 14)}st {Math.round(totalLost % 14)}
+                  lbs
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="col-lg-8 col-md-6 col-sm-6 col-xs-12 mb-4">
           <div className="sw-chart">
@@ -60,7 +88,7 @@ export const SlimmingWorld = () => {
         <div className="col-12">
           <h2 className="mb-3">Weight Loss History</h2>
           <div className="sw-grid-container">
-            <SwDataGrid data={swData[0].data} />
+            <SwDataGrid details={swData[0].data} />
           </div>
         </div>
       </div>

@@ -1,7 +1,6 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 import { defineConfig } from "vite";
-import type { UserConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import { VitePWA } from "vite-plugin-pwa";
