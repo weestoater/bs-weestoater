@@ -2,6 +2,24 @@
   "season": "2025-26",
   "matches": [
     {
+      "scored": 0,
+      "conceded": 1,
+      "date": "2025-12-27",
+      "opposition": "Rangers",
+      "venue": "away",
+      "league": null,
+      "goals": null,
+      "cards": [
+        {
+          "player": "Paul McGinn",
+          "type": "yellow",
+          "minute": 86
+        }
+      ],
+      "video": null,
+      "notes": "54% possession, 12 shots & 5 on target but NO goals. Calum Ward had a series of brilliant saves in the box and was unlucky with the goal conceded. Lots of attacking and free flowing football from the 'Well, so lots to be happy about. Onwards and upwards. A stonewall penalty denied - but what else would you expect when Rangers are at home. All good. #claret&amber  #COYW!!"
+    },
+    {
       "scored": 1,
       "conceded": 0,
       "date": "2025-12-20",
