@@ -68,22 +68,23 @@ describe("Slimming World Chart Configuration", () => {
   });
 
   test("axes are properly configured", () => {
-    const axes = config.axes || [];
-    expect(axes).toHaveLength(3); // category and 2 number axes
+    const axes = config.axes as any;
+    expect(axes).toBeDefined();
+    expect(Object.keys(axes)).toHaveLength(3); // category, left, and right axes
 
-    expect(axes[0]).toMatchObject({
+    expect(axes.category).toMatchObject({
       type: "category",
       position: "bottom",
       title: { text: "Date of Weigh-in" },
     });
 
-    expect(axes[1]).toMatchObject({
+    expect(axes.left).toMatchObject({
       type: "number",
       position: "left",
       title: { text: "Weight in lbs" },
     });
 
-    expect(axes[2]).toMatchObject({
+    expect(axes.right).toMatchObject({
       type: "number",
       position: "right",
       title: { text: "Weight lost in lbs" },

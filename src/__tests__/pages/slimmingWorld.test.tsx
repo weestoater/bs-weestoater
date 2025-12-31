@@ -71,9 +71,9 @@ describe("SlimmingWorld", () => {
     expect(screen.getByText("Has Data: Yes")).toBeInTheDocument();
   });
 
-  it("renders chart component", () => {
+  it("renders chart component", async () => {
     render(<SlimmingWorld />);
-    const chart = screen.getByTestId("ag-charts");
+    const chart = await screen.findByTestId("ag-charts");
     expect(chart).toBeInTheDocument();
     expect(screen.getByText("Chart Data: Present")).toBeInTheDocument();
   });

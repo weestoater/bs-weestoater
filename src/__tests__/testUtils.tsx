@@ -6,9 +6,5 @@ interface TestWrapperProps {
 }
 
 export const TestWrapper = ({ children }: TestWrapperProps) => (
-  <MemoryRouter
-    future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
-  >
-    {children}
-  </MemoryRouter>
+  <MemoryRouter>{children}</MemoryRouter>
 );
