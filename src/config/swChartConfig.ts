@@ -84,8 +84,8 @@ export const createSwChartOptions = (
         showInMiniChart: true,
       },
     ],
-    axes: [
-      {
+    axes: {
+      category: {
         type: "category",
         position: "bottom",
         title: {
@@ -106,7 +106,7 @@ export const createSwChartOptions = (
           ],
         },
       },
-      {
+      left: {
         type: "number",
         position: "left",
         title: {
@@ -124,7 +124,7 @@ export const createSwChartOptions = (
           ],
         },
       },
-      {
+      right: {
         type: "number",
         position: "right",
         title: {
@@ -142,7 +142,7 @@ export const createSwChartOptions = (
           ],
         },
       },
-    ],
+    },
     padding: {
       top: 10,
       right: 10,

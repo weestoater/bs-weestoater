@@ -3,13 +3,7 @@ import { MemoryRouter } from "react-router-dom";
 import { ReactNode } from "react";
 
 const customRender = (component: ReactNode) => {
-  return render(
-    <MemoryRouter
-      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
-    >
-      {component}
-    </MemoryRouter>
-  );
+  return render(<MemoryRouter>{component}</MemoryRouter>);
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
