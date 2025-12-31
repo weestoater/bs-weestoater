@@ -1,5 +1,4 @@
 import {
-  lazy,
   memo,
   Suspense,
   useState,
@@ -9,11 +8,8 @@ import {
 } from "react";
 import type { GoalScorer } from "../../interfaces/footballTypes";
 import { GoalScorersGrid } from "./goalScorersGrid";
-
-// Lazy load ag-charts to reduce initial bundle size
-const AgCharts = lazy(() =>
-  import("ag-charts-react").then((module) => ({ default: module.AgCharts }))
-);
+import "../../utils/agChartsSetup";
+import { AgCharts } from "ag-charts-react";
 
 // Get theme-aware colors
 const getThemeColors = () => {

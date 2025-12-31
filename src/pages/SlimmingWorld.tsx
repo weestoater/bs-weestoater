@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { BackToTop } from "../components/global/BackToTop";
 import { SWDataTable } from "../components/sw/swDataTable";
@@ -6,11 +6,8 @@ import { SwDataGrid } from "../components/sw/swDataGrid";
 import { createSwChartOptions } from "../config/swChartConfig";
 import { SkeletonChart } from "../components/global/SkeletonLoaders";
 import swData from "../data/slimmingWorldData.json";
-
-// Lazy load ag-charts to reduce initial bundle size
-const AgCharts = lazy(() =>
-  import("ag-charts-react").then((module) => ({ default: module.AgCharts }))
-);
+import "../utils/agChartsSetup";
+import { AgCharts } from "ag-charts-react";
 
 export const SlimmingWorld = () => {
   const [chartOptions, setChartOptions] = useState(() =>
