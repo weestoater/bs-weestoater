@@ -81,6 +81,16 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./setupTest.ts",
     exclude: ["node_modules", "dist", "e2e-tests/**"],
+    // Performance optimizations
+    pool: "forks", // More stable on Windows than threads
+    poolOptions: {
+      forks: {
+        singleFork: false,
+      },
+    },
+    maxConcurrency: 4, // Limit concurrent tests
+    // Faster file watching
+    watch: false,
     moduleNameMapper: {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
         "<rootDir>/src/test-mocks/file-mock.ts",
