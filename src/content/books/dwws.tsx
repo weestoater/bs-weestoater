@@ -1,7 +1,9 @@
 export const DWWSBook = () => {
   return (
     <div className="card">
-      <div className="card-header">Designing with Web Standards</div>
+      <div className="card-header">
+        <i className="bi bi-book"></i> Designing with Web Standards
+      </div>
       <div className="card-body">
         <p>
           <small>by Jeffrey Zeldman</small>

@@ -84,12 +84,23 @@
       href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap"
     />
 
-    <!-- Cloudflare Web Analytics -->
-    <script
-      defer
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token": "07932622637c4059803372b1ed2a7681"}'
-    ></script>
+    <!-- Cloudflare Web Analytics - Production Only -->
+    <script>
+      // Only load Cloudflare analytics in production
+      if (
+        window.location.hostname === "weestoater.github.io" ||
+        window.location.hostname === "weestoater.com"
+      ) {
+        var script = document.createElement("script");
+        script.defer = true;
+        script.src = "https://static.cloudflareinsights.com/beacon.min.js";
+        script.setAttribute(
+          "data-cf-beacon",
+          '{"token": "07932622637c4059803372b1ed2a7681"}'
+        );
+        document.head.appendChild(script);
+      }
+    </script>
     <!-- End Cloudflare Web Analytics -->
 
     <!-- Initialize theme before page renders to prevent flash -->
