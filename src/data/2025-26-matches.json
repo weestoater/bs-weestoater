@@ -2,11 +2,32 @@
   "season": "2025-26",
   "matches": [
     {
+      "scored": 2,
+      "conceded": 0,
+      "date": "2025-12-30",
+      "opposition": "Celtic",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Ibrahim Said",
+          "mins": "14"
+        },
+        {
+          "player": "Elliot Watt",
+          "mins": "58"
+        }
+      ],
+      "cards": null,
+      "video": "https://youtu.be/qPVwLn8Uo_k?si=CkiW3tfLddl-Zjaa",
+      "notes": "43% possession, 11 shots & 6 on target and TWO goals. Calum Ward was surprisingly quiet between the posts, having to wait until the 70 something minute before being called into action. First half dominance was a joy to watch. Celtic really didn't get a hold of anything as we chased any lose ball or regained possession quickly. A sublime cross from O'Donnell landed perfectly for Said to score his first goal for the club against the current Champions. Just and Watt were incredible, covering every inch of the pitch and showing Celtic how to play. They obviously came out stronger in the second half, with three changes, but it was us who scored quickly after the break. A nervous watch for the latter parts of the game, but to see all the players walking round the pitch applauding the supporters after the game was worth any concerns. Another clean sheet, no cards and three more points. All VERY good. #claret&amber  #COYW!!"
+    },
+    {
       "scored": 0,
       "conceded": 1,
       "date": "2025-12-27",
       "opposition": "Rangers",
-      "venue": "away",
+      "venue": "Away",
       "league": null,
       "goals": null,
       "cards": [
@@ -16,7 +37,7 @@
           "minute": 86
         }
       ],
-      "video": null,
+      "video": "https://youtu.be/RoXufi7TCSo?si=jFO2CysJ7QF-oKYq",
       "notes": "54% possession, 12 shots & 5 on target but NO goals. Calum Ward had a series of brilliant saves in the box and was unlucky with the goal conceded. Lots of attacking and free flowing football from the 'Well, so lots to be happy about. Onwards and upwards. A stonewall penalty denied - but what else would you expect when Rangers are at home. All good. #claret&amber  #COYW!!"
     },
     {
@@ -24,7 +45,7 @@
       "conceded": 0,
       "date": "2025-12-20",
       "opposition": "Dundee",
-      "venue": "home",
+      "venue": "Home",
       "league": null,
       "goals": [
         {
