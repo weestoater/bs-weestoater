@@ -44,6 +44,7 @@ export const Header = () => {
     "About",
     "A11y",
     "Agile",
+    "Books",
     "Football",
     "Landie",
     "React",
