@@ -19,6 +19,9 @@ const A11yPage = lazy(() =>
 const AgilePage = lazy(() =>
   import("./pages/Agile").then((module) => ({ default: module.AgilePage }))
 );
+const BooksPage = lazy(() =>
+  import("./pages/Books").then((module) => ({ default: module.BooksPage }))
+);
 const FootballPage = lazy(() =>
   import("./pages/Football").then((module) => ({
     default: module.FootballPage,
@@ -59,6 +62,7 @@ export const App = () => {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/a11y" element={<A11yPage />} />
               <Route path="/agile" element={<AgilePage />} />
+              <Route path="/books" element={<BooksPage />} />
               <Route path="/landie" element={<LandiePage />} />
               <Route path="/football" element={<FootballPage />} />
               <Route path="/season/:seasonId" element={<SeasonPage />} />
