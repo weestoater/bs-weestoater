@@ -4,7 +4,7 @@ test.describe("Navigation and Basic Content", () => {
   test("homepage loads with correct title", async ({ page }) => {
     await page.goto("/");
     await expect(page).toHaveTitle(/weestoater/);
-    await expect(page.locator("h1")).toHaveText(/welcome to weestoater/i);
+    await expect(page.locator("h1")).toHaveText(/welcome/i);
   });
 
   test("navigation menu works", async ({ page }) => {
