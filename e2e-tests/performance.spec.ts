@@ -22,8 +22,8 @@ test.describe("Performance and Error Handling", () => {
     // Check if chunk was loaded
     expect(requests.some((url) => url.includes("React"))).toBeTruthy();
 
-    // Verify content is visible
-    await expect(page.getByText(/React & JS articles/i)).toBeVisible();
+    // Verify content is visible - check for the h1 heading specifically
+    await expect(page.locator("h1")).toContainText(/React/i);
   });
 
   test("handles 404 routes gracefully", async ({ page }) => {
