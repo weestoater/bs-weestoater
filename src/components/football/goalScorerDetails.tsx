@@ -71,8 +71,8 @@ export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
           showInMiniChart: true,
         },
       ],
-      axes: [
-        {
+      axes: {
+        category: {
           type: "category",
           position: "bottom",
           title: {
@@ -90,7 +90,7 @@ export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
             ],
           },
         },
-        {
+        left: {
           type: "number",
           position: "left",
           title: {
@@ -108,7 +108,7 @@ export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
             ],
           },
         },
-        {
+        right: {
           type: "number",
           position: "right",
           title: {
@@ -126,7 +126,7 @@ export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
             ],
           },
         },
-      ],
+      },
       padding: {
         top: 5,
         right: 5,
@@ -148,6 +148,11 @@ export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
   const [chartOptions, setChartOptions] = useState(createChartOptions);
 
   useEffect(() => {
+    // Update chart when details change
+    setChartOptions(createChartOptions());
+  }, [createChartOptions]);
+
+  useEffect(() => {
     // Watch for theme changes
     const observer = new MutationObserver(() => {
       setChartOptions(createChartOptions());
@@ -159,7 +164,7 @@ export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
     });
 
     return () => observer.disconnect();
-  }, [details, createChartOptions]);
+  }, [createChartOptions]);
 
   return (
     <>
