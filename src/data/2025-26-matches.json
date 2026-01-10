@@ -2,6 +2,49 @@
   "season": "2025-26",
   "matches": [
     {
+      "scored": 1,
+      "conceded": 1,
+      "date": "2026-01-10",
+      "opposition": "Hibernian",
+      "venue": "Away",
+      "league": null,
+      "goals": [
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "52"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Stephen Welsh",
+          "type": "yellow",
+          "minute": 34
+        },
+        {
+          "player": "Lukas Fadinger",
+          "type": "yellow",
+          "minute": 46
+        },
+        {
+          "player": "Oscar Priestman",
+          "type": "yellow",
+          "minute": 73
+        },
+        {
+          "player": "Emmanuel Longelo",
+          "type": "yellow",
+          "minute": 80
+        },
+        {
+          "player": "Ibrahim Said",
+          "type": "yellow",
+          "minute": 87
+        }
+      ],
+      "video": null,
+      "notes": "55% possession, 14 shots & 6 on target and 1 goal. Took our time to get going in the match, with a sluggish start. Hibs are a strong team at Easter Road, so a point is a good result, but doesn't do much for us in the league with them still breathing down our necks. Man of the match for Elijah Just - well earned. #claret&amber  #COYW!!"
+    },
+    {
       "scored": 2,
       "conceded": 0,
       "date": "2026-01-03",
@@ -19,7 +62,7 @@
         }
       ],
       "cards": null,
-      "video": null,
+      "video": "https://youtu.be/Fd3tTJzqzLg?si=tSPArzbQ9O2R_KWz",
       "notes": "55% possession, 15 shots & 8 on target and 2 goals. Another solid win from the 'Well. Good performances throughout and delighted to Maswanhise back on the score sheet as well as assisting the second goal. Buddies have been a bogie team over the years, more recently at Hampden too, so nice to get some 'revenge' in the league. #claret&amber  #COYW!!"
     },
     {
