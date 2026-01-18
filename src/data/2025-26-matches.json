@@ -3,6 +3,23 @@
   "matches": [
     {
       "scored": 1,
+      "conceded": 0,
+      "date": "2026-01-17",
+      "opposition": "Ross County",
+      "venue": "Home",
+      "league": "Scottish - FA Cup",
+      "goals": [
+        {
+          "player": "Tawanda Maswanhise",
+          "mins": "62"
+        }
+      ],
+      "cards": null,
+      "video": null,
+      "notes": "Not a convincing performance, but a win is a win. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 1,
       "conceded": 1,
       "date": "2026-01-10",
       "opposition": "Hibernian",
