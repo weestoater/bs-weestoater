@@ -28,7 +28,7 @@ export const SWDataTable = (props: SWDataTableProps) => {
   }
   const mostRecent = [...data].sort(
     (a, b) =>
-      parseDateString(b.date).getTime() - parseDateString(a.date).getTime()
+      parseDateString(b.date).getTime() - parseDateString(a.date).getTime(),
   )[0];
 
   return (
@@ -36,13 +36,16 @@ export const SWDataTable = (props: SWDataTableProps) => {
       <div className="card-header">Slimming World details</div>
       <div className="card-body">
         <p>
-          Joined: <strong>{joinDate}</strong>
+          <span aria-hidden="true">📅 </span>Joined: <strong>{joinDate}</strong>
           <br />
-          Start weight: <WeightConverter lbs={startWeight} />
+          <span aria-hidden="true">🏁 </span>Start weight:{" "}
+          <WeightConverter lbs={startWeight} />
           <br />
-          Target weight: <WeightConverter lbs={targetWeight} />
+          <span aria-hidden="true">🎯 </span>Target weight:{" "}
+          <WeightConverter lbs={targetWeight} />
           <hr />
-          Last weigh-in: <WeightConverter lbs={mostRecent.weight} />
+          <span aria-hidden="true">⚖️ </span>Last weigh-in:{" "}
+          <WeightConverter lbs={mostRecent.weight} />
           {/* <br />
           Total lost: <WeightConverter lbs={totalLostFormatted} /> */}
         </p>
