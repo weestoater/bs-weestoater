@@ -11,7 +11,7 @@ import { AgCharts } from "ag-charts-react";
 
 export const SlimmingWorld = () => {
   const [chartOptions, setChartOptions] = useState(() =>
-    createSwChartOptions(swData[0].data)
+    createSwChartOptions(swData[0].data),
   );
 
   // Calculate total lost from most recent entry
@@ -51,7 +51,9 @@ export const SlimmingWorld = () => {
             data={swData[0].data}
           />
           <div className="total-lost-banner mt-4">
-            <h2>Total Lost to Date</h2>
+            <h2>
+              <span aria-hidden="true">🎯 </span>Total Lost to Date
+            </h2>
             <div className="total-lost-stats">
               <div className="stat-item">
                 <span className="stat-value">{totalLost}</span>
@@ -83,7 +85,9 @@ export const SlimmingWorld = () => {
 
       <div className="row mt-4">
         <div className="col-12">
-          <h2 className="mb-3">Weight Loss History</h2>
+          <h2 className="mb-3">
+            <span aria-hidden="true">📈 </span>Weight Loss History
+          </h2>
           <div className="sw-grid-container">
             <SwDataGrid details={swData[0].data} />
           </div>
