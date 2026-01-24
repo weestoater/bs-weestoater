@@ -2,13 +2,18 @@
   "season": "2025-26",
   "topScorers": [
     {
+      "player": "Eythor Martin Bjorgolfsson",
+      "goals": 0,
+      "assists": 1
+    },
+    {
       "player": "Regan Charles-Cook",
       "goals": 1,
       "assists": 1
     },
     {
       "player": "Lukas Fadinger",
-      "goals": 2,
+      "goals": 3,
       "assists": 2
     },
     {
@@ -24,7 +29,7 @@
     {
       "player": "Elijah Just",
       "assists": 5,
-      "goals": 3
+      "goals": 4
     },
     {
       "player": "Johnny Koutrombis",
@@ -34,7 +39,7 @@
     {
       "player": "Emmanuel Longelo",
       "goals": 5,
-      "assists": 3
+      "assists": 4
     },
     {
       "player": "Tawanda Maswanhise",
@@ -54,16 +59,16 @@
     {
       "player": "Ibrahim Said",
       "assists": 0,
-      "goals": 1
+      "goals": 2
     },
     {
       "player": "Callum Slattery",
-      "assists": 4,
+      "assists": 5,
       "goals": 1
     },
     {
       "player": "Tom Sparrow",
-      "assists": 1,
+      "assists": 2,
       "goals": 0
     },
     {
