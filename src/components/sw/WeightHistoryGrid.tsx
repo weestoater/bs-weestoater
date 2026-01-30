@@ -30,11 +30,11 @@ interface SwDataItem {
   target: number;
 }
 
-interface Props {
+interface WeightHistoryGridProps {
   details: SwDataItem[];
 }
 
-export const SwDataGrid = ({ details }: Props) => {
+export const WeightHistoryGrid = ({ details }: WeightHistoryGridProps) => {
   const [rowData] = useState(details);
   const [theme, setTheme] = useState(
     document.documentElement.getAttribute("data-theme") || "light",
@@ -125,7 +125,7 @@ export const SwDataGrid = ({ details }: Props) => {
   });
 
   return (
-    <div className="sw-data-grid">
+    <div className="weight-history-grid">
       <Suspense fallback={<SkeletonGrid />}>
         <AgGridReact
           rowData={rowData}

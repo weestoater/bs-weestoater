@@ -1,8 +1,8 @@
 import { describe, test, expect } from "vitest";
-import { createSwChartOptions } from "../../config/swChartConfig";
+import { createWeightProgressChartOptions } from "../../config/weightProgressChartConfig";
 import { SwDataPoint } from "../../interfaces/swTypes";
 
-describe("Slimming World Chart Configuration", () => {
+describe("Weight Progress Chart Configuration", () => {
   const mockData: SwDataPoint[] = [
     {
       date: "01/01/2025",
@@ -13,7 +13,7 @@ describe("Slimming World Chart Configuration", () => {
     },
   ];
 
-  const config = createSwChartOptions(mockData);
+  const config = createWeightProgressChartOptions(mockData);
 
   test("chart has correct base configuration", () => {
     expect(config.data).toBe(mockData);

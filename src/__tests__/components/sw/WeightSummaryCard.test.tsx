@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { SWDataTable } from "../../../components/sw/swDataTable";
+import { WeightSummaryCard } from "../../../components/sw/WeightSummaryCard";
 
 // Mock the WeightConverter component
 vi.mock("../../../components/sw/WeightConverter", () => ({
@@ -9,7 +9,7 @@ vi.mock("../../../components/sw/WeightConverter", () => ({
   ),
 }));
 
-describe("SWDataTable", () => {
+describe("WeightSummaryCard", () => {
   const mockData = [
     { date: "01/10/2023", weight: 180, change: -2, lost: 10, target: 170 },
     { date: "08/10/2023", weight: 178, change: -2, lost: 12, target: 170 },
@@ -24,12 +24,12 @@ describe("SWDataTable", () => {
   };
 
   it("renders no data message when data is empty", () => {
-    render(<SWDataTable {...defaultProps} data={[]} />);
+    render(<WeightSummaryCard {...defaultProps} data={[]} />);
     expect(screen.getByText("No data available")).toBeInTheDocument();
   });
 
   it("renders with correct card structure", () => {
-    const { container } = render(<SWDataTable {...defaultProps} />);
+    const { container } = render(<WeightSummaryCard {...defaultProps} />);
     expect(container.querySelector(".card")).toBeInTheDocument();
     expect(container.querySelector(".card-header")).toBeInTheDocument();
     expect(container.querySelector(".card-body")).toBeInTheDocument();
@@ -37,7 +37,7 @@ describe("SWDataTable", () => {
   });
 
   it("displays join date", () => {
-    const { container } = render(<SWDataTable {...defaultProps} />);
+    const { container } = render(<WeightSummaryCard {...defaultProps} />);
     const joinDateText = container.querySelector(".card-body p");
     expect(joinDateText).toBeInTheDocument();
     expect(joinDateText).toHaveTextContent("Joined:");
@@ -45,19 +45,19 @@ describe("SWDataTable", () => {
   });
 
   it("shows start weight", () => {
-    render(<SWDataTable {...defaultProps} />);
+    render(<WeightSummaryCard {...defaultProps} />);
     const startWeightConverters = screen.getAllByTestId("weight-converter");
     expect(startWeightConverters[0].textContent).toBe("190");
   });
 
   it("shows target weight", () => {
-    render(<SWDataTable {...defaultProps} />);
+    render(<WeightSummaryCard {...defaultProps} />);
     const targetWeightConverters = screen.getAllByTestId("weight-converter");
     expect(targetWeightConverters[1].textContent).toBe("170");
   });
 
   it("shows most recent weight", () => {
-    render(<SWDataTable {...defaultProps} />);
+    render(<WeightSummaryCard {...defaultProps} />);
     const recentWeightConverters = screen.getAllByTestId("weight-converter");
     // Most recent weight is 175 from the mock data
     expect(recentWeightConverters[2].textContent).toBe("175");
@@ -65,7 +65,7 @@ describe("SWDataTable", () => {
 
   it("handles undefined start date", () => {
     const { container } = render(
-      <SWDataTable {...defaultProps} startDate={""} />
+      <WeightSummaryCard {...defaultProps} startDate={""} />,
     );
     const joinDateText = container.querySelector(".card-body p");
     expect(joinDateText).toBeInTheDocument();
@@ -78,7 +78,7 @@ describe("SWDataTable", () => {
       { date: "01/10/2023", weight: 180, change: -2, lost: 10, target: 170 },
       { date: "08/10/2023", weight: 178, change: -2, lost: 12, target: 170 },
     ];
-    render(<SWDataTable {...defaultProps} data={unsortedData} />);
+    render(<WeightSummaryCard {...defaultProps} data={unsortedData} />);
     const weightConverters = screen.getAllByTestId("weight-converter");
     // Most recent weight should still be 175
     expect(weightConverters[2].textContent).toBe("175");
