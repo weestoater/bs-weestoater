@@ -12,8 +12,8 @@ const getThemeColors = () => {
   };
 };
 
-export const createSwChartOptions = (
-  data: SwDataPoint[]
+export const createWeightProgressChartOptions = (
+  data: SwDataPoint[],
 ): AgCartesianChartOptions<SwDataPoint> => {
   const themeColors = getThemeColors();
 

@@ -38,7 +38,9 @@ body {
   background-color: var(--theme-bg);
   color: var(--theme-color);
   overflow-x: hidden;
-  transition: background-color 300ms ease, color 300ms ease;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
 }
 
 // Theme-aware components
@@ -46,7 +48,9 @@ body {
   background-color: var(--theme-card-bg);
   border-color: var(--theme-card-border);
   color: var(--theme-color);
-  transition: background-color 300ms ease, border-color 300ms ease;
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease;
 }
 
 .card-body {
@@ -95,7 +99,9 @@ a {
 .code-sample {
   background-color: var(--theme-code-bg);
   border-color: var(--theme-border);
-  transition: background-color 300ms ease, border-color 300ms ease;
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease;
 }
 
 // Theme switcher styles
@@ -115,7 +121,9 @@ a {
     border-color: #000000;
     border-width: 2px;
     margin: 0;
-    transition: background-color 300ms ease, border-color 300ms ease;
+    transition:
+      background-color 300ms ease,
+      border-color 300ms ease;
 
     &:checked {
       background-color: #000000;
@@ -284,7 +292,9 @@ blockquote {
   font-style: oblique;
   line-height: 1.95rem;
   width: 90%;
-  transition: background-color 300ms ease, box-shadow 300ms ease;
+  transition:
+    background-color 300ms ease,
+    box-shadow 300ms ease;
 }
 
 code {
@@ -293,7 +303,9 @@ code {
   font-family: "Courier New", Courier, monospace;
   font-size: 0.95rem !important;
   margin: 0 0.25rem;
-  transition: background-color 300ms ease, color 300ms ease;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
 }
 
 [data-theme="dark"] code {
@@ -307,7 +319,9 @@ code {
     color: var(--theme-card-header-color);
     border-bottom: 1px solid var(--theme-card-header-border);
     padding-top: 1rem;
-    transition: background-color 300ms ease, color 300ms ease,
+    transition:
+      background-color 300ms ease,
+      color 300ms ease,
       border-color 300ms ease;
     font-family: var(--user-font, "Namdhinggo", "Times New Roman", serif);
 
@@ -341,7 +355,7 @@ code {
 
 /*--    Slimming World
 ----  chart */
-.sw-chart {
+.weight-progress-chart {
   width: 100%;
   height: 500px;
   padding: 1rem 0;
@@ -349,7 +363,9 @@ code {
   border: 1px solid var(--theme-border);
   box-shadow: 0 0 0.333rem var(--theme-border);
   background-color: var(--theme-card-bg);
-  transition: border-color 300ms ease, box-shadow 300ms ease,
+  transition:
+    border-color 300ms ease,
+    box-shadow 300ms ease,
     background-color 300ms ease;
 
   .ag-charts-wrapper {
@@ -364,15 +380,19 @@ code {
   }
 }
 
-.sw-data-grid {
+.weight-history-grid {
   border: 1px solid var(--theme-border);
   box-shadow: 0 0 0.333rem var(--theme-border);
   background: var(--theme-card-bg);
   color: var(--theme-color);
-  height: 100%;
+  height: 500px;
+  max-width: 850px;
   padding: 1rem;
-  transition: border-color 300ms ease, box-shadow 300ms ease,
-    background-color 300ms ease, color 300ms ease;
+  transition:
+    border-color 300ms ease,
+    box-shadow 300ms ease,
+    background-color 300ms ease,
+    color 300ms ease;
 }
 
 .total-lost-banner {
@@ -383,7 +403,10 @@ code {
   border: 2px solid var(--theme-banner-border);
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background 300ms ease, color 300ms ease, border-color 300ms ease;
+  transition:
+    background 300ms ease,
+    color 300ms ease,
+    border-color 300ms ease;
 
   h2 {
     margin: 0 0 1rem 0;
@@ -425,11 +448,6 @@ code {
       opacity: 0.5;
     }
   }
-}
-
-.sw-grid-container {
-  height: 500px;
-  max-width: 850px;
 }
 
 .goal-scorers-table {
@@ -488,7 +506,9 @@ code {
   background-color: var(--theme-input-bg);
   border-color: var(--theme-input-border);
   color: var(--theme-input-color);
-  transition: background-color 300ms ease, border-color 300ms ease,
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
     color 300ms ease;
 
   &:focus {
@@ -500,7 +520,6 @@ code {
 }
 
 ///--    circular image
-
 img.circle {
   border-radius: 50% !important;
   clip-path: circle(50%) !important; /* This makes the image appear circular */
@@ -519,7 +538,7 @@ div.left.w10 {
 }
 
 // AG Grid font size support
-.sw-data-grid,
+.weight-history-grid,
 .goal-scorers-grid {
   font-family: var(--user-font, system-ui, -apple-system, sans-serif);
   font-size: var(--user-font-size, 16px);
@@ -579,7 +598,7 @@ div.left.w10 {
     text-decoration: underline;
   }
 
-  .sw-data-grid,
+  .weight-history-grid,
   .goal-scorers-grid,
   .sw-chart {
     background-color: var(--dyslexia-card-bg) !important;
@@ -688,7 +707,9 @@ div.left.w10 {
   background-color: var(--theme-card-bg);
   border-color: var(--theme-card-border);
   color: var(--theme-color);
-  transition: background-color 300ms ease, border-color 300ms ease,
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
     color 300ms ease;
 }
 
@@ -698,7 +719,9 @@ div.left.w10 {
   border-bottom-color: var(--theme-border);
   padding: 1rem 1rem 0 1rem;
   align-items: center;
-  transition: background-color 300ms ease, color 300ms ease,
+  transition:
+    background-color 300ms ease,
+    color 300ms ease,
     border-color 300ms ease;
 
   @media (max-width: 576px) {
@@ -756,7 +779,9 @@ div.left.w10 {
 .modal-footer {
   background-color: var(--theme-card-bg);
   border-top-color: var(--theme-border);
-  transition: background-color 300ms ease, border-color 300ms ease;
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease;
 }
 
 .dyslexia-option-box {

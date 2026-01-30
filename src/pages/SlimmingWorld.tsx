@@ -1,39 +1,17 @@
-import { Suspense, useState, useEffect } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { BackToTop } from "../components/global/BackToTop";
-import { SWDataTable } from "../components/sw/swDataTable";
-import { SwDataGrid } from "../components/sw/swDataGrid";
-import { createSwChartOptions } from "../config/swChartConfig";
-import { SkeletonChart } from "../components/global/SkeletonLoaders";
+import { WeightSummaryCard } from "../components/sw/WeightSummaryCard";
+import { WeightHistoryGrid } from "../components/sw/WeightHistoryGrid";
+import { WeightProgressChart } from "../components/sw/WeightProgressChart";
 import swData from "../data/slimmingWorldData.json";
-import "../utils/agChartsSetup";
-import { AgCharts } from "ag-charts-react";
 
 export const SlimmingWorld = () => {
-  const [chartOptions, setChartOptions] = useState(() =>
-    createSwChartOptions(swData[0].data),
-  );
-
   // Calculate total lost from most recent entry
   const totalLost =
     swData[0].data.length > 0
       ? swData[0].data[swData[0].data.length - 1].lost
       : 0;
   const totalLostKg = totalLost * 0.453592;
-
-  useEffect(() => {
-    // Watch for theme changes
-    const observer = new MutationObserver(() => {
-      setChartOptions(createSwChartOptions(swData[0].data));
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
@@ -44,7 +22,7 @@ export const SlimmingWorld = () => {
       />
       <div className="row">
         <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
-          <SWDataTable
+          <WeightSummaryCard
             startDate={swData[0].startDate}
             startWeight={swData[0].startWeight}
             targetWeight={swData[0].targetWeight}
@@ -75,11 +53,7 @@ export const SlimmingWorld = () => {
           </div>
         </div>
         <div className="col-lg-8 col-md-6 col-sm-6 col-xs-12 mb-4">
-          <div className="sw-chart">
-            <Suspense fallback={<SkeletonChart />}>
-              <AgCharts options={chartOptions} />
-            </Suspense>
-          </div>
+          <WeightProgressChart data={swData[0].data} />
         </div>
       </div>
 
@@ -88,8 +62,8 @@ export const SlimmingWorld = () => {
           <h2 className="mb-3">
             <span aria-hidden="true">📈 </span>Weight Loss History
           </h2>
-          <div className="sw-grid-container">
-            <SwDataGrid details={swData[0].data} />
+          <div className="weight-history-container">
+            <WeightHistoryGrid details={swData[0].data} />
           </div>
         </div>
       </div>

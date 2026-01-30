@@ -8,14 +8,14 @@ interface SwDataItem {
   target: number;
 }
 
-interface SWDataTableProps {
+interface WeightSummaryCardProps {
   data: SwDataItem[];
   startWeight: number;
   startDate: string;
   targetWeight: number;
 }
 
-export const SWDataTable = (props: SWDataTableProps) => {
+export const WeightSummaryCard = (props: WeightSummaryCardProps) => {
   const { data, startWeight, startDate, targetWeight } = props;
 
   const joinDate = startDate ? startDate : undefined;

@@ -7,7 +7,7 @@ export interface FootballSeasonResultsProps {
   goals?: GoalStats[];
 }
 
-export interface SwDataTableProps {
+export interface WeightSummaryCardProps {
   startDate: string;
   startWeight: number;
   targetWeight: number;

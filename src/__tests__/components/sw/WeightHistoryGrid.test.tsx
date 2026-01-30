@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { render } from "@testing-library/react";
-import { SwDataGrid } from "../../../components/sw/swDataGrid";
+import { WeightHistoryGrid } from "../../../components/sw/WeightHistoryGrid";
 
 // Mock data
 const mockData = [
@@ -27,7 +27,7 @@ const mockData = [
   },
 ];
 
-describe("SwDataGrid", () => {
+describe("WeightHistoryGrid", () => {
   let originalGetAttribute: typeof document.documentElement.getAttribute;
 
   beforeEach(() => {
@@ -42,12 +42,12 @@ describe("SwDataGrid", () => {
   });
 
   it("renders the grid container", () => {
-    const { container } = render(<SwDataGrid details={mockData} />);
-    expect(container.querySelector(".sw-data-grid")).toBeInTheDocument();
+    const { container } = render(<WeightHistoryGrid details={mockData} />);
+    expect(container.querySelector(".weight-history-grid")).toBeInTheDocument();
   });
 
   it("renders with correct number of columns", () => {
-    const { container } = render(<SwDataGrid details={mockData} />);
+    const { container } = render(<WeightHistoryGrid details={mockData} />);
     // Should have 6 columns: Date, Weight (lbs), Change (lbs), Lost to date (lbs), Lost (kg), Weight (kg)
     // Grid is lazy loaded in Suspense, so we see skeleton or grid
     const hasGridOrSkeleton =
@@ -57,8 +57,8 @@ describe("SwDataGrid", () => {
   });
 
   it("renders with empty data", () => {
-    const { container } = render(<SwDataGrid details={[]} />);
-    expect(container.querySelector(".sw-data-grid")).toBeInTheDocument();
+    const { container } = render(<WeightHistoryGrid details={[]} />);
+    expect(container.querySelector(".weight-history-grid")).toBeInTheDocument();
   });
 
   it("applies theme-specific styling in light theme", () => {
@@ -67,8 +67,8 @@ describe("SwDataGrid", () => {
       return originalGetAttribute.call(document.documentElement, attr);
     });
 
-    const { container } = render(<SwDataGrid details={mockData} />);
-    const gridContainer = container.querySelector(".sw-data-grid");
+    const { container } = render(<WeightHistoryGrid details={mockData} />);
+    const gridContainer = container.querySelector(".weight-history-grid");
     expect(gridContainer).toBeInTheDocument();
   });
 
@@ -78,8 +78,8 @@ describe("SwDataGrid", () => {
       return originalGetAttribute.call(document.documentElement, attr);
     });
 
-    const { container } = render(<SwDataGrid details={mockData} />);
-    const gridContainer = container.querySelector(".sw-data-grid");
+    const { container } = render(<WeightHistoryGrid details={mockData} />);
+    const gridContainer = container.querySelector(".weight-history-grid");
     expect(gridContainer).toBeInTheDocument();
   });
 
@@ -90,14 +90,14 @@ describe("SwDataGrid", () => {
       return originalGetAttribute.call(document.documentElement, attr);
     });
 
-    const { container } = render(<SwDataGrid details={mockData} />);
-    const gridContainer = container.querySelector(".sw-data-grid");
+    const { container } = render(<WeightHistoryGrid details={mockData} />);
+    const gridContainer = container.querySelector(".weight-history-grid");
     expect(gridContainer).toBeInTheDocument();
   });
 
   it("has proper column widths for mobile optimization", () => {
-    const { container } = render(<SwDataGrid details={mockData} />);
-    const grid = container.querySelector(".sw-data-grid");
+    const { container } = render(<WeightHistoryGrid details={mockData} />);
+    const grid = container.querySelector(".weight-history-grid");
     expect(grid).toBeInTheDocument();
     // Verify the grid is rendered - actual heights are set on inner elements
   });
@@ -105,8 +105,8 @@ describe("SwDataGrid", () => {
   it("formats kg conversion correctly", () => {
     // This test verifies that the component renders with the data
     // The actual formatting is tested by the column definitions
-    const { container } = render(<SwDataGrid details={mockData} />);
-    const gridContainer = container.querySelector(".sw-data-grid");
+    const { container } = render(<WeightHistoryGrid details={mockData} />);
+    const gridContainer = container.querySelector(".weight-history-grid");
     expect(gridContainer).toBeInTheDocument();
   });
 
@@ -122,8 +122,10 @@ describe("SwDataGrid", () => {
         target: 200,
       },
     ];
-    const { container } = render(<SwDataGrid details={dataWith05Change} />);
-    const gridContainer = container.querySelector(".sw-data-grid");
+    const { container } = render(
+      <WeightHistoryGrid details={dataWith05Change} />,
+    );
+    const gridContainer = container.querySelector(".weight-history-grid");
     expect(gridContainer).toBeInTheDocument();
   });
 
@@ -134,21 +136,23 @@ describe("SwDataGrid", () => {
       return originalGetAttribute.call(document.documentElement, attr);
     });
 
-    const { container, rerender } = render(<SwDataGrid details={mockData} />);
-    const gridContainer = container.querySelector(".sw-data-grid");
+    const { container, rerender } = render(
+      <WeightHistoryGrid details={mockData} />,
+    );
+    const gridContainer = container.querySelector(".weight-history-grid");
     expect(gridContainer).toBeInTheDocument();
 
     // Change theme
     currentTheme = "dark";
-    rerender(<SwDataGrid details={mockData} />);
+    rerender(<WeightHistoryGrid details={mockData} />);
     expect(gridContainer).toBeInTheDocument();
   });
 
   it("has correct aria attributes for grid accessibility", () => {
-    const { container } = render(<SwDataGrid details={mockData} />);
+    const { container } = render(<WeightHistoryGrid details={mockData} />);
     // Grid is lazy loaded, but container should have aria-busy on skeleton
     const skeleton = container.querySelector(
-      '.skeleton-grid[aria-busy="true"]'
+      '.skeleton-grid[aria-busy="true"]',
     );
     const grid = container.querySelector('[role="grid"]');
     // Either skeleton or actual grid should be present
