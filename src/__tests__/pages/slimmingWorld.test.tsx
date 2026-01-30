@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { SlimmingWorld } from "../../pages/SlimmingWorld";
-import { WeightSummaryCardProps, ChartOptions } from "../test-types";
+import { WeightSummaryCardProps } from "../test-types";
 
 // Mock the child components
 vi.mock("../../components/global/pageTitleHeading", () => ({
