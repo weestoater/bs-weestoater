@@ -11,7 +11,7 @@ import { SkeletonGrid } from "../global/SkeletonLoaders";
 
 // Lazy load AgGridReact
 const AgGridReact = lazy(() =>
-  import("ag-grid-react").then((m) => ({ default: m.AgGridReact }))
+  import("ag-grid-react").then((m) => ({ default: m.AgGridReact })),
 );
 
 // Register only the modules we need
@@ -37,7 +37,7 @@ interface Props {
 export const SwDataGrid = ({ details }: Props) => {
   const [rowData] = useState(details);
   const [theme, setTheme] = useState(
-    document.documentElement.getAttribute("data-theme") || "light"
+    document.documentElement.getAttribute("data-theme") || "light",
   );
 
   useEffect(() => {
@@ -55,11 +55,11 @@ export const SwDataGrid = ({ details }: Props) => {
 
   // Column definitions
   const columnDefs = [
-    { 
-      field: "date" as const, 
-      headerName: "Weigh in date", 
+    {
+      field: "date" as const,
+      headerName: "Weigh in date",
       width: 150,
-      minWidth: 150
+      minWidth: 150,
     },
     {
       field: "change" as const,
@@ -71,11 +71,11 @@ export const SwDataGrid = ({ details }: Props) => {
         return value === 0 ? "0" : value > 0 ? `+${value}` : `${value}`;
       },
     },
-    { 
-      field: "weight" as const, 
-      headerName: "Weight (lbs)", 
-      width: 120,
-      minWidth: 120
+    {
+      field: "weight" as const,
+      headerName: "Weight (lbs)",
+      width: 140,
+      minWidth: 140,
     },
     {
       field: "weight" as const,
@@ -104,8 +104,8 @@ export const SwDataGrid = ({ details }: Props) => {
     {
       field: "weight" as const,
       headerName: "Weight (kg)",
-      width: 120,
-      minWidth: 120,
+      width: 140,
+      minWidth: 140,
       valueFormatter: (params: { value: number }) => {
         const weightKg = params.value * 0.453592;
         return weightKg.toFixed(2);
