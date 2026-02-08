@@ -450,6 +450,170 @@ code {
   }
 }
 
+/*--    Garmin Activities
+----  components */
+.garmin-activity-card {
+  .card {
+    background: var(--theme-card-bg);
+    color: var(--theme-color);
+    border: 1px solid var(--theme-border);
+    box-shadow: 0 0 0.333rem var(--theme-border);
+    transition:
+      border-color 300ms ease,
+      box-shadow 300ms ease,
+      background-color 300ms ease,
+      color 300ms ease;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--theme-color);
+  }
+
+  .activity-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+
+    .stat-box {
+      text-align: center;
+      padding: 1rem;
+      background: var(--theme-banner-bg);
+      border-radius: 0.5rem;
+      border: 1px solid var(--theme-border);
+      transition: all 300ms ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .stat-value {
+        display: block;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--theme-banner-text);
+        margin-bottom: 0.25rem;
+      }
+
+      .stat-label {
+        display: block;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--theme-banner-text);
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .activities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    .activity-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--theme-banner-bg);
+      border-radius: 0.5rem;
+      border: 1px solid var(--theme-border);
+      transition: all 300ms ease;
+
+      &:hover {
+        transform: translateX(4px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .activity-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+      }
+
+      .activity-details {
+        flex: 1;
+        min-width: 0;
+
+        .activity-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.5rem;
+          gap: 1rem;
+
+          .activity-type {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--theme-banner-text);
+          }
+
+          .activity-date {
+            font-size: 0.875rem;
+            color: var(--theme-banner-text);
+            opacity: 0.8;
+            white-space: nowrap;
+          }
+        }
+
+        .activity-metrics {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.875rem;
+          color: var(--theme-banner-text);
+
+          .metric {
+            strong {
+              font-weight: 600;
+            }
+          }
+
+          .metric-separator {
+            opacity: 0.5;
+          }
+        }
+
+        .activity-notes {
+          margin-top: 0.5rem;
+          font-size: 0.875rem;
+          font-style: italic;
+          color: var(--theme-banner-text);
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .activity-stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .activities-list .activity-item {
+      .activity-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+
+      .activity-metrics {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
 .goal-scorers-table {
   .table {
     background-color: var(--theme-table-bg);

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "d829278bb45d5df3",
+    "date": "2026-02-08T09:24:09.000Z",
+    "type": "walking",
+    "distance": 1.04,
+    "duration": 2763,
+    "calories": 201,
+    "averageHeartRate": 76,
+    "maxHeartRate": 95,
+    "averagePace": 44.4,
+    "elevation": 12
+  },
+  {
+    "id": "d06b9f5e7450ed24",
+    "date": "2026-02-07T10:54:10.000Z",
+    "type": "walking",
+    "distance": 0.98,
+    "duration": 2081,
+    "calories": 120,
+    "averageHeartRate": 74,
+    "maxHeartRate": 90,
+    "averagePace": 35.43,
+    "elevation": 12
+  }
+]
