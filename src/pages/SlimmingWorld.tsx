@@ -4,9 +4,12 @@ import { WeightSummaryCard } from "../components/sw/WeightSummaryCard";
 import { WeightHistoryGrid } from "../components/sw/WeightHistoryGrid";
 import { WeightProgressChart } from "../components/sw/WeightProgressChart";
 import { GarminActivityCard } from "../components/sw/GarminActivityCard";
+import { DailyStepsCard } from "../components/sw/DailyStepsCard";
 import swData from "../data/slimmingWorldData.json";
 import garminActivities from "../data/garminActivities.json";
+import dailySteps from "../data/dailySteps.json";
 import { GarminActivity } from "../interfaces/GarminActivity";
+import { DailySteps } from "../interfaces/DailySteps";
 
 export const SlimmingWorld = () => {
   // Calculate total lost from most recent entry
@@ -63,19 +66,22 @@ export const SlimmingWorld = () => {
       <div className="row mt-4">
         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-4">
           <h2 className="mb-3">
-            <span aria-hidden="true">📈 </span>Weight Loss History
-          </h2>
-          <div className="weight-history-container">
-            <WeightHistoryGrid details={swData[0].data} />
-          </div>
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-4">
-          <h2 className="mb-3">
             <span aria-hidden="true">⌚ </span>Fitness Activities
           </h2>
           <GarminActivityCard
             activities={garminActivities as GarminActivity[]}
           />
+
+          <DailyStepsCard dailySteps={dailySteps as DailySteps[]} />
+        </div>
+
+        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-4">
+          <h2 className="mb-3">
+            <span aria-hidden="true">📈 </span>Weight Loss History
+          </h2>
+          <div className="weight-history-container">
+            <WeightHistoryGrid details={swData[0].data} />
+          </div>
         </div>
       </div>
 

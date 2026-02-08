@@ -92,6 +92,7 @@ function parseCSV(csvContent) {
     const maxHR = parseNumber(row["Max HR"]);
     const avgPace = parsePace(row["Avg Pace"]);
     const elevation = parseNumber(row["Total Ascent"]);
+    const steps = parseNumber(row["Steps"]);
 
     const activity = {
       id: generateId(date, type, distance),
@@ -107,6 +108,7 @@ function parseCSV(csvContent) {
     if (maxHR > 0) activity.maxHeartRate = Math.round(maxHR);
     if (avgPace > 0) activity.averagePace = avgPace;
     if (elevation > 0) activity.elevation = Math.round(elevation);
+    if (steps > 0) activity.steps = Math.round(steps);
 
     activities.push(activity);
   }
