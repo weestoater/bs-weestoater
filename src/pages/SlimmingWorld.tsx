@@ -3,7 +3,10 @@ import { BackToTop } from "../components/global/BackToTop";
 import { WeightSummaryCard } from "../components/sw/WeightSummaryCard";
 import { WeightHistoryGrid } from "../components/sw/WeightHistoryGrid";
 import { WeightProgressChart } from "../components/sw/WeightProgressChart";
+import { GarminActivityCard } from "../components/sw/GarminActivityCard";
 import swData from "../data/slimmingWorldData.json";
+import garminActivities from "../data/garminActivities.json";
+import { GarminActivity } from "../interfaces/GarminActivity";
 
 export const SlimmingWorld = () => {
   // Calculate total lost from most recent entry
@@ -21,7 +24,7 @@ export const SlimmingWorld = () => {
         keywords="Slimming World, weight tracking, health, fitness, progress tracking"
       />
       <div className="row">
-        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
+        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-4">
           <WeightSummaryCard
             startDate={swData[0].startDate}
             startWeight={swData[0].startWeight}
@@ -52,19 +55,27 @@ export const SlimmingWorld = () => {
             </div>
           </div>
         </div>
-        <div className="col-lg-8 col-md-6 col-sm-6 col-xs-12 mb-4">
+        <div className="col-lg-8 col-md-6 col-sm-12 col-xs-12 mb-4">
           <WeightProgressChart data={swData[0].data} />
         </div>
       </div>
 
       <div className="row mt-4">
-        <div className="col-12">
+        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-4">
           <h2 className="mb-3">
             <span aria-hidden="true">📈 </span>Weight Loss History
           </h2>
           <div className="weight-history-container">
             <WeightHistoryGrid details={swData[0].data} />
           </div>
+        </div>
+        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-4">
+          <h2 className="mb-3">
+            <span aria-hidden="true">⌚ </span>Fitness Activities
+          </h2>
+          <GarminActivityCard
+            activities={garminActivities as GarminActivity[]}
+          />
         </div>
       </div>
 
