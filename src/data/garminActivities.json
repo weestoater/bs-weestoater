@@ -9,7 +9,8 @@
     "averageHeartRate": 76,
     "maxHeartRate": 95,
     "averagePace": 44.4,
-    "elevation": 12
+    "elevation": 12,
+    "steps": 2452
   },
   {
     "id": "d06b9f5e7450ed24",
@@ -21,6 +22,7 @@
     "averageHeartRate": 74,
     "maxHeartRate": 90,
     "averagePace": 35.43,
-    "elevation": 12
+    "elevation": 12,
+    "steps": 2350
   }
 ]

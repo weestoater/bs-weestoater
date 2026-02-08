@@ -13,6 +13,7 @@ export const GarminActivityCard = ({ activities }: GarminActivityCardProps) => {
     (sum, a) => sum + (a.calories || 0),
     0,
   );
+  const totalSteps = activities.reduce((sum, a) => sum + (a.steps || 0), 0);
 
   // Format duration as HH:MM:SS
   const formatDuration = (seconds: number): string => {
@@ -99,6 +100,12 @@ export const GarminActivityCard = ({ activities }: GarminActivityCardProps) => {
               <div className="stat-value">{totalCalories.toLocaleString()}</div>
               <div className="stat-label">Calories</div>
             </div>
+            {totalSteps > 0 && (
+              <div className="stat-box">
+                <div className="stat-value">{totalSteps.toLocaleString()}</div>
+                <div className="stat-label">Steps</div>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -146,6 +153,15 @@ export const GarminActivityCard = ({ activities }: GarminActivityCardProps) => {
                         <span className="metric-separator">•</span>
                         <span className="metric">
                           <strong>{activity.calories}</strong> cal
+                        </span>
+                      </>
+                    )}
+                    {activity.steps && (
+                      <>
+                        <span className="metric-separator">•</span>
+                        <span className="metric">
+                          <strong>{activity.steps.toLocaleString()}</strong>{" "}
+                          steps
                         </span>
                       </>
                     )}
