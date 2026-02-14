@@ -1,0 +1,32 @@
+{
+  "name": "@bs-weestoater/backend",
+  "version": "1.0.0",
+  "description": "Backend services and database configuration for BS WeeStaater website",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./supabase/client.js",
+    "./config": "./supabase/config.js",
+    "./database": "./supabase/database.js",
+    "./auth": "./supabase/auth.js",
+    "./schema": "./supabase/schema.sql",
+    "./migrate": "./supabase/migrate-books.js"
+  },
+  "scripts": {
+    "migrate": "node supabase/migrate-books.js",
+    "test": "echo \"No tests specified yet\""
+  },
+  "keywords": [
+    "supabase",
+    "books",
+    "content",
+    "database"
+  ],
+  "author": "BS WeeStaater Development Team",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "dotenv": "^16.3.1"
+  }
+}

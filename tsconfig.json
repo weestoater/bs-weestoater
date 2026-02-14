@@ -19,8 +19,13 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    /* Allow imports from backend folder */
+    "baseUrl": ".",
+    "paths": {
+      "../../backend/*": ["backend/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src", "backend/**/*.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
