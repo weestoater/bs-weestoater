@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Environment variables with sensitive data
+.env
+.env.local
+.env.production
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -29,6 +34,7 @@ coverage
 /blob-report/
 /playwright/.cache/
 
+supabase-config/
 e2e-tests/visual.specs*
 
 # AI Experiments - exclude large model files and test data
