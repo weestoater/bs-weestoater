@@ -25,5 +25,8 @@ export {
   createDatabaseServiceFromEnv,
 } from "./supabase/database.js";
 
+// Export Garmin activities service
+export { createGarminActivitiesService } from "./supabase/garminActivitiesDatabase.js";
+
 // Default export - get Supabase client singleton
 export { default } from "./supabase/client.js";

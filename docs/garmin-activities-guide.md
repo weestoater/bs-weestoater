@@ -2,6 +2,16 @@
 
 This guide explains how to add your Garmin Connect activities to the Slimming World page.
 
+## 🚀 NEW: Auto-Sync Feature
+
+**Want to automatically sync your Garmin activities?**
+
+👉 **See the [Garmin Auto-Sync Setup Guide](./GARMIN_AUTO_SYNC_GUIDE.md)** for automatic syncing!
+
+The auto-sync feature allows you to pull activities directly from Garmin Connect with a single command.
+
+---
+
 ## Quick Start
 
 ### Option 1: Manual Entry (Simplest)

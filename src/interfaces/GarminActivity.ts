@@ -1,3 +1,15 @@
+export interface GPSPoint {
+  lat: number;
+  lng: number;
+}
+
+export interface GPSData {
+  startPoint?: GPSPoint;
+  endPoint?: GPSPoint;
+  polyline?: string; // Encoded polyline string
+  coordinates?: GPSPoint[]; // Decoded coordinates
+}
+
 export interface GarminActivity {
   id: string;
   date: string; // ISO date string
@@ -11,6 +23,7 @@ export interface GarminActivity {
   elevation?: number; // in feet
   steps?: number;
   notes?: string;
+  gpsData?: GPSData; // GPS tracking data
 }
 
 export interface GarminActivitySummary {

@@ -10,6 +10,10 @@ This documentation folder contains comprehensive guides for the major sections o
 | --------------------------------------------------------------------- | --------------------------------------------------------------------------- | ------------ |
 | [Football Section Documentation](./football-section-documentation.md) | Complete guide to the football/soccer tracking system for Motherwell FC     | Current      |
 | [Slimming World Documentation](./slimming-world-documentation.md)     | Comprehensive coverage of the weight tracking and data visualization system | Current      |
+| [Garmin Activities Guide](./garmin-activities-guide.md)               | Manual methods for importing Garmin Connect activities                      | Current      |
+| [Garmin Auto-Sync Guide](./GARMIN_AUTO_SYNC_GUIDE.md)                 | Automatic syncing of activities from Garmin Connect                         | Current      |
+| [Garmin CMS Integration](./GARMIN_CMS_INTEGRATION.md)                 | Store activities in Supabase CMS database                                   | Current      |
+| [Garmin CMS Quick Start](./GARMIN_CMS_QUICKSTART.md)                  | 5-minute setup for Supabase CMS integration                                 | Current      |
 
 ## Quick Navigation
 
@@ -26,6 +30,14 @@ This documentation folder contains comprehensive guides for the major sections o
 - **Key Components**: Weight data table, multi-series charts, unit conversion
 - **Technologies**: React, AG Charts, custom weight conversion utilities
 - **Data Sources**: JSON file with weight measurements and progress tracking
+
+### 🏃 Garmin Activities
+
+- **Purpose**: Track and display Garmin Connect fitness activities
+- **Key Components**: Activity cards, statistics summaries, sync integration
+- **Technologies**: React, Garmin Connect API, Supabase CMS
+- **Data Sources**: Garmin Connect (via API) → JSON files or Supabase database
+- **Guides**: Auto-sync from watch, CMS integration, manual import options
 
 ## Architecture Overview
 
