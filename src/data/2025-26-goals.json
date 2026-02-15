@@ -29,7 +29,7 @@
     {
       "player": "Elijah Just",
       "assists": 6,
-      "goals": 4
+      "goals": 5
     },
     {
       "player": "Johnny Koutrombis",
@@ -80,6 +80,11 @@
       "player": "Elliot Watt",
       "assists": 2,
       "goals": 4
+    },
+    {
+      "player": "Stephen Welsh",
+      "assists": 1,
+      "goals": 1
     }
   ]
 }
