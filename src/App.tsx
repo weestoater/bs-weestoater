@@ -71,6 +71,16 @@ const BookEditor = lazy(() =>
     default: module.BookEditor,
   })),
 );
+const ArticlesManager = lazy(() =>
+  import("./pages/admin/ArticlesManager").then((module) => ({
+    default: module.ArticlesManager,
+  })),
+);
+const ArticleEditor = lazy(() =>
+  import("./pages/admin/ArticleEditor").then((module) => ({
+    default: module.ArticleEditor,
+  })),
+);
 
 export const App = () => {
   return (
@@ -123,6 +133,30 @@ export const App = () => {
                 element={
                   <ProtectedRoute>
                     <BookEditor />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/articles"
+                element={
+                  <ProtectedRoute>
+                    <ArticlesManager />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/articles/new"
+                element={
+                  <ProtectedRoute>
+                    <ArticleEditor />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/articles/edit/:id"
+                element={
+                  <ProtectedRoute>
+                    <ArticleEditor />
                   </ProtectedRoute>
                 }
               />
