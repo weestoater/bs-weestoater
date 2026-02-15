@@ -1,13 +1,37 @@
+import { useState, useEffect } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { BackToTop } from "../components/global/BackToTop";
-import { A11yMe } from "../content/a11y/a11yme";
-import { A11yPromotion } from "../content/a11y/a11ypromotion";
-import { AxePlugin } from "../content/a11y/axeplugin";
-import { A11yTech } from "../content/a11y/a11itech";
-import { ScreenReaders } from "../content/a11y/screenreaders";
-import { A11yClaude } from "../content/a11y/a11yclaude";
+import { ArticleCard } from "../components/articles/ArticleCard";
+import { getSupabaseClient } from "../../backend/index.js";
+import type { Article } from "../interfaces/Article";
+
+const { createDatabaseService } = await import("../../backend/index.js");
 
 export const A11yPage = () => {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadArticles = async () => {
+      try {
+        setLoading(true);
+        const client = getSupabaseClient();
+        const db = createDatabaseService(client);
+        const data = await db.getArticles({ category: "Accessibility" });
+        setArticles(data || []);
+      } catch (err) {
+        setError(
+          err instanceof Error ? err.message : "Failed to load articles",
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadArticles();
+  }, []);
+
   return (
     <>
       <PageTitleH1
@@ -15,26 +39,33 @@ export const A11yPage = () => {
         description="Web accessibility resources, tools, and best practices. Learn about WCAG compliance, screen readers, and creating inclusive web experiences."
         keywords="accessibility, a11y, WCAG, screen readers, inclusive design, web accessibility, axe DevTools"
       />
-      <div className="row">
-        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
-          <A11yClaude />
+
+      {loading && (
+        <div className="text-center my-5">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
         </div>
-        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
-          <ScreenReaders />
+      )}
+
+      {error && (
+        <div className="alert alert-danger" role="alert">
+          {error}
         </div>
-        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
-          <A11yTech />
+      )}
+
+      {!loading && !error && (
+        <div className="row">
+          {articles.map((article) => (
+            <div
+              key={article.id}
+              className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4"
+            >
+              <ArticleCard article={article} />
+            </div>
+          ))}
         </div>
-        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
-          <A11yMe />
-        </div>
-        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
-          <A11yPromotion />
-        </div>
-        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4">
-          <AxePlugin />
-        </div>
-      </div>
+      )}
 
       <BackToTop />
     </>

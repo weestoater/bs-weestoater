@@ -22,7 +22,28 @@ export interface Book {
   updated_at: string;
 }
 
+export interface Article {
+  id: string;
+  title: string;
+  slug: string;
+  category: string;
+  content: string;
+  excerpt?: string;
+  icon?: string;
+  published_date: string;
+  updated_date?: string;
+  reading_time: number;
+  tags: string[];
+  published: boolean;
+  featured: boolean;
+  author: string;
+  order_index: number;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface DatabaseService {
+  // Books methods
   getBooks(options?: { includeUnpublished?: boolean }): Promise<Book[]>;
   getBookById(id: string): Promise<Book | null>;
   createBook(bookData: Partial<Book>): Promise<Book>;
@@ -32,6 +53,20 @@ export interface DatabaseService {
   updateBooksOrder(
     orderUpdates: Array<{ id: string; order_index: number }>,
   ): Promise<void>;
+
+  // Articles methods
+  getArticles(options?: {
+    includeUnpublished?: boolean;
+    category?: string;
+    featuredOnly?: boolean;
+  }): Promise<Article[]>;
+  getArticleById(id: string): Promise<Article | null>;
+  getArticleBySlug(slug: string): Promise<Article | null>;
+  createArticle(articleData: Partial<Article>): Promise<Article>;
+  updateArticle(id: string, articleData: Partial<Article>): Promise<Article>;
+  deleteArticle(id: string): Promise<void>;
+  bulkInsertArticles(articles: Partial<Article>[]): Promise<Article[]>;
+  getArticlesByTags(tags: string[]): Promise<Article[]>;
 }
 
 // Configuration

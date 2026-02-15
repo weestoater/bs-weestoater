@@ -61,18 +61,20 @@ export const AdminDashboard = () => {
           </div>
         </div>
 
-        {/* Articles Management - Coming Soon */}
+        {/* Articles Management */}
         <div className="col-md-6 col-lg-4">
-          <div className="card h-100 bg-light">
+          <div className="card h-100">
             <div className="card-body">
               <h3 className="card-title">
-                <i className="bi bi-newspaper me-2 text-secondary"></i>
+                <i className="bi bi-newspaper me-2 text-success"></i>
                 Articles
               </h3>
-              <p className="card-text">Manage blog posts and articles</p>
-              <button className="btn btn-secondary" disabled>
-                Coming Soon
-              </button>
+              <p className="card-text">
+                Manage blog posts and articles across all categories
+              </p>
+              <Link to="/admin/articles" className="btn btn-success">
+                Manage Articles
+              </Link>
             </div>
           </div>
         </div>
@@ -111,7 +113,7 @@ export const AdminDashboard = () => {
                   <p className="text-muted">Books Published</p>
                 </div>
                 <div className="col-md-4">
-                  <h4 className="text-secondary">0</h4>
+                  <h4 className="text-success">18</h4>
                   <p className="text-muted">Articles</p>
                 </div>
                 <div className="col-md-4">

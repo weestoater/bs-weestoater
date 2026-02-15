@@ -168,6 +168,195 @@ export function createDatabaseService(supabaseClient) {
     await Promise.all(promises);
   }
 
+  // ============================================================================
+  // ARTICLES OPERATIONS
+  // ============================================================================
+
+  /**
+   * Get all articles with optional filtering
+   * @param {Object} options - Query options
+   * @param {boolean} [options.includeUnpublished=false] - Include unpublished articles
+   * @param {string} [options.category] - Filter by category
+   * @param {boolean} [options.featuredOnly=false] - Only featured articles
+   * @returns {Promise<Array>} Array of article objects
+   */
+  async function getArticles(options = {}) {
+    const {
+      includeUnpublished = false,
+      category,
+      featuredOnly = false,
+    } = options;
+
+    let query = supabaseClient
+      .from("articles")
+      .select("*")
+      .order("published_date", { ascending: false });
+
+    if (!includeUnpublished) {
+      query = query.eq("published", true);
+    }
+
+    if (category) {
+      query = query.eq("category", category);
+    }
+
+    if (featuredOnly) {
+      query = query.eq("featured", true);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      console.error("Error fetching articles:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Get a single article by ID
+   * @param {string} id - Article ID
+   * @returns {Promise<Object|null>} Article object or null if not found
+   */
+  async function getArticleById(id) {
+    const { data, error } = await supabaseClient
+      .from("articles")
+      .select("*")
+      .eq("id", id)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        return null;
+      }
+      console.error("Error fetching article:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Get a single article by slug
+   * @param {string} slug - Article slug
+   * @returns {Promise<Object|null>} Article object or null if not found
+   */
+  async function getArticleBySlug(slug) {
+    const { data, error } = await supabaseClient
+      .from("articles")
+      .select("*")
+      .eq("slug", slug)
+      .eq("published", true)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        return null;
+      }
+      console.error("Error fetching article:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a new article
+   * @param {Object} articleData - Article data
+   * @returns {Promise<Object>} The created article
+   */
+  async function createArticle(articleData) {
+    const { data, error } = await supabaseClient
+      .from("articles")
+      .insert([articleData])
+      .select();
+
+    if (error) {
+      console.error("Error creating article:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Update an existing article
+   * @param {string} id - Article ID
+   * @param {Object} articleData - Fields to update
+   * @returns {Promise<Object>} The updated article
+   */
+  async function updateArticle(id, articleData) {
+    const { data, error } = await supabaseClient
+      .from("articles")
+      .update(articleData)
+      .eq("id", id)
+      .select();
+
+    if (error) {
+      console.error("Error updating article:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Delete an article by ID
+   * @param {string} id - Article ID
+   */
+  async function deleteArticle(id) {
+    const { error } = await supabaseClient
+      .from("articles")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      console.error("Error deleting article:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * Bulk insert articles (useful for migrations)
+   * @param {Array<Object>} articles - Array of article objects
+   * @returns {Promise<Array>} Array of created article objects
+   */
+  async function bulkInsertArticles(articles) {
+    const { data, error } = await supabaseClient
+      .from("articles")
+      .insert(articles)
+      .select();
+
+    if (error) {
+      console.error("Error bulk inserting articles:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Get articles by tags
+   * @param {Array<string>} tags - Array of tags to search for
+   * @returns {Promise<Array>} Array of article objects
+   */
+  async function getArticlesByTags(tags) {
+    const { data, error } = await supabaseClient
+      .from("articles")
+      .select("*")
+      .contains("tags", tags)
+      .eq("published", true)
+      .order("published_date", { ascending: false });
+
+    if (error) {
+      console.error("Error fetching articles by tags:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
   // Return all database service methods
   return {
     // Books
@@ -178,6 +367,15 @@ export function createDatabaseService(supabaseClient) {
     deleteBook,
     bulkInsertBooks,
     updateBooksOrder,
+    // Articles
+    getArticles,
+    getArticleById,
+    getArticleBySlug,
+    createArticle,
+    updateArticle,
+    deleteArticle,
+    bulkInsertArticles,
+    getArticlesByTags,
   };
 }
 

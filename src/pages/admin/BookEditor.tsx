@@ -3,6 +3,8 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { Editor } from "@tinymce/tinymce-react";
 import { getSupabaseClient } from "../../../backend/index.js";
 import { useSEO } from "../../utils/useSEO";
+import { ImageUpload } from "../../components/admin/ImageUpload";
+import { createTinyMCEConfig } from "../../utils/tinymceHelpers";
 
 const { createDatabaseService } = await import("../../../backend/index.js");
 
@@ -178,21 +180,33 @@ export const BookEditor = () => {
 
                 <div className="mb-3">
                   <label htmlFor="cover_image" className="form-label">
-                    Cover Image URL *
+                    Cover Image
                   </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="cover_image"
-                    name="cover_image"
-                    value={formData.cover_image}
-                    onChange={handleChange}
-                    placeholder="/assets/img/book-cover.jpg"
-                    required
+                  <ImageUpload
+                    currentImage={formData.cover_image}
+                    onUploadComplete={(url) =>
+                      setFormData((prev) => ({ ...prev, cover_image: url }))
+                    }
+                    folder="books"
                   />
-                  <small className="form-text text-muted">
-                    Use relative path like /assets/img/filename.jpg or full URL
-                  </small>
+                  <div className="mt-2">
+                    <label htmlFor="cover_image_manual" className="form-label">
+                      Or enter URL manually:
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="cover_image_manual"
+                      name="cover_image"
+                      value={formData.cover_image}
+                      onChange={handleChange}
+                      placeholder="/assets/img/book-cover.jpg"
+                    />
+                    <small className="form-text text-muted">
+                      Use relative path like /assets/img/filename.jpg or full
+                      URL
+                    </small>
+                  </div>
                 </div>
 
                 <div className="mb-3">
@@ -204,34 +218,8 @@ export const BookEditor = () => {
                     value={formData.description}
                     onEditorChange={handleEditorChange}
                     init={{
+                      ...createTinyMCEConfig("books"),
                       height: 400,
-                      menubar: false,
-                      plugins: [
-                        "advlist",
-                        "autolink",
-                        "lists",
-                        "link",
-                        "image",
-                        "charmap",
-                        "preview",
-                        "anchor",
-                        "searchreplace",
-                        "visualblocks",
-                        "code",
-                        "fullscreen",
-                        "insertdatetime",
-                        "media",
-                        "table",
-                        "help",
-                        "wordcount",
-                      ],
-                      toolbar:
-                        "undo redo | blocks | " +
-                        "bold italic forecolor | alignleft aligncenter " +
-                        "alignright alignjustify | bullist numlist outdent indent | " +
-                        "removeformat | link | code | help",
-                      content_style:
-                        "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
                     }}
                   />
                 </div>

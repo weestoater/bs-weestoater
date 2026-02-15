@@ -6,6 +6,7 @@
 --
 -- Tables:
 --   1. books - Stores book reviews and content
+--   2. articles - Stores blog posts and articles
 --
 -- All tables implement Row Level Security (RLS)
 -- ============================================================================
@@ -115,4 +116,80 @@ VALUES
     3,
     TRUE
   )
-ON CONFLICT (id) DO NOTHING;
+
+-- ============================================================================
+-- 2. ARTICLES TABLE
+-- ============================================================================
+
+-- Create the articles table
+CREATE TABLE IF NOT EXISTS articles (
+  id TEXT PRIMARY KEY,
+  title TEXT NOT NULL,
+  slug TEXT UNIQUE NOT NULL,
+  category TEXT NOT NULL, -- 'React', 'Agile', 'A11y', 'Landie', etc.
+  content TEXT NOT NULL, -- HTML content
+  excerpt TEXT,
+  icon TEXT, -- Bootstrap icon class (e.g., 'bi-life-preserver')
+  published_date DATE NOT NULL,
+  updated_date DATE,
+  reading_time INTEGER, -- In minutes
+  tags TEXT[], -- Array of tags
+  published BOOLEAN DEFAULT TRUE,
+  featured BOOLEAN DEFAULT FALSE,
+  author TEXT DEFAULT 'Ian Burrett',
+  order_index INTEGER DEFAULT 0,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Create indexes for faster queries
+CREATE INDEX IF NOT EXISTS idx_articles_category ON articles(category);
+CREATE INDEX IF NOT EXISTS idx_articles_published ON articles(published);
+CREATE INDEX IF NOT EXISTS idx_articles_slug ON articles(slug);
+CREATE INDEX IF NOT EXISTS idx_articles_published_date ON articles(published_date DESC);
+CREATE INDEX IF NOT EXISTS idx_articles_featured ON articles(featured) WHERE featured = TRUE;
+CREATE INDEX IF NOT EXISTS idx_articles_tags ON articles USING GIN(tags);
+
+-- Enable Row Level Security
+ALTER TABLE articles ENABLE ROW LEVEL SECURITY;
+
+-- Drop existing policies if they exist
+DROP POLICY IF EXISTS "Articles are publicly readable" ON articles;
+DROP POLICY IF EXISTS "Only admins can insert articles" ON articles;
+DROP POLICY IF EXISTS "Only admins can update articles" ON articles;
+DROP POLICY IF EXISTS "Only admins can delete articles" ON articles;
+
+-- Create RLS policies for articles
+-- Public read access
+CREATE POLICY "Articles are publicly readable"
+  ON articles FOR SELECT
+  USING (published = TRUE);
+
+-- Admin write access
+CREATE POLICY "Only admins can insert articles"
+  ON articles FOR INSERT
+  WITH CHECK (auth.role() = 'authenticated');
+
+CREATE POLICY "Only admins can update articles"
+  ON articles FOR UPDATE
+  USING (auth.role() = 'authenticated');
+
+CREATE POLICY "Only admins can delete articles"
+  ON articles FOR DELETE
+  USING (auth.role() = 'authenticated');
+
+-- Function to automatically update updated_at timestamp
+CREATE OR REPLACE FUNCTION update_articles_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger to call the function before update
+DROP TRIGGER IF EXISTS articles_updated_at_trigger ON articles;
+CREATE TRIGGER articles_updated_at_trigger
+  BEFORE UPDATE ON articles
+  FOR EACH ROW
+  EXECUTE FUNCTION update_articles_updated_at();
