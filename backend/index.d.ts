@@ -38,6 +38,7 @@ export interface Article {
   featured: boolean;
   author: string;
   order_index: number;
+  publish_at?: string; // Optional: schedule publishing for future date/time
   created_at: string;
   updated_at: string;
 }
