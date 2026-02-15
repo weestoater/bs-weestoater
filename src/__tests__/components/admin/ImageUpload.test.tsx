@@ -178,7 +178,6 @@ describe("ImageUpload", () => {
     fireEvent.change(input);
 
     await waitFor(() => {
-      const errorMessage = screen.queryByText(/Upload failed/i);
       // Error might not be shown if mock doesn't trigger properly
       // This test verifies upload completes without throwing
       expect(mockUpload).toHaveBeenCalled();

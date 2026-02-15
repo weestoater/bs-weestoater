@@ -6,10 +6,12 @@ import type { Article } from "../../../interfaces/Article";
 const mockArticle: Article = {
   id: "test-1",
   title: "Test Article Title",
+  slug: "test-article-title",
   category: "React",
   content: "<p>This is test content with <strong>HTML</strong></p>",
   excerpt: "<p>This is an excerpt</p>",
   published: true,
+  featured: false,
   published_date: "2024-01-01T00:00:00Z",
   updated_date: "2024-01-02T00:00:00Z",
   created_at: "2024-01-01T00:00:00Z",
@@ -17,6 +19,7 @@ const mockArticle: Article = {
   reading_time: 5,
   tags: ["testing", "react"],
   icon: "bi bi-code-slash",
+  order_index: 1,
 };
 
 describe("ArticleCard", () => {
