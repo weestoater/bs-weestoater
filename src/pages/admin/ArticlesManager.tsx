@@ -17,6 +17,27 @@ export const ArticlesManager = () => {
   const [error, setError] = useState<string | null>(null);
   const [filterCategory, setFilterCategory] = useState<string>("all");
 
+  // Helper function to determine article status
+  const getArticleStatus = (article: Article) => {
+    if (!article.published) {
+      return { label: "Draft", className: "bg-secondary" };
+    }
+
+    if (article.publish_at) {
+      const publishDate = new Date(article.publish_at);
+      const now = new Date();
+
+      if (publishDate > now) {
+        return {
+          label: `Scheduled: ${publishDate.toLocaleDateString()} ${publishDate.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`,
+          className: "bg-warning text-dark",
+        };
+      }
+    }
+
+    return { label: "Published", className: "bg-success" };
+  };
+
   const loadArticles = async () => {
     try {
       setLoading(true);
@@ -205,13 +226,14 @@ export const ArticlesManager = () => {
                   </td>
                   <td>{article.reading_time} min</td>
                   <td>
-                    <span
-                      className={`badge ${
-                        article.published ? "bg-success" : "bg-secondary"
-                      }`}
-                    >
-                      {article.published ? "Published" : "Draft"}
-                    </span>
+                    {(() => {
+                      const status = getArticleStatus(article);
+                      return (
+                        <span className={`badge ${status.className}`}>
+                          {status.label}
+                        </span>
+                      );
+                    })()}
                   </td>
                   <td>
                     {article.featured && (

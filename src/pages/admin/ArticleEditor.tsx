@@ -38,6 +38,7 @@ export const ArticleEditor = () => {
     featured: false,
     author: "Ian Burrett",
     order_index: 0,
+    publish_at: "", // Optional: schedule publishing for future date/time
   });
 
   const [newTag, setNewTag] = useState("");
@@ -75,6 +76,9 @@ export const ArticleEditor = () => {
         featured: data.featured || false,
         author: data.author || "Ian Burrett",
         order_index: data.order_index || 0,
+        publish_at: data.publish_at
+          ? new Date(data.publish_at).toISOString().slice(0, 16)
+          : "",
       });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load article");
@@ -118,11 +122,17 @@ export const ArticleEditor = () => {
       // Auto-calculate reading time from content
       const readingTime = calculateReadingTime(formData.content);
 
+      // Format publish_at: convert to ISO timestamp or undefined if empty
+      const publishAt = formData.publish_at
+        ? new Date(formData.publish_at).toISOString()
+        : undefined;
+
       const dataToSave = {
         ...formData,
         slug: cleanSlug,
         reading_time: readingTime,
         updated_date: new Date().toISOString().split("T")[0],
+        publish_at: publishAt,
       };
 
       const client = getSupabaseClient();
@@ -479,6 +489,26 @@ export const ArticleEditor = () => {
                     </label>
                   </div>
                 </div>
+
+                {formData.published && (
+                  <div className="mb-3">
+                    <label htmlFor="publish_at" className="form-label">
+                      Schedule Publishing (Optional)
+                    </label>
+                    <input
+                      type="datetime-local"
+                      className="form-control"
+                      id="publish_at"
+                      name="publish_at"
+                      value={formData.publish_at}
+                      onChange={handleChange}
+                    />
+                    <small className="form-text text-muted">
+                      Leave empty to publish immediately. Set a future date/time
+                      to schedule publishing.
+                    </small>
+                  </div>
+                )}
 
                 <div className="mb-3">
                   <div className="form-check form-switch">

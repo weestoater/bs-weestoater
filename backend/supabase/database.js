@@ -194,6 +194,10 @@ export function createDatabaseService(supabaseClient) {
 
     if (!includeUnpublished) {
       query = query.eq("published", true);
+      // For published articles, also check that publish_at is either null (immediate) or in the past
+      query = query.or(
+        "publish_at.is.null,publish_at.lte." + new Date().toISOString(),
+      );
     }
 
     if (category) {
@@ -243,12 +247,18 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object|null>} Article object or null if not found
    */
   async function getArticleBySlug(slug) {
-    const { data, error } = await supabaseClient
+    let query = supabaseClient
       .from("articles")
       .select("*")
       .eq("slug", slug)
-      .eq("published", true)
-      .single();
+      .eq("published", true);
+
+    // Also check that publish_at is either null (immediate) or in the past
+    query = query.or(
+      "publish_at.is.null,publish_at.lte." + new Date().toISOString(),
+    );
+
+    const { data, error } = await query.single();
 
     if (error) {
       if (error.code === "PGRST116") {
