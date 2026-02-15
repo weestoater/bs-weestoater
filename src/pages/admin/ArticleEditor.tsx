@@ -89,11 +89,38 @@ export const ArticleEditor = () => {
     setError(null);
 
     try {
+      // Validate required fields
+      if (!formData.title.trim()) {
+        throw new Error("Title is required");
+      }
+      if (!formData.content.trim()) {
+        throw new Error("Content is required");
+      }
+
+      // Auto-generate slug from title if empty
+      let cleanSlug = formData.slug.trim();
+      if (!cleanSlug) {
+        cleanSlug = formData.title
+          .toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, "")
+          .replace(/\s+/g, "-")
+          .replace(/-+/g, "-")
+          .trim();
+      } else {
+        // Clean the existing slug
+        cleanSlug = cleanSlug.toLowerCase().replace(/\s+/g, "-").trim();
+      }
+
+      if (!cleanSlug) {
+        throw new Error("Could not generate a valid slug from the title");
+      }
+
       // Auto-calculate reading time from content
       const readingTime = calculateReadingTime(formData.content);
 
       const dataToSave = {
         ...formData,
+        slug: cleanSlug,
         reading_time: readingTime,
         updated_date: new Date().toISOString().split("T")[0],
       };
@@ -104,13 +131,13 @@ export const ArticleEditor = () => {
       if (isEdit && id) {
         await db.updateArticle(id, dataToSave);
       } else {
-        // Generate ID from slug if new article
-        const articleId = dataToSave.slug.toLowerCase().replace(/\s+/g, "-");
-        await db.createArticle({ ...dataToSave, id: articleId });
+        // Use the clean slug as the ID for new articles
+        await db.createArticle({ ...dataToSave, id: cleanSlug });
       }
 
       navigate("/admin/articles");
     } catch (err) {
+      console.error("Error saving article:", err);
       setError(err instanceof Error ? err.message : "Failed to save article");
       setSaving(false);
     }
