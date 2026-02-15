@@ -1,7 +1,127 @@
 [
   {
-    "id": "d829278bb45d5df3",
-    "date": "2026-02-08T09:24:09.000Z",
+    "id": "21874928172",
+    "date": "2026-02-15 11:35:24",
+    "type": "walking",
+    "distance": 1.08,
+    "duration": 2082,
+    "calories": 147,
+    "averageHeartRate": 74,
+    "maxHeartRate": 91,
+    "averagePace": 32.25,
+    "elevation": 21,
+    "steps": 1748,
+    "notes": "South Ayrshire Walking",
+    "gpsData": {
+      "startPoint": {
+        "lat": 55.55716655217111,
+        "lng": -4.657356217503548
+      },
+      "endPoint": {
+        "lat": 55.552518870681524,
+        "lng": -4.6569722425192595
+      }
+    }
+  },
+  {
+    "id": "21866614083",
+    "date": "2026-02-14 13:48:16",
+    "type": "walking",
+    "distance": 3.43,
+    "duration": 5370,
+    "calories": 538,
+    "averageHeartRate": 90,
+    "maxHeartRate": 109,
+    "averagePace": 26.12,
+    "elevation": 176,
+    "steps": 7808,
+    "notes": "East Renfrewshire Walking",
+    "gpsData": {
+      "startPoint": {
+        "lat": 55.71230518631637,
+        "lng": -4.341853754594922
+      },
+      "endPoint": {
+        "lat": 55.71222547441721,
+        "lng": -4.341959618031979
+      }
+    }
+  },
+  {
+    "id": "21856964731",
+    "date": "2026-02-13 15:56:18",
+    "type": "walking",
+    "distance": 1.07,
+    "duration": 1937,
+    "calories": 175,
+    "averageHeartRate": 80,
+    "maxHeartRate": 99,
+    "averagePace": 30.11,
+    "elevation": 37,
+    "steps": 2500,
+    "notes": "East Ayrshire Walking",
+    "gpsData": {
+      "startPoint": {
+        "lat": 55.683974269777536,
+        "lng": -4.502841280773282
+      },
+      "endPoint": {
+        "lat": 55.68394568748772,
+        "lng": -4.5030737947672606
+      }
+    }
+  },
+  {
+    "id": "21853519095",
+    "date": "2026-02-13 09:31:56",
+    "type": "walking",
+    "distance": 0.74,
+    "duration": 1663,
+    "calories": 132,
+    "averageHeartRate": 78,
+    "maxHeartRate": 93,
+    "averagePace": 37.61,
+    "elevation": 32,
+    "steps": 1874,
+    "notes": "East Ayrshire Walking",
+    "gpsData": {
+      "startPoint": {
+        "lat": 55.68393386900425,
+        "lng": -4.502523439005017
+      },
+      "endPoint": {
+        "lat": 55.68399338051677,
+        "lng": -4.503135988488793
+      }
+    }
+  },
+  {
+    "id": "21811796880",
+    "date": "2026-02-09 10:18:15",
+    "type": "walking",
+    "distance": 1.14,
+    "duration": 2482,
+    "calories": 188,
+    "averageHeartRate": 76,
+    "maxHeartRate": 96,
+    "averagePace": 36.13,
+    "elevation": 40,
+    "steps": 2368,
+    "notes": "East Ayrshire Walking",
+    "gpsData": {
+      "startPoint": {
+        "lat": 55.684023974463344,
+        "lng": -4.503005314618349
+      },
+      "endPoint": {
+        "lat": 55.68392548710108,
+        "lng": -4.50298142619431
+      }
+    }
+  },
+  {
+    "id": "21800743860",
+    "date": "2026-02-08 09:24:09",
     "type": "walking",
     "distance": 1.04,
     "duration": 2763,
@@ -9,12 +129,23 @@
     "averageHeartRate": 76,
     "maxHeartRate": 95,
     "averagePace": 44.4,
-    "elevation": 12,
-    "steps": 2452
+    "elevation": 40,
+    "steps": 2452,
+    "notes": "East Ayrshire Walking",
+    "gpsData": {
+      "startPoint": {
+        "lat": 55.68405180238187,
+        "lng": -4.5030152052640915
+      },
+      "endPoint": {
+        "lat": 55.6840365473181,
+        "lng": -4.50315099209547
+      }
+    }
   },
   {
-    "id": "d06b9f5e7450ed24",
-    "date": "2026-02-07T10:54:10.000Z",
+    "id": "21791484677",
+    "date": "2026-02-07 10:54:10",
     "type": "walking",
     "distance": 0.98,
     "duration": 2081,
@@ -22,7 +153,18 @@
     "averageHeartRate": 74,
     "maxHeartRate": 90,
     "averagePace": 35.43,
-    "elevation": 12,
-    "steps": 2350
+    "elevation": 41,
+    "steps": 2350,
+    "notes": "East Ayrshire Walking",
+    "gpsData": {
+      "startPoint": {
+        "lat": 55.68401399999857,
+        "lng": -4.5029624830931425
+      },
+      "endPoint": {
+        "lat": 55.68398374132812,
+        "lng": -4.503051079809666
+      }
+    }
   }
 ]

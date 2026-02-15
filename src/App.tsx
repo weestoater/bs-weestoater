@@ -44,6 +44,11 @@ const SlimmingWorld = lazy(() =>
     default: module.SlimmingWorld,
   })),
 );
+const GarminActivities = lazy(() =>
+  import("./pages/GarminActivities").then((module) => ({
+    default: module.GarminActivities,
+  })),
+);
 const NotFoundPage = lazy(() =>
   import("./pages/NotFound").then((module) => ({
     default: module.NotFoundPage,
@@ -101,6 +106,7 @@ export const App = () => {
               <Route path="/season/:seasonId" element={<SeasonPage />} />
               <Route path="/react" element={<ReactPage />} />
               <Route path="/sw" element={<SlimmingWorld />} />
+              <Route path="/garmin" element={<GarminActivities />} />
 
               {/* Admin Routes */}
               <Route path="/admin/login" element={<AdminLogin />} />

@@ -1,10 +1,51 @@
 import { GarminActivity } from "../../interfaces/GarminActivity";
+import { useState } from "react";
 
 interface GarminActivityCardProps {
   activities: GarminActivity[];
 }
 
 export const GarminActivityCard = ({ activities }: GarminActivityCardProps) => {
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [syncMessage, setSyncMessage] = useState<{
+    type: "success" | "error" | "info";
+    text: string;
+  } | null>(null);
+
+  const handleSync = async () => {
+    setIsSyncing(true);
+    setSyncMessage({ type: "info", text: "Syncing with Garmin Connect..." });
+
+    try {
+      // Call the sync script via a simple approach
+      setSyncMessage({
+        type: "info",
+        text: "Please run: node scripts/sync-garmin-activities.js",
+      });
+
+      // In a production setup, you could call a serverless function:
+      // const response = await fetch('/api/sync-garmin', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ limit: 20 })
+      // });
+      // const result = await response.json();
+
+      setTimeout(() => {
+        setSyncMessage({
+          type: "success",
+          text: "To sync, run the command in your terminal and refresh the page.",
+        });
+      }, 2000);
+    } catch (error) {
+      setSyncMessage({
+        type: "error",
+        text: error instanceof Error ? error.message : "Sync failed",
+      });
+    } finally {
+      setIsSyncing(false);
+    }
+  };
   // Calculate summary statistics
   const totalActivities = activities.length;
   const totalDistance = activities.reduce((sum, a) => sum + a.distance, 0);
@@ -58,7 +99,7 @@ export const GarminActivityCard = ({ activities }: GarminActivityCardProps) => {
 
   if (activities.length === 0) {
     return (
-      <div className="garmin-activity-card card">
+      <div className="col-lg-4 col-sm-12 garmin-activity-card card">
         <div className="card-body">
           <h3 className="card-title">
             <span aria-hidden="true">⌚ </span>Garmin Activities
@@ -77,9 +118,47 @@ export const GarminActivityCard = ({ activities }: GarminActivityCardProps) => {
     <div className="garmin-activity-card">
       <div className="card mb-4">
         <div className="card-body">
-          <h3 className="card-title">
-            <span aria-hidden="true">⌚ </span>Activity Summary
-          </h3>
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <h3 className="card-title mb-0">
+              <span aria-hidden="true">⌚ </span>Activity Summary
+            </h3>
+            <button
+              className="btn btn-sm btn-primary"
+              onClick={handleSync}
+              disabled={isSyncing}
+            >
+              {isSyncing ? (
+                <>
+                  <span
+                    className="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Syncing...
+                </>
+              ) : (
+                <>
+                  <span aria-hidden="true">🔄 </span>Sync Garmin
+                </>
+              )}
+            </button>
+          </div>
+
+          {syncMessage && (
+            <div
+              className={`alert alert-${syncMessage.type === "error" ? "danger" : syncMessage.type === "success" ? "success" : "info"} alert-dismissible fade show`}
+              role="alert"
+            >
+              {syncMessage.text}
+              <button
+                type="button"
+                className="btn-close"
+                onClick={() => setSyncMessage(null)}
+                aria-label="Close"
+              ></button>
+            </div>
+          )}
+
           <div className="activity-stats-grid">
             <div className="stat-box">
               <div className="stat-value">{totalActivities}</div>
@@ -115,7 +194,7 @@ export const GarminActivityCard = ({ activities }: GarminActivityCardProps) => {
           <h3 className="card-title">
             <span aria-hidden="true">📋 </span>Recent Activities
           </h3>
-          <div className="activities-list">
+          <div className="row activities-list">
             {activities.slice(0, 10).map((activity) => (
               <div key={activity.id} className="activity-item">
                 <div className="activity-icon">

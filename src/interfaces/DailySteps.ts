@@ -5,6 +5,7 @@ export interface DailySteps {
   distance?: number; // Total distance in miles
   calories?: number; // Active calories
   floors?: number; // Floors climbed
+  activeMinutes?: number; // Active minutes
 }
 
 export interface DailyStepsSummary {
