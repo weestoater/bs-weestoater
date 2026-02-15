@@ -10,7 +10,12 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        silenceDeprecations: ["import", "global-builtin", "color-functions"],
+        silenceDeprecations: [
+          "import",
+          "global-builtin",
+          "color-functions",
+          "if-function",
+        ],
         quietDeps: true,
       },
     },
@@ -152,6 +157,6 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 1000, // ag-grid and ag-charts are large but lazy-loaded
+    chunkSizeWarningLimit: 2000, // ag-grid and ag-charts are large but lazy-loaded
   },
 });
