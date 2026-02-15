@@ -4,6 +4,66 @@
     {
       "scored": 2,
       "conceded": 0,
+      "date": "2026-02-15",
+      "opposition": "Aberdeen",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Elijah Just",
+          "mins": "28"
+        },
+        {
+          "player": "Tom McIntyre (og)",
+          "mins": "90+3"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Callum Slattery",
+          "type": "yellow",
+          "minute": 23
+        }
+      ],
+      "video": null,
+      "notes": "47% possession, 17 shots & 8 on target. Great to see Just getting a goal, such a talent and overlooked by most. Lots of cards for the Dons, with scrappy challenges throughout the game. Own goal at the end pretty much sums up their performance.   All good. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 1,
+      "conceded": 1,
+      "date": "2026-01-31",
+      "opposition": "Rangers",
+      "venue": "Home",
+      "league": null,
+      "goals": [
+        {
+          "player": "Stephen Welsh",
+          "mins": "89"
+        }
+      ],
+      "cards": [
+        {
+          "player": "Ibrahim Said",
+          "type": "yellow",
+          "minute": 56
+        },
+        {
+          "player": "Elijah Just",
+          "type": "yellow",
+          "minute": 63
+        },
+        {
+          "player": "Lukas Fadinger",
+          "type": "red",
+          "minute": 78
+        }
+      ],
+      "video": "https://youtu.be/jyvp1QRFTCA?si=yfQVVbooX5lbyu39",
+      "notes": "64% possession, 19 shots & 5 on target. Played Rangers off the park, despite losing the early goal. They were second to everything and had ZERO hunger at all. We looked like the goal was coming even after the red card. Great to see Welsh getting the goal, sure he enjoyed it for all the right reasons. All good. #claret&amber  #COYW!!"
+    },
+    {
+      "scored": 2,
+      "conceded": 0,
       "date": "2026-01-31",
       "opposition": "Livingston",
       "venue": "Away",
