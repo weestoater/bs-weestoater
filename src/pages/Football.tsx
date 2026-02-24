@@ -4,8 +4,10 @@ import { BackToTop } from "../components/global/BackToTop";
 import { FootballIntro } from "../content/football/footballIntro";
 import { FootballSeasonResults } from "../components/football/footballSeasonResults";
 import { SkeletonCard } from "../components/global/SkeletonLoaders";
-import { getSupabaseClient } from "../../backend/index.js";
-import { createDatabaseService } from "../../backend/supabase/database.js";
+import {
+  getSupabaseClient,
+  createDatabaseService,
+} from "../../backend/index.js";
 import type {
   SeasonMatchData,
   SeasonGoalsData,
@@ -36,7 +38,7 @@ export const FootballPage = () => {
         }
 
         // Transform matches to match expected format
-        const matches = seasonData.matches.map((match) => ({
+        const matches = seasonData.matches.map((match: any) => ({
           date: match.match_date,
           opposition: match.opposition,
           venue: match.venue,
@@ -46,12 +48,12 @@ export const FootballPage = () => {
           video: match.video_url,
           iplayer: match.iplayer_url,
           notes: match.notes,
-          goals: match.goals.map((g) => ({
+          goals: match.goals.map((g: any) => ({
             player: g.player,
             mins: g.minute,
             assist: g.assist,
           })),
-          cards: match.cards.map((c) => ({
+          cards: match.cards.map((c: any) => ({
             player: c.player,
             type: c.card_type,
             minute: c.minute,
@@ -60,12 +62,12 @@ export const FootballPage = () => {
 
         // Transform goal scorers to match expected format and sort alphabetically by player name
         const topScorers = seasonData.topScorers
-          .map((scorer) => ({
+          .map((scorer: any) => ({
             player: scorer.player,
             goals: scorer.goals,
             assists: scorer.assists,
           }))
-          .sort((a, b) => a.player.localeCompare(b.player));
+          .sort((a: any, b: any) => a.player.localeCompare(b.player));
 
         setMatchesData({
           season: CURRENT_SEASON,

@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { MatchDetails } from "./matchDetails";
 import { GoalScorerDetails } from "./goalScorerDetails";
+import { SeasonStatistics } from "./seasonStatistics";
 import type {
   SeasonMatchData,
   SeasonGoalsData,
@@ -60,30 +61,36 @@ export const FootballSeasonResults = memo(
     const goalScorers = getGoalScorers();
 
     return (
-      <div className="row mt-4">
-        <div className="col-lg-6 col-sm-12 mb-4">
-          <h2>
-            <i className="bi bi-calendar3 me-2"></i>
-            {seasonsTitle} Matches
-          </h2>
+      <>
+        {/* Matches and Goals Columns */}
+        <div className="row mt-4">
+          <div className="col-lg-6 col-sm-12 mb-4">
+            <h2>
+              <i className="bi bi-calendar3 me-2"></i>
+              {seasonsTitle} Matches
+            </h2>
 
-          {matches !== null && <MatchDetails details={matches} />}
-          {matches === null && <>No match data found</>}
-        </div>
-        <div className="col-lg-6 col-sm-12 mb-4">
-          <h2>
-            <i className="bi bi-bar-chart-line me-2"></i>
-            {seasonsTitle} Goals
-          </h2>
+            {matches !== null && <MatchDetails details={matches} />}
+            {matches === null && <>No match data found</>}
+          </div>
+          <div className="col-lg-6 col-sm-12 mb-4">
+            <h2>
+              <i className="bi bi-bar-chart-line me-2"></i>
+              {seasonsTitle} Goals
+            </h2>
 
-          {goalScorers !== null && (
-            <>
-              <GoalScorerDetails details={goalScorers} />
-            </>
-          )}
-          {goalScorers === null && <>No goals data found</>}
+            {/* Season Statistics Panel */}
+            {matches !== null && <SeasonStatistics matches={matches} />}
+
+            {goalScorers !== null && (
+              <>
+                <GoalScorerDetails details={goalScorers} />
+              </>
+            )}
+            {goalScorers === null && <>No goals data found</>}
+          </div>
         </div>
-      </div>
+      </>
     );
-  }
+  },
 );
