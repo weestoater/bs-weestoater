@@ -69,7 +69,14 @@ CREATE TRIGGER garmin_activities_updated_at_trigger
   EXECUTE FUNCTION update_garmin_activities_updated_at();
 
 -- Create helper views
-CREATE OR REPLACE VIEW garmin_activity_summary AS
+-- Drop existing views if they exist
+DROP VIEW IF EXISTS garmin_activity_summary;
+DROP VIEW IF EXISTS garmin_recent_activities;
+DROP VIEW IF EXISTS garmin_monthly_totals;
+
+-- Create views with SECURITY INVOKER to respect RLS policies
+CREATE VIEW garmin_activity_summary
+WITH (security_invoker = true) AS
 SELECT
   type,
   COUNT(*) as activity_count,
@@ -83,13 +90,15 @@ SELECT
 FROM garmin_activities
 GROUP BY type;
 
-CREATE OR REPLACE VIEW garmin_recent_activities AS
+CREATE VIEW garmin_recent_activities
+WITH (security_invoker = true) AS
 SELECT *
 FROM garmin_activities
 WHERE date >= NOW() - INTERVAL '30 days'
 ORDER BY date DESC;
 
-CREATE OR REPLACE VIEW garmin_monthly_totals AS
+CREATE VIEW garmin_monthly_totals
+WITH (security_invoker = true) AS
 SELECT
   DATE_TRUNC('month', date) as month,
   COUNT(*) as activity_count,

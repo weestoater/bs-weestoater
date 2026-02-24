@@ -94,6 +94,9 @@ See the complete guide: [SLIMMING_WORLD_DATABASE_GUIDE.md](./SLIMMING_WORLD_DATA
 
 ## Troubleshooting
 
+**Error: "View is defined with the SECURITY DEFINER property"**
+→ Run `backend/supabase/fix-slimming-world-views.sql` in Supabase SQL Editor (fixes ALL database views)
+
 **Error: "Row-level security policy violation"**
 → Add `SUPABASE_SERVICE_ROLE_KEY` to your `.env` (find it in Supabase Dashboard → API settings)
 

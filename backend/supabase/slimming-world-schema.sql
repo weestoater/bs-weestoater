@@ -156,8 +156,14 @@ CREATE TRIGGER sw_entries_updated_at_trigger
 -- HELPER VIEWS (Optional)
 -- ============================================================================
 
+-- Drop existing views if they exist
+DROP VIEW IF EXISTS slimming_world_latest_entries;
+DROP VIEW IF EXISTS slimming_world_profile_stats;
+
 -- View to get latest entry for each profile
-CREATE OR REPLACE VIEW slimming_world_latest_entries AS
+-- Using SECURITY INVOKER to respect Row Level Security policies
+CREATE VIEW slimming_world_latest_entries
+WITH (security_invoker = true) AS
 SELECT DISTINCT ON (profile_id)
   e.profile_id,
   e.entry_date,
@@ -173,7 +179,9 @@ JOIN slimming_world_profiles p ON e.profile_id = p.id
 ORDER BY profile_id, entry_date DESC;
 
 -- View to get profile summary with statistics
-CREATE OR REPLACE VIEW slimming_world_profile_stats AS
+-- Using SECURITY INVOKER to respect Row Level Security policies
+CREATE VIEW slimming_world_profile_stats
+WITH (security_invoker = true) AS
 SELECT 
   p.id,
   p.user_id,
