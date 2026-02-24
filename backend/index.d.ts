@@ -43,6 +43,48 @@ export interface Article {
   updated_at: string;
 }
 
+export interface SlimmingWorldProfile {
+  id: string;
+  user_id: string;
+  start_date: string;
+  start_weight: number;
+  target_weight: number;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface SlimmingWorldEntry {
+  id: string;
+  profile_id: string;
+  entry_date: string;
+  weight: number;
+  weight_change: number;
+  total_lost: number;
+  target_weight: number;
+  slimmer_of_week: number | null;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface SlimmingWorldProfileWithEntries extends SlimmingWorldProfile {
+  entries: SlimmingWorldEntry[];
+}
+
+export interface SlimmingWorldProfileStats {
+  id: string;
+  user_id: string;
+  start_date: string;
+  start_weight: number;
+  target_weight: number;
+  total_entries: number;
+  last_weigh_in: string;
+  lowest_weight: number;
+  max_lost: number;
+  total_sotw_awards: number;
+}
+
 export interface DatabaseService {
   // Books methods
   getBooks(options?: { includeUnpublished?: boolean }): Promise<Book[]>;
@@ -68,6 +110,52 @@ export interface DatabaseService {
   deleteArticle(id: string): Promise<void>;
   bulkInsertArticles(articles: Partial<Article>[]): Promise<Article[]>;
   getArticlesByTags(tags: string[]): Promise<Article[]>;
+
+  // Slimming World methods
+  getSlimmingWorldProfiles(options?: {
+    includeInactive?: boolean;
+  }): Promise<SlimmingWorldProfile[]>;
+  getSlimmingWorldProfileByUserId(
+    userId: string,
+  ): Promise<SlimmingWorldProfile | null>;
+  getSlimmingWorldProfileById(id: string): Promise<SlimmingWorldProfile | null>;
+  createSlimmingWorldProfile(
+    profileData: Partial<SlimmingWorldProfile>,
+  ): Promise<SlimmingWorldProfile>;
+  updateSlimmingWorldProfile(
+    id: string,
+    profileData: Partial<SlimmingWorldProfile>,
+  ): Promise<SlimmingWorldProfile>;
+  deleteSlimmingWorldProfile(id: string): Promise<void>;
+  getSlimmingWorldEntries(
+    profileId: string,
+    options?: {
+      limit?: number;
+      orderBy?: string;
+      ascending?: boolean;
+    },
+  ): Promise<SlimmingWorldEntry[]>;
+  getSlimmingWorldEntryById(id: string): Promise<SlimmingWorldEntry | null>;
+  getLatestSlimmingWorldEntry(
+    profileId: string,
+  ): Promise<SlimmingWorldEntry | null>;
+  createSlimmingWorldEntry(
+    entryData: Partial<SlimmingWorldEntry>,
+  ): Promise<SlimmingWorldEntry>;
+  updateSlimmingWorldEntry(
+    id: string,
+    entryData: Partial<SlimmingWorldEntry>,
+  ): Promise<SlimmingWorldEntry>;
+  deleteSlimmingWorldEntry(id: string): Promise<void>;
+  bulkInsertSlimmingWorldEntries(
+    entries: Partial<SlimmingWorldEntry>[],
+  ): Promise<SlimmingWorldEntry[]>;
+  getSlimmingWorldProfileWithEntries(
+    userId: string,
+  ): Promise<SlimmingWorldProfileWithEntries | null>;
+  getSlimmingWorldProfileStats(
+    userId: string,
+  ): Promise<SlimmingWorldProfileStats | null>;
 }
 
 // Configuration
