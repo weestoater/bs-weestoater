@@ -367,6 +367,366 @@ export function createDatabaseService(supabaseClient) {
     return data;
   }
 
+  // ============================================================================
+  // SLIMMING WORLD OPERATIONS
+  // ============================================================================
+
+  /**
+   * Get all Slimming World profiles
+   * @param {Object} options - Query options
+   * @param {boolean} [options.includeInactive=false] - Include inactive profiles
+   * @returns {Promise<Array>} Array of profile objects
+   */
+  async function getSlimmingWorldProfiles(options = {}) {
+    const { includeInactive = false } = options;
+
+    let query = supabaseClient
+      .from("slimming_world_profiles")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (!includeInactive) {
+      query = query.eq("is_active", true);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      console.error("Error fetching Slimming World profiles:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Get a single Slimming World profile by user_id
+   * @param {string} userId - User ID
+   * @returns {Promise<Object|null>} Profile object or null if not found
+   */
+  async function getSlimmingWorldProfileByUserId(userId) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_profiles")
+      .select("*")
+      .eq("user_id", userId)
+      .eq("is_active", true)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        return null;
+      }
+      console.error("Error fetching Slimming World profile:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Get a single Slimming World profile by ID
+   * @param {string} id - Profile UUID
+   * @returns {Promise<Object|null>} Profile object or null if not found
+   */
+  async function getSlimmingWorldProfileById(id) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_profiles")
+      .select("*")
+      .eq("id", id)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        return null;
+      }
+      console.error("Error fetching Slimming World profile:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a new Slimming World profile
+   * @param {Object} profileData
+   * @param {string} profileData.user_id - Unique user identifier
+   * @param {string} profileData.start_date - Start date (YYYY-MM-DD)
+   * @param {number} profileData.start_weight - Starting weight in lbs
+   * @param {number} profileData.target_weight - Target weight in lbs
+   * @param {boolean} [profileData.is_active=true] - Active status
+   * @returns {Promise<Object>} The created profile
+   */
+  async function createSlimmingWorldProfile(profileData) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_profiles")
+      .insert([
+        {
+          user_id: profileData.user_id,
+          start_date: profileData.start_date,
+          start_weight: profileData.start_weight,
+          target_weight: profileData.target_weight,
+          is_active:
+            profileData.is_active !== undefined ? profileData.is_active : true,
+        },
+      ])
+      .select();
+
+    if (error) {
+      console.error("Error creating Slimming World profile:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Update an existing Slimming World profile
+   * @param {string} id - Profile ID
+   * @param {Object} profileData - Fields to update
+   * @returns {Promise<Object>} The updated profile
+   */
+  async function updateSlimmingWorldProfile(id, profileData) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_profiles")
+      .update(profileData)
+      .eq("id", id)
+      .select();
+
+    if (error) {
+      console.error("Error updating Slimming World profile:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Delete a Slimming World profile by ID (cascade deletes entries)
+   * @param {string} id - Profile ID
+   */
+  async function deleteSlimmingWorldProfile(id) {
+    const { error } = await supabaseClient
+      .from("slimming_world_profiles")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      console.error("Error deleting Slimming World profile:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get all entries for a specific profile
+   * @param {string} profileId - Profile UUID
+   * @param {Object} options - Query options
+   * @param {number} [options.limit] - Limit number of results
+   * @param {string} [options.orderBy='entry_date'] - Field to order by
+   * @param {boolean} [options.ascending=true] - Sort order
+   * @returns {Promise<Array>} Array of entry objects
+   */
+  async function getSlimmingWorldEntries(profileId, options = {}) {
+    const { limit, orderBy = "entry_date", ascending = true } = options;
+
+    let query = supabaseClient
+      .from("slimming_world_entries")
+      .select("*")
+      .eq("profile_id", profileId)
+      .order(orderBy, { ascending });
+
+    if (limit) {
+      query = query.limit(limit);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      console.error("Error fetching Slimming World entries:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Get a single entry by ID
+   * @param {string} id - Entry UUID
+   * @returns {Promise<Object|null>} Entry object or null if not found
+   */
+  async function getSlimmingWorldEntryById(id) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_entries")
+      .select("*")
+      .eq("id", id)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        return null;
+      }
+      console.error("Error fetching Slimming World entry:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Get the latest entry for a profile
+   * @param {string} profileId - Profile UUID
+   * @returns {Promise<Object|null>} Latest entry object or null
+   */
+  async function getLatestSlimmingWorldEntry(profileId) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_entries")
+      .select("*")
+      .eq("profile_id", profileId)
+      .order("entry_date", { ascending: false })
+      .limit(1)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        return null;
+      }
+      console.error("Error fetching latest Slimming World entry:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a new Slimming World entry
+   * @param {Object} entryData
+   * @param {string} entryData.profile_id - Profile UUID
+   * @param {string} entryData.entry_date - Entry date (YYYY-MM-DD)
+   * @param {number} entryData.weight - Weight in lbs
+   * @param {number} [entryData.weight_change=0] - Change from previous entry
+   * @param {number} [entryData.total_lost=0] - Total weight lost
+   * @param {number} entryData.target_weight - Target weight
+   * @param {number} [entryData.slimmer_of_week] - SOTW marker (100 if awarded)
+   * @param {string} [entryData.notes] - Optional notes
+   * @returns {Promise<Object>} The created entry
+   */
+  async function createSlimmingWorldEntry(entryData) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_entries")
+      .insert([entryData])
+      .select();
+
+    if (error) {
+      console.error("Error creating Slimming World entry:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Update an existing Slimming World entry
+   * @param {string} id - Entry ID
+   * @param {Object} entryData - Fields to update
+   * @returns {Promise<Object>} The updated entry
+   */
+  async function updateSlimmingWorldEntry(id, entryData) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_entries")
+      .update(entryData)
+      .eq("id", id)
+      .select();
+
+    if (error) {
+      console.error("Error updating Slimming World entry:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Delete a Slimming World entry by ID
+   * @param {string} id - Entry ID
+   */
+  async function deleteSlimmingWorldEntry(id) {
+    const { error } = await supabaseClient
+      .from("slimming_world_entries")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      console.error("Error deleting Slimming World entry:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * Bulk insert Slimming World entries (useful for migrations)
+   * @param {Array<Object>} entries - Array of entry objects
+   * @returns {Promise<Array>} Array of created entry objects
+   */
+  async function bulkInsertSlimmingWorldEntries(entries) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_entries")
+      .insert(entries)
+      .select();
+
+    if (error) {
+      console.error("Error bulk inserting Slimming World entries:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Get complete profile with all entries
+   * @param {string} userId - User ID
+   * @returns {Promise<Object|null>} Profile with nested entries array
+   */
+  async function getSlimmingWorldProfileWithEntries(userId) {
+    // First get the profile
+    const profile = await getSlimmingWorldProfileByUserId(userId);
+
+    if (!profile) {
+      return null;
+    }
+
+    // Then get all entries for this profile
+    const entries = await getSlimmingWorldEntries(profile.id, {
+      orderBy: "entry_date",
+      ascending: true,
+    });
+
+    return {
+      ...profile,
+      entries,
+    };
+  }
+
+  /**
+   * Get profile statistics from the view
+   * @param {string} userId - User ID
+   * @returns {Promise<Object|null>} Profile statistics
+   */
+  async function getSlimmingWorldProfileStats(userId) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_profile_stats")
+      .select("*")
+      .eq("user_id", userId)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        return null;
+      }
+      console.error("Error fetching Slimming World profile stats:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
   // Return all database service methods
   return {
     // Books
@@ -386,6 +746,22 @@ export function createDatabaseService(supabaseClient) {
     deleteArticle,
     bulkInsertArticles,
     getArticlesByTags,
+    // Slimming World
+    getSlimmingWorldProfiles,
+    getSlimmingWorldProfileByUserId,
+    getSlimmingWorldProfileById,
+    createSlimmingWorldProfile,
+    updateSlimmingWorldProfile,
+    deleteSlimmingWorldProfile,
+    getSlimmingWorldEntries,
+    getSlimmingWorldEntryById,
+    getLatestSlimmingWorldEntry,
+    createSlimmingWorldEntry,
+    updateSlimmingWorldEntry,
+    deleteSlimmingWorldEntry,
+    bulkInsertSlimmingWorldEntries,
+    getSlimmingWorldProfileWithEntries,
+    getSlimmingWorldProfileStats,
   };
 }
 

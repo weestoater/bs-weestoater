@@ -86,6 +86,11 @@ const ArticleEditor = lazy(() =>
     default: module.ArticleEditor,
   })),
 );
+const SlimmingWorldManager = lazy(() =>
+  import("./pages/admin/SlimmingWorldManager").then((module) => ({
+    default: module.SlimmingWorldManager,
+  })),
+);
 
 export const App = () => {
   return (
@@ -163,6 +168,14 @@ export const App = () => {
                 element={
                   <ProtectedRoute>
                     <ArticleEditor />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/slimming-world"
+                element={
+                  <ProtectedRoute>
+                    <SlimmingWorldManager />
                   </ProtectedRoute>
                 }
               />

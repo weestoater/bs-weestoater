@@ -79,6 +79,24 @@ export const AdminDashboard = () => {
           </div>
         </div>
 
+        {/* Slimming World Management */}
+        <div className="col-md-6 col-lg-4">
+          <div className="card h-100">
+            <div className="card-body">
+              <h3 className="card-title">
+                <i className="bi bi-heart-pulse me-2 text-danger"></i>
+                Slimming World
+              </h3>
+              <p className="card-text">
+                Manage weight tracking and weigh-in entries
+              </p>
+              <Link to="/admin/slimming-world" className="btn btn-danger">
+                Manage Weigh-Ins
+              </Link>
+            </div>
+          </div>
+        </div>
+
         {/* Media Library - Coming Soon */}
         <div className="col-md-6 col-lg-4">
           <div className="card h-100 bg-light">
