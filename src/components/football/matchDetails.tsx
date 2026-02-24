@@ -54,9 +54,13 @@ export const MatchDetails = memo((props: MatchDetailsProps) => {
 
                 {item.video && <VideoLink url={item.video} />}
 
-                {item.goals && <GoalsDetails goals={item.goals} />}
+                {item.goals && item.goals.length > 0 && (
+                  <GoalsDetails goals={item.goals} />
+                )}
 
-                {item.cards && <CardsDetails cards={item.cards} />}
+                {item.cards && item.cards.length > 0 && (
+                  <CardsDetails cards={item.cards} />
+                )}
 
                 {item.notes && <NotesDetails notes={item.notes} />}
               </div>

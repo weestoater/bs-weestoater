@@ -85,6 +85,71 @@ export interface SlimmingWorldProfileStats {
   total_sotw_awards: number;
 }
 
+export interface FootballSeason {
+  id: string;
+  season_id: string;
+  display_name: string;
+  start_year: number;
+  end_year: number;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface FootballMatch {
+  id: string;
+  season_id: string;
+  match_date: string;
+  opposition: string;
+  venue: string;
+  goals_scored: number | null;
+  goals_conceded: number | null;
+  league: string | null;
+  video_url: string | null;
+  iplayer_url: string | null;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface FootballMatchGoal {
+  id: string;
+  match_id: string;
+  player: string;
+  minute: string;
+  assist: string | null;
+  created_at: string;
+}
+
+export interface FootballMatchCard {
+  id: string;
+  match_id: string;
+  player: string;
+  card_type: string;
+  minute: number;
+  created_at: string;
+}
+
+export interface FootballSeasonStats {
+  id: string;
+  season_id: string;
+  player: string;
+  goals: number;
+  assists: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface FootballMatchDetailed extends FootballMatch {
+  goals: FootballMatchGoal[];
+  cards: FootballMatchCard[];
+}
+
+export interface FootballSeasonComplete extends FootballSeason {
+  matches: FootballMatchDetailed[];
+  topScorers: FootballSeasonStats[];
+}
+
 export interface DatabaseService {
   // Books methods
   getBooks(options?: { includeUnpublished?: boolean }): Promise<Book[]>;
@@ -156,6 +221,81 @@ export interface DatabaseService {
   getSlimmingWorldProfileStats(
     userId: string,
   ): Promise<SlimmingWorldProfileStats | null>;
+
+  // Football methods
+  getFootballSeasons(options?: {
+    includeInactive?: boolean;
+  }): Promise<FootballSeason[]>;
+  getFootballSeasonById(seasonId: string): Promise<FootballSeason | null>;
+  createFootballSeason(
+    seasonData: Partial<FootballSeason>,
+  ): Promise<FootballSeason>;
+  updateFootballSeason(
+    seasonId: string,
+    seasonData: Partial<FootballSeason>,
+  ): Promise<FootballSeason>;
+  deleteFootballSeason(seasonId: string): Promise<void>;
+  getFootballMatches(
+    seasonId: string,
+    options?: {
+      detailed?: boolean;
+    },
+  ): Promise<FootballMatch[] | FootballMatchDetailed[]>;
+  getFootballMatchById(
+    matchId: string,
+    options?: {
+      includeGoals?: boolean;
+      includeCards?: boolean;
+    },
+  ): Promise<FootballMatch | null>;
+  createFootballMatch(
+    matchData: Partial<FootballMatch>,
+  ): Promise<FootballMatch>;
+  updateFootballMatch(
+    matchId: string,
+    matchData: Partial<FootballMatch>,
+  ): Promise<FootballMatch>;
+  deleteFootballMatch(matchId: string): Promise<void>;
+  getFootballMatchGoals(matchId: string): Promise<FootballMatchGoal[]>;
+  createFootballMatchGoal(
+    goalData: Partial<FootballMatchGoal>,
+  ): Promise<FootballMatchGoal>;
+  updateFootballMatchGoal(
+    goalId: string,
+    goalData: Partial<FootballMatchGoal>,
+  ): Promise<FootballMatchGoal>;
+  deleteFootballMatchGoal(goalId: string): Promise<void>;
+  getFootballMatchCards(matchId: string): Promise<FootballMatchCard[]>;
+  createFootballMatchCard(
+    cardData: Partial<FootballMatchCard>,
+  ): Promise<FootballMatchCard>;
+  updateFootballMatchCard(
+    cardId: string,
+    cardData: Partial<FootballMatchCard>,
+  ): Promise<FootballMatchCard>;
+  deleteFootballMatchCard(cardId: string): Promise<void>;
+  getFootballSeasonStats(seasonId: string): Promise<FootballSeasonStats[]>;
+  upsertFootballSeasonStats(
+    statsData: Partial<FootballSeasonStats>,
+  ): Promise<FootballSeasonStats>;
+  deleteFootballSeasonStats(seasonId: string, player: string): Promise<void>;
+  bulkInsertFootballData(bulkData: {
+    seasons?: Partial<FootballSeason>[];
+    matches?: Partial<FootballMatch>[];
+    goals?: Partial<FootballMatchGoal>[];
+    cards?: Partial<FootballMatchCard>[];
+    stats?: Partial<FootballSeasonStats>[];
+  }): Promise<{
+    seasons?: FootballSeason[];
+    matches?: FootballMatch[];
+    goals?: FootballMatchGoal[];
+    cards?: FootballMatchCard[];
+    stats?: FootballSeasonStats[];
+  }>;
+  getFootballPlayers(seasonId?: string | null): Promise<string[]>;
+  getFootballSeasonComplete(
+    seasonId: string,
+  ): Promise<FootballSeasonComplete | null>;
 }
 
 // Configuration

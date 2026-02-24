@@ -12,7 +12,7 @@ import { SkeletonGrid } from "../global/SkeletonLoaders";
 
 // Lazy load AgGridReact
 const AgGridReact = lazy(() =>
-  import("ag-grid-react").then((m) => ({ default: m.AgGridReact }))
+  import("ag-grid-react").then((m) => ({ default: m.AgGridReact })),
 );
 
 // Register only the modules we need
@@ -30,7 +30,7 @@ interface Props {
 export const GoalScorersGrid = ({ details }: Props) => {
   const [rowData] = useState(details);
   const [theme, setTheme] = useState(
-    document.documentElement.getAttribute("data-theme") || "light"
+    document.documentElement.getAttribute("data-theme") || "light",
   );
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export const GoalScorersGrid = ({ details }: Props) => {
   // Dynamic grid configuration based on theme
   const gridConfig = {
     columnDefs: [
-      { field: "player", flex: 2.5 },
+      { field: "player", flex: 2.5, sort: "asc" },
       { field: "goals" },
       { field: "assists" },
     ],
