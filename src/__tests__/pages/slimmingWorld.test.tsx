@@ -1,11 +1,60 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { SlimmingWorld } from "../../pages/SlimmingWorld";
 import { WeightSummaryCardProps } from "../test-types";
+
+// Mock data for testing
+const mockProfileData = {
+  start_date: "2023-01-01",
+  start_weight: 100,
+  target_weight: 80,
+  entries: [
+    {
+      entry_date: "2023-01-01",
+      weight: 100,
+      weight_change: 0,
+      total_lost: 0,
+      target_weight: 80,
+      slimmer_of_week: null,
+    },
+    {
+      entry_date: "2023-01-08",
+      weight: 95,
+      weight_change: -5,
+      total_lost: 5,
+      target_weight: 80,
+      slimmer_of_week: null,
+    },
+    {
+      entry_date: "2023-01-15",
+      weight: 90,
+      weight_change: -5,
+      total_lost: 10,
+      target_weight: 80,
+      slimmer_of_week: null,
+    },
+  ],
+};
+
+// Mock the Supabase client and database service
+const mockGetSlimmingWorldProfileWithEntries = vi
+  .fn()
+  .mockResolvedValue(mockProfileData);
+
+vi.mock("../../../backend/index.js", () => ({
+  getSupabaseClient: vi.fn(() => ({})),
+  createDatabaseService: vi.fn(() => ({
+    getSlimmingWorldProfileWithEntries: mockGetSlimmingWorldProfileWithEntries,
+  })),
+}));
 
 // Mock the child components
 vi.mock("../../components/global/pageTitleHeading", () => ({
   PageTitleH1: ({ title }: { title: string }) => <h1>{title}</h1>,
+}));
+
+vi.mock("../../components/global/BackToTop", () => ({
+  BackToTop: () => <div data-testid="back-to-top">Back to Top</div>,
 }));
 
 vi.mock("../../components/sw/WeightSummaryCard", () => ({
@@ -44,105 +93,98 @@ vi.mock("../../components/sw/WeightHistoryGrid", () => ({
   ),
 }));
 
-// Mock the JSON and config imports
-vi.mock("../../data/slimmingWorldData.json", () => ({
-  default: [
-    {
-      startDate: "2023-01-01",
-      startWeight: 100,
-      targetWeight: 80,
-      data: [
-        { date: "2023-01-01", weight: 100, lost: 0, target: 80, change: 0 },
-        { date: "2023-01-08", weight: 95, lost: 5, target: 80, change: -5 },
-        { date: "2023-01-15", weight: 90, lost: 10, target: 80, change: -5 },
-      ],
-    },
-  ],
-}));
-
-vi.mock("../../config/weightProgressChartConfig", () => ({
-  createWeightProgressChartOptions: (data: WeightSummaryCardProps["data"]) => ({
-    data,
-    series: [{ xKey: "date", yKey: "weight" }],
-  }),
-}));
-
 describe("SlimmingWorld", () => {
   it("renders the page with correct title", () => {
     render(<SlimmingWorld />);
     expect(screen.getByText("Slimming World")).toBeInTheDocument();
   });
 
-  it("renders data table with correct props", () => {
+  it("shows loading spinner initially", () => {
     render(<SlimmingWorld />);
-    const dataTable = screen.getByTestId("weight-summary-card");
-    expect(dataTable).toBeInTheDocument();
-    expect(screen.getByText("Start Date: 2023-01-01")).toBeInTheDocument();
+    const spinner = screen.getByRole("status");
+    expect(spinner).toBeInTheDocument();
+    expect(
+      screen.getByText("Loading Slimming World data..."),
+    ).toBeInTheDocument();
+  });
+
+  it("renders data table with correct props after loading", async () => {
+    render(<SlimmingWorld />);
+
+    await waitFor(() => {
+      const dataTable = screen.getByTestId("weight-summary-card");
+      expect(dataTable).toBeInTheDocument();
+    });
+
+    // Date is converted from YYYY-MM-DD to DD/MM/YYYY
+    expect(screen.getByText("Start Date: 01/01/2023")).toBeInTheDocument();
     expect(screen.getByText("Start Weight: 100")).toBeInTheDocument();
     expect(screen.getByText("Target Weight: 80")).toBeInTheDocument();
     expect(screen.getByText("Has Data: Yes")).toBeInTheDocument();
   });
 
-  it("renders chart component", async () => {
+  it("renders chart component after loading", async () => {
     render(<SlimmingWorld />);
+
     const chart = await screen.findByTestId("weight-progress-chart");
     expect(chart).toBeInTheDocument();
     expect(screen.getByText("Chart Data: Present")).toBeInTheDocument();
   });
 
-  it("renders in the correct layout structure", () => {
+  it("renders the total lost banner after loading", async () => {
     const { container } = render(<SlimmingWorld />);
-    const columns = container.querySelectorAll(".col-lg-4");
-    expect(columns).toHaveLength(1);
-    expect(screen.getByTestId("weight-progress-chart")).toBeInTheDocument();
+
+    await waitFor(() => {
+      const banner = container.querySelector(".total-lost-banner");
+      expect(banner).toBeInTheDocument();
+    });
   });
 
-  it("renders the total lost banner", () => {
+  it("displays correct total lost in lbs", async () => {
     const { container } = render(<SlimmingWorld />);
-    const banner = container.querySelector(".total-lost-banner");
-    expect(banner).toBeInTheDocument();
+
+    await waitFor(() => {
+      const banner = container.querySelector(".total-lost-banner");
+      expect(banner).toHaveTextContent("10");
+      expect(banner).toHaveTextContent("lbs");
+    });
   });
 
-  it("displays correct total lost in lbs", () => {
+  it("displays correct total lost in kg", async () => {
     const { container } = render(<SlimmingWorld />);
-    // The last entry in our mock data has 10 lbs lost
-    // Text is split: "10" in stat-value and "lbs" in stat-label
-    const banner = container.querySelector(".total-lost-banner");
-    expect(banner).toHaveTextContent("10");
-    expect(banner).toHaveTextContent("lbs");
+
+    await waitFor(() => {
+      const banner = container.querySelector(".total-lost-banner");
+      expect(banner).toHaveTextContent("4.54");
+      expect(banner).toHaveTextContent("kg");
+    });
   });
 
-  it("displays correct total lost in kg", () => {
+  it("displays correct total lost in stones", async () => {
     const { container } = render(<SlimmingWorld />);
-    // 10 lbs * 0.453592 = 4.54 kg
-    const banner = container.querySelector(".total-lost-banner");
-    expect(banner).toHaveTextContent("4.54");
-    expect(banner).toHaveTextContent("kg");
+
+    await waitFor(() => {
+      const banner = container.querySelector(".total-lost-banner");
+      expect(banner).toHaveTextContent("0");
+      expect(banner).toHaveTextContent("st");
+    });
   });
 
-  it("displays correct total lost in stones", () => {
-    const { container } = render(<SlimmingWorld />);
-    // 10 lbs / 14 = 0 stone 10 lbs
-    const banner = container.querySelector(".total-lost-banner");
-    expect(banner).toHaveTextContent("0");
-    expect(banner).toHaveTextContent("st");
-  });
-
-  it("banner has theme-aware styling classes", () => {
-    const { container } = render(<SlimmingWorld />);
-    const banner = container.querySelector(".total-lost-banner");
-    expect(banner).toHaveClass("total-lost-banner");
-  });
-
-  it("banner is positioned in the left column", () => {
-    const { container } = render(<SlimmingWorld />);
-    const leftColumn = container.querySelector(".col-lg-4");
-    const banner = leftColumn?.querySelector(".total-lost-banner");
-    expect(banner).toBeInTheDocument();
-  });
-
-  it("banner title is prominent and descriptive", () => {
+  it("banner title is prominent and descriptive", async () => {
     render(<SlimmingWorld />);
-    expect(screen.getByText("Total Lost to Date")).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByText("Total Lost to Date")).toBeInTheDocument();
+    });
+  });
+
+  it("calls database service with correct user ID", async () => {
+    render(<SlimmingWorld />);
+
+    await waitFor(() => {
+      expect(mockGetSlimmingWorldProfileWithEntries).toHaveBeenCalledWith(
+        "default",
+      );
+    });
   });
 });

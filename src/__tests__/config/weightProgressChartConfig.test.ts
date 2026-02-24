@@ -7,6 +7,7 @@ describe("Weight Progress Chart Configuration", () => {
     {
       date: "01/01/2025",
       weight: 200,
+      change: -2,
       lost: 2,
       target: 180,
       sotw: 2,

@@ -1,6 +1,7 @@
 export interface SwDataPoint {
   date: string;
   weight: number;
+  change: number;
   lost: number;
   target: number;
   sotw?: number;
