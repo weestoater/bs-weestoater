@@ -58,7 +58,14 @@ CREATE TRIGGER daily_steps_updated_at_trigger
   EXECUTE FUNCTION update_daily_steps_updated_at();
 
 -- Create helper views
-CREATE OR REPLACE VIEW daily_steps_summary AS
+-- Drop existing views if they exist
+DROP VIEW IF EXISTS daily_steps_summary;
+DROP VIEW IF EXISTS daily_steps_recent_30;
+DROP VIEW IF EXISTS daily_steps_weekly_totals;
+
+-- Create views with SECURITY INVOKER to respect RLS policies
+CREATE VIEW daily_steps_summary
+WITH (security_invoker = true) AS
 SELECT
   COUNT(*) as total_days,
   SUM(steps) as total_steps,
@@ -70,13 +77,15 @@ SELECT
   SUM(calories) as total_calories
 FROM daily_steps;
 
-CREATE OR REPLACE VIEW daily_steps_recent_30 AS
+CREATE VIEW daily_steps_recent_30
+WITH (security_invoker = true) AS
 SELECT *
 FROM daily_steps
 WHERE date >= CURRENT_DATE - INTERVAL '30 days'
 ORDER BY date DESC;
 
-CREATE OR REPLACE VIEW daily_steps_weekly_totals AS
+CREATE VIEW daily_steps_weekly_totals
+WITH (security_invoker = true) AS
 SELECT
   DATE_TRUNC('week', date) as week,
   COUNT(*) as days_tracked,

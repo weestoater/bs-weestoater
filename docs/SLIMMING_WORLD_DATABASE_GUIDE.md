@@ -340,6 +340,37 @@ CREATE POLICY "Only admins can insert profiles"
 ```
 
 **Solution:** Add `SUPABASE_SERVICE_ROLE_KEY` to your `.env` file. This key bypasses RLS and is required for migrations. Find it in Supabase Dashboard → Project Settings → API → service_role key.
+
+**Problem:** "View is defined with the SECURITY DEFINER property" warning
+
+**Solution:** Run the comprehensive fix script to update all database views. In your Supabase SQL Editor, run:
+
+```bash
+backend/supabase/fix-slimming-world-views.sql
+```
+
+This script fixes ALL views (Slimming World, Daily Steps, and Garmin Activities) to use SECURITY INVOKER.
+
+Alternatively, run these commands manually:
+
+```sql
+-- Fix Slimming World views
+DROP VIEW IF EXISTS slimming_world_latest_entries CASCADE;
+DROP VIEW IF EXISTS slimming_world_profile_stats CASCADE;
+
+-- Fix Daily Steps views
+DROP VIEW IF EXISTS daily_steps_summary CASCADE;
+DROP VIEW IF EXISTS daily_steps_recent_30 CASCADE;
+DROP VIEW IF EXISTS daily_steps_weekly_totals CASCADE;
+
+-- Fix Garmin Activities views
+DROP VIEW IF EXISTS garmin_activity_summary CASCADE;
+DROP VIEW IF EXISTS garmin_recent_activities CASCADE;
+DROP VIEW IF EXISTS garmin_monthly_totals CASCADE;
+```
+
+Then re-run the respective schema files to recreate them with SECURITY INVOKER.
+
 **Problem:** "Table not found" error
 
 ```bash
