@@ -6,6 +6,8 @@ import { FootballSeasonsNav } from "../content/football/footballSeasonsNav";
 import { FootballSeasonResults } from "../components/football/footballSeasonResults";
 import { getSeasonById, isValidSeasonId } from "../config/footballSeasons";
 import { SkeletonCard } from "../components/global/SkeletonLoaders";
+import { getSupabaseClient } from "../../backend/index.js";
+import { createDatabaseService } from "../../backend/supabase/database.js";
 import type {
   SeasonMatchData,
   SeasonGoalsData,
@@ -31,14 +33,57 @@ export const SeasonPage = () => {
       setError(null);
 
       try {
-        // Dynamic imports
-        const [matchesModule, goalsModule] = await Promise.all([
-          import(`../data/${seasonId}-matches.json`),
-          import(`../data/${seasonId}-goals.json`),
-        ]);
+        const supabase = getSupabaseClient();
+        const db = createDatabaseService(supabase);
 
-        setMatches(matchesModule.default);
-        setGoals(goalsModule.default);
+        // Fetch complete season data from database
+        const seasonData = await db.getFootballSeasonComplete(seasonId);
+
+        if (!seasonData) {
+          throw new Error(`Season ${seasonId} not found in database`);
+        }
+
+        // Transform matches to match expected format
+        const matchesTransformed = seasonData.matches.map((match) => ({
+          date: match.match_date,
+          opposition: match.opposition,
+          venue: match.venue,
+          scored: match.goals_scored,
+          conceded: match.goals_conceded,
+          league: match.league,
+          video: match.video_url,
+          iplayer: match.iplayer_url,
+          notes: match.notes,
+          goals: match.goals.map((g) => ({
+            player: g.player,
+            mins: g.minute,
+            assist: g.assist,
+          })),
+          cards: match.cards.map((c) => ({
+            player: c.player,
+            type: c.card_type,
+            minute: c.minute,
+          })),
+        }));
+
+        // Transform goal scorers to match expected format and sort alphabetically by player name
+        const topScorers = seasonData.topScorers
+          .map((scorer) => ({
+            player: scorer.player,
+            goals: scorer.goals,
+            assists: scorer.assists,
+          }))
+          .sort((a, b) => a.player.localeCompare(b.player));
+
+        setMatches({
+          season: seasonId,
+          matches: matchesTransformed,
+        });
+
+        setGoals({
+          season: seasonId,
+          topScorers,
+        });
       } catch (err) {
         console.error(`Failed to load data for season ${seasonId}:`, err);
         setError(`Unable to load data for ${seasonId} season`);

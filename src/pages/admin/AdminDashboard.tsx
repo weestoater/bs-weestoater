@@ -97,6 +97,24 @@ export const AdminDashboard = () => {
           </div>
         </div>
 
+        {/* Football Management */}
+        <div className="col-md-6 col-lg-4">
+          <div className="card h-100">
+            <div className="card-body">
+              <h3 className="card-title">
+                <i className="bi bi-trophy me-2 text-warning"></i>
+                Football
+              </h3>
+              <p className="card-text">
+                Manage Motherwell FC match results, goals, and cards
+              </p>
+              <Link to="/admin/football" className="btn btn-warning">
+                Manage Matches
+              </Link>
+            </div>
+          </div>
+        </div>
+
         {/* Media Library - Coming Soon */}
         <div className="col-md-6 col-lg-4">
           <div className="card h-100 bg-light">

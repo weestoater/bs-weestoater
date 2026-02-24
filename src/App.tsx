@@ -91,6 +91,11 @@ const SlimmingWorldManager = lazy(() =>
     default: module.SlimmingWorldManager,
   })),
 );
+const FootballManager = lazy(() =>
+  import("./pages/admin/FootballManager").then((module) => ({
+    default: module.FootballManager,
+  })),
+);
 
 export const App = () => {
   return (
@@ -176,6 +181,14 @@ export const App = () => {
                 element={
                   <ProtectedRoute>
                     <SlimmingWorldManager />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/football"
+                element={
+                  <ProtectedRoute>
+                    <FootballManager />
                   </ProtectedRoute>
                 }
               />

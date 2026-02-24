@@ -727,6 +727,683 @@ export function createDatabaseService(supabaseClient) {
     return data;
   }
 
+  // ============================================================================
+  // FOOTBALL OPERATIONS
+  // ============================================================================
+
+  /**
+   * Get all football seasons
+   * @param {Object} options - Query options
+   * @param {boolean} [options.includeInactive=true] - Include inactive seasons
+   * @returns {Promise<Array>} Array of season objects
+   */
+  async function getFootballSeasons(options = {}) {
+    const { includeInactive = true } = options;
+
+    let query = supabaseClient
+      .from("football_seasons")
+      .select("*")
+      .order("start_year", { ascending: false });
+
+    if (!includeInactive) {
+      query = query.eq("is_active", true);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      console.error("Error fetching football seasons:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Get a single season by season_id
+   * @param {string} seasonId - Season ID (e.g., "2024-25")
+   * @returns {Promise<Object|null>} Season object or null if not found
+   */
+  async function getFootballSeasonById(seasonId) {
+    const { data, error } = await supabaseClient
+      .from("football_seasons")
+      .select("*")
+      .eq("season_id", seasonId)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        return null;
+      }
+      console.error("Error fetching football season:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a new football season
+   * @param {Object} seasonData
+   * @param {string} seasonData.season_id - Season ID (e.g., "2024-25")
+   * @param {string} seasonData.display_name - Display name
+   * @param {number} seasonData.start_year - Start year
+   * @param {number} seasonData.end_year - End year
+   * @param {boolean} [seasonData.is_active=false] - Active status
+   * @returns {Promise<Object>} The created season
+   */
+  async function createFootballSeason(seasonData) {
+    const { data, error } = await supabaseClient
+      .from("football_seasons")
+      .insert([seasonData])
+      .select();
+
+    if (error) {
+      console.error("Error creating football season:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Update an existing football season
+   * @param {string} seasonId - Season ID
+   * @param {Object} seasonData - Fields to update
+   * @returns {Promise<Object>} The updated season
+   */
+  async function updateFootballSeason(seasonId, seasonData) {
+    const { data, error } = await supabaseClient
+      .from("football_seasons")
+      .update(seasonData)
+      .eq("season_id", seasonId)
+      .select();
+
+    if (error) {
+      console.error("Error updating football season:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Delete a football season and all related data (CASCADE)
+   * @param {string} seasonId - Season ID
+   * @returns {Promise<void>}
+   */
+  async function deleteFootballSeason(seasonId) {
+    const { error } = await supabaseClient
+      .from("football_seasons")
+      .delete()
+      .eq("season_id", seasonId);
+
+    if (error) {
+      console.error("Error deleting football season:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get all matches for a season
+   * @param {string} seasonId - Season ID
+   * @param {Object} options - Query options
+   * @param {boolean} [options.detailed=false] - Include goals and cards
+   * @returns {Promise<Array>} Array of match objects
+   */
+  async function getFootballMatches(seasonId, options = {}) {
+    const { detailed = false } = options;
+
+    if (detailed) {
+      // Use the detailed view
+      const { data, error } = await supabaseClient
+        .from("football_matches_detailed")
+        .select("*")
+        .eq("season_id", seasonId)
+        .order("match_date", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching detailed football matches:", error);
+        throw error;
+      }
+
+      return data;
+    }
+
+    // Simple query
+    const { data, error } = await supabaseClient
+      .from("football_matches")
+      .select("*")
+      .eq("season_id", seasonId)
+      .order("match_date", { ascending: false });
+
+    if (error) {
+      console.error("Error fetching football matches:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Get a single match by ID
+   * @param {string} matchId - Match UUID
+   * @param {Object} options - Query options
+   * @param {boolean} [options.includeGoals=false] - Include goals
+   * @param {boolean} [options.includeCards=false] - Include cards
+   * @returns {Promise<Object|null>} Match object or null if not found
+   */
+  async function getFootballMatchById(matchId, options = {}) {
+    const { includeGoals = false, includeCards = false } = options;
+
+    const { data, error } = await supabaseClient
+      .from("football_matches")
+      .select("*")
+      .eq("id", matchId)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        return null;
+      }
+      console.error("Error fetching football match:", error);
+      throw error;
+    }
+
+    if (includeGoals || includeCards) {
+      const match = { ...data };
+
+      if (includeGoals) {
+        const goals = await getFootballMatchGoals(matchId);
+        match.goals = goals;
+      }
+
+      if (includeCards) {
+        const cards = await getFootballMatchCards(matchId);
+        match.cards = cards;
+      }
+
+      return match;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a new football match
+   * @param {Object} matchData
+   * @param {string} matchData.season_id - Season ID
+   * @param {string} matchData.match_date - Match date (YYYY-MM-DD)
+   * @param {string} matchData.opposition - Opposition team name
+   * @param {string} matchData.venue - Home or Away
+   * @param {number} [matchData.goals_scored] - Goals scored
+   * @param {number} [matchData.goals_conceded] - Goals conceded
+   * @param {string} [matchData.league] - League/Competition name
+   * @param {string} [matchData.video_url] - Video URL
+   * @param {string} [matchData.iplayer_url] - iPlayer URL
+   * @param {string} [matchData.notes] - Match notes
+   * @returns {Promise<Object>} The created match
+   */
+  async function createFootballMatch(matchData) {
+    const { data, error } = await supabaseClient
+      .from("football_matches")
+      .insert([matchData])
+      .select();
+
+    if (error) {
+      console.error("Error creating football match:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Update an existing football match
+   * @param {string} matchId - Match UUID
+   * @param {Object} matchData - Fields to update
+   * @returns {Promise<Object>} The updated match
+   */
+  async function updateFootballMatch(matchId, matchData) {
+    const { data, error } = await supabaseClient
+      .from("football_matches")
+      .update(matchData)
+      .eq("id", matchId)
+      .select();
+
+    if (error) {
+      console.error("Error updating football match:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Delete a football match and all related data (CASCADE)
+   * @param {string} matchId - Match UUID
+   * @returns {Promise<void>}
+   */
+  async function deleteFootballMatch(matchId) {
+    const { error } = await supabaseClient
+      .from("football_matches")
+      .delete()
+      .eq("id", matchId);
+
+    if (error) {
+      console.error("Error deleting football match:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get goals for a match
+   * @param {string} matchId - Match UUID
+   * @returns {Promise<Array>} Array of goal objects
+   */
+  async function getFootballMatchGoals(matchId) {
+    const { data, error } = await supabaseClient
+      .from("football_match_goals")
+      .select("*")
+      .eq("match_id", matchId)
+      .order("minute", { ascending: true });
+
+    if (error) {
+      console.error("Error fetching match goals:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a new goal for a match
+   * @param {Object} goalData
+   * @param {string} goalData.match_id - Match UUID
+   * @param {string} goalData.player - Player name
+   * @param {string} goalData.minute - Goal minute (can include "+3", "(Pen)", etc.)
+   * @param {string} [goalData.assist] - Assist player name
+   * @returns {Promise<Object>} The created goal
+   */
+  async function createFootballMatchGoal(goalData) {
+    const { data, error } = await supabaseClient
+      .from("football_match_goals")
+      .insert([goalData])
+      .select();
+
+    if (error) {
+      console.error("Error creating match goal:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Update an existing match goal
+   * @param {string} goalId - Goal UUID
+   * @param {Object} goalData - Fields to update
+   * @returns {Promise<Object>} The updated goal
+   */
+  async function updateFootballMatchGoal(goalId, goalData) {
+    const { data, error } = await supabaseClient
+      .from("football_match_goals")
+      .update(goalData)
+      .eq("id", goalId)
+      .select();
+
+    if (error) {
+      console.error("Error updating match goal:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Delete a match goal
+   * @param {string} goalId - Goal UUID
+   * @returns {Promise<void>}
+   */
+  async function deleteFootballMatchGoal(goalId) {
+    const { error } = await supabaseClient
+      .from("football_match_goals")
+      .delete()
+      .eq("id", goalId);
+
+    if (error) {
+      console.error("Error deleting match goal:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get cards for a match
+   * @param {string} matchId - Match UUID
+   * @returns {Promise<Array>} Array of card objects
+   */
+  async function getFootballMatchCards(matchId) {
+    const { data, error } = await supabaseClient
+      .from("football_match_cards")
+      .select("*")
+      .eq("match_id", matchId)
+      .order("minute", { ascending: true });
+
+    if (error) {
+      console.error("Error fetching match cards:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a new card for a match
+   * @param {Object} cardData
+   * @param {string} cardData.match_id - Match UUID
+   * @param {string} cardData.player - Player name
+   * @param {string} cardData.card_type - "yellow" or "red"
+   * @param {number} cardData.minute - Card minute
+   * @returns {Promise<Object>} The created card
+   */
+  async function createFootballMatchCard(cardData) {
+    const { data, error } = await supabaseClient
+      .from("football_match_cards")
+      .insert([cardData])
+      .select();
+
+    if (error) {
+      console.error("Error creating match card:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Update an existing match card
+   * @param {string} cardId - Card UUID
+   * @param {Object} cardData - Fields to update
+   * @returns {Promise<Object>} The updated card
+   */
+  async function updateFootballMatchCard(cardId, cardData) {
+    const { data, error } = await supabaseClient
+      .from("football_match_cards")
+      .update(cardData)
+      .eq("id", cardId)
+      .select();
+
+    if (error) {
+      console.error("Error updating match card:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Delete a match card
+   * @param {string} cardId - Card UUID
+   * @returns {Promise<void>}
+   */
+  async function deleteFootballMatchCard(cardId) {
+    const { error } = await supabaseClient
+      .from("football_match_cards")
+      .delete()
+      .eq("id", cardId);
+
+    if (error) {
+      console.error("Error deleting match card:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get season statistics (top scorers)
+   * @param {string} seasonId - Season ID
+   * @returns {Promise<Array>} Array of player statistics
+   */
+  async function getFootballSeasonStats(seasonId) {
+    const { data, error } = await supabaseClient
+      .from("football_season_stats")
+      .select("*")
+      .eq("season_id", seasonId)
+      .order("goals", { ascending: false })
+      .order("assists", { ascending: false });
+
+    if (error) {
+      console.error("Error fetching season stats:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create or update season statistics for a player
+   * @param {Object} statsData
+   * @param {string} statsData.season_id - Season ID
+   * @param {string} statsData.player - Player name
+   * @param {number} statsData.goals - Goals scored
+   * @param {number} statsData.assists - Assists
+   * @returns {Promise<Object>} The created/updated stats
+   */
+  async function upsertFootballSeasonStats(statsData) {
+    const { data, error } = await supabaseClient
+      .from("football_season_stats")
+      .upsert([statsData], {
+        onConflict: "season_id,player",
+      })
+      .select();
+
+    if (error) {
+      console.error("Error upserting season stats:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Delete season statistics for a player
+   * @param {string} seasonId - Season ID
+   * @param {string} player - Player name
+   * @returns {Promise<void>}
+   */
+  async function deleteFootballSeasonStats(seasonId, player) {
+    const { error } = await supabaseClient
+      .from("football_season_stats")
+      .delete()
+      .eq("season_id", seasonId)
+      .eq("player", player);
+
+    if (error) {
+      console.error("Error deleting season stats:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * Bulk insert football data for migration
+   * @param {Object} bulkData
+   * @param {Array} [bulkData.seasons] - Array of season objects
+   * @param {Array} [bulkData.matches] - Array of match objects
+   * @param {Array} [bulkData.goals] - Array of goal objects
+   * @param {Array} [bulkData.cards] - Array of card objects
+   * @param {Array} [bulkData.stats] - Array of stats objects
+   * @returns {Promise<Object>} Results of bulk operations
+   */
+  async function bulkInsertFootballData(bulkData) {
+    const results = {};
+
+    if (bulkData.seasons && bulkData.seasons.length > 0) {
+      const { data, error } = await supabaseClient
+        .from("football_seasons")
+        .upsert(bulkData.seasons, { onConflict: "season_id" })
+        .select();
+
+      if (error) {
+        console.error("Error bulk inserting seasons:", error);
+        throw error;
+      }
+      results.seasons = data;
+    }
+
+    if (bulkData.matches && bulkData.matches.length > 0) {
+      const { data, error } = await supabaseClient
+        .from("football_matches")
+        .insert(bulkData.matches)
+        .select();
+
+      if (error) {
+        console.error("Error bulk inserting matches:", error);
+        throw error;
+      }
+      results.matches = data;
+    }
+
+    if (bulkData.goals && bulkData.goals.length > 0) {
+      const { data, error } = await supabaseClient
+        .from("football_match_goals")
+        .insert(bulkData.goals)
+        .select();
+
+      if (error) {
+        console.error("Error bulk inserting goals:", error);
+        throw error;
+      }
+      results.goals = data;
+    }
+
+    if (bulkData.cards && bulkData.cards.length > 0) {
+      const { data, error } = await supabaseClient
+        .from("football_match_cards")
+        .insert(bulkData.cards)
+        .select();
+
+      if (error) {
+        console.error("Error bulk inserting cards:", error);
+        throw error;
+      }
+      results.cards = data;
+    }
+
+    if (bulkData.stats && bulkData.stats.length > 0) {
+      const { data, error } = await supabaseClient
+        .from("football_season_stats")
+        .upsert(bulkData.stats, { onConflict: "season_id,player" })
+        .select();
+
+      if (error) {
+        console.error("Error bulk inserting stats:", error);
+        throw error;
+      }
+      results.stats = data;
+    }
+
+    return results;
+  }
+
+  /**
+   * Get all unique player names from goals and cards
+   * @param {string} [seasonId] - Optional season ID to filter players
+   * @returns {Promise<string[]>} Array of unique player names sorted alphabetically
+   */
+  async function getFootballPlayers(seasonId = null) {
+    const players = new Set();
+
+    // Build the select string with join to matches
+    const selectString = seasonId
+      ? "player, football_matches!inner(season_id)"
+      : "player";
+
+    // Get players from goals
+    let goalsQuery = supabaseClient
+      .from("football_match_goals")
+      .select(selectString);
+
+    if (seasonId) {
+      goalsQuery = goalsQuery.eq("football_matches.season_id", seasonId);
+    }
+
+    const { data: goals, error: goalsError } = await goalsQuery;
+
+    if (goalsError) {
+      console.error("Error fetching goal scorers:", goalsError);
+      throw goalsError;
+    }
+
+    goals?.forEach((g) => players.add(g.player));
+
+    // Get players from assists
+    let assistsQuery = supabaseClient
+      .from("football_match_goals")
+      .select(selectString.replace("player", "assist"))
+      .not("assist", "is", null);
+
+    if (seasonId) {
+      assistsQuery = assistsQuery.eq("football_matches.season_id", seasonId);
+    }
+
+    const { data: assists, error: assistsError } = await assistsQuery;
+
+    if (assistsError) {
+      console.error("Error fetching assists:", assistsError);
+      throw assistsError;
+    }
+
+    assists?.forEach((a) => {
+      if (a.assist) players.add(a.assist);
+    });
+
+    // Get players from cards
+    let cardsQuery = supabaseClient
+      .from("football_match_cards")
+      .select(selectString);
+
+    if (seasonId) {
+      cardsQuery = cardsQuery.eq("football_matches.season_id", seasonId);
+    }
+
+    const { data: cards, error: cardsError } = await cardsQuery;
+
+    if (cardsError) {
+      console.error("Error fetching card recipients:", cardsError);
+      throw cardsError;
+    }
+
+    cards?.forEach((c) => players.add(c.player));
+
+    // Convert to array and sort alphabetically
+    return Array.from(players).sort((a, b) => a.localeCompare(b));
+  }
+
+  /**
+   * Get complete season data with matches and stats
+   * @param {string} seasonId - Season ID
+   * @returns {Promise<Object|null>} Season with matches and stats
+   */
+  async function getFootballSeasonComplete(seasonId) {
+    // Get season info
+    const season = await getFootballSeasonById(seasonId);
+
+    if (!season) {
+      return null;
+    }
+
+    // Get matches with details
+    const matches = await getFootballMatches(seasonId, { detailed: true });
+
+    // Get season stats
+    const stats = await getFootballSeasonStats(seasonId);
+
+    return {
+      ...season,
+      matches,
+      topScorers: stats,
+    };
+  }
+
   // Return all database service methods
   return {
     // Books
@@ -762,6 +1439,31 @@ export function createDatabaseService(supabaseClient) {
     bulkInsertSlimmingWorldEntries,
     getSlimmingWorldProfileWithEntries,
     getSlimmingWorldProfileStats,
+    // Football
+    getFootballSeasons,
+    getFootballSeasonById,
+    createFootballSeason,
+    updateFootballSeason,
+    deleteFootballSeason,
+    getFootballMatches,
+    getFootballMatchById,
+    createFootballMatch,
+    updateFootballMatch,
+    deleteFootballMatch,
+    getFootballMatchGoals,
+    createFootballMatchGoal,
+    updateFootballMatchGoal,
+    deleteFootballMatchGoal,
+    getFootballMatchCards,
+    createFootballMatchCard,
+    updateFootballMatchCard,
+    deleteFootballMatchCard,
+    getFootballSeasonStats,
+    upsertFootballSeasonStats,
+    deleteFootballSeasonStats,
+    bulkInsertFootballData,
+    getFootballPlayers,
+    getFootballSeasonComplete,
   };
 }
 
