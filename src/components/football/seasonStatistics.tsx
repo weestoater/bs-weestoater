@@ -68,17 +68,19 @@ export const SeasonStatistics: React.FC<SeasonStatisticsProps> = ({
     <div className="row mb-4">
       <div className="col-12">
         <div className="card shadow-sm">
-          <div className="card-body">
-            <div className="row g-3">
+          <div className="card-body p-2">
+            <div className="row g-2">
               {statDisplays.map((stat, index) => (
                 <div
                   key={index}
-                  className="col-lg col-md-4 col-sm-6 text-center"
+                  className="col-lg-2 col-md-4 col-6 text-center"
                 >
-                  <div className="d-flex flex-column align-items-center">
-                    <div className={`mb-2 ${stat.color}`}>{stat.icon}</div>
-                    <div className="fs-4 fw-bold">{stat.value}</div>
-                    <div className="text-muted small">{stat.label}</div>
+                  <div className="d-flex flex-column align-items-center py-2">
+                    <div className={`mb-1 ${stat.color}`}>{stat.icon}</div>
+                    <div className="fs-5 fw-bold">{stat.value}</div>
+                    <div className="text-muted" style={{ fontSize: "0.75rem" }}>
+                      {stat.label}
+                    </div>
                   </div>
                 </div>
               ))}

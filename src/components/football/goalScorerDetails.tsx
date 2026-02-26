@@ -23,127 +23,118 @@ const getThemeColors = () => {
 
 interface GoalScorerDetailsProps {
   details?: GoalScorer[];
+  showGridOnly?: boolean;
 }
 
 export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
   const details: GoalScorer[] = useMemo(
     () => props.details ?? [],
-    [props.details]
+    [props.details],
   );
+  const showGridOnly = props.showGridOnly ?? false;
+
+  // Transform data to use surnames only
+  const chartData = useMemo(() => {
+    return details.map((item) => ({
+      ...item,
+      player: item.player.split(" ").pop() || item.player, // Get last name
+    }));
+  }, [details]);
 
   const createChartOptions = useCallback(() => {
     const themeColors = getThemeColors();
 
     return {
-      data: details,
+      data: chartData,
       background: {
         fill: themeColors.background,
       },
       title: {
-        enabled: true,
-        text: "No. of Goals & Assists",
+        text: "Goals & Assists",
         color: themeColors.text,
+        fontSize: 16,
       },
       series: [
         {
           type: "bar",
+          direction: "horizontal",
           xKey: "player",
-          xName: "Players",
           yKey: "goals",
-          yName: "Goals Scored",
+          yName: "Goals",
           fill: "#fd9402",
-          stroke: "#6a0117",
-          showInMiniChart: true,
+          strokeWidth: 0,
+          label: {
+            enabled: true,
+            color: themeColors.text,
+            fontSize: 14,
+            fontWeight: "bold",
+          },
+          tooltip: {
+            enabled: true,
+          },
         },
         {
-          type: "line",
+          type: "bar",
+          direction: "horizontal",
           xKey: "player",
-          xName: "Players",
           yKey: "assists",
-          yName: "Assists ",
+          yName: "Assists",
+          fill: "#6a0117",
           strokeWidth: 0,
-          marker: {
+          label: {
             enabled: true,
-            shape: "star",
-            size: 15,
-            fill: "#6a0117",
+            color: themeColors.text,
+            fontSize: 14,
+            fontWeight: "bold",
           },
-          showInMiniChart: true,
+          tooltip: {
+            enabled: true,
+          },
         },
       ],
-      axes: {
-        category: {
+      axes: [
+        {
           type: "category",
-          position: "bottom",
-          title: {
-            text: "Players",
-            color: themeColors.text,
-          },
-          label: {
-            color: themeColors.text,
-          },
-          gridLine: {
-            style: [
-              {
-                stroke: themeColors.gridLine,
-              },
-            ],
-          },
-        },
-        left: {
-          type: "number",
           position: "left",
-          title: {
-            text: "No. of Goals",
-            color: themeColors.text,
-          },
           label: {
             color: themeColors.text,
+            fontSize: 14,
           },
-          gridLine: {
-            style: [
-              {
-                stroke: themeColors.gridLine,
-              },
-            ],
+          paddingInner: 0.5,
+          paddingOuter: 0.4,
+        },
+        {
+          type: "number",
+          position: "bottom",
+          label: {
+            color: themeColors.text,
+            fontSize: 14,
+          },
+          title: {
+            text: "Count",
+            color: themeColors.text,
+            fontSize: 14,
           },
         },
-        right: {
-          type: "number",
-          position: "right",
-          title: {
-            text: "No. of Assists",
-            color: themeColors.text,
-          },
+      ],
+      legend: {
+        enabled: true,
+        position: "top",
+        item: {
           label: {
             color: themeColors.text,
-          },
-          gridLine: {
-            style: [
-              {
-                stroke: themeColors.gridLine,
-              },
-            ],
+            fontSize: 14,
           },
         },
       },
       padding: {
-        top: 5,
+        top: 0,
         right: 5,
-        bottom: 5,
+        bottom: 15,
         left: 5,
       },
-      legend: {
-        position: "top",
-        spacing: 5,
-        item: {
-          label: {
-            color: themeColors.text,
-          },
-        },
-      },
     };
-  }, [details]);
+  }, [chartData]);
 
   const [chartOptions, setChartOptions] = useState(createChartOptions);
 
@@ -168,21 +159,35 @@ export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
 
   return (
     <>
-      <div className="goal-scorers" data-testid="goalscorers-pie-chart">
-        <Suspense
-          fallback={
-            <div className="text-center p-3">
-              <div className="spinner-border spinner-border-sm" role="status">
-                <span className="visually-hidden">Loading chart...</span>
-              </div>
-            </div>
-          }
-        >
-          <AgCharts options={chartOptions as Record<string, unknown>} />
-        </Suspense>
-      </div>
-
-      <GoalScorersGrid details={details} />
+      {showGridOnly ? (
+        <GoalScorersGrid details={details} />
+      ) : (
+        <>
+          <div
+            className="goal-scorers"
+            data-testid="goalscorers-pie-chart"
+            style={{
+              height: "440px",
+              width: "100%",
+            }}
+          >
+            <Suspense
+              fallback={
+                <div className="text-center p-3">
+                  <div
+                    className="spinner-border spinner-border-sm"
+                    role="status"
+                  >
+                    <span className="visually-hidden">Loading chart...</span>
+                  </div>
+                </div>
+              }
+            >
+              <AgCharts options={chartOptions as Record<string, unknown>} />
+            </Suspense>
+          </div>
+        </>
+      )}
     </>
   );
 });
