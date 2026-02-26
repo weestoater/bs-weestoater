@@ -64,13 +64,15 @@ export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
           fill: "#fd9402",
           strokeWidth: 0,
           label: {
-            enabled: true,
-            color: themeColors.text,
-            fontSize: 14,
-            fontWeight: "bold",
+            enabled: false,
           },
           tooltip: {
             enabled: true,
+            renderer: ({ datum, xKey, yKey }: { datum: any; xKey: string; yKey: string }) => {
+              return {
+                content: `<div style="background:#fff;border:2px solid #111;padding:8px 16px;border-radius:6px;font-weight:bold;color:#111;min-width:60px;text-align:center;">${datum[xKey]}<br/>${datum[yKey]}</div>`,
+              };
+            },
           },
         },
         {
@@ -82,13 +84,15 @@ export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
           fill: "#6a0117",
           strokeWidth: 0,
           label: {
-            enabled: true,
-            color: themeColors.text,
-            fontSize: 14,
-            fontWeight: "bold",
+            enabled: false,
           },
           tooltip: {
             enabled: true,
+            renderer: ({ datum, xKey, yKey }: { datum: any; xKey: string; yKey: string }) => {
+              return {
+                content: `<div style="background:#fff;border:2px solid #111;padding:8px 16px;border-radius:6px;font-weight:bold;color:#111;min-width:60px;text-align:center;">${datum[xKey]}<br/>${datum[yKey]}</div>`,
+              };
+            },
           },
         },
       ],
