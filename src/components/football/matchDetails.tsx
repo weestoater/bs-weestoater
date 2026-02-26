@@ -8,20 +8,19 @@ import { Match } from "../../interfaces/footballTypes";
 
 interface MatchDetailsProps {
   details?: Match[];
+  noColumnWrapper?: boolean;
 }
 
 export const MatchDetails = memo((props: MatchDetailsProps) => {
   const details = props.details ? props.details : null;
+  const noColumnWrapper = props.noColumnWrapper ?? false;
   return (
     <>
       {details !== null &&
         details.map((item: Match, key: number) => {
           const league = item.league ? item.league : "SPFL";
-          return (
-            <div
-              className={`card mb-3 match-${item.venue.toLowerCase()}`}
-              key={key}
-            >
+          const cardContent = (
+            <div className={`card h-100 match-${item.venue.toLowerCase()}`}>
               <div className="card-header">
                 <div className="d-flex justify-content-between align-items-center">
                   <span className="fw-bold">
@@ -64,6 +63,14 @@ export const MatchDetails = memo((props: MatchDetailsProps) => {
 
                 {item.notes && <NotesDetails notes={item.notes} />}
               </div>
+            </div>
+          );
+
+          return noColumnWrapper ? (
+            <div key={key}>{cardContent}</div>
+          ) : (
+            <div className="col-lg-4 col-md-6 col-sm-12 mb-4" key={key}>
+              {cardContent}
             </div>
           );
         })}
