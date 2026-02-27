@@ -33,7 +33,7 @@ export const ArticleMeta = ({ metadata }: ArticleMetaProps) => {
             {author}
           </span>
         )}
-        {publishedDate && (
+        {/* {publishedDate && (
           <span className="article-date">
             <i className="bi bi-calendar3 me-1" aria-hidden="true"></i>
             <time dateTime={publishedDate}>
@@ -44,7 +44,7 @@ export const ArticleMeta = ({ metadata }: ArticleMetaProps) => {
               })}
             </time>
           </span>
-        )}
+        )} */}
         {readingTime && (
           <span className="article-reading-time">
             <i className="bi bi-clock me-1" aria-hidden="true"></i>

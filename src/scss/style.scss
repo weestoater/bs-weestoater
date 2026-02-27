@@ -1,5 +1,5 @@
 @use "utils" as *;
-
+@use "utils/theme";
 @use "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 // CSS Custom Properties for theming
@@ -19,6 +19,44 @@
   --theme-banner-bg: #ffff00;
   --theme-banner-text: #000000;
   --theme-banner-border: #ffffff;
+}
+
+// Respect user's motion preferences
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Apply theme variables
+body {
+  background-color: var(--theme-bg);
+  color: var(--theme-color);
+  overflow-x: hidden;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+// Theme-aware components
+.card {
+  background-color: var(--theme-card-bg);
+  border-color: var(--theme-card-border);
+  color: var(--theme-color);
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease;
+}
+
+.card-body {
+  .icon-large {
+    font-size: 4rem;
+  }
 }
 
 // Respect user's motion preferences
