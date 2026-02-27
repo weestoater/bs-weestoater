@@ -61,7 +61,7 @@ export const BooksPage = () => {
           {books.map((book) => (
             <div
               key={book.id}
-              className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4"
+              className="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4"
             >
               <div className="card">
                 <div className="card-header">
