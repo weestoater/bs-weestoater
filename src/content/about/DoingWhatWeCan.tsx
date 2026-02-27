@@ -16,7 +16,7 @@ export const DoingWhatWeCan = () => {
             author: "Ian Burrett",
             tags: ["family", "life", "accessibility", "memories"],
             publishedDate: "2026-02-27",
-            readingTime: "3",
+            readingTime: 3,
           }}
         />
 

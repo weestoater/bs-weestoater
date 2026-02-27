@@ -20,7 +20,7 @@ export const ShapesDemo = () => {
               author: "Ian Burrett",
               tags: ["css", "shapes", "demo", "avatar"],
               publishedDate: "2026-02-27",
-              readingTime: "5",
+              readingTime: 5,
             }}
           />
           <section className="mb-5">

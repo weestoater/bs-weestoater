@@ -17,7 +17,7 @@ export const EthosCard = () => {
             author: "Ian Burrett",
             tags: ["experiment", "react", "frontend", "football"],
             publishedDate: "2026-02-27",
-            readingTime: "3",
+            readingTime: 3,
           }}
         />
         <div className="right w5">
