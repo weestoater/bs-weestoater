@@ -1,3 +1,5 @@
+import { ArticleMeta } from "../../components/global/ArticleMeta";
+
 export const DoingWhatWeCan = () => {
   return (
     <div className="card">
@@ -7,6 +9,17 @@ export const DoingWhatWeCan = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Doing What We Can",
+            category: "about",
+            author: "Ian Burrett",
+            tags: ["family", "life", "accessibility", "memories"],
+            publishedDate: "2026-02-27",
+            readingTime: "3",
+          }}
+        />
+
         <p>
           2025 has been a bit of a roller coaster of a year, with some tragic
           parts and tremendous highs too. We lost our dear Papa Bob on Christmas

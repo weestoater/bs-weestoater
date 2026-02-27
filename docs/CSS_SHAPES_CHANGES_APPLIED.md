@@ -219,3 +219,4 @@ If you want to apply shapes to more images, refer to:
 
 Enjoy your enhanced, professional-looking images with natural text wrapping! 🎨⚽
 
+---

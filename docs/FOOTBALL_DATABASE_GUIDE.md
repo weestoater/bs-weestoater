@@ -818,4 +818,4 @@ When extending the football database:
 
 ---
 
-**End of Technical Guide** 🏴󠁧󠁢󠁳󠁣󠁴󠁿⚽
+**End of Technical Guide** 🏴⚽

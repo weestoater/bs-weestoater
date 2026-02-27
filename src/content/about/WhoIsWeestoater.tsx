@@ -1,6 +1,7 @@
 import burtIcon from "../../assets/img/burt.png";
 import busterPic from "../../assets/img/buster.jpg";
 import busterWebP from "../../assets/img/buster.webp";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const WhoIsWeestoater = () => {
   return (
@@ -11,6 +12,16 @@ export const WhoIsWeestoater = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Who is Weestoater",
+            category: "about",
+            author: "Ian Burrett",
+            tags: ["accessibility", "family", "profile", "motherwell"],
+            publishedDate: "2026-02-27",
+            readingTime: "2",
+          }}
+        />
         <img
           src={burtIcon}
           alt="avatar of weestoater"

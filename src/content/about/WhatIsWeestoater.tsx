@@ -1,4 +1,5 @@
 import vsCodeScreenShot from "../../assets/img/vs-code.png";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const WhatIsWeestoater = () => {
   return (
@@ -14,6 +15,17 @@ export const WhatIsWeestoater = () => {
         className="fluid"
       />
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "What is Weestoater",
+            category: "about",
+            author: "Ian Burrett",
+            tags: ["personal", "history", "web", "react"],
+            publishedDate: "2026-02-27",
+            readingTime: "2",
+          }}
+        />
+
         <p>
           <strong>weestoater</strong> is the nickname I've used for my personal
           'playgrounds' online since 1999, when I first cut my teeth in{" "}
