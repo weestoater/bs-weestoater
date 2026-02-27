@@ -1,3 +1,4 @@
+
 # SettingsModal Responsive Design Implementation
 
 ## Overview

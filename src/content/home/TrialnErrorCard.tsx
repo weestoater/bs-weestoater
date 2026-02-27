@@ -1,4 +1,5 @@
 import { CodesandboxLogo, ImageBroken } from "@phosphor-icons/react";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const TrialnErrorCard = () => {
   return (
@@ -9,6 +10,16 @@ export const TrialnErrorCard = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Trial & Error",
+            category: "home",
+            author: "Ian Burrett",
+            tags: ["learning", "mistakes", "aws", "git"],
+            publishedDate: "2026-02-27",
+            readingTime: "2",
+          }}
+        />
         <div className="right w5">
           <ImageBroken size={64} />
         </div>

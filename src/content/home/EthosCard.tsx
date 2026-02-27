@@ -1,4 +1,5 @@
 import { Brain } from "@phosphor-icons/react";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const EthosCard = () => {
   return (
@@ -9,6 +10,16 @@ export const EthosCard = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Ethos",
+            category: "home",
+            author: "Ian Burrett",
+            tags: ["experiment", "react", "frontend", "football"],
+            publishedDate: "2026-02-27",
+            readingTime: "3",
+          }}
+        />
         <div className="right w5">
           <Brain size={64} />
         </div>

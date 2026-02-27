@@ -1,4 +1,5 @@
 import { Barbell, BowlFood } from "@phosphor-icons/react";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const SlimLineVersionCard = () => {
   return (
@@ -9,6 +10,16 @@ export const SlimLineVersionCard = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "Slim Line",
+            category: "home",
+            author: "Ian Burrett",
+            tags: ["slimming world", "weight loss", "health", "bike"],
+            publishedDate: "2026-02-27",
+            readingTime: "4",
+          }}
+        />
         <div className="right w5">
           <BowlFood size={64} />
         </div>

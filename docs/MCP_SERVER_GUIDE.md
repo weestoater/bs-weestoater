@@ -1,3 +1,4 @@
+
 # MCP Server Configuration Guide
 
 ## What are MCP Servers?
@@ -226,4 +227,3 @@ For **bs-weestoater**, these MCP servers would help with:
 ---
 
 *Last updated: November 2, 2025*
-

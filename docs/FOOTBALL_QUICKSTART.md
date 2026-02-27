@@ -44,7 +44,7 @@ node backend/supabase/migrate-football.js
 **Expected output:**
 
 ```
-🏴󠁧󠁢󠁳󠁣󠁴󠁿 Football Data Migration Starting...
+🏴 Football Data Migration Starting...
 ==================================================
 
 📅 Step 1: Creating seasons...
@@ -249,4 +249,4 @@ await db.createFootballMatchCard({
 
 ---
 
-**That's it!** You now have a fully functional football database with admin management. 🏴󠁧󠁢󠁳󠁣󠁴󠁿⚽
+**That's it!** You now have a fully functional football database with admin management. 🏴⚽

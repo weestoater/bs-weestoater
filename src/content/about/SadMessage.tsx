@@ -1,3 +1,5 @@
+import { ArticleMeta } from "../../components/global/ArticleMeta";
+
 export const SadMessage = () => {
   return (
     <div className="card">
@@ -7,6 +9,16 @@ export const SadMessage = () => {
         </h2>
       </div>
       <div className="card-body">
+        <ArticleMeta
+          metadata={{
+            title: "I'm Free",
+            category: "about",
+            author: "Ian Burrett",
+            tags: ["loss", "family", "memories", "poetry"],
+            publishedDate: "2026-02-27",
+            readingTime: "2",
+          }}
+        />
         <p>
           Sadly in life, from time to time, we lose someone who means a great
           deal to us.

@@ -1,5 +1,6 @@
 import burtIcon from "../../assets/img/burt.png";
 import motherwell from "../../assets/img/motherwell.png";
+import { ArticleMeta } from "../../components/global/ArticleMeta";
 
 export const ShapesDemo = () => {
   return (
@@ -12,6 +13,16 @@ export const ShapesDemo = () => {
           </h2>
         </div>
         <div className="card-body">
+          <ArticleMeta
+            metadata={{
+              title: "CSS Shape Functions Demo",
+              category: "about",
+              author: "Ian Burrett",
+              tags: ["css", "shapes", "demo", "avatar"],
+              publishedDate: "2026-02-27",
+              readingTime: "5",
+            }}
+          />
           <section className="mb-5">
             <h3>Circle Shapes</h3>
             <div className="mb-4">
