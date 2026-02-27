@@ -24,6 +24,19 @@ export const ArticleMeta = ({ metadata }: ArticleMetaProps) => {
     category,
   } = metadata;
 
+  const formatDate = (iso?: string) => {
+    if (!iso) return null;
+    try {
+      return new Date(iso).toLocaleDateString("en-GB", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+    } catch (e) {
+      return iso;
+    }
+  };
+
   return (
     <div className="article-meta">
       <div className="article-meta-primary">
@@ -33,19 +46,8 @@ export const ArticleMeta = ({ metadata }: ArticleMetaProps) => {
             {author}
           </span>
         )}
-        {/* {publishedDate && (
-          <span className="article-date">
-            <i className="bi bi-calendar3 me-1" aria-hidden="true"></i>
-            <time dateTime={publishedDate}>
-              {new Date(publishedDate).toLocaleDateString("en-GB", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}
-            </time>
-          </span>
-        )} */}
-        {readingTime && (
+        {/* publishedDate intentionally not rendered (per project preference) */}
+        {readingTime !== undefined && readingTime !== null && (
           <span className="article-reading-time">
             <i className="bi bi-clock me-1" aria-hidden="true"></i>
             {readingTime} min read
@@ -73,13 +75,7 @@ export const ArticleMeta = ({ metadata }: ArticleMetaProps) => {
           <small className="text-muted">
             <i className="bi bi-pencil me-1" aria-hidden="true"></i>
             Updated:{" "}
-            <time dateTime={updatedDate}>
-              {new Date(updatedDate).toLocaleDateString("en-GB", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}
-            </time>
+            <time dateTime={updatedDate}>{formatDate(updatedDate)}</time>
           </small>
         </div>
       )}
