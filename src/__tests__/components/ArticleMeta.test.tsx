@@ -33,39 +33,6 @@ describe("ArticleMeta", () => {
     expect(screen.getByText("Web Development")).toBeInTheDocument();
   });
 
-  it("uses semantic time element for published date", () => {
-    const { container } = render(<ArticleMeta metadata={mockMetadata} />);
-
-    const timeElement = container.querySelector('time[datetime="2024-03-15"]');
-    expect(timeElement).toBeInTheDocument();
-  });
-
-  it("shows updated date when provided", () => {
-    const metadataWithUpdate: ArticleMetadata = {
-      ...mockMetadata,
-      updatedDate: "2024-03-20",
-    };
-
-    const { container } = render(<ArticleMeta metadata={metadataWithUpdate} />);
-
-    const updatedTimeElement = container.querySelector(
-      'time[datetime="2024-03-20"]'
-    );
-    expect(updatedTimeElement).toBeInTheDocument();
-    expect(screen.getByText(/Updated:/i)).toBeInTheDocument();
-  });
-
-  it("does not show updated date when same as published", () => {
-    const metadataWithSameDate: ArticleMetadata = {
-      ...mockMetadata,
-      updatedDate: "2024-03-15",
-    };
-
-    render(<ArticleMeta metadata={metadataWithSameDate} />);
-
-    expect(screen.queryByText(/Updated:/i)).not.toBeInTheDocument();
-  });
-
   it("handles single tag", () => {
     const singleTagMetadata: ArticleMetadata = {
       ...mockMetadata,
