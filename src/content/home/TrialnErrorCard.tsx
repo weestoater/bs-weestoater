@@ -17,7 +17,7 @@ export const TrialnErrorCard = () => {
             author: "Ian Burrett",
             tags: ["learning", "mistakes", "aws", "git"],
             publishedDate: "2026-02-27",
-            readingTime: "2",
+            readingTime: 2,
           }}
         />
         <div className="right w5">

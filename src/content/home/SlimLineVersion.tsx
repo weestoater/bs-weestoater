@@ -17,7 +17,7 @@ export const SlimLineVersionCard = () => {
             author: "Ian Burrett",
             tags: ["slimming world", "weight loss", "health", "bike"],
             publishedDate: "2026-02-27",
-            readingTime: "4",
+            readingTime: 4,
           }}
         />
         <div className="right w5">

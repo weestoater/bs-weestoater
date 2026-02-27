@@ -19,7 +19,7 @@ export const WhoIsWeestoater = () => {
             author: "Ian Burrett",
             tags: ["accessibility", "family", "profile", "motherwell"],
             publishedDate: "2026-02-27",
-            readingTime: "2",
+            readingTime: 2,
           }}
         />
         <img

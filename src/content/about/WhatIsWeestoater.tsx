@@ -22,7 +22,7 @@ export const WhatIsWeestoater = () => {
             author: "Ian Burrett",
             tags: ["personal", "history", "web", "react"],
             publishedDate: "2026-02-27",
-            readingTime: "2",
+            readingTime: 2,
           }}
         />
 

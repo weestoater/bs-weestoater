@@ -16,7 +16,7 @@ export const SadMessage = () => {
             author: "Ian Burrett",
             tags: ["loss", "family", "memories", "poetry"],
             publishedDate: "2026-02-27",
-            readingTime: "2",
+            readingTime: 2,
           }}
         />
         <p>
