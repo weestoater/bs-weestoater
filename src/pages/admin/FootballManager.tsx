@@ -1,4 +1,90 @@
 import { useState, useEffect, FormEvent } from "react";
+
+type GoalRowGoal = {
+  id: string;
+  player: string;
+  minute: string;
+  assist: string | null;
+};
+// Inline component for editing a goal's assist (must be top-level for hooks)
+export function GoalRow({
+  goal,
+  onDelete,
+  onEdit,
+}: {
+  goal: GoalRowGoal;
+  onDelete: (id: string) => void;
+  onEdit: (id: string, updates: { assist: string }) => Promise<void>;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [assist, setAssist] = useState(goal.assist || "");
+
+  const handleSave = async () => {
+    await onEdit(goal.id, { assist });
+    setEditing(false);
+  };
+
+  return (
+    <tr>
+      <td>{goal.player}</td>
+      <td>{goal.minute}</td>
+      <td>
+        {editing ? (
+          <input
+            type="text"
+            className="form-control form-control-sm"
+            value={assist}
+            onChange={(e) => setAssist(e.target.value)}
+            list="players-list"
+            style={{ minWidth: 100 }}
+          />
+        ) : (
+          goal.assist || "-"
+        )}
+      </td>
+      <td>
+        {editing ? (
+          <>
+            <button
+              className="btn btn-sm btn-success me-1"
+              onClick={handleSave}
+              title="Save assist"
+            >
+              <i className="bi bi-check"></i>
+            </button>
+            <button
+              className="btn btn-sm btn-secondary"
+              onClick={() => {
+                setEditing(false);
+                setAssist(goal.assist || "");
+              }}
+              title="Cancel"
+            >
+              <i className="bi bi-x"></i>
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              className="btn btn-sm btn-outline-primary me-1"
+              onClick={() => setEditing(true)}
+              title="Edit assist"
+            >
+              <i className="bi bi-pencil"></i>
+            </button>
+            <button
+              className="btn btn-sm btn-outline-danger"
+              onClick={() => onDelete(goal.id)}
+              aria-label="Delete goal"
+            >
+              <i className="bi bi-trash"></i>
+            </button>
+          </>
+        )}
+      </td>
+    </tr>
+  );
+}
 import { Link } from "react-router-dom";
 import { getSupabaseClient } from "../../../backend/index.js";
 import { useSEO } from "../../utils/useSEO";
@@ -286,6 +372,27 @@ export const FootballManager = () => {
       setManagingGoals({ ...managingGoals, goals });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to delete goal");
+    }
+  };
+
+  // Edit assist for a goal
+  const handleEditGoal = async (
+    goalId: string,
+    updates: { assist: string },
+  ) => {
+    try {
+      const client = getSupabaseClient();
+      const db = createDatabaseService(client);
+      await db.updateFootballMatchGoal(goalId, { assist: updates.assist });
+      // Reload goals
+      if (managingGoals) {
+        const goals = await db.getFootballMatchGoals(managingGoals.matchId);
+        setManagingGoals({ ...managingGoals, goals });
+      }
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Failed to update goal assist",
+      );
     }
   };
 
@@ -796,20 +903,12 @@ export const FootballManager = () => {
                     </thead>
                     <tbody>
                       {managingGoals.goals.map((goal) => (
-                        <tr key={goal.id}>
-                          <td>{goal.player}</td>
-                          <td>{goal.minute}</td>
-                          <td>{goal.assist || "-"}</td>
-                          <td>
-                            <button
-                              className="btn btn-sm btn-outline-danger"
-                              onClick={() => handleDeleteGoal(goal.id)}
-                              aria-label="Delete goal"
-                            >
-                              <i className="bi bi-trash"></i>
-                            </button>
-                          </td>
-                        </tr>
+                        <GoalRow
+                          key={goal.id}
+                          goal={goal}
+                          onDelete={handleDeleteGoal}
+                          onEdit={handleEditGoal}
+                        />
                       ))}
                       {managingGoals.goals.length === 0 && (
                         <tr>
