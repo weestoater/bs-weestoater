@@ -15,6 +15,8 @@ export interface Article {
   author: string;
   order_index: number;
   publish_at?: string; // Optional: schedule publishing for future date/time
+  image_url?: string; // Optional hero/feature image URL (Supabase Storage public URL)
+  image_alt?: string; // Alt text for the image
   created_at?: string;
   updated_at?: string;
 }

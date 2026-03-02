@@ -5,6 +5,7 @@ import { getSupabaseClient } from "../../../backend/index.js";
 import { useSEO } from "../../utils/useSEO";
 import { calculateReadingTime } from "../../utils/readingTime";
 import { createTinyMCEConfig } from "../../utils/tinymceHelpers";
+import { ImageUpload } from "../../components/admin/ImageUpload";
 
 const { createDatabaseService } = await import("../../../backend/index.js");
 
@@ -39,6 +40,8 @@ export const ArticleEditor = () => {
     author: "Ian Burrett",
     order_index: 0,
     publish_at: "", // Optional: schedule publishing for future date/time
+    image_url: "",
+    image_alt: "",
   });
 
   const [newTag, setNewTag] = useState("");
@@ -79,6 +82,8 @@ export const ArticleEditor = () => {
         publish_at: data.publish_at
           ? new Date(data.publish_at).toISOString().slice(0, 16)
           : "",
+        image_url: data.image_url || "",
+        image_alt: data.image_alt || "",
       });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load article");
@@ -525,6 +530,57 @@ export const ArticleEditor = () => {
                     </label>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <div className="card mb-4">
+              <div className="card-header">
+                <h5 className="mb-0">Feature Image</h5>
+              </div>
+              <div className="card-body">
+                <ImageUpload
+                  onUploadComplete={(url) =>
+                    setFormData((prev) => ({ ...prev, image_url: url }))
+                  }
+                  currentImage={formData.image_url || undefined}
+                  bucket="images"
+                  folder="articles"
+                />
+                {formData.image_url && (
+                  <div className="mt-3">
+                    <label htmlFor="image_alt" className="form-label">
+                      Image Alt Text
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="image_alt"
+                      name="image_alt"
+                      value={formData.image_alt}
+                      onChange={handleChange}
+                      placeholder="Describe the image for screen readers"
+                    />
+                    <small className="form-text text-muted">
+                      Shown when image cannot be displayed. Important for
+                      accessibility.
+                    </small>
+                  </div>
+                )}
+                {formData.image_url && (
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-outline-danger mt-3"
+                    onClick={() =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        image_url: "",
+                        image_alt: "",
+                      }))
+                    }
+                  >
+                    <i className="bi bi-trash me-1"></i>Remove Image
+                  </button>
+                )}
               </div>
             </div>
 

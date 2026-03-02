@@ -29,6 +29,19 @@
   }
 }
 
+// Float the avatar figure so text wraps around the circular image
+figure.avatar-figure {
+  float: right;
+  width: auto; // Override main figure { width: 100% } so the figure shrinks to image width
+  shape-outside: circle(50% at center);
+  shape-margin: 0.5rem;
+  margin: 0 0 1rem 1rem;
+
+  img {
+    display: block;
+  }
+}
+
 // ====================================
 // Ellipse Shapes (for portrait/landscape images)
 // ====================================
