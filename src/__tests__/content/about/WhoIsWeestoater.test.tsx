@@ -32,7 +32,6 @@ describe("WhoIsWeestoater", () => {
     const avatar = screen.getByRole("img", { name: "avatar of weestoater" });
     expect(avatar).toBeInTheDocument();
     expect(avatar).toHaveClass("shape-circle");
-    expect(avatar).toHaveClass("right");
   });
 
   it("renders Buster's image with correct alt text", () => {
@@ -48,13 +47,13 @@ describe("WhoIsWeestoater", () => {
     render(<WhoIsWeestoater />);
     expect(screen.getByText(/I am Ian Burrett/)).toBeInTheDocument();
     expect(
-      screen.getByText(/I'm a father of two amazing kids/)
+      screen.getByText(/I'm a father of two amazing kids/),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/When not working or ferrying my kids/)
+      screen.getByText(/When not working or ferrying my kids/),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/I occassionaly make it along to see Motherwell FC/)
+      screen.getByText(/I occasionally make it along to see Motherwell FC/),
     ).toBeInTheDocument();
   });
 

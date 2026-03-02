@@ -116,6 +116,7 @@ VALUES
     3,
     TRUE
   )
+ON CONFLICT (id) DO NOTHING;
 
 -- ============================================================================
 -- 2. ARTICLES TABLE
@@ -138,9 +139,15 @@ CREATE TABLE IF NOT EXISTS articles (
   featured BOOLEAN DEFAULT FALSE,
   author TEXT DEFAULT 'Ian Burrett',
   order_index INTEGER DEFAULT 0,
+  image_url TEXT, -- Optional hero/feature image URL (Supabase Storage public URL)
+  image_alt TEXT, -- Alt text for the image
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+-- Migration: add image columns to existing installations
+ALTER TABLE articles ADD COLUMN IF NOT EXISTS image_url TEXT;
+ALTER TABLE articles ADD COLUMN IF NOT EXISTS image_alt TEXT;
 
 -- Create indexes for faster queries
 CREATE INDEX IF NOT EXISTS idx_articles_category ON articles(category);

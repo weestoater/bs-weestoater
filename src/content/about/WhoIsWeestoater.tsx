@@ -25,8 +25,8 @@ export const WhoIsWeestoater = () => {
         <figure className="figure avatar-figure">
           <img
             src={burtIcon}
-            alt="Ian Burrett avatar"
-            className="shape-circle right"
+            alt="avatar of weestoater"
+            className="shape-circle"
             loading="lazy"
             width={150}
             height={150}
@@ -50,7 +50,7 @@ export const WhoIsWeestoater = () => {
             <source srcSet={busterWebP} type="image/webp" />
             <img
               src={busterPic}
-              alt="Our golden lab, Buster"
+              alt="Our golden lab Buster"
               className="fluid"
               loading="lazy"
             />

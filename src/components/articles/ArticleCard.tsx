@@ -30,6 +30,16 @@ export const ArticleCard = ({
             author: article.author,
           }}
         />
+        {article.image_url && (
+          <div className="article-card-image mb-3">
+            <img
+              src={article.image_url}
+              alt={article.image_alt || article.title}
+              className="img-fluid rounded"
+              loading="lazy"
+            />
+          </div>
+        )}
         {showExcerpt && article.excerpt && (
           <div
             className="article-excerpt mb-3"
