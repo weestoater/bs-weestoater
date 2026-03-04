@@ -8,6 +8,7 @@ import {
   getSupabaseClient,
   createDatabaseService,
 } from "../../backend/index.js";
+import { calculateTopScorers } from "../utils/footballUtils";
 import type {
   SeasonMatchData,
   SeasonGoalsData,
@@ -60,14 +61,8 @@ export const FootballPage = () => {
           })),
         }));
 
-        // Transform goal scorers to match expected format and sort alphabetically by player name
-        const topScorers = seasonData.topScorers
-          .map((scorer: any) => ({
-            player: scorer.player,
-            goals: scorer.goals,
-            assists: scorer.assists,
-          }))
-          .sort((a: any, b: any) => a.player.localeCompare(b.player));
+        // Calculate top scorers directly from match goals — single source of truth
+        const topScorers = calculateTopScorers(matches);
 
         setMatchesData({
           season: CURRENT_SEASON,
