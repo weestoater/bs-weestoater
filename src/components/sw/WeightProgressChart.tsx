@@ -1,9 +1,12 @@
-import { Suspense, useState, useEffect } from "react";
-import { AgCharts } from "ag-charts-react";
+import { Suspense, useState, useEffect, lazy } from "react";
 import { createWeightProgressChartOptions } from "../../config/weightProgressChartConfig";
 import { SkeletonChart } from "../global/SkeletonLoaders";
 import { SwDataPoint } from "../../interfaces/swTypes";
 import "../../utils/agChartsSetup";
+
+const AgCharts = lazy(() =>
+  import("ag-charts-react").then((m) => ({ default: m.AgCharts })),
+);
 
 interface WeightProgressChartProps {
   data: SwDataPoint[];

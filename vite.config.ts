@@ -135,6 +135,9 @@ export default defineConfig({
           if (id.includes("node_modules")) {
             if (id.includes("ag-charts")) return "vendor-ag-charts";
             if (id.includes("ag-grid")) return "vendor-ag-grid";
+            if (id.includes("leaflet") || id.includes("polyline-encoded"))
+              return "vendor-leaflet";
+            if (id.includes("@supabase")) return "vendor-supabase";
             if (id.includes("react")) return "vendor-react";
             if (id.includes("bootstrap")) return "vendor-bootstrap";
             return "vendor"; // all other vendor modules
