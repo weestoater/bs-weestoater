@@ -10,13 +10,13 @@ const pages = [
   { name: "Football", url: "/#/football" },
   { name: "React", url: "/#/react" },
   { name: "Landie", url: "/#/landie" },
-  { name: "Slimming World", url: "/#/slimmingWorld" },
+  { name: "Slimming World", url: "/#/sw" },
   // Football season pages
-  { name: "2020-21 Season", url: "/#/2020-21-season" },
-  { name: "2021-22 Season", url: "/#/2021-22-season" },
-  { name: "2022-23 Season", url: "/#/2022-23-season" },
-  { name: "2023-24 Season", url: "/#/2023-24-season" },
-  { name: "2024-25 Season", url: "/#/2024-25-season" },
+  { name: "2020-21 Season", url: "/#/season/2020-21" },
+  { name: "2021-22 Season", url: "/#/season/2021-22" },
+  { name: "2022-23 Season", url: "/#/season/2022-23" },
+  { name: "2023-24 Season", url: "/#/season/2023-24" },
+  { name: "2024-25 Season", url: "/#/season/2024-25" },
 ];
 
 test.describe("Accessibility Tests for All Pages", () => {
@@ -45,7 +45,7 @@ test.describe("Accessibility Tests for All Pages", () => {
 
       // Log violations for debugging
       console.log(
-        `${name} page: Found ${accessibilityScanResults.violations.length} accessibility violations`
+        `${name} page: Found ${accessibilityScanResults.violations.length} accessibility violations`,
       );
 
       if (accessibilityScanResults.violations.length > 0) {
@@ -56,13 +56,13 @@ test.describe("Accessibility Tests for All Pages", () => {
             impact: v.impact,
             description: v.description,
             nodes: v.nodes.length,
-          }))
+          })),
         );
       }
 
       // Allow for some violations but keep it reasonable
       expect(accessibilityScanResults.violations.length).toBeLessThanOrEqual(
-        10
+        10,
       );
     });
   });
@@ -95,7 +95,7 @@ test.describe("Accessibility Tests for All Pages", () => {
   test("Slimming World page detailed accessibility analysis", async ({
     page,
   }) => {
-    await page.goto("/#/slimmingWorld");
+    await page.goto("/#/sw");
     await waitForPageLoad(page);
 
     const accessibilityScanResults = await new AxeBuilder({ page })
@@ -104,7 +104,7 @@ test.describe("Accessibility Tests for All Pages", () => {
 
     console.log(`\n=== SLIMMING WORLD PAGE ACCESSIBILITY ANALYSIS ===`);
     console.log(
-      `Total violations: ${accessibilityScanResults.violations.length}`
+      `Total violations: ${accessibilityScanResults.violations.length}`,
     );
 
     if (accessibilityScanResults.violations.length > 0) {

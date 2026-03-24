@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import {
   Shield,
   TrendUp,
@@ -16,8 +17,9 @@ interface SeasonStatisticsProps {
 export const SeasonStatistics: React.FC<SeasonStatisticsProps> = ({
   matches,
 }) => {
-  // Calculate all statistics using the utility function
-  const stats = calculateSeasonStats(matches);
+  // Calculate all statistics using the utility function — memoised so it only
+  // reruns when the matches array reference changes.
+  const stats = useMemo(() => calculateSeasonStats(matches), [matches]);
 
   // Return null if no completed matches
   if (stats.totalMatches === 0) {

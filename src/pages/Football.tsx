@@ -15,6 +15,15 @@ import type {
 } from "../interfaces/footballTypes";
 
 const CURRENT_SEASON = "2025-26";
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+interface FootballCache {
+  matchesData: SeasonMatchData;
+  goalsData: SeasonGoalsData;
+  timestamp: number;
+}
+
+let footballCache: FootballCache | null = null;
 
 export const FootballPage = () => {
   const [matchesData, setMatchesData] = useState<SeasonMatchData | null>(null);
@@ -24,6 +33,14 @@ export const FootballPage = () => {
 
   useEffect(() => {
     const loadSeasonData = async () => {
+      // Serve from cache if fresh
+      if (footballCache && Date.now() - footballCache.timestamp < CACHE_TTL) {
+        setMatchesData(footballCache.matchesData);
+        setGoalsData(footballCache.goalsData);
+        setLoading(false);
+        return;
+      }
+
       setLoading(true);
       setError(null);
 
@@ -64,15 +81,23 @@ export const FootballPage = () => {
         // Calculate top scorers directly from match goals — single source of truth
         const topScorers = calculateTopScorers(matches);
 
-        setMatchesData({
+        const newMatchesData: SeasonMatchData = {
           season: CURRENT_SEASON,
           matches,
-        });
-
-        setGoalsData({
+        };
+        const newGoalsData: SeasonGoalsData = {
           season: CURRENT_SEASON,
           topScorers,
-        });
+        };
+
+        footballCache = {
+          matchesData: newMatchesData,
+          goalsData: newGoalsData,
+          timestamp: Date.now(),
+        };
+
+        setMatchesData(newMatchesData);
+        setGoalsData(newGoalsData);
       } catch (err) {
         console.error(`Failed to load football data:`, err);
         setError(`Unable to load football data for ${CURRENT_SEASON} season`);

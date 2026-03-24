@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { getSupabaseClient } from "../../backend/index.js";
 import { DailySteps } from "../interfaces/DailySteps";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+function getSupabase() {
+  try {
+    return getSupabaseClient();
+  } catch {
+    return null;
+  }
+}
 
-const supabase =
-  supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
+const supabase = getSupabase();
 
 interface UseDailyStepsOptions {
   limit?: number;
@@ -49,7 +53,7 @@ export function useDailySteps(
 
       let query = supabase
         .from("daily_steps")
-        .select("*")
+        .select("date,steps,goal,distance,calories,floors,active_minutes")
         .order("date", { ascending: false })
         .limit(limit);
 

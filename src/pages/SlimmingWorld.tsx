@@ -4,9 +4,13 @@ import { BackToTop } from "../components/global/BackToTop";
 import { WeightSummaryCard } from "../components/sw/WeightSummaryCard";
 import { WeightHistoryGrid } from "../components/sw/WeightHistoryGrid";
 import { WeightProgressChart } from "../components/sw/WeightProgressChart";
-import { getSupabaseClient } from "../../backend/index.js";
-import { createDatabaseService } from "../../backend/index.js";
+import {
+  getSupabaseClient,
+  createDatabaseService,
+} from "../../backend/index.js";
 import type { SwDataPoint } from "../interfaces/swTypes";
+
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
 interface SlimmingWorldData {
   startDate: string;
@@ -14,6 +18,13 @@ interface SlimmingWorldData {
   targetWeight: number;
   data: SwDataPoint[];
 }
+
+interface SwCache {
+  data: SlimmingWorldData;
+  timestamp: number;
+}
+
+let swCache: SwCache | null = null;
 
 /**
  * Convert YYYY-MM-DD date format to DD/MM/YYYY
@@ -30,6 +41,13 @@ export const SlimmingWorld = () => {
 
   useEffect(() => {
     async function fetchSlimmingWorldData() {
+      // Serve from cache if fresh
+      if (swCache && Date.now() - swCache.timestamp < CACHE_TTL) {
+        setSwData(swCache.data);
+        setLoading(false);
+        return;
+      }
+
       try {
         const supabase = getSupabaseClient();
         const db = createDatabaseService(supabase);
@@ -60,6 +78,7 @@ export const SlimmingWorld = () => {
         };
 
         setSwData(transformedData);
+        swCache = { data: transformedData, timestamp: Date.now() };
       } catch (err) {
         console.error("Error fetching Slimming World data:", err);
         setError("Failed to load Slimming World data. Please try again later.");
