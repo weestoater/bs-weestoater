@@ -72,7 +72,7 @@ main {
     background: var(--theme-card-header-bg);
     border: 1px solid var(--theme-border);
     border-radius: 0.5rem;
-    color: $chuck;
+    color: var(--theme-card-header-color);
     font-family: "Gabriela", serif;
     padding: 1rem 2rem 0.25rem;
     margin: 0 0 1rem;

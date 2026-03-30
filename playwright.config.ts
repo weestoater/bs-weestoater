@@ -33,5 +33,10 @@ export default defineConfig({
     //   use: { ...devices["Desktop Safari"] },
     // },
   ],
-  /* When running tests with an already running dev server, we don't need the webServer config */
+  webServer: {
+    command: "npm run dev",
+    url: "http://localhost:3000",
+    reuseExistingServer: !process.env.CI,
+    timeout: 120 * 1000,
+  },
 });
