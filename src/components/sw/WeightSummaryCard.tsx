@@ -33,7 +33,10 @@ export const WeightSummaryCard = (props: WeightSummaryCardProps) => {
 
   return (
     <div className="card">
-      <div className="card-header">Slimming World details</div>
+      <div className="card-header">
+        <i className="bi bi-graph-down-arrow me-2" aria-hidden="true"></i>
+        Slimming World details
+      </div>
       <div className="card-body">
         <p>
           <span aria-hidden="true">📅 </span>Joined: <strong>{joinDate}</strong>
