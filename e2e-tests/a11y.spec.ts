@@ -7,6 +7,7 @@ const pages = [
   { name: "About", url: "/#/about" },
   { name: "A11y", url: "/#/a11y" },
   { name: "Agile", url: "/#/agile" },
+  { name: "Books", url: "/#/books" },
   { name: "Football", url: "/#/football" },
   { name: "React", url: "/#/react" },
   { name: "Landie", url: "/#/landie" },
