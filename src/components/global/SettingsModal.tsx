@@ -15,7 +15,7 @@ const SETTINGS_KEY = "weestoater:settings";
 export interface UserSettings {
   font: "default" | "calibri" | "ubuntu" | "dyslexic";
   fontSize: "smaller" | "medium" | "large" | "huge";
-  theme: "light" | "dark" | "high-contrast";
+  theme: "light" | "dark" | "high-contrast" | "gov-uk";
 }
 
 const defaultSettings: UserSettings = {
@@ -27,7 +27,7 @@ const defaultSettings: UserSettings = {
 interface SettingsModalProps {
   isOpen: boolean;
   toggle: () => void;
-  onThemeChange: (theme: "light" | "dark" | "high-contrast") => void;
+  onThemeChange: (theme: "light" | "dark" | "high-contrast" | "gov-uk") => void;
 }
 
 export const SettingsModal = ({
@@ -261,6 +261,19 @@ export const SettingsModal = ({
               <Label check for="themeHighContrast">
                 <i className="bi bi-circle-half me-2" aria-hidden="true"></i>
                 High Contrast
+              </Label>
+            </FormGroup>
+            <FormGroup check className="mb-0">
+              <Input
+                type="radio"
+                name="theme"
+                id="themeGovUk"
+                checked={settings.theme === "gov-uk"}
+                onChange={() => handleThemeChange("gov-uk")}
+              />
+              <Label check for="themeGovUk">
+                <i className="bi bi-bank me-2" aria-hidden="true"></i>
+                GOV.UK
               </Label>
             </FormGroup>
           </div>

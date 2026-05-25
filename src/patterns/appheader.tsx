@@ -28,7 +28,9 @@ export const Header = () => {
   const closeMenu = () => setIsOpen(false);
   const toggleSettings = () => setSettingsOpen(!settingsOpen);
 
-  const handleThemeChange = (newTheme: "light" | "dark" | "high-contrast") => {
+  const handleThemeChange = (
+    newTheme: "light" | "dark" | "high-contrast" | "gov-uk",
+  ) => {
     if (newTheme === "high-contrast") {
       document.documentElement.setAttribute("data-theme", "dark");
       document.documentElement.setAttribute("data-high-contrast", "true");
