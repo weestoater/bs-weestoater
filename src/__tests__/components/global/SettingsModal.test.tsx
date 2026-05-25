@@ -17,7 +17,7 @@ describe("SettingsModal", () => {
         isOpen={true}
         toggle={mockToggle}
         onThemeChange={mockOnThemeChange}
-      />
+      />,
     );
 
     expect(screen.getByText("Settings")).toBeInTheDocument();
@@ -32,7 +32,7 @@ describe("SettingsModal", () => {
         isOpen={true}
         toggle={mockToggle}
         onThemeChange={mockOnThemeChange}
-      />
+      />,
     );
 
     const buttons = screen.getAllByText("Default");
@@ -48,7 +48,7 @@ describe("SettingsModal", () => {
         isOpen={true}
         toggle={mockToggle}
         onThemeChange={mockOnThemeChange}
-      />
+      />,
     );
 
     expect(screen.getByText("Smaller")).toBeInTheDocument();
@@ -64,7 +64,7 @@ describe("SettingsModal", () => {
         isOpen={true}
         toggle={mockToggle}
         onThemeChange={mockOnThemeChange}
-      />
+      />,
     );
 
     const dyslexicButton = screen.getByText("Dyslexic");
@@ -79,7 +79,7 @@ describe("SettingsModal", () => {
         isOpen={true}
         toggle={mockToggle}
         onThemeChange={mockOnThemeChange}
-      />
+      />,
     );
 
     const largerButton = screen.getByText("Larger");
@@ -94,12 +94,13 @@ describe("SettingsModal", () => {
         isOpen={true}
         toggle={mockToggle}
         onThemeChange={mockOnThemeChange}
-      />
+      />,
     );
 
     expect(screen.getByText("Light")).toBeInTheDocument();
     expect(screen.getByText("Dark")).toBeInTheDocument();
     expect(screen.getByText("High Contrast")).toBeInTheDocument();
+    expect(screen.getByText("GOV.UK")).toBeInTheDocument();
   });
 
   it("resets to defaults when reset button is clicked", () => {
@@ -108,7 +109,7 @@ describe("SettingsModal", () => {
         isOpen={true}
         toggle={mockToggle}
         onThemeChange={mockOnThemeChange}
-      />
+      />,
     );
 
     const resetButton = screen.getByText("Reset to defaults");
@@ -123,7 +124,7 @@ describe("SettingsModal", () => {
         isOpen={true}
         toggle={mockToggle}
         onThemeChange={mockOnThemeChange}
-      />
+      />,
     );
 
     const doneButton = screen.getByText("Done");
@@ -138,11 +139,11 @@ describe("SettingsModal", () => {
         isOpen={true}
         toggle={mockToggle}
         onThemeChange={mockOnThemeChange}
-      />
+      />,
     );
 
     expect(
-      screen.getByText(/Settings are saved automatically/i)
+      screen.getByText(/Settings are saved automatically/i),
     ).toBeInTheDocument();
   });
 
@@ -152,10 +153,23 @@ describe("SettingsModal", () => {
         isOpen={true}
         toggle={mockToggle}
         onThemeChange={mockOnThemeChange}
-      />
+      />,
     );
 
     // High contrast radio button should be visible
     expect(screen.getByLabelText(/High Contrast/i)).toBeInTheDocument();
+  });
+
+  it("shows GOV.UK theme option", () => {
+    render(
+      <SettingsModal
+        isOpen={true}
+        toggle={mockToggle}
+        onThemeChange={mockOnThemeChange}
+      />,
+    );
+
+    // GOV.UK radio button should be visible
+    expect(screen.getByLabelText(/GOV.UK/i)).toBeInTheDocument();
   });
 });
