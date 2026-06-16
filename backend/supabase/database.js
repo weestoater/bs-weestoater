@@ -528,9 +528,24 @@ export function createDatabaseService(supabaseClient) {
   async function getSlimmingWorldEntries(profileId, options = {}) {
     const { limit, orderBy = "entry_date", ascending = true } = options;
 
+    // Fetch entries with calculated target weight based on history
+    // Using RPC to call get_target_weight_for_date for each entry
     let query = supabaseClient
       .from("slimming_world_entries")
-      .select("*")
+      .select(
+        `
+        id,
+        profile_id,
+        entry_date,
+        weight,
+        weight_change,
+        total_lost,
+        slimmer_of_week,
+        notes,
+        created_at,
+        updated_at
+      `,
+      )
       .eq("profile_id", profileId)
       .order(orderBy, { ascending });
 
@@ -545,7 +560,26 @@ export function createDatabaseService(supabaseClient) {
       throw error;
     }
 
-    return data;
+    // For each entry, calculate the target weight that was active on that date
+    const entriesWithTargets = await Promise.all(
+      (data || []).map(async (entry) => {
+        const { data: targetWeight, error: targetError } =
+          await supabaseClient.rpc("get_target_weight_for_date", {
+            p_profile_id: profileId,
+            p_entry_date: entry.entry_date,
+          });
+
+        if (targetError) {
+          console.error("Error calculating target weight:", targetError);
+          // Fallback to null if function fails
+          return { ...entry, target_weight: null };
+        }
+
+        return { ...entry, target_weight: targetWeight };
+      }),
+    );
+
+    return entriesWithTargets;
   }
 
   /**
