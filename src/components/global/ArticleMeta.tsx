@@ -32,7 +32,7 @@ export const ArticleMeta = ({ metadata }: ArticleMetaProps) => {
         month: "short",
         day: "numeric",
       });
-    } catch (e) {
+    } catch {
       return iso;
     }
   };

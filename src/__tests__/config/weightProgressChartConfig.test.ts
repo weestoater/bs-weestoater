@@ -69,7 +69,7 @@ describe("Weight Progress Chart Configuration", () => {
   });
 
   test("axes are properly configured", () => {
-    const axes = config.axes as any;
+    const axes = config.axes as Record<string, unknown>;
     expect(axes).toBeDefined();
     expect(Object.keys(axes)).toHaveLength(3); // category, left, and right axes
 

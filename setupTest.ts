@@ -4,11 +4,15 @@ import { cleanup } from "@testing-library/react";
 import type { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
 
 // Extend vitest's expect with @testing-library/jest-dom matchers
-interface CustomMatchers<R = unknown>
-  extends TestingLibraryMatchers<typeof expect.stringContaining, R> {}
+type CustomMatchers<R = unknown> = TestingLibraryMatchers<
+  typeof expect.stringContaining,
+  R
+>;
 
 declare module "vitest" {
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface Assertion extends CustomMatchers {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface AsymmetricMatchersContaining extends CustomMatchers {}
 }
 

@@ -27,7 +27,7 @@ test.describe("Accessibility Tests for All Pages", () => {
       await page.waitForLoadState("networkidle", { timeout: 10000 });
       await page.waitForSelector("h1", { state: "visible", timeout: 5000 });
       await page.waitForTimeout(2000); // Additional wait for components to render
-    } catch (error) {
+    } catch {
       console.log("Warning: Page load timeout, continuing with test...");
     }
   }

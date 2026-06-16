@@ -56,22 +56,22 @@ export const FootballPage = () => {
         }
 
         // Transform matches to match expected format
-        const matches = seasonData.matches.map((match: any) => ({
+        const matches = seasonData.matches.map((match) => ({
           date: match.match_date,
           opposition: match.opposition,
           venue: match.venue,
-          scored: match.goals_scored,
-          conceded: match.goals_conceded,
-          league: match.league,
-          video: match.video_url,
-          iplayer: match.iplayer_url,
-          notes: match.notes,
-          goals: match.goals.map((g: any) => ({
+          scored: match.goals_scored ?? undefined,
+          conceded: match.goals_conceded ?? undefined,
+          league: match.league ?? undefined,
+          video: match.video_url ?? undefined,
+          iplayer: match.iplayer_url ?? undefined,
+          notes: match.notes ?? undefined,
+          goals: match.goals.map((g) => ({
             player: g.player,
             mins: g.minute,
-            assist: g.assist,
+            assist: g.assist ?? undefined,
           })),
-          cards: match.cards.map((c: any) => ({
+          cards: match.cards.map((c) => ({
             player: c.player,
             type: c.card_type,
             minute: c.minute,

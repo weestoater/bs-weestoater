@@ -72,15 +72,26 @@ export function useDailySteps(
       }
 
       // Transform database format to match DailySteps interface
-      const transformedSteps: DailySteps[] = (data || []).map((item: any) => ({
-        date: item.date,
-        steps: item.steps,
-        goal: item.goal,
-        distance: item.distance,
-        calories: item.calories,
-        floors: item.floors,
-        activeMinutes: item.active_minutes,
-      }));
+      type RawStepsRow = {
+        date: string;
+        steps: number;
+        goal: number;
+        distance: number;
+        calories: number;
+        floors: number;
+        active_minutes: number;
+      };
+      const transformedSteps: DailySteps[] = (data || []).map(
+        (item: RawStepsRow) => ({
+          date: item.date,
+          steps: item.steps,
+          goal: item.goal,
+          distance: item.distance,
+          calories: item.calories,
+          floors: item.floors,
+          activeMinutes: item.active_minutes,
+        }),
+      );
 
       setDailySteps(transformedSteps);
     } catch (err) {
@@ -95,6 +106,7 @@ export function useDailySteps(
 
   useEffect(() => {
     fetchDailySteps();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [limit, startDate, endDate]);
 
   return {
