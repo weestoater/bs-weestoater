@@ -728,6 +728,145 @@ export function createDatabaseService(supabaseClient) {
   }
 
   // ============================================================================
+  // SLIMMING WORLD TARGET WEIGHT HISTORY OPERATIONS
+  // ============================================================================
+
+  /**
+   * Get all target weight history entries for a profile
+   * @param {string} profileId - Profile UUID
+   * @param {Object} options - Query options
+   * @param {string} [options.orderBy='effective_date'] - Field to order by
+   * @param {boolean} [options.ascending=false] - Sort order
+   * @returns {Promise<Array>} Array of target weight history entries
+   */
+  async function getTargetWeightHistory(profileId, options = {}) {
+    const { orderBy = "effective_date", ascending = false } = options;
+
+    const { data, error } = await supabaseClient
+      .from("slimming_world_target_weights")
+      .select("*")
+      .eq("profile_id", profileId)
+      .order(orderBy, { ascending });
+
+    if (error) {
+      console.error("Error fetching target weight history:", error);
+      throw error;
+    }
+
+    return data || [];
+  }
+
+  /**
+   * Get the current (most recent) target weight for a profile
+   * @param {string} profileId - Profile UUID
+   * @returns {Promise<Object|null>} Most recent target weight entry or null
+   */
+  async function getCurrentTargetWeight(profileId) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_target_weights")
+      .select("*")
+      .eq("profile_id", profileId)
+      .order("effective_date", { ascending: false })
+      .limit(1)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        return null;
+      }
+      console.error("Error fetching current target weight:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Get the target weight that was active on a specific date
+   * Uses the database function for accurate historical lookup
+   * @param {string} profileId - Profile UUID
+   * @param {string} entryDate - Date to check (YYYY-MM-DD)
+   * @returns {Promise<number>} Target weight value in lbs
+   */
+  async function getTargetWeightForDate(profileId, entryDate) {
+    const { data, error } = await supabaseClient.rpc(
+      "get_target_weight_for_date",
+      {
+        p_profile_id: profileId,
+        p_entry_date: entryDate,
+      },
+    );
+
+    if (error) {
+      console.error("Error getting target weight for date:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a new target weight entry
+   * @param {Object} targetWeightData
+   * @param {string} targetWeightData.profile_id - Profile UUID
+   * @param {number} targetWeightData.target_weight - New target weight in lbs
+   * @param {string} targetWeightData.effective_date - Date from which this target applies (YYYY-MM-DD)
+   * @param {string} [targetWeightData.notes] - Optional reason for change
+   * @returns {Promise<Object>} The created target weight entry
+   */
+  async function createTargetWeight(targetWeightData) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_target_weights")
+      .insert([targetWeightData])
+      .select();
+
+    if (error) {
+      console.error("Error creating target weight:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Update an existing target weight entry
+   * @param {string} id - Target weight entry ID
+   * @param {Object} targetWeightData - Fields to update
+   * @returns {Promise<Object>} The updated target weight entry
+   */
+  async function updateTargetWeight(id, targetWeightData) {
+    const { data, error } = await supabaseClient
+      .from("slimming_world_target_weights")
+      .update(targetWeightData)
+      .eq("id", id)
+      .select();
+
+    if (error) {
+      console.error("Error updating target weight:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Delete a target weight entry
+   * @param {string} id - Target weight entry ID
+   * @returns {Promise<void>}
+   */
+  async function deleteTargetWeight(id) {
+    const { error } = await supabaseClient
+      .from("slimming_world_target_weights")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      console.error("Error deleting target weight:", error);
+      throw error;
+    }
+  }
+
+  // ============================================================================
   // FOOTBALL OPERATIONS
   // ============================================================================
 
@@ -1439,6 +1578,13 @@ export function createDatabaseService(supabaseClient) {
     bulkInsertSlimmingWorldEntries,
     getSlimmingWorldProfileWithEntries,
     getSlimmingWorldProfileStats,
+    // Slimming World Target Weights
+    getTargetWeightHistory,
+    getCurrentTargetWeight,
+    getTargetWeightForDate,
+    createTargetWeight,
+    updateTargetWeight,
+    deleteTargetWeight,
     // Football
     getFootballSeasons,
     getFootballSeasonById,

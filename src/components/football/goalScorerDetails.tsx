@@ -68,7 +68,15 @@ export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
           },
           tooltip: {
             enabled: true,
-            renderer: ({ datum, xKey, yKey }: { datum: any; xKey: string; yKey: string }) => {
+            renderer: ({
+              datum,
+              xKey,
+              yKey,
+            }: {
+              datum: Record<string, unknown>;
+              xKey: string;
+              yKey: string;
+            }) => {
               return {
                 content: `<div style="background:#fff;border:2px solid #111;padding:8px 16px;border-radius:6px;font-weight:bold;color:#111;min-width:60px;text-align:center;">${datum[xKey]}<br/>${datum[yKey]}</div>`,
               };
@@ -88,7 +96,15 @@ export const GoalScorerDetails = memo((props: GoalScorerDetailsProps) => {
           },
           tooltip: {
             enabled: true,
-            renderer: ({ datum, xKey, yKey }: { datum: any; xKey: string; yKey: string }) => {
+            renderer: ({
+              datum,
+              xKey,
+              yKey,
+            }: {
+              datum: Record<string, unknown>;
+              xKey: string;
+              yKey: string;
+            }) => {
               return {
                 content: `<div style="background:#fff;border:2px solid #111;padding:8px 16px;border-radius:6px;font-weight:bold;color:#111;min-width:60px;text-align:center;">${datum[xKey]}<br/>${datum[yKey]}</div>`,
               };

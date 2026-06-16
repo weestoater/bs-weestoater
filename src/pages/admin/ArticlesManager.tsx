@@ -58,6 +58,7 @@ export const ArticlesManager = () => {
 
   useEffect(() => {
     loadArticles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterCategory]);
 
   const handleDelete = async (id: string, title: string) => {

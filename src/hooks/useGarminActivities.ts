@@ -69,11 +69,26 @@ export function useGarminActivities(
       }
 
       // Transform database format to match GarminActivity interface
+      type RawActivityRow = {
+        id: string;
+        date: string;
+        type: string;
+        distance: string;
+        duration: number;
+        calories: number;
+        average_heart_rate: number;
+        max_heart_rate: number;
+        average_pace: string | null;
+        elevation: number;
+        steps: number;
+        notes: string | null;
+        gps_data: unknown;
+      };
       const transformedActivities: GarminActivity[] = (data || []).map(
-        (item: any) => ({
+        (item: RawActivityRow) => ({
           id: item.id,
           date: item.date,
-          type: item.type,
+          type: item.type as GarminActivity["type"],
           distance: parseFloat(item.distance),
           duration: item.duration,
           calories: item.calories,
@@ -84,8 +99,8 @@ export function useGarminActivities(
             : undefined,
           elevation: item.elevation,
           steps: item.steps,
-          notes: item.notes,
-          gpsData: item.gps_data,
+          notes: item.notes ?? undefined,
+          gpsData: item.gps_data ?? undefined,
         }),
       );
 
@@ -102,6 +117,7 @@ export function useGarminActivities(
 
   useEffect(() => {
     fetchActivities();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [limit, type]);
 
   return {
@@ -116,7 +132,7 @@ export function useGarminActivities(
  * Hook to fetch activity summary statistics
  */
 export function useGarminActivityStats() {
-  const [stats, setStats] = useState<any>(null);
+  const [stats, setStats] = useState<unknown>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 

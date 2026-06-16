@@ -24,6 +24,16 @@ interface Profile {
   target_weight: number;
 }
 
+interface TargetWeightEntry {
+  id: string;
+  profile_id: string;
+  target_weight: number;
+  effective_date: string;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 export const SlimmingWorldManager = () => {
   useSEO({
     title: "Manage Slimming World Data",
@@ -32,9 +42,11 @@ export const SlimmingWorldManager = () => {
 
   const [profile, setProfile] = useState<Profile | null>(null);
   const [entries, setEntries] = useState<WeighInEntry[]>([]);
+  const [targetWeights, setTargetWeights] = useState<TargetWeightEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showAddForm, setShowAddForm] = useState(false);
+  const [showTargetWeightForm, setShowTargetWeightForm] = useState(false);
   const [editingEntry, setEditingEntry] = useState<WeighInEntry | null>(null);
 
   // Form state
@@ -44,6 +56,13 @@ export const SlimmingWorldManager = () => {
     weight_change: "",
     notes: "",
     slimmer_of_week: false,
+  });
+
+  // Target weight form state
+  const [targetWeightFormData, setTargetWeightFormData] = useState({
+    target_weight: "",
+    effective_date: new Date().toISOString().split("T")[0],
+    notes: "",
   });
 
   const loadData = async () => {
@@ -68,6 +87,16 @@ export const SlimmingWorldManager = () => {
         ascending: false,
       });
       setEntries(entriesData || []);
+
+      // Load target weight history
+      const targetWeightsData = await db.getTargetWeightHistory(
+        profileData.id,
+        {
+          orderBy: "effective_date",
+          ascending: false,
+        },
+      );
+      setTargetWeights(targetWeightsData || []);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load data");
     } finally {
@@ -95,13 +124,19 @@ export const SlimmingWorldManager = () => {
       // Calculate total lost from start weight
       const totalLost = profile.start_weight - weight;
 
+      // Get the target weight that was active on the entry date
+      const targetWeight = await db.getTargetWeightForDate(
+        profile.id,
+        formData.entry_date,
+      );
+
       const entryData = {
         profile_id: profile.id,
         entry_date: formData.entry_date,
         weight: weight,
         weight_change: weightChange,
         total_lost: totalLost,
-        target_weight: profile.target_weight,
+        target_weight: targetWeight,
         slimmer_of_week: formData.slimmer_of_week ? 100 : null,
         notes: formData.notes || null,
       };
@@ -158,6 +193,64 @@ export const SlimmingWorldManager = () => {
     } catch (err) {
       alert(
         `Failed to delete entry: ${
+          err instanceof Error ? err.message : "Unknown error"
+        }`,
+      );
+    }
+  };
+
+  const handleTargetWeightSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!profile) return;
+
+    try {
+      const client = getSupabaseClient();
+      const db = createDatabaseService(client);
+
+      const targetWeight = parseFloat(targetWeightFormData.target_weight);
+
+      const targetWeightData = {
+        profile_id: profile.id,
+        target_weight: targetWeight,
+        effective_date: targetWeightFormData.effective_date,
+        notes: targetWeightFormData.notes || null,
+      };
+
+      await db.createTargetWeight(targetWeightData);
+
+      // Reset form and reload data
+      setTargetWeightFormData({
+        target_weight: "",
+        effective_date: new Date().toISOString().split("T")[0],
+        notes: "",
+      });
+      setShowTargetWeightForm(false);
+      await loadData();
+    } catch (err) {
+      alert(
+        `Failed to save target weight: ${
+          err instanceof Error ? err.message : "Unknown error"
+        }`,
+      );
+    }
+  };
+
+  const handleDeleteTargetWeight = async (id: string, date: string) => {
+    if (
+      !confirm(
+        `Are you sure you want to delete the target weight from ${date}?`,
+      )
+    )
+      return;
+
+    try {
+      const client = getSupabaseClient();
+      const db = createDatabaseService(client);
+      await db.deleteTargetWeight(id);
+      await loadData();
+    } catch (err) {
+      alert(
+        `Failed to delete target weight: ${
           err instanceof Error ? err.message : "Unknown error"
         }`,
       );
@@ -257,8 +350,10 @@ export const SlimmingWorldManager = () => {
                     {formatWeight(profile.start_weight)}
                   </div>
                   <div className="col-md-3">
-                    <strong>Target Weight:</strong>{" "}
-                    {formatWeight(profile.target_weight)}
+                    <strong>Current Target:</strong>{" "}
+                    {targetWeights.length > 0
+                      ? formatWeight(targetWeights[0].target_weight)
+                      : formatWeight(profile.target_weight)}
                   </div>
                   <div className="col-md-3">
                     <strong>Total Entries:</strong> {entries.length}
@@ -278,7 +373,12 @@ export const SlimmingWorldManager = () => {
                     </div>
                     <div className="col-md-3">
                       <strong>Remaining:</strong>{" "}
-                      {(entries[0].weight - profile.target_weight).toFixed(1)}{" "}
+                      {(
+                        entries[0].weight -
+                        (targetWeights.length > 0
+                          ? targetWeights[0].target_weight
+                          : profile.target_weight)
+                      ).toFixed(1)}{" "}
                       lbs
                     </div>
                     <div className="col-md-3">
@@ -292,6 +392,180 @@ export const SlimmingWorldManager = () => {
           </div>
         </div>
       )}
+
+      {/* Target Weight Management */}
+      <div className="row mb-4">
+        <div className="col-12">
+          <div className="card">
+            <div className="card-body">
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <h5 className="card-title mb-0">
+                  <i className="bi bi-bullseye me-2"></i>
+                  Target Weight History
+                </h5>
+                <button
+                  className="btn btn-sm btn-primary"
+                  onClick={() => {
+                    setShowTargetWeightForm(!showTargetWeightForm);
+                    setTargetWeightFormData({
+                      target_weight: "",
+                      effective_date: new Date().toISOString().split("T")[0],
+                      notes: "",
+                    });
+                  }}
+                >
+                  <i className="bi bi-plus-lg me-1"></i>
+                  Set New Target
+                </button>
+              </div>
+
+              {showTargetWeightForm && (
+                <div className="card bg-light mb-3">
+                  <div className="card-body">
+                    <h6 className="card-subtitle mb-3">
+                      Set New Target Weight
+                    </h6>
+                    <form onSubmit={handleTargetWeightSubmit}>
+                      <div className="row">
+                        <div className="col-md-4 mb-3">
+                          <label htmlFor="target_weight" className="form-label">
+                            New Target Weight (lbs) *
+                          </label>
+                          <input
+                            type="number"
+                            step="0.1"
+                            className="form-control"
+                            id="target_weight"
+                            required
+                            value={targetWeightFormData.target_weight}
+                            onChange={(e) =>
+                              setTargetWeightFormData({
+                                ...targetWeightFormData,
+                                target_weight: e.target.value,
+                              })
+                            }
+                          />
+                        </div>
+                        <div className="col-md-4 mb-3">
+                          <label
+                            htmlFor="target_effective_date"
+                            className="form-label"
+                          >
+                            Effective From Date *
+                          </label>
+                          <input
+                            type="date"
+                            className="form-control"
+                            id="target_effective_date"
+                            required
+                            value={targetWeightFormData.effective_date}
+                            onChange={(e) =>
+                              setTargetWeightFormData({
+                                ...targetWeightFormData,
+                                effective_date: e.target.value,
+                              })
+                            }
+                          />
+                          <small className="text-muted">
+                            This target applies from this date forward
+                          </small>
+                        </div>
+                        <div className="col-md-4 mb-3">
+                          <label htmlFor="target_notes" className="form-label">
+                            Reason (optional)
+                          </label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="target_notes"
+                            value={targetWeightFormData.notes}
+                            onChange={(e) =>
+                              setTargetWeightFormData({
+                                ...targetWeightFormData,
+                                notes: e.target.value,
+                              })
+                            }
+                            placeholder="e.g., Adjusted goal"
+                          />
+                        </div>
+                      </div>
+                      <div className="d-flex gap-2">
+                        <button type="submit" className="btn btn-primary">
+                          <i className="bi bi-check-lg me-1"></i>
+                          Save Target Weight
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-secondary"
+                          onClick={() => setShowTargetWeightForm(false)}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              )}
+
+              {targetWeights.length === 0 ? (
+                <div className="alert alert-info">
+                  <i className="bi bi-info-circle me-2"></i>
+                  No target weight changes recorded yet. Your initial target
+                  will be migrated automatically.
+                </div>
+              ) : (
+                <div className="table-responsive">
+                  <table className="table table-sm">
+                    <thead>
+                      <tr>
+                        <th>Effective Date</th>
+                        <th>Target Weight</th>
+                        <th>Notes</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {targetWeights.map((tw, index) => (
+                        <tr key={tw.id}>
+                          <td>
+                            {formatDate(tw.effective_date)}
+                            {index === 0 && (
+                              <span className="badge bg-success ms-2">
+                                Current
+                              </span>
+                            )}
+                          </td>
+                          <td>{formatWeight(tw.target_weight)}</td>
+                          <td>
+                            {tw.notes || (
+                              <em className="text-muted">No notes</em>
+                            )}
+                          </td>
+                          <td>
+                            <button
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={() =>
+                                handleDeleteTargetWeight(
+                                  tw.id,
+                                  tw.effective_date,
+                                )
+                              }
+                              title="Delete"
+                              disabled={targetWeights.length === 1}
+                            >
+                              <i className="bi bi-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Add/Edit Form */}
       {showAddForm && (

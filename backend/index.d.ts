@@ -7,7 +7,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 export interface SupabaseConfig {
   url: string;
   anonKey: string;
-  options?: Record<string, any>;
+  options?: Record<string, unknown>;
 }
 
 export interface Book {
@@ -72,6 +72,16 @@ export interface SlimmingWorldEntry {
 
 export interface SlimmingWorldProfileWithEntries extends SlimmingWorldProfile {
   entries: SlimmingWorldEntry[];
+}
+
+export interface SlimmingWorldTargetWeight {
+  id: string;
+  profile_id: string;
+  target_weight: number;
+  effective_date: string;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface SlimmingWorldProfileStats {
@@ -223,6 +233,24 @@ export interface DatabaseService {
   getSlimmingWorldProfileStats(
     userId: string,
   ): Promise<SlimmingWorldProfileStats | null>;
+
+  // Slimming World Target Weight methods
+  getTargetWeightHistory(
+    profileId: string,
+    options?: { orderBy?: string; ascending?: boolean },
+  ): Promise<SlimmingWorldTargetWeight[]>;
+  getCurrentTargetWeight(
+    profileId: string,
+  ): Promise<SlimmingWorldTargetWeight | null>;
+  getTargetWeightForDate(profileId: string, entryDate: string): Promise<number>;
+  createTargetWeight(
+    targetWeightData: Partial<SlimmingWorldTargetWeight>,
+  ): Promise<SlimmingWorldTargetWeight>;
+  updateTargetWeight(
+    id: string,
+    targetWeightData: Partial<SlimmingWorldTargetWeight>,
+  ): Promise<SlimmingWorldTargetWeight>;
+  deleteTargetWeight(id: string): Promise<void>;
 
   // Football methods
   getFootballSeasons(options?: {

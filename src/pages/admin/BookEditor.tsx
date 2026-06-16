@@ -35,6 +35,7 @@ export const BookEditor = () => {
     if (isEdit) {
       loadBook();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const loadBook = async () => {

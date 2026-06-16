@@ -60,12 +60,18 @@ export const SlimmingWorld = () => {
           throw new Error("No Slimming World profile found");
         }
 
+        // Get the current target weight from history
+        const currentTarget = await db.getCurrentTargetWeight(profileData.id);
+        const targetWeight = currentTarget
+          ? currentTarget.target_weight
+          : profileData.target_weight;
+
         // Transform database data to match expected format
         const transformedData: SlimmingWorldData = {
           startDate: convertDateToDisplay(profileData.start_date),
           startWeight: Number(profileData.start_weight),
-          targetWeight: Number(profileData.target_weight),
-          data: profileData.entries.map((entry: any) => ({
+          targetWeight: Number(targetWeight),
+          data: profileData.entries.map((entry) => ({
             date: convertDateToDisplay(entry.entry_date),
             weight: Number(entry.weight),
             change: Number(entry.weight_change),

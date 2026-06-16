@@ -8,8 +8,14 @@ import { getSupabaseClient } from "../../backend/index.js";
  * @param bucket - Optional bucket name (default: 'images')
  * @returns Promise resolving to the public URL of the uploaded image
  */
+interface TinyMCEBlobInfo {
+  blob: () => Blob;
+  filename: () => string;
+  base64?: () => string;
+}
+
 export const tinymceImageUploadHandler = async (
-  blobInfo: any,
+  blobInfo: TinyMCEBlobInfo,
   progress: (percent: number) => void,
   folder: string = "editor",
   bucket: string = "images",
@@ -85,8 +91,10 @@ export const createTinyMCEConfig = (folder: string = "editor") => ({
     "removeformat | link image | code | help",
   content_style:
     "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-  images_upload_handler: (blobInfo: any, progress: (percent: number) => void) =>
-    tinymceImageUploadHandler(blobInfo, progress, folder),
+  images_upload_handler: (
+    blobInfo: TinyMCEBlobInfo,
+    progress: (percent: number) => void,
+  ) => tinymceImageUploadHandler(blobInfo, progress, folder),
   automatic_uploads: true,
   file_picker_types: "image",
   image_title: true,
