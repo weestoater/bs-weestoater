@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { BackToTop } from "../components/global/BackToTop";
 import { WeightSummaryCard } from "../components/sw/WeightSummaryCard";
@@ -8,6 +7,7 @@ import {
   getSupabaseClient,
   createDatabaseService,
 } from "../../backend/index.js";
+import { useDataFetch } from "../hooks/useDataFetch";
 import type { SwDataPoint } from "../interfaces/swTypes";
 
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
@@ -19,13 +19,6 @@ interface SlimmingWorldData {
   data: SwDataPoint[];
 }
 
-interface SwCache {
-  data: SlimmingWorldData;
-  timestamp: number;
-}
-
-let swCache: SwCache | null = null;
-
 /**
  * Convert YYYY-MM-DD date format to DD/MM/YYYY
  */
@@ -35,66 +28,48 @@ function convertDateToDisplay(dateStr: string): string {
 }
 
 export const SlimmingWorld = () => {
-  const [swData, setSwData] = useState<SlimmingWorldData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const {
+    data: swData,
+    loading,
+    error,
+  } = useDataFetch<SlimmingWorldData>(
+    async () => {
+      const supabase = getSupabaseClient();
+      const db = createDatabaseService(supabase);
 
-  useEffect(() => {
-    async function fetchSlimmingWorldData() {
-      // Serve from cache if fresh
-      if (swCache && Date.now() - swCache.timestamp < CACHE_TTL) {
-        setSwData(swCache.data);
-        setLoading(false);
-        return;
+      // Fetch profile with entries
+      const userId = "default"; // Default user ID
+      const profileData = await db.getSlimmingWorldProfileWithEntries(userId);
+
+      if (!profileData) {
+        throw new Error("No Slimming World profile found");
       }
 
-      try {
-        const supabase = getSupabaseClient();
-        const db = createDatabaseService(supabase);
+      // Get the current target weight from history
+      const currentTarget = await db.getCurrentTargetWeight(profileData.id);
+      const targetWeight = currentTarget
+        ? currentTarget.target_weight
+        : profileData.target_weight;
 
-        // Fetch profile with entries
-        const userId = "default"; // Default user ID
-        const profileData = await db.getSlimmingWorldProfileWithEntries(userId);
-
-        if (!profileData) {
-          throw new Error("No Slimming World profile found");
-        }
-
-        // Get the current target weight from history
-        const currentTarget = await db.getCurrentTargetWeight(profileData.id);
-        const targetWeight = currentTarget
-          ? currentTarget.target_weight
-          : profileData.target_weight;
-
-        // Transform database data to match expected format
-        const transformedData: SlimmingWorldData = {
-          startDate: convertDateToDisplay(profileData.start_date),
-          startWeight: Number(profileData.start_weight),
-          targetWeight: Number(targetWeight),
-          data: profileData.entries.map((entry) => ({
-            date: convertDateToDisplay(entry.entry_date),
-            weight: Number(entry.weight),
-            change: Number(entry.weight_change),
-            lost: Number(entry.total_lost),
-            target: Number(entry.target_weight),
-            sotw: entry.slimmer_of_week
-              ? Number(entry.slimmer_of_week)
-              : undefined,
-          })),
-        };
-
-        setSwData(transformedData);
-        swCache = { data: transformedData, timestamp: Date.now() };
-      } catch (err) {
-        console.error("Error fetching Slimming World data:", err);
-        setError("Failed to load Slimming World data. Please try again later.");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchSlimmingWorldData();
-  }, []);
+      // Transform database data to match expected format
+      return {
+        startDate: convertDateToDisplay(profileData.start_date),
+        startWeight: Number(profileData.start_weight),
+        targetWeight: Number(targetWeight),
+        data: profileData.entries.map((entry) => ({
+          date: convertDateToDisplay(entry.entry_date),
+          weight: Number(entry.weight),
+          change: Number(entry.weight_change),
+          lost: Number(entry.total_lost),
+          target: Number(entry.target_weight),
+          sotw: entry.slimmer_of_week
+            ? Number(entry.slimmer_of_week)
+            : undefined,
+        })),
+      };
+    },
+    { cacheTTL: CACHE_TTL, cacheKey: "slimming-world-data" },
+  );
 
   // Calculate total lost from most recent entry
   const totalLost =

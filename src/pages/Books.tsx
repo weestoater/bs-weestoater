@@ -1,32 +1,23 @@
-import { useEffect, useState } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { BackToTop } from "../components/global/BackToTop";
 import { getSupabaseClient } from "../../backend/index.js";
 import { createDatabaseService } from "../../backend/index.js";
+import { useDataFetch } from "../hooks/useDataFetch";
 import type { Book } from "../interfaces/Book";
 
 export const BooksPage = () => {
-  const [books, setBooks] = useState<Book[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function fetchBooks() {
-      try {
-        const supabase = getSupabaseClient();
-        const db = createDatabaseService(supabase);
-        const data = await db.getBooks();
-        setBooks(data);
-      } catch (err) {
-        console.error("Error fetching books:", err);
-        setError("Failed to load books. Please try again later.");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchBooks();
-  }, []);
+  const {
+    data: books,
+    loading,
+    error,
+  } = useDataFetch<Book[]>(
+    async () => {
+      const supabase = getSupabaseClient();
+      const db = createDatabaseService(supabase);
+      return await db.getBooks();
+    },
+    { initialData: [] },
+  );
 
   return (
     <>
@@ -58,7 +49,7 @@ export const BooksPage = () => {
 
       {!loading && !error && (
         <div className="row">
-          {books.map((book) => (
+          {books?.map((book) => (
             <div
               key={book.id}
               className="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4"

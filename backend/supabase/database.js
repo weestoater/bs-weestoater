@@ -4,12 +4,66 @@
  * This module can be used with any Supabase client instance
  */
 
+import { createCrudService } from "./crudService.js";
+
 /**
  * Creates database service with the provided Supabase client
  * @param {import('@supabase/supabase-js').SupabaseClient} supabaseClient
  * @returns {Object} Database service methods
  */
 export function createDatabaseService(supabaseClient) {
+  // Create CRUD service instances for simple tables
+  const booksCrud = createCrudService(supabaseClient, "books", {
+    orderByField: "order_index",
+    orderAscending: true,
+  });
+
+  const articlesCrud = createCrudService(supabaseClient, "articles", {
+    orderByField: "published_date",
+    orderAscending: false,
+  });
+
+  const swProfilesCrud = createCrudService(
+    supabaseClient,
+    "slimming_world_profiles",
+    {
+      orderByField: "created_at",
+      orderAscending: false,
+    },
+  );
+
+  const swEntriesCrud = createCrudService(
+    supabaseClient,
+    "slimming_world_entries",
+  );
+
+  const targetWeightsCrud = createCrudService(
+    supabaseClient,
+    "slimming_world_target_weights",
+    {
+      orderByField: "effective_date",
+      orderAscending: false,
+    },
+  );
+
+  const seasonsCrud = createCrudService(supabaseClient, "football_seasons", {
+    idField: "season_id",
+    orderByField: "season_id",
+    orderAscending: false,
+  });
+
+  const matchesCrud = createCrudService(supabaseClient, "football_matches", {
+    idField: "match_id",
+  });
+
+  const goalsCrud = createCrudService(supabaseClient, "football_match_goals", {
+    idField: "goal_id",
+  });
+
+  const cardsCrud = createCrudService(supabaseClient, "football_match_cards", {
+    idField: "card_id",
+  });
+
   // ============================================================================
   // BOOKS OPERATIONS
   // ============================================================================
@@ -23,23 +77,8 @@ export function createDatabaseService(supabaseClient) {
   async function getBooks(options = {}) {
     const { includeUnpublished = false } = options;
 
-    let query = supabaseClient
-      .from("books")
-      .select("*")
-      .order("order_index", { ascending: true });
-
-    if (!includeUnpublished) {
-      query = query.eq("published", true);
-    }
-
-    const { data, error } = await query;
-
-    if (error) {
-      console.error("Error fetching books:", error);
-      throw error;
-    }
-
-    return data;
+    const filters = includeUnpublished ? {} : { published: true };
+    return booksCrud.getAll({ filters });
   }
 
   /**
@@ -48,22 +87,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object|null>} Book object or null if not found
    */
   async function getBookById(id) {
-    const { data, error } = await supabaseClient
-      .from("books")
-      .select("*")
-      .eq("id", id)
-      .single();
-
-    if (error) {
-      if (error.code === "PGRST116") {
-        // Not found
-        return null;
-      }
-      console.error("Error fetching book:", error);
-      throw error;
-    }
-
-    return data;
+    return booksCrud.getById(id);
   }
 
   /**
@@ -79,28 +103,16 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The created book
    */
   async function createBook(bookData) {
-    const { data, error } = await supabaseClient
-      .from("books")
-      .insert([
-        {
-          id: bookData.id,
-          title: bookData.title,
-          author: bookData.author,
-          cover_image: bookData.cover_image,
-          description: bookData.description,
-          order_index: bookData.order_index || 0,
-          published:
-            bookData.published !== undefined ? bookData.published : true,
-        },
-      ])
-      .select();
-
-    if (error) {
-      console.error("Error creating book:", error);
-      throw error;
-    }
-
-    return data[0];
+    const bookToCreate = {
+      id: bookData.id,
+      title: bookData.title,
+      author: bookData.author,
+      cover_image: bookData.cover_image,
+      description: bookData.description,
+      order_index: bookData.order_index || 0,
+      published: bookData.published !== undefined ? bookData.published : true,
+    };
+    return booksCrud.create(bookToCreate);
   }
 
   /**
@@ -110,18 +122,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The updated book
    */
   async function updateBook(id, bookData) {
-    const { data, error } = await supabaseClient
-      .from("books")
-      .update(bookData)
-      .eq("id", id)
-      .select();
-
-    if (error) {
-      console.error("Error updating book:", error);
-      throw error;
-    }
-
-    return data[0];
+    return booksCrud.update(id, bookData);
   }
 
   /**
@@ -129,12 +130,7 @@ export function createDatabaseService(supabaseClient) {
    * @param {string} id - Book ID
    */
   async function deleteBook(id) {
-    const { error } = await supabaseClient.from("books").delete().eq("id", id);
-
-    if (error) {
-      console.error("Error deleting book:", error);
-      throw error;
-    }
+    return booksCrud.remove(id);
   }
 
   /**
@@ -143,17 +139,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Array>} Array of created book objects
    */
   async function bulkInsertBooks(books) {
-    const { data, error } = await supabaseClient
-      .from("books")
-      .insert(books)
-      .select();
-
-    if (error) {
-      console.error("Error bulk inserting books:", error);
-      throw error;
-    }
-
-    return data;
+    return booksCrud.bulkInsert(books);
   }
 
   /**
@@ -277,17 +263,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The created article
    */
   async function createArticle(articleData) {
-    const { data, error } = await supabaseClient
-      .from("articles")
-      .insert([articleData])
-      .select();
-
-    if (error) {
-      console.error("Error creating article:", error);
-      throw error;
-    }
-
-    return data[0];
+    return articlesCrud.create(articleData);
   }
 
   /**
@@ -297,18 +273,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The updated article
    */
   async function updateArticle(id, articleData) {
-    const { data, error } = await supabaseClient
-      .from("articles")
-      .update(articleData)
-      .eq("id", id)
-      .select();
-
-    if (error) {
-      console.error("Error updating article:", error);
-      throw error;
-    }
-
-    return data[0];
+    return articlesCrud.update(id, articleData);
   }
 
   /**
@@ -316,15 +281,7 @@ export function createDatabaseService(supabaseClient) {
    * @param {string} id - Article ID
    */
   async function deleteArticle(id) {
-    const { error } = await supabaseClient
-      .from("articles")
-      .delete()
-      .eq("id", id);
-
-    if (error) {
-      console.error("Error deleting article:", error);
-      throw error;
-    }
+    return articlesCrud.remove(id);
   }
 
   /**
@@ -333,17 +290,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Array>} Array of created article objects
    */
   async function bulkInsertArticles(articles) {
-    const { data, error } = await supabaseClient
-      .from("articles")
-      .insert(articles)
-      .select();
-
-    if (error) {
-      console.error("Error bulk inserting articles:", error);
-      throw error;
-    }
-
-    return data;
+    return articlesCrud.bulkInsert(articles);
   }
 
   /**
@@ -379,24 +326,8 @@ export function createDatabaseService(supabaseClient) {
    */
   async function getSlimmingWorldProfiles(options = {}) {
     const { includeInactive = false } = options;
-
-    let query = supabaseClient
-      .from("slimming_world_profiles")
-      .select("*")
-      .order("created_at", { ascending: false });
-
-    if (!includeInactive) {
-      query = query.eq("is_active", true);
-    }
-
-    const { data, error } = await query;
-
-    if (error) {
-      console.error("Error fetching Slimming World profiles:", error);
-      throw error;
-    }
-
-    return data;
+    const filters = includeInactive ? {} : { is_active: true };
+    return swProfilesCrud.getAll({ filters });
   }
 
   /**
@@ -405,22 +336,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object|null>} Profile object or null if not found
    */
   async function getSlimmingWorldProfileByUserId(userId) {
-    const { data, error } = await supabaseClient
-      .from("slimming_world_profiles")
-      .select("*")
-      .eq("user_id", userId)
-      .eq("is_active", true)
-      .single();
-
-    if (error) {
-      if (error.code === "PGRST116") {
-        return null;
-      }
-      console.error("Error fetching Slimming World profile:", error);
-      throw error;
-    }
-
-    return data;
+    return swProfilesCrud.getByField("user_id", userId);
   }
 
   /**
@@ -429,21 +345,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object|null>} Profile object or null if not found
    */
   async function getSlimmingWorldProfileById(id) {
-    const { data, error } = await supabaseClient
-      .from("slimming_world_profiles")
-      .select("*")
-      .eq("id", id)
-      .single();
-
-    if (error) {
-      if (error.code === "PGRST116") {
-        return null;
-      }
-      console.error("Error fetching Slimming World profile:", error);
-      throw error;
-    }
-
-    return data;
+    return swProfilesCrud.getById(id);
   }
 
   /**
@@ -457,26 +359,15 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The created profile
    */
   async function createSlimmingWorldProfile(profileData) {
-    const { data, error } = await supabaseClient
-      .from("slimming_world_profiles")
-      .insert([
-        {
-          user_id: profileData.user_id,
-          start_date: profileData.start_date,
-          start_weight: profileData.start_weight,
-          target_weight: profileData.target_weight,
-          is_active:
-            profileData.is_active !== undefined ? profileData.is_active : true,
-        },
-      ])
-      .select();
-
-    if (error) {
-      console.error("Error creating Slimming World profile:", error);
-      throw error;
-    }
-
-    return data[0];
+    const profileToCreate = {
+      user_id: profileData.user_id,
+      start_date: profileData.start_date,
+      start_weight: profileData.start_weight,
+      target_weight: profileData.target_weight,
+      is_active:
+        profileData.is_active !== undefined ? profileData.is_active : true,
+    };
+    return swProfilesCrud.create(profileToCreate);
   }
 
   /**
@@ -486,18 +377,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The updated profile
    */
   async function updateSlimmingWorldProfile(id, profileData) {
-    const { data, error } = await supabaseClient
-      .from("slimming_world_profiles")
-      .update(profileData)
-      .eq("id", id)
-      .select();
-
-    if (error) {
-      console.error("Error updating Slimming World profile:", error);
-      throw error;
-    }
-
-    return data[0];
+    return swProfilesCrud.update(id, profileData);
   }
 
   /**
@@ -505,15 +385,7 @@ export function createDatabaseService(supabaseClient) {
    * @param {string} id - Profile ID
    */
   async function deleteSlimmingWorldProfile(id) {
-    const { error } = await supabaseClient
-      .from("slimming_world_profiles")
-      .delete()
-      .eq("id", id);
-
-    if (error) {
-      console.error("Error deleting Slimming World profile:", error);
-      throw error;
-    }
+    return swProfilesCrud.remove(id);
   }
 
   /**
@@ -588,21 +460,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object|null>} Entry object or null if not found
    */
   async function getSlimmingWorldEntryById(id) {
-    const { data, error } = await supabaseClient
-      .from("slimming_world_entries")
-      .select("*")
-      .eq("id", id)
-      .single();
-
-    if (error) {
-      if (error.code === "PGRST116") {
-        return null;
-      }
-      console.error("Error fetching Slimming World entry:", error);
-      throw error;
-    }
-
-    return data;
+    return swEntriesCrud.getById(id);
   }
 
   /**
@@ -611,23 +469,12 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object|null>} Latest entry object or null
    */
   async function getLatestSlimmingWorldEntry(profileId) {
-    const { data, error } = await supabaseClient
-      .from("slimming_world_entries")
-      .select("*")
-      .eq("profile_id", profileId)
-      .order("entry_date", { ascending: false })
-      .limit(1)
-      .single();
-
-    if (error) {
-      if (error.code === "PGRST116") {
-        return null;
-      }
-      console.error("Error fetching latest Slimming World entry:", error);
-      throw error;
-    }
-
-    return data;
+    const entries = await swEntriesCrud.getAllByField("profile_id", profileId, {
+      orderBy: "entry_date",
+      ascending: false,
+      limit: 1,
+    });
+    return entries.length > 0 ? entries[0] : null;
   }
 
   /**
@@ -644,17 +491,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The created entry
    */
   async function createSlimmingWorldEntry(entryData) {
-    const { data, error } = await supabaseClient
-      .from("slimming_world_entries")
-      .insert([entryData])
-      .select();
-
-    if (error) {
-      console.error("Error creating Slimming World entry:", error);
-      throw error;
-    }
-
-    return data[0];
+    return swEntriesCrud.create(entryData);
   }
 
   /**
@@ -664,18 +501,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The updated entry
    */
   async function updateSlimmingWorldEntry(id, entryData) {
-    const { data, error } = await supabaseClient
-      .from("slimming_world_entries")
-      .update(entryData)
-      .eq("id", id)
-      .select();
-
-    if (error) {
-      console.error("Error updating Slimming World entry:", error);
-      throw error;
-    }
-
-    return data[0];
+    return swEntriesCrud.update(id, entryData);
   }
 
   /**
@@ -683,15 +509,7 @@ export function createDatabaseService(supabaseClient) {
    * @param {string} id - Entry ID
    */
   async function deleteSlimmingWorldEntry(id) {
-    const { error } = await supabaseClient
-      .from("slimming_world_entries")
-      .delete()
-      .eq("id", id);
-
-    if (error) {
-      console.error("Error deleting Slimming World entry:", error);
-      throw error;
-    }
+    return swEntriesCrud.remove(id);
   }
 
   /**
@@ -700,17 +518,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Array>} Array of created entry objects
    */
   async function bulkInsertSlimmingWorldEntries(entries) {
-    const { data, error } = await supabaseClient
-      .from("slimming_world_entries")
-      .insert(entries)
-      .select();
-
-    if (error) {
-      console.error("Error bulk inserting Slimming World entries:", error);
-      throw error;
-    }
-
-    return data;
+    return swEntriesCrud.bulkInsert(entries);
   }
 
   /**
@@ -775,19 +583,10 @@ export function createDatabaseService(supabaseClient) {
    */
   async function getTargetWeightHistory(profileId, options = {}) {
     const { orderBy = "effective_date", ascending = false } = options;
-
-    const { data, error } = await supabaseClient
-      .from("slimming_world_target_weights")
-      .select("*")
-      .eq("profile_id", profileId)
-      .order(orderBy, { ascending });
-
-    if (error) {
-      console.error("Error fetching target weight history:", error);
-      throw error;
-    }
-
-    return data || [];
+    return targetWeightsCrud.getAllByField("profile_id", profileId, {
+      orderBy,
+      ascending,
+    });
   }
 
   /**
@@ -849,17 +648,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The created target weight entry
    */
   async function createTargetWeight(targetWeightData) {
-    const { data, error } = await supabaseClient
-      .from("slimming_world_target_weights")
-      .insert([targetWeightData])
-      .select();
-
-    if (error) {
-      console.error("Error creating target weight:", error);
-      throw error;
-    }
-
-    return data[0];
+    return targetWeightsCrud.create(targetWeightData);
   }
 
   /**
@@ -869,18 +658,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The updated target weight entry
    */
   async function updateTargetWeight(id, targetWeightData) {
-    const { data, error } = await supabaseClient
-      .from("slimming_world_target_weights")
-      .update(targetWeightData)
-      .eq("id", id)
-      .select();
-
-    if (error) {
-      console.error("Error updating target weight:", error);
-      throw error;
-    }
-
-    return data[0];
+    return targetWeightsCrud.update(id, targetWeightData);
   }
 
   /**
@@ -889,15 +667,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<void>}
    */
   async function deleteTargetWeight(id) {
-    const { error } = await supabaseClient
-      .from("slimming_world_target_weights")
-      .delete()
-      .eq("id", id);
-
-    if (error) {
-      console.error("Error deleting target weight:", error);
-      throw error;
-    }
+    return targetWeightsCrud.remove(id);
   }
 
   // ============================================================================
@@ -1199,17 +969,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The created goal
    */
   async function createFootballMatchGoal(goalData) {
-    const { data, error } = await supabaseClient
-      .from("football_match_goals")
-      .insert([goalData])
-      .select();
-
-    if (error) {
-      console.error("Error creating match goal:", error);
-      throw error;
-    }
-
-    return data[0];
+    return goalsCrud.create(goalData);
   }
 
   /**
@@ -1219,18 +979,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The updated goal
    */
   async function updateFootballMatchGoal(goalId, goalData) {
-    const { data, error } = await supabaseClient
-      .from("football_match_goals")
-      .update(goalData)
-      .eq("id", goalId)
-      .select();
-
-    if (error) {
-      console.error("Error updating match goal:", error);
-      throw error;
-    }
-
-    return data[0];
+    return goalsCrud.update(goalId, goalData);
   }
 
   /**
@@ -1239,15 +988,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<void>}
    */
   async function deleteFootballMatchGoal(goalId) {
-    const { error } = await supabaseClient
-      .from("football_match_goals")
-      .delete()
-      .eq("id", goalId);
-
-    if (error) {
-      console.error("Error deleting match goal:", error);
-      throw error;
-    }
+    return goalsCrud.remove(goalId);
   }
 
   /**
@@ -1280,17 +1021,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The created card
    */
   async function createFootballMatchCard(cardData) {
-    const { data, error } = await supabaseClient
-      .from("football_match_cards")
-      .insert([cardData])
-      .select();
-
-    if (error) {
-      console.error("Error creating match card:", error);
-      throw error;
-    }
-
-    return data[0];
+    return cardsCrud.create(cardData);
   }
 
   /**
@@ -1300,18 +1031,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<Object>} The updated card
    */
   async function updateFootballMatchCard(cardId, cardData) {
-    const { data, error } = await supabaseClient
-      .from("football_match_cards")
-      .update(cardData)
-      .eq("id", cardId)
-      .select();
-
-    if (error) {
-      console.error("Error updating match card:", error);
-      throw error;
-    }
-
-    return data[0];
+    return cardsCrud.update(cardId, cardData);
   }
 
   /**
@@ -1320,15 +1040,7 @@ export function createDatabaseService(supabaseClient) {
    * @returns {Promise<void>}
    */
   async function deleteFootballMatchCard(cardId) {
-    const { error } = await supabaseClient
-      .from("football_match_cards")
-      .delete()
-      .eq("id", cardId);
-
-    if (error) {
-      console.error("Error deleting match card:", error);
-      throw error;
-    }
+    return cardsCrud.remove(cardId);
   }
 
   /**

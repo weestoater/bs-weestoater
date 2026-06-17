@@ -2,6 +2,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { getSupabaseClient } from "../../../backend/index.js";
 import { useSEO } from "../../utils/useSEO";
+import { formatDateMediumPadded } from "../../utils/dateUtils";
 
 const { createDatabaseService } = await import("../../../backend/index.js");
 
@@ -257,15 +258,6 @@ export const SlimmingWorldManager = () => {
     }
   };
 
-  const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    });
-  };
-
   const formatWeight = (weight: number) => {
     const stones = Math.floor(weight / 14);
     const lbs = (weight % 14).toFixed(1);
@@ -343,7 +335,7 @@ export const SlimmingWorldManager = () => {
                 <div className="row">
                   <div className="col-md-3">
                     <strong>Start Date:</strong>{" "}
-                    {formatDate(profile.start_date)}
+                    {formatDateMediumPadded(profile.start_date)}
                   </div>
                   <div className="col-md-3">
                     <strong>Start Weight:</strong>{" "}
@@ -528,7 +520,7 @@ export const SlimmingWorldManager = () => {
                       {targetWeights.map((tw, index) => (
                         <tr key={tw.id}>
                           <td>
-                            {formatDate(tw.effective_date)}
+                            {formatDateMediumPadded(tw.effective_date)}
                             {index === 0 && (
                               <span className="badge bg-success ms-2">
                                 Current
@@ -724,7 +716,7 @@ export const SlimmingWorldManager = () => {
             <tbody>
               {entries.map((entry) => (
                 <tr key={entry.id}>
-                  <td>{formatDate(entry.entry_date)}</td>
+                  <td>{formatDateMediumPadded(entry.entry_date)}</td>
                   <td>{formatWeight(entry.weight)}</td>
                   <td>
                     <span

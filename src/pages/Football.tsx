@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { BackToTop } from "../components/global/BackToTop";
 import { FootballIntro } from "../content/football/footballIntro";
@@ -9,6 +8,7 @@ import {
   createDatabaseService,
 } from "../../backend/index.js";
 import { calculateTopScorers } from "../utils/footballUtils";
+import { useDataFetch } from "../hooks/useDataFetch";
 import type {
   SeasonMatchData,
   SeasonGoalsData,
@@ -17,97 +17,66 @@ import type {
 const CURRENT_SEASON = "2025-26";
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
-interface FootballCache {
+interface FootballData {
   matchesData: SeasonMatchData;
   goalsData: SeasonGoalsData;
-  timestamp: number;
 }
 
-let footballCache: FootballCache | null = null;
-
 export const FootballPage = () => {
-  const [matchesData, setMatchesData] = useState<SeasonMatchData | null>(null);
-  const [goalsData, setGoalsData] = useState<SeasonGoalsData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { data, loading, error } = useDataFetch<FootballData>(
+    async () => {
+      const supabase = getSupabaseClient();
+      const db = createDatabaseService(supabase);
 
-  useEffect(() => {
-    const loadSeasonData = async () => {
-      // Serve from cache if fresh
-      if (footballCache && Date.now() - footballCache.timestamp < CACHE_TTL) {
-        setMatchesData(footballCache.matchesData);
-        setGoalsData(footballCache.goalsData);
-        setLoading(false);
-        return;
+      // Fetch complete season data
+      const seasonData = await db.getFootballSeasonComplete(CURRENT_SEASON);
+
+      if (!seasonData) {
+        throw new Error(`Season ${CURRENT_SEASON} not found`);
       }
 
-      setLoading(true);
-      setError(null);
+      // Transform matches to match expected format
+      const matches = seasonData.matches.map((match) => ({
+        date: match.match_date,
+        opposition: match.opposition,
+        venue: match.venue,
+        scored: match.goals_scored ?? undefined,
+        conceded: match.goals_conceded ?? undefined,
+        league: match.league ?? undefined,
+        video: match.video_url ?? undefined,
+        iplayer: match.iplayer_url ?? undefined,
+        notes: match.notes ?? undefined,
+        goals: match.goals.map((g) => ({
+          player: g.player,
+          mins: g.minute,
+          assist: g.assist ?? undefined,
+        })),
+        cards: match.cards.map((c) => ({
+          player: c.player,
+          type: c.card_type,
+          minute: c.minute,
+        })),
+      }));
 
-      try {
-        const supabase = getSupabaseClient();
-        const db = createDatabaseService(supabase);
+      // Calculate top scorers directly from match goals — single source of truth
+      const topScorers = calculateTopScorers(matches);
 
-        // Fetch complete season data
-        const seasonData = await db.getFootballSeasonComplete(CURRENT_SEASON);
-
-        if (!seasonData) {
-          throw new Error(`Season ${CURRENT_SEASON} not found`);
-        }
-
-        // Transform matches to match expected format
-        const matches = seasonData.matches.map((match) => ({
-          date: match.match_date,
-          opposition: match.opposition,
-          venue: match.venue,
-          scored: match.goals_scored ?? undefined,
-          conceded: match.goals_conceded ?? undefined,
-          league: match.league ?? undefined,
-          video: match.video_url ?? undefined,
-          iplayer: match.iplayer_url ?? undefined,
-          notes: match.notes ?? undefined,
-          goals: match.goals.map((g) => ({
-            player: g.player,
-            mins: g.minute,
-            assist: g.assist ?? undefined,
-          })),
-          cards: match.cards.map((c) => ({
-            player: c.player,
-            type: c.card_type,
-            minute: c.minute,
-          })),
-        }));
-
-        // Calculate top scorers directly from match goals — single source of truth
-        const topScorers = calculateTopScorers(matches);
-
-        const newMatchesData: SeasonMatchData = {
+      return {
+        matchesData: {
           season: CURRENT_SEASON,
           matches,
-        };
-        const newGoalsData: SeasonGoalsData = {
+        },
+        goalsData: {
           season: CURRENT_SEASON,
           topScorers,
-        };
+        },
+      };
+    },
+    { cacheTTL: CACHE_TTL, cacheKey: `football-${CURRENT_SEASON}` },
+  );
 
-        footballCache = {
-          matchesData: newMatchesData,
-          goalsData: newGoalsData,
-          timestamp: Date.now(),
-        };
-
-        setMatchesData(newMatchesData);
-        setGoalsData(newGoalsData);
-      } catch (err) {
-        console.error(`Failed to load football data:`, err);
-        setError(`Unable to load football data for ${CURRENT_SEASON} season`);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadSeasonData();
-  }, []);
+  const matchesData = data?.matchesData || null;
+  const goalsData = data?.goalsData || null;
 
   if (loading) {
     return (

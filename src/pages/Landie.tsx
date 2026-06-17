@@ -1,36 +1,25 @@
-import { useState, useEffect } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { BackToTop } from "../components/global/BackToTop";
 import { ArticleCard } from "../components/articles/ArticleCard";
 import { getSupabaseClient } from "../../backend/index.js";
+import { useDataFetch } from "../hooks/useDataFetch";
 import type { Article } from "../interfaces/Article";
 
 const { createDatabaseService } = await import("../../backend/index.js");
 
 export const LandiePage = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const loadArticles = async () => {
-      try {
-        setLoading(true);
-        const client = getSupabaseClient();
-        const db = createDatabaseService(client);
-        const data = await db.getArticles({ category: "Landie" });
-        setArticles(data || []);
-      } catch (err) {
-        setError(
-          err instanceof Error ? err.message : "Failed to load articles",
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadArticles();
-  }, []);
+  const {
+    data: articles,
+    loading,
+    error,
+  } = useDataFetch<Article[]>(
+    async () => {
+      const client = getSupabaseClient();
+      const db = createDatabaseService(client);
+      return await db.getArticles({ category: "Landie" });
+    },
+    { initialData: [] },
+  );
 
   return (
     <>
@@ -56,7 +45,7 @@ export const LandiePage = () => {
 
       {!loading && !error && (
         <div className="row">
-          {articles.map((article) => (
+          {articles?.map((article) => (
             <div
               key={article.id}
               className="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-4"
