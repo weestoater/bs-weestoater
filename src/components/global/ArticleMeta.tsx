@@ -1,4 +1,5 @@
 import { Badge } from "reactstrap";
+import { formatDateMedium } from "../../utils/dateUtils";
 
 export interface ArticleMetadata {
   title?: string;
@@ -23,19 +24,6 @@ export const ArticleMeta = ({ metadata }: ArticleMetaProps) => {
     tags = [],
     category,
   } = metadata;
-
-  const formatDate = (iso?: string) => {
-    if (!iso) return null;
-    try {
-      return new Date(iso).toLocaleDateString("en-GB", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      });
-    } catch {
-      return iso;
-    }
-  };
 
   return (
     <div className="article-meta">
@@ -75,7 +63,9 @@ export const ArticleMeta = ({ metadata }: ArticleMetaProps) => {
           <small className="text-muted">
             <i className="bi bi-pencil me-1" aria-hidden="true"></i>
             Updated:{" "}
-            <time dateTime={updatedDate}>{formatDate(updatedDate)}</time>
+            <time dateTime={updatedDate}>
+              {updatedDate ? formatDateMedium(updatedDate) : null}
+            </time>
           </small>
         </div>
       )}

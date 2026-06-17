@@ -21,9 +21,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     /* Allow imports from backend folder */
-    "baseUrl": ".",
     "paths": {
-      "../../backend/*": ["backend/*"]
+      "*": ["./*"],
+      "../../backend/*": ["./backend/*"]
     }
   },
   "include": ["src", "backend/**/*.d.ts"],

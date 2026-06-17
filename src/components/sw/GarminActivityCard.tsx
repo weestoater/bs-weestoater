@@ -1,5 +1,6 @@
 import { GarminActivity } from "../../interfaces/GarminActivity";
 import { useState } from "react";
+import { formatDateMedium } from "../../utils/dateUtils";
 
 interface GarminActivityCardProps {
   activities: GarminActivity[];
@@ -85,16 +86,6 @@ export const GarminActivityCard = ({ activities }: GarminActivityCardProps) => {
       other: "💪",
     };
     return icons[type] || icons.other;
-  };
-
-  // Format date
-  const formatDate = (dateString: string): string => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
   };
 
   if (activities.length === 0) {
@@ -207,7 +198,7 @@ export const GarminActivityCard = ({ activities }: GarminActivityCardProps) => {
                         activity.type.slice(1)}
                     </span>
                     <span className="activity-date">
-                      {formatDate(activity.date)}
+                      {formatDateMedium(activity.date)}
                     </span>
                   </div>
                   <div className="activity-metrics">

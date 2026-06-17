@@ -1,4 +1,5 @@
 import { DailySteps } from "../../interfaces/DailySteps";
+import { formatDateWithWeekday } from "../../utils/dateUtils";
 
 interface DailyStepsCardProps {
   dailySteps: DailySteps[];
@@ -29,16 +30,6 @@ export const DailyStepsCard = ({ dailySteps }: DailyStepsCardProps) => {
   const daysGoalMet = dailySteps.filter(
     (d) => d.goal && d.steps >= d.goal,
   ).length;
-
-  // Format date
-  const formatDate = (dateString: string): string => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      weekday: "short",
-      month: "short",
-      day: "numeric",
-    });
-  };
 
   // Get last 14 days
   const recentDays = dailySteps.slice(0, 14);
@@ -106,7 +97,7 @@ export const DailyStepsCard = ({ dailySteps }: DailyStepsCardProps) => {
                   return (
                     <tr key={day.date} className={goalMet ? "goal-met" : ""}>
                       <td>
-                        <strong>{formatDate(day.date)}</strong>
+                        <strong>{formatDateWithWeekday(day.date)}</strong>
                       </td>
                       <td className="text-end">
                         <strong>{day.steps.toLocaleString()}</strong>
