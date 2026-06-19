@@ -20,7 +20,7 @@ test.describe("Visual Regression Tests", () => {
   });
 
   test("slimming world section layout", async ({ page }) => {
-    await page.goto("/#/sw");
+    await page.goto("/slimmingWorld");
     await expect(page).toHaveScreenshot("slimming-world.png");
   });
 
