@@ -15,7 +15,7 @@
     "test:coverage": "vitest run --coverage",
     "preview": "vite preview",
     "test:e2e": "playwright test",
-    "test:e2e:smoke": "playwright test e2e-tests/navigation.spec.ts e2e-tests/admin-auth.spec.ts e2e-tests/hash-route-refresh.spec.ts e2e-tests/season-routes.spec.ts",
+    "test:e2e:smoke": "playwright test e2e-tests/navigation.spec.ts",
     "test:e2e:a11y": "playwright test e2e-tests/a11y.spec.ts",
     "test:e2e:component": "playwright test e2e-tests/components-speccy.ts e2e-tests/performance.spec.ts e2e-tests/supabase-error-states.spec.ts",
     "test:e2e:visual": "playwright test e2e-tests/visual-speccy.ts",

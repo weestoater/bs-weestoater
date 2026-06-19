@@ -1,4 +1,63 @@
-name: Playwright PR Checks
+name: Playwright PR
+
+on:
+  pull_request:
+
+concurrency:
+  group: playwright-pr-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  playwright-tooling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Install Playwright browser deps
+        run: npx playwright install --with-deps chromium
+
+      - name: Verify Playwright CLI
+        run: npx playwright --version
+name: Playwright PR Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  playwright-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Install Playwright browser
+        run: npx playwright install chromium --with-deps
+
+      - name: Verify Playwright
+        run: npx playwright --versionname: Playwright PR Checks
 
 on:
   pull_request:
@@ -30,7 +89,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: yarn
 
       - name: Install dependencies
