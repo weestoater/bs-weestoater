@@ -115,6 +115,24 @@ export const AdminDashboard = () => {
           </div>
         </div>
 
+        {/* Content Blocks Management */}
+        <div className="col-md-6 col-lg-4">
+          <div className="card h-100">
+            <div className="card-body">
+              <h3 className="card-title">
+                <i className="bi bi-layout-text-window me-2 text-info"></i>
+                Content Blocks
+              </h3>
+              <p className="card-text">
+                Manage Home and About page content cards
+              </p>
+              <Link to="/admin/content-blocks" className="btn btn-info">
+                Manage Content
+              </Link>
+            </div>
+          </div>
+        </div>
+
         {/* Media Library - Coming Soon */}
         <div className="col-md-6 col-lg-4">
           <div className="card h-100 bg-light">

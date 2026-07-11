@@ -49,6 +49,11 @@ const GarminActivities = lazy(() =>
     default: module.GarminActivities,
   })),
 );
+const IconTest = lazy(() =>
+  import("./pages/IconTest").then((module) => ({
+    default: module.IconTest,
+  })),
+);
 const NotFoundPage = lazy(() =>
   import("./pages/NotFound").then((module) => ({
     default: module.NotFoundPage,
@@ -74,6 +79,16 @@ const BooksManager = lazy(() =>
 const BookEditor = lazy(() =>
   import("./pages/admin/BookEditor").then((module) => ({
     default: module.BookEditor,
+  })),
+);
+const ContentBlocksManager = lazy(() =>
+  import("./pages/admin/ContentBlocksManager").then((module) => ({
+    default: module.ContentBlocksManager,
+  })),
+);
+const ContentBlockEditor = lazy(() =>
+  import("./pages/admin/ContentBlockEditor").then((module) => ({
+    default: module.ContentBlockEditor,
   })),
 );
 const ArticlesManager = lazy(() =>
@@ -117,6 +132,7 @@ export const App = () => {
               <Route path="/react" element={<ReactPage />} />
               <Route path="/sw" element={<SlimmingWorld />} />
               <Route path="/garmin" element={<GarminActivities />} />
+              <Route path="/icon-test" element={<IconTest />} />
 
               {/* Admin Routes */}
               <Route path="/admin/login" element={<AdminLogin />} />
@@ -149,6 +165,30 @@ export const App = () => {
                 element={
                   <ProtectedRoute>
                     <BookEditor />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/content-blocks"
+                element={
+                  <ProtectedRoute>
+                    <ContentBlocksManager />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/content-blocks/new"
+                element={
+                  <ProtectedRoute>
+                    <ContentBlockEditor />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/content-blocks/edit/:id"
+                element={
+                  <ProtectedRoute>
+                    <ContentBlockEditor />
                   </ProtectedRoute>
                 }
               />

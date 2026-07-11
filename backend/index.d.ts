@@ -328,6 +328,252 @@ export interface DatabaseService {
   ): Promise<FootballSeasonComplete | null>;
 }
 
+// ============================================================================
+// WEECMS TYPES
+// ============================================================================
+
+export interface ContentBlock {
+  id: string;
+  slug: string;
+  title: string;
+  content: string;
+  excerpt?: string;
+  icon?: string;
+  page: string;
+  section?: string;
+  content_type: "card" | "hero" | "text" | "embed" | "custom";
+  order_index: number;
+  grid_size: string;
+  published: boolean;
+  publish_at?: string;
+  unpublish_at?: string;
+  metadata: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface NavigationItem {
+  id: string;
+  label: string;
+  path: string;
+  parent_id?: string;
+  icon?: string;
+  order_index: number;
+  visible: boolean;
+  require_auth: boolean;
+  allowed_roles?: string[];
+  external: boolean;
+  new_window: boolean;
+  created_at: string;
+  updated_at: string;
+  children?: NavigationItem[];
+}
+
+export interface SiteConfig {
+  id: string;
+  site_name: string;
+  site_tagline?: string;
+  site_description?: string;
+  logo_url?: string;
+  favicon_url?: string;
+  email?: string;
+  social_links: Record<string, string>;
+  default_og_image?: string;
+  google_analytics_id?: string;
+  google_site_verification?: string;
+  enable_search: boolean;
+  enable_comments: boolean;
+  maintenance_mode: boolean;
+  maintenance_message?: string;
+  default_theme: "light" | "dark" | "high-contrast" | "gov-uk";
+  allowed_themes: string[];
+  footer_text?: string;
+  footer_links: unknown[];
+  updated_at: string;
+  updated_by?: string;
+}
+
+export interface Page {
+  id: string;
+  slug: string;
+  title: string;
+  content?: string;
+  layout: "default" | "full-width" | "sidebar" | "blank";
+  meta_title?: string;
+  meta_description?: string;
+  meta_keywords?: string[];
+  published: boolean;
+  publish_at?: string;
+  author: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface MediaLibraryItem {
+  id: string;
+  filename: string;
+  original_filename: string;
+  file_type: "image" | "video" | "document" | "audio" | "other";
+  mime_type: string;
+  file_size: number;
+  storage_path: string;
+  storage_bucket: string;
+  public_url: string;
+  width?: number;
+  height?: number;
+  alt_text?: string;
+  folder?: string;
+  tags?: string[];
+  used_in_tables?: string[];
+  usage_count: number;
+  uploaded_by?: string;
+  created_at: string;
+}
+
+export interface CVEntry {
+  id: string;
+  entry_type:
+    | "experience"
+    | "education"
+    | "skill"
+    | "certification"
+    | "project";
+  title: string;
+  organization?: string;
+  location?: string;
+  start_date?: string;
+  end_date?: string;
+  is_current: boolean;
+  description?: string;
+  highlights?: string[];
+  skills_used?: string[];
+  order_index: number;
+  visible: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ActivityLog {
+  id: string;
+  action: "create" | "update" | "delete" | "publish" | "unpublish" | "restore";
+  table_name: string;
+  record_id: string;
+  user_id?: string;
+  user_email?: string;
+  old_data?: Record<string, unknown>;
+  new_data?: Record<string, unknown>;
+  ip_address?: string;
+  user_agent?: string;
+  created_at: string;
+}
+
+// weeCMS Services
+export interface ContentService {
+  getContentBlocks(options?: {
+    includeUnpublished?: boolean;
+    page?: string;
+  }): Promise<ContentBlock[]>;
+  getContentBlocksForPage(
+    page: string,
+    options?: { includeUnpublished?: boolean },
+  ): Promise<ContentBlock[]>;
+  getContentBlockById(id: string): Promise<ContentBlock | null>;
+  getContentBlockBySlug(slug: string): Promise<ContentBlock | null>;
+  createContentBlock(blockData: Partial<ContentBlock>): Promise<ContentBlock>;
+  updateContentBlock(
+    id: string,
+    updates: Partial<ContentBlock>,
+  ): Promise<ContentBlock>;
+  deleteContentBlock(id: string): Promise<boolean>;
+  reorderContentBlocks(
+    page: string,
+    orders: Array<{ id: string; order_index: number }>,
+  ): Promise<boolean>;
+  publishContentBlock(id: string): Promise<ContentBlock>;
+  unpublishContentBlock(id: string): Promise<ContentBlock>;
+}
+
+export interface NavigationService {
+  getNavigationItems(options?: {
+    includeHidden?: boolean;
+  }): Promise<NavigationItem[]>;
+  getTopLevelNavigation(options?: {
+    includeHidden?: boolean;
+  }): Promise<NavigationItem[]>;
+  getChildNavigation(
+    parentId: string,
+    options?: { includeHidden?: boolean },
+  ): Promise<NavigationItem[]>;
+  getNavigationTree(options?: {
+    includeHidden?: boolean;
+  }): Promise<NavigationItem[]>;
+  getNavigationItemById(id: string): Promise<NavigationItem | null>;
+  createNavigationItem(
+    itemData: Partial<NavigationItem>,
+  ): Promise<NavigationItem>;
+  updateNavigationItem(
+    id: string,
+    updates: Partial<NavigationItem>,
+  ): Promise<NavigationItem>;
+  deleteNavigationItem(id: string): Promise<boolean>;
+  reorderNavigationItems(
+    orders: Array<{ id: string; order_index: number }>,
+  ): Promise<boolean>;
+  toggleNavigationVisibility(
+    id: string,
+    visible: boolean,
+  ): Promise<NavigationItem>;
+}
+
+export interface ConfigService {
+  getSiteConfig(): Promise<SiteConfig | null>;
+  updateSiteConfig(updates: Partial<SiteConfig>): Promise<SiteConfig>;
+  updateSiteConfigField(field: string, value: unknown): Promise<SiteConfig>;
+  toggleMaintenanceMode(
+    enabled: boolean,
+    message?: string,
+  ): Promise<SiteConfig>;
+  updateSocialLinks(socialLinks: Record<string, string>): Promise<SiteConfig>;
+  updateFooterConfig(
+    footerText: string,
+    footerLinks?: unknown[],
+  ): Promise<SiteConfig>;
+  updateSeoConfig(seoConfig: Partial<SiteConfig>): Promise<SiteConfig>;
+  updateThemeConfig(
+    defaultTheme: string,
+    allowedThemes?: string[],
+  ): Promise<SiteConfig>;
+  updateFeatureFlags(features: Partial<SiteConfig>): Promise<SiteConfig>;
+  initializeSiteConfig(): Promise<SiteConfig>;
+}
+
+export interface MediaService {
+  getMediaItems(options?: {
+    fileType?: string;
+    folder?: string;
+    tags?: string[];
+    limit?: number;
+  }): Promise<MediaLibraryItem[]>;
+  getMediaItemById(id: string): Promise<MediaLibraryItem | null>;
+  getMediaItemsByFolder(folder: string): Promise<MediaLibraryItem[]>;
+  getMediaItemsByType(fileType: string): Promise<MediaLibraryItem[]>;
+  uploadMedia(uploadData: {
+    file: File | Blob;
+    bucket?: string;
+    folder?: string;
+    metadata?: Partial<MediaLibraryItem>;
+  }): Promise<MediaLibraryItem>;
+  updateMediaItem(
+    id: string,
+    updates: Partial<MediaLibraryItem>,
+  ): Promise<MediaLibraryItem>;
+  deleteMediaItem(id: string): Promise<boolean>;
+  trackMediaUsage(id: string, tableName: string): Promise<MediaLibraryItem>;
+  getFolders(): Promise<string[]>;
+  getTags(): Promise<string[]>;
+  searchMedia(searchTerm: string): Promise<MediaLibraryItem[]>;
+}
+
 // Configuration
 export function validateConfig(config: SupabaseConfig): void;
 export function loadConfigFromEnv(): SupabaseConfig;
@@ -353,6 +599,27 @@ export function createDatabaseService(
 export function createDatabaseServiceFromEnv(
   client?: SupabaseClient | null,
 ): DatabaseService;
+
+// weeCMS services
+export function createContentService(
+  supabaseClient: SupabaseClient,
+): ContentService;
+export function createContentServiceFromEnv(): Promise<ContentService>;
+
+export function createNavigationService(
+  supabaseClient: SupabaseClient,
+): NavigationService;
+export function createNavigationServiceFromEnv(): Promise<NavigationService>;
+
+export function createConfigService(
+  supabaseClient: SupabaseClient,
+): ConfigService;
+export function createConfigServiceFromEnv(): Promise<ConfigService>;
+
+export function createMediaService(
+  supabaseClient: SupabaseClient,
+): MediaService;
+export function createMediaServiceFromEnv(): Promise<MediaService>;
 
 // Default export - get Supabase client singleton
 declare const getSupabaseClientDefault: typeof getSupabaseClient;
