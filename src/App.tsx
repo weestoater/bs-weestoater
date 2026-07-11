@@ -91,6 +91,16 @@ const ContentBlockEditor = lazy(() =>
     default: module.ContentBlockEditor,
   })),
 );
+const NavigationManager = lazy(() =>
+  import("./pages/admin/NavigationManager").then((module) => ({
+    default: module.NavigationManager,
+  })),
+);
+const NavigationEditor = lazy(() =>
+  import("./pages/admin/NavigationEditor").then((module) => ({
+    default: module.NavigationEditor,
+  })),
+);
 const ArticlesManager = lazy(() =>
   import("./pages/admin/ArticlesManager").then((module) => ({
     default: module.ArticlesManager,
@@ -189,6 +199,30 @@ export const App = () => {
                 element={
                   <ProtectedRoute>
                     <ContentBlockEditor />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/navigation"
+                element={
+                  <ProtectedRoute>
+                    <NavigationManager />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/navigation/new"
+                element={
+                  <ProtectedRoute>
+                    <NavigationEditor />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/navigation/edit/:id"
+                element={
+                  <ProtectedRoute>
+                    <NavigationEditor />
                   </ProtectedRoute>
                 }
               />

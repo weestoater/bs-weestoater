@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Collapse,
   Navbar,
@@ -9,8 +9,11 @@ import {
   Button,
 } from "reactstrap";
 import { NavLink as RouterNavLink } from "react-router-dom";
-
 import { HashLink } from "react-router-hash-link";
+import type { NavigationItem } from "../types/weecms";
+import { getSupabaseClient } from "../../backend/index.js";
+
+const { createNavigationService } = await import("../../backend/index.js");
 
 // Type assertion to fix HashLink typing issue
 const HashLinkSafe = HashLink as unknown as React.ComponentType<
@@ -20,13 +23,60 @@ import wsIcon from "../assets/img/weestoater-icon.png";
 import { SettingsModal } from "../components/global/SettingsModal";
 // import { SearchBar } from "../components/global/SearchBar"; // Hidden pending expansion
 
+// Fallback navigation items (used if database is empty or error occurs)
+const fallbackItems = [
+  { label: "Home", path: "/home" },
+  { label: "About", path: "/about" },
+  { label: "A11y", path: "/a11y" },
+  { label: "Agile", path: "/agile" },
+  { label: "Books", path: "/books" },
+  { label: "Football", path: "/football" },
+  { label: "Landie", path: "/landie" },
+  { label: "React", path: "/react" },
+  { label: "SW", path: "/sw" },
+];
+
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [navItems, setNavItems] =
+    useState<Array<{ label: string; path: string; icon?: string }>>(
+      fallbackItems,
+    );
 
   const toggle = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
   const toggleSettings = () => setSettingsOpen(!settingsOpen);
+
+  useEffect(() => {
+    loadNavigation();
+  }, []);
+
+  const loadNavigation = async () => {
+    try {
+      const client = getSupabaseClient();
+      const navService = createNavigationService(client);
+      const items = await navService.getNavigationItems({
+        includeHidden: false,
+      });
+
+      if (items && items.length > 0) {
+        // Map database items to our simplified format
+        const mappedItems = items.map((item: NavigationItem) => ({
+          label: item.label,
+          path: item.path,
+          icon: item.icon,
+        }));
+        setNavItems(mappedItems);
+      } else {
+        // Use fallback if database is empty
+        console.log("Using fallback navigation - database is empty");
+      }
+    } catch (error) {
+      console.error("Failed to load navigation, using fallback:", error);
+      // Keep fallback items on error
+    }
+  };
 
   const handleThemeChange = (
     newTheme: "light" | "dark" | "high-contrast" | "gov-uk",
@@ -41,18 +91,6 @@ export const Header = () => {
     localStorage.setItem("weestoater:theme", newTheme);
   };
 
-  const items = [
-    "Home",
-    "About",
-    "A11y",
-    "Agile",
-    "Books",
-    "Football",
-    "Landie",
-    "React",
-    "SW",
-  ];
-
   return (
     <>
       <Navbar color="dark" dark expand="lg">
@@ -66,17 +104,18 @@ export const Header = () => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar aria-label="Main navigation">
-            {items.map((item, key) => (
+            {navItems.map((item, key) => (
               <NavItem key={key}>
                 <RouterNavLink
-                  to={`/${item.toLowerCase()}`}
+                  to={item.path}
                   end
                   className={({ isActive }: { isActive: boolean }) =>
                     isActive ? "active nav-link" : "nav-link"
                   }
                   onClick={closeMenu}
                 >
-                  {item}
+                  {item.icon && <i className={`${item.icon} me-1`}></i>}
+                  {item.label}
                 </RouterNavLink>
               </NavItem>
             ))}

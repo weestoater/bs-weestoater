@@ -5,6 +5,7 @@ import { getSupabaseClient } from "../../../backend/index.js";
 import { useSEO } from "../../utils/useSEO";
 import { ImageUpload } from "../../components/admin/ImageUpload";
 import { createTinyMCEConfig } from "../../utils/tinymceHelpers";
+import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
 
 const { createDatabaseService } = await import("../../../backend/index.js");
 
@@ -122,21 +123,13 @@ export const BookEditor = () => {
 
   return (
     <div className="container mt-4 mb-5">
-      <div className="row mb-4">
-        <div className="col-12">
-          <div className="d-flex justify-content-between align-items-center">
-            <h1>
-              <i className="bi bi-book me-2"></i>
-              {isEdit ? "Edit Book" : "Add New Book"}
-            </h1>
-            <Link to="/admin/books" className="btn btn-outline-secondary">
-              <i className="bi bi-arrow-left me-1"></i>
-              Back to Books
-            </Link>
-          </div>
-          <hr />
-        </div>
-      </div>
+      <AdminPageHeader
+        title={isEdit ? "Edit Book" : "Add New Book"}
+        icon="bi-book"
+        description={isEdit ? "Edit book details" : "Create a new book entry"}
+        backLink="/admin/books"
+        backLabel="Books Manager"
+      />
 
       {error && (
         <div className="alert alert-danger" role="alert">

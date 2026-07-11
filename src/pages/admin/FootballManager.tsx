@@ -1,4 +1,5 @@
 import { useState, useEffect, FormEvent } from "react";
+import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
 
 type GoalRowGoal = {
   id: string;
@@ -470,21 +471,14 @@ export const FootballManager = () => {
   }
 
   return (
-    <div className="container-fluid mt-4">
-      <div className="row mb-4">
-        <div className="col-12">
-          <div className="d-flex justify-content-between align-items-center">
-            <h1>
-              <i className="bi bi-trophy me-2"></i>
-              Football Manager
-            </h1>
-            <Link to="/admin" className="btn btn-outline-secondary">
-              <i className="bi bi-arrow-left me-2"></i>
-              Back to Admin
-            </Link>
-          </div>
-        </div>
-      </div>
+    <div className="container-fluid mt-4 mb-5">
+      <AdminPageHeader
+        title="Football Manager"
+        icon="bi-trophy"
+        description="Manage matches, goals, and season data"
+        backLink="/admin"
+        backLabel="Dashboard"
+      />
 
       {error && (
         <div

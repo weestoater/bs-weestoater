@@ -5,6 +5,7 @@ import { getSupabaseClient } from "../../../backend/index.js";
 import { useSEO } from "../../utils/useSEO";
 import { createTinyMCEConfig } from "../../utils/tinymceHelpers";
 import type { ContentBlock } from "../../types/weecms";
+import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
 
 const { createContentService } = await import("../../../backend/index.js");
 
@@ -160,24 +161,15 @@ export const ContentBlockEditor = () => {
 
   return (
     <div className="container mt-4 mb-5">
-      <div className="row mb-4">
-        <div className="col-12">
-          <div className="d-flex justify-content-between align-items-center">
-            <h1>
-              <i className="bi bi-grid-3x3-gap-fill me-3"></i>
-              {isEdit ? "Edit Content Block" : "Add New Content Block"}
-            </h1>
-            <Link
-              to="/admin/content-blocks"
-              className="btn btn-outline-secondary"
-            >
-              <i className="bi bi-arrow-left me-1"></i>
-              Back to Content Blocks
-            </Link>
-          </div>
-          <hr />
-        </div>
-      </div>
+      <AdminPageHeader
+        title={isEdit ? "Edit Content Block" : "Add New Content Block"}
+        icon="bi-grid-3x3-gap-fill"
+        description={
+          isEdit ? "Edit content block details" : "Create a new content block"
+        }
+        backLink="/admin/content-blocks"
+        backLabel="Content Blocks Manager"
+      />
 
       {error && (
         <div className="alert alert-danger" role="alert">
