@@ -1,5 +1,3 @@
-# This file has been archived as of February 2026. Please refer to the new documentation in the main docs/ folder for up-to-date information.
-
 # Draft Articles & Scheduled Publishing Implementation
 
 ## Overview
@@ -149,14 +147,12 @@ All existing tests still pass (21 passing tests). The changes are backward compa
 
 ## Benefits
 
- **Draft Workflow** - Save work-in-progress articles without publishing  
- **Scheduled Publishing** - Prepare content in advance and schedule it to go live automatically  
- **Admin Visibility** - Admins can see all articles regardless of status  
- **Public Protection** - Public users only see published articles that are ready to view  
- **Clear Status Indicators** - Easy to see at a glance which articles are drafts, scheduled, or published
+✅ **Draft Workflow** - Save work-in-progress articles without publishing  
+✅ **Scheduled Publishing** - Prepare content in advance and schedule it to go live automatically  
+✅ **Admin Visibility** - Admins can see all articles regardless of status  
+✅ **Public Protection** - Public users only see published articles that are ready to view  
+✅ **Clear Status Indicators** - Easy to see at a glance which articles are drafts, scheduled, or published
 
 ## Backward Compatibility
 
 All existing articles will continue to work exactly as before. Articles that don't have a `publish_at` value are treated as "publish immediately" when the published flag is true.
-
-

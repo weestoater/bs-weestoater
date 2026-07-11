@@ -2,6 +2,8 @@ import ReactDOM from "react-dom/client";
 
 import { App } from "./App";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import "@phosphor-icons/web/regular";
+import "@phosphor-icons/web/fill";
 import "./scss/style.scss";
 
 // Register service worker for PWA support

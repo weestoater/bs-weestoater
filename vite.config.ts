@@ -29,6 +29,9 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: "autoUpdate",
+      devOptions: {
+        enabled: false, // Disable service worker in development to avoid cache issues
+      },
       includeAssets: ["icon.png", "assets/**/*.{jpg,png,webp,woff,woff2}"],
       manifest: {
         name: "Weestoater",
