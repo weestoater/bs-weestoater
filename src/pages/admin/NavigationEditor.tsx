@@ -98,8 +98,8 @@ export const NavigationEditor = () => {
       const dataToSave = {
         label: formData.label,
         path: formData.path,
-        parent_id: formData.parent_id || null,
-        icon: formData.icon || null,
+        parent_id: formData.parent_id || undefined,
+        icon: formData.icon || undefined,
         order_index: formData.order_index,
         visible: formData.visible,
         require_auth: formData.require_auth,

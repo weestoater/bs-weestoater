@@ -12,7 +12,7 @@ interface ContentBlockProps {
 }
 
 export const ContentBlock = ({ block }: ContentBlockProps) => {
-  const { title, content, excerpt, icon, content_type, metadata } = block;
+  const { title, content, excerpt, icon, metadata } = block;
 
   // Parse metadata for ArticleMeta if present
   const articleMeta = metadata?.articleMeta as

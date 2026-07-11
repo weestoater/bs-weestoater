@@ -121,6 +121,16 @@ const FootballManager = lazy(() =>
     default: module.FootballManager,
   })),
 );
+const SettingsManager = lazy(() =>
+  import("./pages/admin/SettingsManager").then((module) => ({
+    default: module.SettingsManager,
+  })),
+);
+const MediaLibrary = lazy(() =>
+  import("./pages/admin/MediaLibrary").then((module) => ({
+    default: module.MediaLibrary,
+  })),
+);
 
 export const App = () => {
   return (
@@ -263,6 +273,22 @@ export const App = () => {
                 element={
                   <ProtectedRoute>
                     <FootballManager />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/settings"
+                element={
+                  <ProtectedRoute>
+                    <SettingsManager />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/media"
+                element={
+                  <ProtectedRoute>
+                    <MediaLibrary />
                   </ProtectedRoute>
                 }
               />

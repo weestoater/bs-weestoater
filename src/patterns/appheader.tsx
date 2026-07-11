@@ -48,10 +48,6 @@ export const Header = () => {
   const closeMenu = () => setIsOpen(false);
   const toggleSettings = () => setSettingsOpen(!settingsOpen);
 
-  useEffect(() => {
-    loadNavigation();
-  }, []);
-
   const loadNavigation = async () => {
     try {
       const client = getSupabaseClient();
@@ -77,6 +73,11 @@ export const Header = () => {
       // Keep fallback items on error
     }
   };
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    loadNavigation();
+  }, []);
 
   const handleThemeChange = (
     newTheme: "light" | "dark" | "high-contrast" | "gov-uk",

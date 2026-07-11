@@ -39,6 +39,7 @@ export const ContentBlocksManager = () => {
 
   useEffect(() => {
     loadBlocks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterPage]);
 
   const handleDelete = async (id: string, title: string) => {
