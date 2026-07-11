@@ -527,7 +527,10 @@ export interface NavigationService {
 
 export interface ConfigService {
   getSiteConfig(): Promise<SiteConfig | null>;
-  updateSiteConfig(updates: Partial<SiteConfig>, userId?: string | null): Promise<SiteConfig>;
+  updateSiteConfig(
+    updates: Partial<SiteConfig>,
+    userId?: string | null,
+  ): Promise<SiteConfig>;
   updateSiteConfigField(field: string, value: unknown): Promise<SiteConfig>;
   toggleMaintenanceMode(
     enabled: boolean,
