@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getSupabaseClient } from "../../../backend/index.js";
 import type { ContentBlock } from "../../types/weecms";
 import { useSEO } from "../../utils/useSEO";
+import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
 
 const { createContentService } = await import("../../../backend/index.js");
 
@@ -103,23 +104,19 @@ export const ContentBlocksManager = () => {
 
   return (
     <div className="container mt-4 mb-5">
-      <div className="row mb-4">
-        <div className="col-12">
-          <div className="d-flex justify-content-between align-items-center">
-            <h1>
-              <i className="bi bi-grid-3x3-gap-fill me-3"></i>
-              Content Blocks Manager
-            </h1>
-            <Link
-              to="/admin/content-blocks/new"
-              className="btn btn-primary btn-lg"
-            >
-              <i className="bi bi-plus-lg me-2"></i>
-              New Content Block
-            </Link>
-          </div>
-        </div>
-      </div>
+      <AdminPageHeader
+        title="Content Blocks Manager"
+        icon="bi-grid-3x3-gap-fill"
+        description="Edit and manage content blocks for pages"
+        backLink="/admin"
+        backLabel="Dashboard"
+        actions={
+          <Link to="/admin/content-blocks/new" className="btn btn-primary">
+            <i className="bi bi-plus-lg me-1"></i>
+            New Content Block
+          </Link>
+        }
+      />
 
       <div className="row mb-3">
         <div className="col-md-4">

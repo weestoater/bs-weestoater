@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getSupabaseClient } from "../../../backend/index.js";
 import { useSEO } from "../../utils/useSEO";
 import { formatDateMediumPadded } from "../../utils/dateUtils";
+import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
 
 const { createDatabaseService } = await import("../../../backend/index.js");
 
@@ -290,40 +291,32 @@ export const SlimmingWorldManager = () => {
 
   return (
     <div className="container mt-4 mb-5">
-      <div className="row mb-4">
-        <div className="col-12">
-          <div className="d-flex justify-content-between align-items-center">
-            <h1>
-              <i className="bi bi-heart-pulse me-2"></i>
-              Slimming World Manager
-            </h1>
-            <div>
-              <Link to="/admin" className="btn btn-outline-secondary me-2">
-                <i className="bi bi-arrow-left me-1"></i>
-                Back to Dashboard
-              </Link>
-              <button
-                className="btn btn-primary"
-                onClick={() => {
-                  setShowAddForm(!showAddForm);
-                  setEditingEntry(null);
-                  setFormData({
-                    entry_date: new Date().toISOString().split("T")[0],
-                    weight: "",
-                    weight_change: "",
-                    notes: "",
-                    slimmer_of_week: false,
-                  });
-                }}
-              >
-                <i className="bi bi-plus-lg me-1"></i>
-                Add Weigh-In
-              </button>
-            </div>
-          </div>
-          <hr />
-        </div>
-      </div>
+      <AdminPageHeader
+        title="Slimming World Manager"
+        icon="bi-heart-pulse"
+        description="Add and manage weigh-in entries"
+        backLink="/admin"
+        backLabel="Dashboard"
+        actions={
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              setShowAddForm(!showAddForm);
+              setEditingEntry(null);
+              setFormData({
+                entry_date: new Date().toISOString().split("T")[0],
+                weight: "",
+                weight_change: "",
+                notes: "",
+                slimmer_of_week: false,
+              });
+            }}
+          >
+            <i className="bi bi-plus-lg me-1"></i>
+            Add Weigh-In
+          </button>
+        }
+      />
 
       {/* Profile Summary */}
       {profile && (

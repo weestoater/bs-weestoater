@@ -133,6 +133,24 @@ export const AdminDashboard = () => {
           </div>
         </div>
 
+        {/* Navigation Management */}
+        <div className="col-md-6 col-lg-4">
+          <div className="card h-100">
+            <div className="card-body">
+              <h3 className="card-title">
+                <i className="bi bi-list-ul me-2 text-dark"></i>
+                Navigation
+              </h3>
+              <p className="card-text">
+                Manage site navigation menu structure and ordering
+              </p>
+              <Link to="/admin/navigation" className="btn btn-dark">
+                Manage Navigation
+              </Link>
+            </div>
+          </div>
+        </div>
+
         {/* Media Library - Coming Soon */}
         <div className="col-md-6 col-lg-4">
           <div className="card h-100 bg-light">

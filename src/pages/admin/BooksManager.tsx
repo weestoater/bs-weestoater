@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getSupabaseClient } from "../../../backend/index.js";
 import type { Book } from "../../interfaces/Book";
 import { useSEO } from "../../utils/useSEO";
+import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
 
 const { createDatabaseService } = await import("../../../backend/index.js");
 
@@ -94,27 +95,19 @@ export const BooksManager = () => {
 
   return (
     <div className="container mt-4 mb-5">
-      <div className="row mb-4">
-        <div className="col-12">
-          <div className="d-flex justify-content-between align-items-center">
-            <h1>
-              <i className="bi bi-book me-2"></i>
-              Manage Books
-            </h1>
-            <div>
-              <Link to="/admin" className="btn btn-outline-secondary me-2">
-                <i className="bi bi-arrow-left me-1"></i>
-                Back to Dashboard
-              </Link>
-              <Link to="/admin/books/new" className="btn btn-primary">
-                <i className="bi bi-plus-lg me-1"></i>
-                Add New Book
-              </Link>
-            </div>
-          </div>
-          <hr />
-        </div>
-      </div>
+      <AdminPageHeader
+        title="Manage Books"
+        icon="bi-book"
+        description="Edit and manage book content"
+        backLink="/admin"
+        backLabel="Dashboard"
+        actions={
+          <Link to="/admin/books/new" className="btn btn-primary">
+            <i className="bi bi-plus-lg me-1"></i>
+            Add New Book
+          </Link>
+        }
+      />
 
       {books.length === 0 ? (
         <div className="alert alert-info">

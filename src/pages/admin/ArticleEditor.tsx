@@ -6,6 +6,7 @@ import { useSEO } from "../../utils/useSEO";
 import { calculateReadingTime } from "../../utils/readingTime";
 import { createTinyMCEConfig } from "../../utils/tinymceHelpers";
 import { ImageUpload } from "../../components/admin/ImageUpload";
+import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
 
 const { createDatabaseService } = await import("../../../backend/index.js");
 
@@ -229,21 +230,13 @@ export const ArticleEditor = () => {
 
   return (
     <div className="container-fluid mt-4 mb-5">
-      <div className="row mb-4">
-        <div className="col-12">
-          <div className="d-flex justify-content-between align-items-center">
-            <h1>
-              <i className="bi bi-newspaper me-2"></i>
-              {isEdit ? "Edit Article" : "Add New Article"}
-            </h1>
-            <Link to="/admin/articles" className="btn btn-outline-secondary">
-              <i className="bi bi-arrow-left me-1"></i>
-              Back to Articles
-            </Link>
-          </div>
-          <hr />
-        </div>
-      </div>
+      <AdminPageHeader
+        title={isEdit ? "Edit Article" : "Add New Article"}
+        icon="bi-newspaper"
+        description={isEdit ? "Edit article details" : "Create a new article"}
+        backLink="/admin/articles"
+        backLabel="Articles Manager"
+      />
 
       {error && (
         <div className="alert alert-danger" role="alert">
