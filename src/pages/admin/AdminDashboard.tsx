@@ -151,18 +151,36 @@ export const AdminDashboard = () => {
           </div>
         </div>
 
-        {/* Media Library - Coming Soon */}
+        {/* Site Settings */}
         <div className="col-md-6 col-lg-4">
-          <div className="card h-100 bg-light">
+          <div className="card h-100">
             <div className="card-body">
               <h3 className="card-title">
-                <i className="bi bi-images me-2 text-secondary"></i>
+                <i className="bi bi-gear-fill me-2 text-secondary"></i>
+                Settings
+              </h3>
+              <p className="card-text">
+                Configure global site settings, branding, and SEO
+              </p>
+              <Link to="/admin/settings" className="btn btn-secondary">
+                Manage Settings
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Media Library */}
+        <div className="col-md-6 col-lg-4">
+          <div className="card h-100">
+            <div className="card-body">
+              <h3 className="card-title">
+                <i className="bi bi-images me-2 text-purple"></i>
                 Media
               </h3>
               <p className="card-text">Manage images and media files</p>
-              <button className="btn btn-secondary" disabled>
-                Coming Soon
-              </button>
+              <Link to="/admin/media" className="btn btn-primary">
+                Manage Media
+              </Link>
             </div>
           </div>
         </div>

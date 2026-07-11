@@ -86,7 +86,6 @@ export function GoalRow({
     </tr>
   );
 }
-import { Link } from "react-router-dom";
 import { getSupabaseClient } from "../../../backend/index.js";
 import { useSEO } from "../../utils/useSEO";
 

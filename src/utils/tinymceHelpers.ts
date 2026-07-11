@@ -133,9 +133,13 @@ const popularPhosphorIcons = [
 /**
  * Create TinyMCE init config with image upload support and icon insertion
  * @param folder - Folder name for uploads
+ * @param onMediaPicker - Optional callback to open media picker
  * @returns TinyMCE init configuration object
  */
-export const createTinyMCEConfig = (folder: string = "editor") => ({
+export const createTinyMCEConfig = (
+  folder: string = "editor",
+  onMediaPicker?: () => void,
+) => ({
   height: 500,
   menubar: false,
   plugins: [
@@ -161,7 +165,7 @@ export const createTinyMCEConfig = (folder: string = "editor") => ({
     "undo redo | blocks | " +
     "bold italic forecolor | alignleft aligncenter " +
     "alignright alignjustify | bullist numlist outdent indent | " +
-    "removeformat | link image bootstrapicon phosphoricon | code | help",
+    "removeformat | link image media_library bootstrapicon phosphoricon | code | help",
   // Allow icon elements and preserve their classes
   extended_valid_elements: "i[class|style|id|title],span[class|style|id]",
   valid_children:
@@ -173,12 +177,16 @@ export const createTinyMCEConfig = (folder: string = "editor") => ({
     ".bi, .ph { font-size: 1.5em; vertical-align: middle; margin: 0 2px; } " +
     ".ph.fs-1 { font-size: 4.5rem !important; }",
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setup: (editor: any) => {
     // Store dialog API reference globally so onclick handlers can access it
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let bootstrapDialogApi: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let phosphorDialogApi: any = null;
 
     // Create global function for inserting Bootstrap icons
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).insertBootstrapIcon = (iconClass: string) => {
       console.log("🎨 Inserting Bootstrap icon:", iconClass);
       const iconHtml = `<i class="bi ${iconClass}"></i>&nbsp;`;
@@ -196,6 +204,7 @@ export const createTinyMCEConfig = (folder: string = "editor") => ({
     };
 
     // Create global function for inserting Phosphor icons
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).insertPhosphorIcon = (iconClass: string) => {
       console.log("🎨 Inserting Phosphor icon:", iconClass);
       const iconHtml = `<i class="ph ${iconClass}"></i>&nbsp;`;
@@ -211,6 +220,17 @@ export const createTinyMCEConfig = (folder: string = "editor") => ({
         console.error("❌ Error inserting icon:", error);
       }
     };
+
+    // Media Library button (if callback provided)
+    if (onMediaPicker) {
+      editor.ui.registry.addButton("media_library", {
+        icon: "gallery",
+        tooltip: "Insert from Media Library",
+        onAction: () => {
+          onMediaPicker();
+        },
+      });
+    }
 
     // Bootstrap Icons button
     editor.ui.registry.addButton("bootstrapicon", {
@@ -257,6 +277,7 @@ export const createTinyMCEConfig = (folder: string = "editor") => ({
               primary: true,
             },
           ],
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onSubmit: (api: any) => {
             const data = api.getData();
             let iconClass = data.iconClass;
@@ -341,6 +362,7 @@ export const createTinyMCEConfig = (folder: string = "editor") => ({
               primary: true,
             },
           ],
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onSubmit: (api: any) => {
             const data = api.getData();
             let iconClass = data.iconClass;
@@ -394,3 +416,28 @@ export const createTinyMCEConfig = (folder: string = "editor") => ({
     { title: "Rounded", value: "rounded" },
   ],
 });
+
+/**
+ * Insert media item into TinyMCE editor
+ * @param editor - TinyMCE editor instance
+ * @param mediaItem - Media library item to insert
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const insertMediaIntoEditor = (editor: any, mediaItem: any) => {
+  if (!editor) return;
+
+  if (mediaItem.file_type === "image") {
+    const imgHtml = `<img src="${mediaItem.public_url}" alt="${mediaItem.alt_text || mediaItem.original_filename}" class="img-fluid" ${mediaItem.width ? `width="${mediaItem.width}"` : ""} ${mediaItem.height ? `height="${mediaItem.height}"` : ""} />`;
+    editor.execCommand("mceInsertContent", false, imgHtml);
+  } else if (mediaItem.file_type === "video") {
+    const videoHtml = `<video controls><source src="${mediaItem.public_url}" type="${mediaItem.mime_type}">Your browser does not support the video tag.</video>`;
+    editor.execCommand("mceInsertContent", false, videoHtml);
+  } else if (mediaItem.file_type === "audio") {
+    const audioHtml = `<audio controls><source src="${mediaItem.public_url}" type="${mediaItem.mime_type}">Your browser does not support the audio tag.</audio>`;
+    editor.execCommand("mceInsertContent", false, audioHtml);
+  } else {
+    // For documents and other files, insert as a link
+    const linkHtml = `<a href="${mediaItem.public_url}" target="_blank" rel="noopener noreferrer">${mediaItem.original_filename}</a>`;
+    editor.execCommand("mceInsertContent", false, linkHtml);
+  }
+};

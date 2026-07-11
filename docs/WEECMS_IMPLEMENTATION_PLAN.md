@@ -546,29 +546,31 @@ backend/supabase/
 
 ---
 
-### Phase 4: Site Configuration (Week 3-4)
+### Phase 4: Site Configuration (Week 3-4) ✅ COMPLETE
 
 **Goal:** Centralize all site settings
+
+**Status**: Backend, admin interface, and hooks complete. Component integration planned for Phase 4.5 (after Phase 5).
 
 #### Tasks:
 
 1. **Build Admin Interface - Settings**
-   - [ ] Create `/admin/settings` page with tabs:
-     - General (name, tagline, description)
-     - Branding (logo, favicon)
-     - SEO (meta tags, analytics)
-     - Social Media (links)
-     - Features (enable/disable functionality)
-     - Theme (default theme, options)
-     - Footer (text, links)
-     - Maintenance (mode, message)
+   - [x] Create `/admin/settings` page with tabs:
+     - [x] General (name, tagline, description)
+     - [x] Branding (logo, favicon)
+     - [x] SEO (meta tags, analytics)
+     - [x] Social Media (links)
+     - [x] Features (enable/disable functionality)
+     - [x] Theme (default theme, options)
+     - [x] Footer (text, links)
+     - [x] Maintenance (mode, message)
 
 2. **Populate Site Config**
-   - [ ] Add current site information
-   - [ ] Add logo and favicon
-   - [ ] Configure default theme
+   - [x] Add current site information
+   - [x] Configure default theme
+   - [ ] Add logo and favicon (Phase 5 - Media Library)
 
-3. **Update Components to Use Config**
+3. **Update Components to Use Config** → **Phase 4.5** (After Phase 5)
    - [ ] Update `Header.tsx` for site name/logo
    - [ ] Create `Footer.tsx` component using config
    - [ ] Update `index.html` for dynamic title
@@ -576,16 +578,61 @@ backend/supabase/
    - [ ] Add analytics scripts
 
 4. **Add Configuration Hook**
-   - [ ] Create `useSiteConfig()` hook
-   - [ ] Implement caching strategy
-   - [ ] Add config refresh logic
+   - [x] Create `useSiteConfig()` hook
+   - [x] Implement caching strategy
+   - [x] Add config refresh logic
 
 #### Deliverables:
 
 - ✅ All site settings manageable
-- ✅ Settings page complete
-- ✅ Components use dynamic config
-- ✅ Performance optimized
+- ✅ Settings page complete with 6 tabs
+- ✅ Backend service implemented
+- ✅ Migration script created
+- ✅ useSiteConfig() hook with caching
+- ⏳ Component integration pending (Phase 4.5)
+
+---
+
+### Phase 4.5: Settings Integration (After Phase 5)
+
+**Goal:** Integrate site configuration into existing components
+
+**Note:** Deferred until after Phase 5 (Media Library) so logo/favicon can be uploaded and used.
+
+#### Tasks:
+
+1. **Update Header Component**
+   - [ ] Use `config.site_name` from useSiteConfig()
+   - [ ] Use `config.logo_url` when available
+   - [ ] Fallback to current hard-coded values
+
+2. **Create Footer Component**
+   - [ ] New `src/patterns/Footer.tsx`
+   - [ ] Use `config.footer_text`
+   - [ ] Render `config.footer_links`
+   - [ ] Add to App.tsx layout
+
+3. **Dynamic Page Titles**
+   - [ ] Update `useSEO` hook to use config.site_name
+   - [ ] Format: `{pageTitle} | {config.site_name}`
+
+4. **Maintenance Mode Gate**
+   - [ ] Create MaintenanceModePage component
+   - [ ] Check config.maintenance_mode in App.tsx
+   - [ ] Show maintenance message to non-admin users
+   - [ ] Allow admins to bypass
+
+5. **Analytics Integration**
+   - [ ] Create analytics utility
+   - [ ] Load Google Analytics if config.google_analytics_id set
+   - [ ] Initialize on app mount
+
+#### Deliverables:
+
+- ⏳ All components use database configuration
+- ⏳ No hard-coded site info
+- ⏳ Maintenance mode functional
+- ⏳ Analytics integrated
 
 ---
 
@@ -600,24 +647,38 @@ backend/supabase/
    - [ ] Add upload functionality (drag-and-drop)
    - [ ] Add image preview/lightbox
    - [ ] Add bulk upload support
-   - [ ] Add folder organization
-   - [ ] Add search and filtering
-   - [ ] Add usage tracking
-   - [ ] Add delete with warnings
 
-2. **Image Processing**
+### Phase 5: Media Library (Week 4) ✅ COMPLETE
+
+**Goal:** Professional media management system
+
+**Status**: Core media library complete. TinyMCE integration and migration planned for Phase 5.5.
+
+#### Tasks:
+
+1. **Build Admin Interface - Media Library**
+   - [x] Create `/admin/media` library browser
+   - [x] Add upload functionality (drag-and-drop)
+   - [x] Add image preview/lightbox
+   - [x] Add bulk upload support
+   - [x] Add folder organization
+   - [x] Add search and filtering
+   - [x] Add usage tracking (backend ready)
+   - [x] Add delete with warnings
+
+2. **Image Processing** → **Phase 5.5** (Advanced features)
    - [ ] Set up Supabase Storage transformations
    - [ ] Add automatic WebP conversion
    - [ ] Add thumbnail generation
    - [ ] Add image optimization
 
-3. **Integrate with Editors**
+3. **Integrate with Editors** → **Phase 5.5**
    - [ ] Add media picker to article editor
    - [ ] Add media picker to content block editor
    - [ ] Add inline image insertion
    - [ ] Update URL references
 
-4. **Migrate Existing Media**
+4. **Migrate Existing Media** → **Phase 5.5**
    - [ ] Upload current images to Supabase Storage
    - [ ] Update database references
    - [ ] Update all content using old paths
@@ -627,8 +688,59 @@ backend/supabase/
 
 - ✅ Media library fully functional
 - ✅ Upload/organize works smoothly
-- ✅ All existing media migrated
-- ✅ Integration with editors complete
+- ✅ Drag-and-drop upload
+- ✅ File type filtering and search
+- ✅ Image preview modal
+- ✅ Delete with warnings
+- ✅ Stats dashboard
+- ✅ Storage check script
+- ⏳ Editor integration pending (Phase 5.5)
+- ⏳ Media migration pending (Phase 5.5)
+
+---
+
+### Phase 5.5: Media Integration (Partially Complete)
+
+**Goal:** Integrate media library with content editors and migrate existing media
+
+**Status:** TinyMCE integration ✅ complete. Media migration pending.
+
+#### Tasks:
+
+1. **TinyMCE Media Picker** ✅ COMPLETE
+   - [x] Add "Insert Media" button to TinyMCE toolbar
+   - [x] Create media picker modal component
+   - [x] Show filterable media grid in modal
+   - [x] Insert selected image at cursor position
+   - [x] Update article editor to use media picker
+   - [x] Update content block editor to use media picker
+   - [x] Support for images, videos, audio, and documents
+
+2. **Media Migration** ⏳
+   - [ ] Create migration script for `src/assets/img/`
+   - [ ] Upload all images to Supabase Storage
+   - [ ] Update database references to new URLs
+   - [ ] Fix broken image paths in components:
+     - [ ] `WhoIsWeestoater.tsx`
+     - [ ] `WhatIsWeestoater.tsx`
+     - [ ] `ShapesDemo.tsx`
+   - [ ] Archive local images (move to archive/)
+
+3. **Advanced Features** (Optional)
+   - [ ] Bulk operations (select multiple files)
+   - [ ] Image editing (crop, resize)
+   - [ ] Alt text editor modal
+   - [ ] Tag management UI
+   - [ ] Usage tracking display
+   - [ ] Folder tree view
+   - [ ] File rename/move
+
+#### Deliverables:
+
+- ✅ Media picker integrated with editors
+- ⏳ All existing media migrated to Supabase
+- ⏳ No local images in src/assets/img/
+- ⏳ All content uses new Supabase URLs
 
 ---
 

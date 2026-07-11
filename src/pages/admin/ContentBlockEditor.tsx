@@ -1,11 +1,15 @@
-import { useState, useEffect, FormEvent } from "react";
+import { useState, useEffect, FormEvent, useRef } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { Editor } from "@tinymce/tinymce-react";
 import { getSupabaseClient } from "../../../backend/index.js";
 import { useSEO } from "../../utils/useSEO";
-import { createTinyMCEConfig } from "../../utils/tinymceHelpers";
-import type { ContentBlock } from "../../types/weecms";
+import {
+  createTinyMCEConfig,
+  insertMediaIntoEditor,
+} from "../../utils/tinymceHelpers";
+import type { MediaLibraryItem } from "../../types/weecms";
 import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
+import { MediaPicker } from "../../components/admin/MediaPicker";
 
 const { createContentService } = await import("../../../backend/index.js");
 
@@ -24,6 +28,9 @@ export const ContentBlockEditor = () => {
   const [loading, setLoading] = useState(isEdit);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showMediaPicker, setShowMediaPicker] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const editorRef = useRef<any>(null);
 
   const [formData, setFormData] = useState({
     slug: "",
@@ -147,6 +154,13 @@ export const ContentBlockEditor = () => {
     }));
   };
 
+  const handleMediaSelect = (mediaItem: MediaLibraryItem) => {
+    if (editorRef.current) {
+      insertMediaIntoEditor(editorRef.current, mediaItem);
+    }
+    setShowMediaPicker(false);
+  };
+
   if (loading) {
     return (
       <div className="container mt-4">
@@ -244,9 +258,14 @@ export const ContentBlockEditor = () => {
                   </label>
                   <Editor
                     apiKey="cart3icxunk0rbc9m0xjrflqcmqghdf73tlipo4uynpwe7fp"
-                    init={createTinyMCEConfig()}
+                    init={createTinyMCEConfig("content-blocks", () =>
+                      setShowMediaPicker(true),
+                    )}
                     value={formData.content}
                     onEditorChange={handleEditorChange}
+                    onInit={(_evt, editor) => {
+                      editorRef.current = editor;
+                    }}
                   />
                 </div>
               </div>
@@ -395,6 +414,15 @@ export const ContentBlockEditor = () => {
           </div>
         </div>
       </form>
+
+      {/* Media Picker Modal */}
+      {showMediaPicker && (
+        <MediaPicker
+          onSelect={handleMediaSelect}
+          onClose={() => setShowMediaPicker(false)}
+          fileType="all"
+        />
+      )}
     </div>
   );
 };

@@ -40,6 +40,11 @@ export {
 } from "./supabase/navigationService.js";
 
 export {
+  createSiteConfigService,
+  createSiteConfigServiceFromEnv,
+} from "./supabase/siteConfigService.js";
+
+export {
   createConfigService,
   createConfigServiceFromEnv,
 } from "./supabase/configService.js";
