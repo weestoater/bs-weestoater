@@ -1,4 +1,5 @@
 import { useState, useEffect, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
 
 type GoalRowGoal = {
@@ -135,16 +136,6 @@ interface FootballSeason {
   is_active: boolean;
 }
 
-interface FootballPlayer {
-  id: string;
-  season_id: string;
-  player_name: string;
-  squad_number: number | null;
-  position: string | null;
-  is_active: boolean;
-  notes: string | null;
-}
-
 interface FootballMatch {
   id: string;
   season_id: string;
@@ -176,6 +167,8 @@ interface MatchCard {
 }
 
 export const FootballManager = () => {
+  const navigate = useNavigate();
+
   useSEO({
     title: "Manage Football Data",
     description: "Add and manage Motherwell FC match data",
@@ -199,11 +192,6 @@ export const FootballManager = () => {
   const [players, setPlayers] = useState<string[]>([]);
   const [managingSeasons, setManagingSeasons] = useState(false);
   const [editingSeason, setEditingSeason] = useState<FootballSeason | null>(
-    null,
-  );
-  const [managingPlayers, setManagingPlayers] = useState(false);
-  const [playerRecords, setPlayerRecords] = useState<FootballPlayer[]>([]);
-  const [editingPlayer, setEditingPlayer] = useState<FootballPlayer | null>(
     null,
   );
 
@@ -243,15 +231,6 @@ export const FootballManager = () => {
     is_active: false,
   });
 
-  // Player form state
-  const [playerFormData, setPlayerFormData] = useState({
-    player_name: "",
-    squad_number: "",
-    position: "",
-    is_active: true,
-    notes: "",
-  });
-
   const loadPlayers = async (seasonId: string) => {
     if (!seasonId) return;
 
@@ -264,22 +243,6 @@ export const FootballManager = () => {
       setPlayers(playersData);
     } catch (err) {
       console.error("Failed to load players:", err);
-    }
-  };
-
-  const loadPlayerRecords = async (seasonId: string) => {
-    if (!seasonId) return;
-
-    try {
-      const client = getSupabaseClient();
-      const db = createDatabaseService(client);
-      const records = await db.getFootballPlayerRecords(seasonId);
-      setPlayerRecords(records || []);
-    } catch (err) {
-      console.error("Failed to load player records:", err);
-      setError(
-        err instanceof Error ? err.message : "Failed to load player records",
-      );
     }
   };
 
@@ -634,105 +597,9 @@ export const FootballManager = () => {
     }
   };
 
-  // Player Management Functions
+  // Navigate to player management page
   const handleManagePlayers = () => {
-    if (!selectedSeason) return;
-    loadPlayerRecords(selectedSeason);
-    setManagingPlayers(true);
-  };
-
-  const handleAddPlayer = () => {
-    setEditingPlayer(null);
-    setPlayerFormData({
-      player_name: "",
-      squad_number: "",
-      position: "",
-      is_active: true,
-      notes: "",
-    });
-  };
-
-  const handleEditPlayer = (player: FootballPlayer) => {
-    setEditingPlayer(player);
-    setPlayerFormData({
-      player_name: player.player_name,
-      squad_number: player.squad_number?.toString() || "",
-      position: player.position || "",
-      is_active: player.is_active,
-      notes: player.notes || "",
-    });
-  };
-
-  const handlePlayerSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-
-    try {
-      const client = getSupabaseClient();
-      const db = createDatabaseService(client);
-
-      const playerData = {
-        season_id: selectedSeason,
-        player_name: playerFormData.player_name,
-        squad_number: playerFormData.squad_number
-          ? parseInt(playerFormData.squad_number)
-          : null,
-        position: playerFormData.position || null,
-        is_active: playerFormData.is_active,
-        notes: playerFormData.notes || null,
-      };
-
-      if (editingPlayer) {
-        await db.updateFootballPlayer(editingPlayer.id, playerData);
-      } else {
-        await db.createFootballPlayer(playerData);
-      }
-
-      // Reload players and player records
-      await loadPlayerRecords(selectedSeason);
-      await loadPlayers(selectedSeason);
-
-      // Reset form
-      setEditingPlayer(null);
-      setPlayerFormData({
-        player_name: "",
-        squad_number: "",
-        position: "",
-        is_active: true,
-        notes: "",
-      });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to save player");
-    }
-  };
-
-  const handleDeletePlayer = async (playerId: string) => {
-    if (!confirm("Are you sure you want to delete this player?")) return;
-
-    try {
-      const client = getSupabaseClient();
-      const db = createDatabaseService(client);
-      await db.deleteFootballPlayer(playerId);
-      await loadPlayerRecords(selectedSeason);
-      await loadPlayers(selectedSeason);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to delete player");
-    }
-  };
-
-  const handleTogglePlayerStatus = async (player: FootballPlayer) => {
-    try {
-      const client = getSupabaseClient();
-      const db = createDatabaseService(client);
-      await db.updateFootballPlayer(player.id, {
-        is_active: !player.is_active,
-      });
-      await loadPlayerRecords(selectedSeason);
-      await loadPlayers(selectedSeason);
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Failed to update player status",
-      );
-    }
+    navigate("/admin/football/players");
   };
 
   if (loading && seasons.length === 0) {
@@ -1609,273 +1476,6 @@ export const FootballManager = () => {
                   onClick={() => {
                     setManagingSeasons(false);
                     setEditingSeason(null);
-                  }}
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Player Management Modal */}
-      {managingPlayers && (
-        <div
-          className="modal show d-block"
-          tabIndex={-1}
-          style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
-        >
-          <div className="modal-dialog modal-xl">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Manage Squad Players</h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  onClick={() => {
-                    setManagingPlayers(false);
-                    setEditingPlayer(null);
-                  }}
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div className="modal-body">
-                {/* Add/Edit Player Form */}
-                <div className="card mb-4">
-                  <div className="card-header">
-                    <h6 className="mb-0">
-                      {editingPlayer ? "Edit Player" : "Add New Player"}
-                    </h6>
-                  </div>
-                  <div className="card-body">
-                    <form onSubmit={handlePlayerSubmit}>
-                      <div className="row">
-                        <div className="col-md-6 mb-3">
-                          <label htmlFor="player_name" className="form-label">
-                            Player Name *
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="player_name"
-                            value={playerFormData.player_name}
-                            onChange={(e) =>
-                              setPlayerFormData({
-                                ...playerFormData,
-                                player_name: e.target.value,
-                              })
-                            }
-                            required
-                          />
-                        </div>
-                        <div className="col-md-3 mb-3">
-                          <label htmlFor="squad_number" className="form-label">
-                            Squad Number
-                          </label>
-                          <input
-                            type="number"
-                            className="form-control"
-                            id="squad_number"
-                            value={playerFormData.squad_number}
-                            onChange={(e) =>
-                              setPlayerFormData({
-                                ...playerFormData,
-                                squad_number: e.target.value,
-                              })
-                            }
-                            min="1"
-                            max="99"
-                          />
-                        </div>
-                        <div className="col-md-3 mb-3">
-                          <label htmlFor="position" className="form-label">
-                            Position
-                          </label>
-                          <select
-                            className="form-select"
-                            id="position"
-                            value={playerFormData.position}
-                            onChange={(e) =>
-                              setPlayerFormData({
-                                ...playerFormData,
-                                position: e.target.value,
-                              })
-                            }
-                          >
-                            <option value="">Select...</option>
-                            <option value="Goalkeeper">Goalkeeper</option>
-                            <option value="Defender">Defender</option>
-                            <option value="Midfielder">Midfielder</option>
-                            <option value="Forward">Forward</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-md-9 mb-3">
-                          <label htmlFor="notes" className="form-label">
-                            Notes
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="notes"
-                            value={playerFormData.notes}
-                            onChange={(e) =>
-                              setPlayerFormData({
-                                ...playerFormData,
-                                notes: e.target.value,
-                              })
-                            }
-                            placeholder="e.g., On loan, Sold to..."
-                          />
-                        </div>
-                        <div className="col-md-3 mb-3">
-                          <label className="form-label d-block">Status</label>
-                          <div className="form-check form-switch">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              id="is_active"
-                              checked={playerFormData.is_active}
-                              onChange={(e) =>
-                                setPlayerFormData({
-                                  ...playerFormData,
-                                  is_active: e.target.checked,
-                                })
-                              }
-                            />
-                            <label
-                              className="form-check-label"
-                              htmlFor="is_active"
-                            >
-                              Active
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="d-flex gap-2">
-                        <button type="submit" className="btn btn-primary">
-                          <i className="bi bi-save me-2"></i>
-                          {editingPlayer ? "Update Player" : "Add Player"}
-                        </button>
-                        {editingPlayer && (
-                          <button
-                            type="button"
-                            className="btn btn-secondary"
-                            onClick={handleAddPlayer}
-                          >
-                            Cancel Edit
-                          </button>
-                        )}
-                      </div>
-                    </form>
-                  </div>
-                </div>
-
-                {/* Players List */}
-                <div className="card">
-                  <div className="card-header">
-                    <h6 className="mb-0">
-                      Squad Players ({playerRecords.length})
-                    </h6>
-                  </div>
-                  <div className="card-body">
-                    <div className="table-responsive">
-                      <table className="table table-sm table-hover">
-                        <thead>
-                          <tr>
-                            <th>No.</th>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Status</th>
-                            <th>Notes</th>
-                            <th>Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {playerRecords.map((player) => (
-                            <tr
-                              key={player.id}
-                              className={!player.is_active ? "text-muted" : ""}
-                            >
-                              <td>{player.squad_number || "-"}</td>
-                              <td className="fw-bold">{player.player_name}</td>
-                              <td>{player.position || "-"}</td>
-                              <td>
-                                {player.is_active ? (
-                                  <span className="badge bg-success">
-                                    Active
-                                  </span>
-                                ) : (
-                                  <span className="badge bg-secondary">
-                                    Inactive
-                                  </span>
-                                )}
-                              </td>
-                              <td>
-                                <small>{player.notes || "-"}</small>
-                              </td>
-                              <td>
-                                <div className="btn-group btn-group-sm">
-                                  <button
-                                    className="btn btn-outline-primary"
-                                    onClick={() => handleEditPlayer(player)}
-                                    title="Edit player"
-                                  >
-                                    <i className="bi bi-pencil"></i>
-                                  </button>
-                                  <button
-                                    className={`btn ${player.is_active ? "btn-outline-warning" : "btn-outline-success"}`}
-                                    onClick={() =>
-                                      handleTogglePlayerStatus(player)
-                                    }
-                                    title={
-                                      player.is_active
-                                        ? "Mark as inactive"
-                                        : "Mark as active"
-                                    }
-                                  >
-                                    <i
-                                      className={`bi ${player.is_active ? "bi-dash-circle" : "bi-check-circle"}`}
-                                    ></i>
-                                  </button>
-                                  <button
-                                    className="btn btn-outline-danger"
-                                    onClick={() =>
-                                      handleDeletePlayer(player.id)
-                                    }
-                                    title="Delete player"
-                                  >
-                                    <i className="bi bi-trash"></i>
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                          {playerRecords.length === 0 && (
-                            <tr>
-                              <td
-                                colSpan={6}
-                                className="text-muted text-center"
-                              >
-                                No players found for this season
-                              </td>
-                            </tr>
-                          )}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={() => {
-                    setManagingPlayers(false);
-                    setEditingPlayer(null);
                   }}
                 >
                   Close
