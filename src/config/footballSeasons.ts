@@ -1,8 +1,15 @@
 // ============================================
 // Football Seasons Configuration
 // ============================================
-// Central configuration for all Motherwell FC seasons
-// Used for navigation, routing, and metadata
+// DEPRECATED: This static configuration is kept for backward compatibility
+// and testing purposes only. The application now uses dynamic season data
+// from the Supabase database (football_seasons table).
+//
+// To manage seasons, use the Admin Football Manager interface:
+// /admin/football > Manage Seasons
+//
+// Active seasons are determined by the is_active flag in the database.
+// ============================================
 
 export interface SeasonConfig {
   id: string; // e.g., "2024-25"
@@ -13,7 +20,7 @@ export interface SeasonConfig {
   isActive: boolean; // Current season flag
 }
 
-// All available seasons in reverse chronological order
+// Legacy static configuration - now managed in database
 export const FOOTBALL_SEASONS: SeasonConfig[] = [
   {
     id: "2025-26",

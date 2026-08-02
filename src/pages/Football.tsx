@@ -14,12 +14,13 @@ import type {
   SeasonGoalsData,
 } from "../interfaces/footballTypes";
 
-const CURRENT_SEASON = "2025-26";
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
 interface FootballData {
   matchesData: SeasonMatchData;
   goalsData: SeasonGoalsData;
+  currentSeasonId: string;
+  currentSeasonDisplay: string;
 }
 
 export const FootballPage = () => {
@@ -27,6 +28,17 @@ export const FootballPage = () => {
     async () => {
       const supabase = getSupabaseClient();
       const db = createDatabaseService(supabase);
+
+      // Fetch the active season from the database
+      const seasons = await db.getFootballSeasons({ includeInactive: false });
+      if (!seasons || seasons.length === 0) {
+        throw new Error(
+          "No active season found. Please set a season as active in the admin panel.",
+        );
+      }
+
+      const activeSeason = seasons[0];
+      const CURRENT_SEASON = activeSeason.season_id;
 
       // Fetch complete season data
       const seasonData = await db.getFootballSeasonComplete(CURRENT_SEASON);
@@ -70,13 +82,16 @@ export const FootballPage = () => {
           season: CURRENT_SEASON,
           topScorers,
         },
+        currentSeasonId: CURRENT_SEASON,
+        currentSeasonDisplay: activeSeason.display_name,
       };
     },
-    { cacheTTL: CACHE_TTL, cacheKey: `football-${CURRENT_SEASON}` },
+    { cacheTTL: CACHE_TTL, cacheKey: `football-active-season` },
   );
 
   const matchesData = data?.matchesData || null;
   const goalsData = data?.goalsData || null;
+  const currentSeasonDisplay = data?.currentSeasonDisplay || "";
 
   if (loading) {
     return (
@@ -96,7 +111,7 @@ export const FootballPage = () => {
     );
   }
 
-  const seasons = ["2025-2026"];
+  const seasons = currentSeasonDisplay ? [currentSeasonDisplay] : [];
 
   return (
     <div className="container-fluid" id="top">

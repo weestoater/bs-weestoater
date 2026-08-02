@@ -52,17 +52,11 @@ export function createDatabaseService(supabaseClient) {
     orderAscending: false,
   });
 
-  const matchesCrud = createCrudService(supabaseClient, "football_matches", {
-    idField: "match_id",
-  });
+  const matchesCrud = createCrudService(supabaseClient, "football_matches");
 
-  const goalsCrud = createCrudService(supabaseClient, "football_match_goals", {
-    idField: "goal_id",
-  });
+  const goalsCrud = createCrudService(supabaseClient, "football_match_goals");
 
-  const cardsCrud = createCrudService(supabaseClient, "football_match_cards", {
-    idField: "card_id",
-  });
+  const cardsCrud = createCrudService(supabaseClient, "football_match_cards");
 
   // ============================================================================
   // BOOKS OPERATIONS
@@ -1191,10 +1185,38 @@ export function createDatabaseService(supabaseClient) {
 
   /**
    * Get all unique player names from goals and cards
+   * Now enhanced to use the football_players table when available
    * @param {string} [seasonId] - Optional season ID to filter players
+   * @param {Object} options - Query options
+   * @param {boolean} [options.activeOnly=false] - Only return active players
    * @returns {Promise<string[]>} Array of unique player names sorted alphabetically
    */
-  async function getFootballPlayers(seasonId = null) {
+  async function getFootballPlayers(seasonId = null, options = {}) {
+    const { activeOnly = false } = options;
+
+    // Try to get players from the dedicated players table first
+    let query = supabaseClient
+      .from("football_players")
+      .select("player_name, is_active");
+
+    if (seasonId) {
+      query = query.eq("season_id", seasonId);
+    }
+
+    if (activeOnly) {
+      query = query.eq("is_active", true);
+    }
+
+    query = query.order("player_name");
+
+    const { data: playerRecords, error: playersError } = await query;
+
+    // If we have player records, use them
+    if (!playersError && playerRecords && playerRecords.length > 0) {
+      return playerRecords.map((p) => p.player_name);
+    }
+
+    // Fallback: derive from goals and cards (legacy behavior)
     const players = new Set();
 
     // Build the select string with join to matches
@@ -1289,6 +1311,123 @@ export function createDatabaseService(supabaseClient) {
     };
   }
 
+  /**
+   * Get all players for a season
+   * @param {string} seasonId - Season ID
+   * @param {Object} options - Query options
+   * @param {boolean} [options.activeOnly=false] - Only return active players
+   * @returns {Promise<Array>} Array of player objects
+   */
+  async function getFootballPlayerRecords(seasonId, options = {}) {
+    const { activeOnly = false } = options;
+
+    let query = supabaseClient
+      .from("football_players")
+      .select("*")
+      .eq("season_id", seasonId)
+      .order("squad_number", { ascending: true, nullsFirst: false })
+      .order("player_name", { ascending: true });
+
+    if (activeOnly) {
+      query = query.eq("is_active", true);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      console.error("Error fetching player records:", error);
+      throw error;
+    }
+
+    return data || [];
+  }
+
+  /**
+   * Get a single player record by ID
+   * @param {string} playerId - Player ID
+   * @returns {Promise<Object|null>} Player object or null if not found
+   */
+  async function getFootballPlayerById(playerId) {
+    const { data, error } = await supabaseClient
+      .from("football_players")
+      .select("*")
+      .eq("id", playerId)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        return null;
+      }
+      console.error("Error fetching player:", error);
+      throw error;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a new player record
+   * @param {Object} playerData
+   * @param {string} playerData.season_id - Season ID
+   * @param {string} playerData.player_name - Player name
+   * @param {number} [playerData.squad_number] - Squad number
+   * @param {string} [playerData.position] - Position
+   * @param {boolean} [playerData.is_active=true] - Active status
+   * @param {string} [playerData.notes] - Notes
+   * @returns {Promise<Object>} The created player
+   */
+  async function createFootballPlayer(playerData) {
+    const { data, error } = await supabaseClient
+      .from("football_players")
+      .insert([playerData])
+      .select();
+
+    if (error) {
+      console.error("Error creating player:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Update an existing player record
+   * @param {string} playerId - Player ID
+   * @param {Object} playerData - Fields to update
+   * @returns {Promise<Object>} The updated player
+   */
+  async function updateFootballPlayer(playerId, playerData) {
+    const { data, error } = await supabaseClient
+      .from("football_players")
+      .update(playerData)
+      .eq("id", playerId)
+      .select();
+
+    if (error) {
+      console.error("Error updating player:", error);
+      throw error;
+    }
+
+    return data[0];
+  }
+
+  /**
+   * Delete a player record
+   * @param {string} playerId - Player ID
+   * @returns {Promise<void>}
+   */
+  async function deleteFootballPlayer(playerId) {
+    const { error } = await supabaseClient
+      .from("football_players")
+      .delete()
+      .eq("id", playerId);
+
+    if (error) {
+      console.error("Error deleting player:", error);
+      throw error;
+    }
+  }
+
   // Return all database service methods
   return {
     // Books
@@ -1356,6 +1495,12 @@ export function createDatabaseService(supabaseClient) {
     bulkInsertFootballData,
     getFootballPlayers,
     getFootballSeasonComplete,
+    // Football Players
+    getFootballPlayerRecords,
+    getFootballPlayerById,
+    createFootballPlayer,
+    updateFootballPlayer,
+    deleteFootballPlayer,
   };
 }
 
