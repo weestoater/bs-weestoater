@@ -121,6 +121,11 @@ const FootballManager = lazy(() =>
     default: module.FootballManager,
   })),
 );
+const FootballPlayersManager = lazy(() =>
+  import("./pages/admin/FootballPlayersManager").then((module) => ({
+    default: module.FootballPlayersManager,
+  })),
+);
 const SettingsManager = lazy(() =>
   import("./pages/admin/SettingsManager").then((module) => ({
     default: module.SettingsManager,
@@ -273,6 +278,14 @@ export const App = () => {
                 element={
                   <ProtectedRoute>
                     <FootballManager />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/football/players"
+                element={
+                  <ProtectedRoute>
+                    <FootballPlayersManager />
                   </ProtectedRoute>
                 }
               />
