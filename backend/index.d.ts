@@ -142,6 +142,18 @@ export interface FootballMatchCard {
   created_at: string;
 }
 
+export interface FootballPlayer {
+  id: string;
+  season_id: string;
+  player_name: string;
+  squad_number: number | null;
+  position: string | null;
+  is_active: boolean;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface FootballSeasonStats {
   id: string;
   season_id: string;
@@ -322,7 +334,23 @@ export interface DatabaseService {
     cards?: FootballMatchCard[];
     stats?: FootballSeasonStats[];
   }>;
-  getFootballPlayers(seasonId?: string | null): Promise<string[]>;
+  getFootballPlayers(
+    seasonId?: string | null,
+    options?: { activeOnly?: boolean },
+  ): Promise<string[]>;
+  getFootballPlayerRecords(
+    seasonId: string,
+    options?: { activeOnly?: boolean },
+  ): Promise<FootballPlayer[]>;
+  getFootballPlayerById(playerId: string): Promise<FootballPlayer | null>;
+  createFootballPlayer(
+    playerData: Partial<FootballPlayer>,
+  ): Promise<FootballPlayer>;
+  updateFootballPlayer(
+    playerId: string,
+    playerData: Partial<FootballPlayer>,
+  ): Promise<FootballPlayer>;
+  deleteFootballPlayer(playerId: string): Promise<void>;
   getFootballSeasonComplete(
     seasonId: string,
   ): Promise<FootballSeasonComplete | null>;
