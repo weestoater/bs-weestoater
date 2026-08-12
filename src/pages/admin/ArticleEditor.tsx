@@ -342,7 +342,8 @@ export const ArticleEditor = () => {
                     init={createTinyMCEConfig("articles", () =>
                       setShowMediaPicker(true),
                     )}
-                    onInit={(_evt, editor) => {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    onInit={(_evt: unknown, editor: any) => {
                       editorRef.current = editor;
                     }}
                   />

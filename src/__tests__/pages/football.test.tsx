@@ -29,12 +29,15 @@ const mockSeasonData = {
   ],
 };
 
-// Mock the database service
+const mockGetFootballSeasons = vi
+  .fn()
+  .mockResolvedValue([{ season_id: "2025-26", display_name: "2025-26" }]);
 const mockGetFootballSeasonComplete = vi.fn().mockResolvedValue(mockSeasonData);
 
 vi.mock("../../../backend/index.js", () => ({
   getSupabaseClient: vi.fn(() => ({})),
   createDatabaseService: vi.fn(() => ({
+    getFootballSeasons: mockGetFootballSeasons,
     getFootballSeasonComplete: mockGetFootballSeasonComplete,
   })),
 }));
@@ -106,7 +109,7 @@ describe("FootballPage", () => {
       expect(resultsSection).toBeInTheDocument();
     });
 
-    expect(screen.getByText("Season: 2025-2026")).toBeInTheDocument();
+    expect(screen.getByText("Season: 2025-26")).toBeInTheDocument();
     expect(screen.getByText("Has Matches: Yes")).toBeInTheDocument();
     expect(screen.getByText("Has Goals: Yes")).toBeInTheDocument();
   });

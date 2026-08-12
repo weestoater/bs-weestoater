@@ -9,26 +9,20 @@ vi.mock("../../components/global/pageTitleHeading", () => ({
   ),
 }));
 
-vi.mock("../../content/home/SlimLineVersion", () => ({
-  SlimLineVersionCard: () => (
-    <div className="card">
-      <div className="card-header">
-        <h2>
-          <i className="bi bi-bicycle me-4"></i>Slim Line
-        </h2>
+vi.mock("../../components/content/ContentBlockGrid", () => ({
+  ContentBlockGrid: () => (
+    <div>
+      <div className="card">
+        <div className="card-header">
+          <h2>
+            <i className="bi bi-bicycle me-4"></i>Slim Line
+          </h2>
+        </div>
+        <div className="card-body">Mock Slim Line Content</div>
       </div>
-      <div className="card-body">Mock Slim Line Content</div>
+      <div data-testid="ethos-card">Ethos Card</div>
+      <div data-testid="trial-error-card">Trial and Error Card</div>
     </div>
-  ),
-}));
-
-vi.mock("../../content/home/EthosCard", () => ({
-  EthosCard: () => <div data-testid="ethos-card">Ethos Card</div>,
-}));
-
-vi.mock("../../content/home/TrialnErrorCard", () => ({
-  TrialnErrorCard: () => (
-    <div data-testid="trial-error-card">Trial and Error Card</div>
   ),
 }));
 
@@ -55,9 +49,12 @@ describe("HomePage", () => {
   it("renders in the correct layout structure", () => {
     const { container } = render(<HomePage />);
 
-    const columns = container.querySelectorAll(
-      ".col-xxl-3.col-xl-4.col-lg-4.col-md-6.col-sm-6.col-xs-12.mb-4"
+    expect(container.querySelector("div")).toBeInTheDocument();
+    expect(screen.getByText("Welcome")).toBeInTheDocument();
+    expect(screen.getByText("Slim Line")).toBeInTheDocument();
+    expect(screen.getByTestId("ethos-card")).toHaveTextContent("Ethos Card");
+    expect(screen.getByTestId("trial-error-card")).toHaveTextContent(
+      "Trial and Error Card",
     );
-    expect(columns).toHaveLength(3);
   });
 });
