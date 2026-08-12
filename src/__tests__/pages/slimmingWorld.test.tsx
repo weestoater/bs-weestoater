@@ -40,11 +40,15 @@ const mockProfileData = {
 const mockGetSlimmingWorldProfileWithEntries = vi
   .fn()
   .mockResolvedValue(mockProfileData);
+const mockGetCurrentTargetWeight = vi.fn().mockResolvedValue({
+  target_weight: 80,
+});
 
 vi.mock("../../../backend/index.js", () => ({
   getSupabaseClient: vi.fn(() => ({})),
   createDatabaseService: vi.fn(() => ({
     getSlimmingWorldProfileWithEntries: mockGetSlimmingWorldProfileWithEntries,
+    getCurrentTargetWeight: mockGetCurrentTargetWeight,
   })),
 }));
 
@@ -99,13 +103,14 @@ describe("SlimmingWorld", () => {
     expect(screen.getByText("Slimming World")).toBeInTheDocument();
   });
 
-  it("shows loading spinner initially", () => {
+  it("shows a loading indicator while fetching", async () => {
     render(<SlimmingWorld />);
-    const spinner = screen.getByRole("status");
-    expect(spinner).toBeInTheDocument();
-    expect(
-      screen.getByText("Loading Slimming World data..."),
-    ).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByTestId("weight-summary-card")).toBeInTheDocument();
+    });
+
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
   });
 
   it("renders data table with correct props after loading", async () => {

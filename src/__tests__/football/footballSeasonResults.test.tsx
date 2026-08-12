@@ -48,8 +48,10 @@ describe("FootballSeasonResults", () => {
     );
 
     // Removed assertions for '2023-24 Matches' and '2023-24 Goals' as these are not rendered
-    expect(screen.getByTestId("match-details")).toBeInTheDocument();
-    expect(screen.getByTestId("goal-scorer-details")).toBeInTheDocument();
+    expect(screen.getAllByTestId("match-details").length).toBeGreaterThan(0);
+    expect(screen.getAllByTestId("goal-scorer-details").length).toBeGreaterThan(
+      0,
+    );
   });
 
   it("renders with no data", () => {
@@ -66,7 +68,7 @@ describe("FootballSeasonResults", () => {
     );
 
     // Removed assertion for '2023-24 Matches'
-    expect(screen.getByTestId("match-details")).toBeInTheDocument();
+    expect(screen.getAllByTestId("match-details").length).toBeGreaterThan(0);
     expect(screen.getByText("No goals data found")).toBeInTheDocument();
   });
 
@@ -75,6 +77,8 @@ describe("FootballSeasonResults", () => {
 
     // Removed assertion for '2023-24 Matches'
     expect(screen.getByText("No match data found")).toBeInTheDocument();
-    expect(screen.getByTestId("goal-scorer-details")).toBeInTheDocument();
+    expect(screen.getAllByTestId("goal-scorer-details").length).toBeGreaterThan(
+      0,
+    );
   });
 });

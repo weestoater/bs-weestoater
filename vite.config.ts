@@ -91,11 +91,6 @@ export default defineConfig({
     exclude: ["node_modules", "dist", "e2e-tests/**"],
     // Performance optimizations
     pool: "forks", // More stable on Windows than threads
-    poolOptions: {
-      forks: {
-        singleFork: false,
-      },
-    },
     maxConcurrency: 4, // Limit concurrent tests
     // Faster file watching
     watch: false,
@@ -129,6 +124,11 @@ export default defineConfig({
         "src/components/football/goalScorerDetails.tsx",
         "src/pages/SeasonPage.tsx",
       ],
+    },
+  },
+  poolOptions: {
+    forks: {
+      singleFork: false,
     },
   },
   build: {
