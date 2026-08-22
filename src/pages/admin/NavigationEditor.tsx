@@ -1,11 +1,12 @@
 import { useState, useEffect, FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getSupabaseClient } from "../../../backend/index.js";
+import {
+  getSupabaseClient,
+  createNavigationService,
+} from "../../../backend/index.js";
 import { useSEO } from "../../utils/useSEO";
 import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
 import type { NavigationItem } from "../../types/weecms";
-
-const { createNavigationService } = await import("../../../backend/index.js");
 
 export const NavigationEditor = () => {
   const { id } = useParams<{ id: string }>();

@@ -23,6 +23,8 @@ export default defineConfig({
   plugins: [
     react(),
     ViteImageOptimizer({
+      include: ["**/*.{jpg,jpeg,png,webp,avif,gif,tiff}"],
+      exclude: ["**/*.svg"],
       jpg: { quality: 80 },
       png: { quality: 80 },
       webp: { quality: 80 },
@@ -32,7 +34,7 @@ export default defineConfig({
       devOptions: {
         enabled: false, // Disable service worker in development to avoid cache issues
       },
-      includeAssets: ["icon.png", "assets/**/*.{jpg,png,webp,woff,woff2}"],
+      includeAssets: ["icon.png"], // Only include specific files not caught by globPatterns
       manifest: {
         name: "Weestoater",
         short_name: "Weestoater",

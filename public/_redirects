@@ -1,0 +1,2 @@
+# Serve icon.png for favicon.ico requests to avoid 404
+/favicon.ico /icon.png 200
