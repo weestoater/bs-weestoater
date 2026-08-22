@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getSupabaseClient } from "../../../backend/index.js";
+import {
+  getSupabaseClient,
+  createNavigationService,
+} from "../../../backend/index.js";
 import type { NavigationItem } from "../../types/weecms";
 import { useSEO } from "../../utils/useSEO";
 import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
-
-const { createNavigationService } = await import("../../../backend/index.js");
 
 export const NavigationManager = () => {
   useSEO({

@@ -11,9 +11,10 @@ import {
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import type { NavigationItem } from "../types/weecms";
-import { getSupabaseClient } from "../../backend/index.js";
-
-const { createNavigationService } = await import("../../backend/index.js");
+import {
+  getSupabaseClient,
+  createNavigationService,
+} from "../../backend/index.js";
 
 // Type assertion to fix HashLink typing issue
 const HashLinkSafe = HashLink as unknown as React.ComponentType<
@@ -75,7 +76,6 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadNavigation();
   }, []);
 
