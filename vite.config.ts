@@ -159,9 +159,10 @@ export default defineConfig({
         },
         assetFileNames: (assetInfo: { name?: string }) => {
           if (assetInfo.name?.endsWith(".css")) {
-            return "assets/css/style.min.css";
+            // Include hash in CSS filename for cache busting on each deployment
+            return "assets/css/style.min.[hash].css";
           }
-          return "assets/[name].[ext]";
+          return "assets/[name].[hash].[ext]";
         },
       },
     },
