@@ -74,12 +74,12 @@
 .score-details {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1;
   align-items: center;
+  justify-items: center;
+  gap: 0.5rem;
 
   @media (max-width: 616px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 2;
   }
 }
 
