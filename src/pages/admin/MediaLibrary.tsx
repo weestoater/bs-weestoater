@@ -3,6 +3,7 @@ import { getSupabaseClient } from "../../../backend/index.js";
 import { MediaLibraryItem } from "../../types/weecms";
 import { useSEO } from "../../utils/useSEO";
 import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
+import { optimizeImage } from "../../utils/imageOptimization";
 
 export const MediaLibrary = () => {
   useSEO({
@@ -113,9 +114,33 @@ export const MediaLibrary = () => {
   }
 
   async function uploadFile(file: File) {
+    // For images, optimize them first
+    let uploadFile = file;
+
+    if (file.type.startsWith("image/")) {
+      try {
+        // Check file size limit (50MB for source)
+        if (file.size > 50 * 1024 * 1024) {
+          throw new Error("Image size must be less than 50MB");
+        }
+
+        // Optimize the image
+        uploadFile = await optimizeImage(file, {
+          maxWidth: 1200,
+          maxHeight: 1200,
+          maxSizeMB: 5,
+          quality: 0.9,
+        });
+      } catch (error) {
+        console.error("Image optimization failed, uploading original:", error);
+        // Fall back to uploading original if optimization fails
+        uploadFile = file;
+      }
+    }
+
     // Generate unique filename
     const timestamp = Date.now();
-    const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
+    const sanitizedName = uploadFile.name.replace(/[^a-zA-Z0-9.-]/g, "_");
     const filename = `${timestamp}_${sanitizedName}`;
     const folder = filterFolder !== "all" ? filterFolder : "uploads";
     const storagePath = `${folder}/${filename}`;
@@ -123,7 +148,7 @@ export const MediaLibrary = () => {
     // Upload to storage
     const { error: uploadError } = await supabase.storage
       .from("images")
-      .upload(storagePath, file, {
+      .upload(storagePath, uploadFile, {
         cacheControl: "3600",
         upsert: false,
       });
@@ -152,7 +177,7 @@ export const MediaLibrary = () => {
     let height: number | undefined;
 
     if (fileType === "image") {
-      const dimensions = await getImageDimensions(file);
+      const dimensions = await getImageDimensions(uploadFile);
       width = dimensions.width;
       height = dimensions.height;
     }
@@ -163,7 +188,7 @@ export const MediaLibrary = () => {
       original_filename: file.name,
       file_type: fileType,
       mime_type: file.type,
-      file_size: file.size,
+      file_size: uploadFile.size,
       storage_path: storagePath,
       storage_bucket: "images",
       public_url: publicUrl,
@@ -330,8 +355,8 @@ export const MediaLibrary = () => {
               {uploading ? "Uploading..." : "Select Files"}
             </button>
             <p className="text-muted mt-3 mb-0 small">
-              Supported: Images, Videos, Audio, PDF, Documents (Max 10MB per
-              file)
+              Images are automatically optimized. Supported: Images (up to 50MB),
+              Videos, Audio, PDF, Documents
             </p>
           </div>
         </div>
