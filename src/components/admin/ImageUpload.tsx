@@ -1,10 +1,12 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { getSupabaseClient } from "../../../backend/index.js";
 import {
   optimizeImage,
   getImageDimensions,
   formatFileSize,
 } from "../../utils/imageOptimization";
+import { uploadFileToSupabase } from "../../utils/supabaseStorageUtils";
+import { IMAGE_UPLOAD_CONFIG } from "../../config/imageUploadConfig";
 
 interface ImageUploadProps {
   onUploadComplete: (url: string) => void;
@@ -18,10 +20,10 @@ interface ImageUploadProps {
 export const ImageUpload = ({
   onUploadComplete,
   currentImage,
-  bucket = "images",
-  folder = "uploads",
-  maxWidth = 450,
-  quality = 0.9,
+  bucket = IMAGE_UPLOAD_CONFIG.supabase.bucket,
+  folder = IMAGE_UPLOAD_CONFIG.folders.editor,
+  maxWidth = IMAGE_UPLOAD_CONFIG.maxWidth.editor,
+  quality = IMAGE_UPLOAD_CONFIG.quality.editor,
 }: ImageUploadProps) => {
   const [uploading, setUploading] = useState(false);
   const [optimizing, setOptimizing] = useState(false);
@@ -34,30 +36,30 @@ export const ImageUpload = ({
   } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Clean up preview URL on component unmount
+  useEffect(() => {
+    return () => {
+      if (preview && preview.startsWith("blob:")) {
+        URL.revokeObjectURL(preview);
+      }
+    };
+  }, [preview]);
+
   const uploadOptimizedFile = async (
     optimizedFile: File,
   ): Promise<void> => {
     try {
       const supabase = getSupabaseClient();
-
-      // Generate unique filename with webp extension for better compression
       const fileExt = optimizedFile.type === "image/webp" ? "webp" : "jpg";
-      const fileName = `${folder}/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
 
-      // Upload optimized file to Supabase Storage
-      const { data, error: uploadError } = await supabase.storage
-        .from(bucket)
-        .upload(fileName, optimizedFile, {
-          cacheControl: "3600",
-          upsert: false,
-        });
-
-      if (uploadError) throw uploadError;
-
-      // Get public URL
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from(bucket).getPublicUrl(data.path);
+      const { publicUrl } = await uploadFileToSupabase(
+        supabase,
+        bucket,
+        folder,
+        optimizedFile,
+        fileName,
+      );
 
       onUploadComplete(publicUrl);
     } catch (err) {
@@ -81,8 +83,8 @@ export const ImageUpload = ({
     }
 
     // Validate file size before optimization (max 50MB source)
-    if (file.size > 50 * 1024 * 1024) {
-      setError("Source image size must be less than 50MB");
+    if (file.size > IMAGE_UPLOAD_CONFIG.limits.sourceBytesLimit) {
+      setError(IMAGE_UPLOAD_CONFIG.messages.sourceToolargeSize);
       return;
     }
 
@@ -97,7 +99,7 @@ export const ImageUpload = ({
       const optimizedFile = await optimizeImage(file, {
         maxWidth,
         maxHeight: maxWidth,
-        maxSizeMB: 5,
+        maxSizeMB: IMAGE_UPLOAD_CONFIG.limits.outputMB,
         quality,
       });
 
