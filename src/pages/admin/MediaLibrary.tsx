@@ -1,9 +1,16 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { getSupabaseClient } from "../../../backend/index.js";
 import { MediaLibraryItem } from "../../types/weecms";
 import { useSEO } from "../../utils/useSEO";
 import { AdminPageHeader } from "../../components/admin/AdminPageHeader";
-import { optimizeImage } from "../../utils/imageOptimization";
+import {
+  optimizeImage,
+  getImageDimensions,
+  formatFileSize,
+} from "../../utils/imageOptimization";
+import { getFileType } from "../../utils/fileUtils";
+import { uploadFileToSupabase } from "../../utils/supabaseStorageUtils";
+import { IMAGE_UPLOAD_CONFIG } from "../../config/imageUploadConfig";
 
 export const MediaLibrary = () => {
   useSEO({
@@ -74,25 +81,21 @@ export const MediaLibrary = () => {
     }
   }
 
-  async function loadFolders() {
-    try {
-      const { data, error } = await supabase
-        .from("media_library")
-        .select("folder")
-        .not("folder", "is", null);
+  // Memoized filtered items to prevent unnecessary recalculations
+  const filteredItems = useMemo(
+    () =>
+      mediaItems.filter((item) =>
+        searchTerm
+          ? item.original_filename
+              .toLowerCase()
+              .includes(searchTerm.toLowerCase()) ||
+            item.alt_text?.toLowerCase().includes(searchTerm.toLowerCase())
+          : true,
+      ),
+    [mediaItems, searchTerm],
+  );
 
-      if (error) throw error;
-
-      const uniqueFolders = [
-        ...new Set(data?.map((item) => item.folder).filter(Boolean)),
-      ] as string[];
-      setFolders(uniqueFolders.sort());
-    } catch (error) {
-      console.error("Error loading folders:", error);
-    }
-  }
-
-  async function handleFileUpload(files: FileList | null) {
+  const handleFileUpload = async (files: FileList | null) => {
     if (!files || files.length === 0) return;
 
     try {
@@ -111,6 +114,24 @@ export const MediaLibrary = () => {
     } finally {
       setUploading(false);
     }
+  };
+
+  async function loadFolders() {
+    try {
+      const { data, error } = await supabase
+        .from("media_library")
+        .select("folder")
+        .not("folder", "is", null);
+
+      if (error) throw error;
+
+      const uniqueFolders = [
+        ...new Set(data?.map((item) => item.folder).filter(Boolean)),
+      ] as string[];
+      setFolders(uniqueFolders.sort());
+    } catch (error) {
+      console.error("Error loading folders:", error);
+    }
   }
 
   async function uploadFile(file: File) {
@@ -120,16 +141,16 @@ export const MediaLibrary = () => {
     if (file.type.startsWith("image/")) {
       try {
         // Check file size limit (50MB for source)
-        if (file.size > 50 * 1024 * 1024) {
-          throw new Error("Image size must be less than 50MB");
+        if (file.size > IMAGE_UPLOAD_CONFIG.limits.sourceBytesLimit) {
+          throw new Error(IMAGE_UPLOAD_CONFIG.messages.sourceToolargeSize);
         }
 
         // Optimize the image
         uploadFile = await optimizeImage(file, {
-          maxWidth: 1200,
-          maxHeight: 1200,
-          maxSizeMB: 5,
-          quality: 0.9,
+          maxWidth: IMAGE_UPLOAD_CONFIG.maxWidth.mediaLibrary,
+          maxHeight: IMAGE_UPLOAD_CONFIG.maxWidth.mediaLibrary,
+          maxSizeMB: IMAGE_UPLOAD_CONFIG.limits.outputMB,
+          quality: IMAGE_UPLOAD_CONFIG.quality.mediaLibrary,
         });
       } catch (error) {
         console.error("Image optimization failed, uploading original:", error);
@@ -142,35 +163,18 @@ export const MediaLibrary = () => {
     const timestamp = Date.now();
     const sanitizedName = uploadFile.name.replace(/[^a-zA-Z0-9.-]/g, "_");
     const filename = `${timestamp}_${sanitizedName}`;
-    const folder = filterFolder !== "all" ? filterFolder : "uploads";
-    const storagePath = `${folder}/${filename}`;
+    const folderName = filterFolder !== "all" ? filterFolder : "uploads";
 
-    // Upload to storage
-    const { error: uploadError } = await supabase.storage
-      .from("images")
-      .upload(storagePath, uploadFile, {
-        cacheControl: "3600",
-        upsert: false,
-      });
-
-    if (uploadError) throw uploadError;
-
-    // Get public URL
-    const {
-      data: { publicUrl },
-    } = supabase.storage.from("images").getPublicUrl(storagePath);
+    const { publicUrl, storagePath } = await uploadFileToSupabase(
+      supabase,
+      IMAGE_UPLOAD_CONFIG.supabase.bucket,
+      folderName,
+      uploadFile,
+      filename,
+    );
 
     // Determine file type
-    let fileType: MediaLibraryItem["file_type"] = "other";
-    if (file.type.startsWith("image/")) fileType = "image";
-    else if (file.type.startsWith("video/")) fileType = "video";
-    else if (file.type.startsWith("audio/")) fileType = "audio";
-    else if (
-      file.type.includes("pdf") ||
-      file.type.includes("document") ||
-      file.type.includes("text")
-    )
-      fileType = "document";
+    const fileType = getFileType(file.type);
 
     // Get image dimensions if it's an image
     let width: number | undefined;
@@ -192,28 +196,13 @@ export const MediaLibrary = () => {
       storage_path: storagePath,
       storage_bucket: "images",
       public_url: publicUrl,
-      folder: folder,
+      folder: folderName,
       width,
       height,
       usage_count: 0,
     });
 
     if (dbError) throw dbError;
-  }
-
-  function getImageDimensions(
-    file: File,
-  ): Promise<{ width: number; height: number }> {
-    return new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => {
-        resolve({ width: img.width, height: img.height });
-      };
-      img.onerror = () => {
-        resolve({ width: 0, height: 0 });
-      };
-      img.src = URL.createObjectURL(file);
-    });
   }
 
   async function handleDelete(item: MediaLibraryItem) {
@@ -260,14 +249,6 @@ export const MediaLibrary = () => {
     setMessage({ type: "success", text: "URL copied to clipboard" });
   }
 
-  function formatFileSize(bytes: number): string {
-    if (bytes === 0) return "0 Bytes";
-    const k = 1024;
-    const sizes = ["Bytes", "KB", "MB", "GB"];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + " " + sizes[i];
-  }
-
   function handleDrag(e: React.DragEvent) {
     e.preventDefault();
     e.stopPropagation();
@@ -286,16 +267,6 @@ export const MediaLibrary = () => {
       handleFileUpload(e.dataTransfer.files);
     }
   }
-
-  // Filter items based on search
-  const filteredItems = mediaItems.filter((item) =>
-    searchTerm
-      ? item.original_filename
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase()) ||
-        item.alt_text?.toLowerCase().includes(searchTerm.toLowerCase())
-      : true,
-  );
 
   return (
     <div className="container-fluid mt-4">

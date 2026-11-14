@@ -66,7 +66,6 @@ describe("tinymceHelpers", () => {
         mockBlobInfo,
         mockProgress,
         "editor",
-        "custom-bucket",
       );
 
       expect(mockUpload).toHaveBeenCalled();
