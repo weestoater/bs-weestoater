@@ -18,6 +18,9 @@ const pages = [
   { name: "2022-23 Season", url: "/#/season/2022-23" },
   { name: "2023-24 Season", url: "/#/season/2023-24" },
   { name: "2024-25 Season", url: "/#/season/2024-25" },
+  // Missing pages now included
+  { name: "GarminActivities", url: "/#/garmin" },
+  { name: "NotFound", url: "/#/not-a-real-page" },
 ];
 
 test.describe("Accessibility Tests for All Pages", () => {

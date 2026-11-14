@@ -80,7 +80,7 @@ export const SeasonStatistics: React.FC<SeasonStatisticsProps> = ({
                   <div className="d-flex flex-column align-items-center py-2">
                     <div className={`mb-1 ${stat.color}`}>{stat.icon}</div>
                     <div className="fs-5 fw-bold">{stat.value}</div>
-                    <div className="text-muted" style={{ fontSize: "0.75rem" }}>
+                    <div className="text-secondary" style={{ fontSize: "0.75rem" }}>
                       {stat.label}
                     </div>
                   </div>
