@@ -138,7 +138,14 @@ export const ArticlesManager = () => {
     );
   }
 
-  const categories = ["all", "React", "Agile", "Accessibility", "Landie"];
+  const categories = [
+    "all",
+    "React",
+    "Agile",
+    "Accessibility",
+    "Landie",
+    "Strava",
+  ];
 
   return (
     <div className="container mt-4 mb-5">

@@ -34,7 +34,9 @@ Alternatively, test-import activities via the weegym Strava sync script.
 
 ## Step 2: Generate Export SQL
 
-Run the export script in weestoater:
+A pre-converted SQL file is available at `scripts/data/strava-articles-import.sql` with 133 Strava activities ready to import.
+
+### To generate fresh exports:
 
 ```bash
 cd /Users/ian/git/bs-weestoater
@@ -44,11 +46,9 @@ node scripts/export-strava-from-weegym.js > strava-articles.sql
 This creates a file with INSERT statements for all activities. Example output:
 
 ```sql
--- Export Strava Activities from weegym
--- Generated: 2026-11-15T13:58:56.235Z
--- Import into weestoater articles table
-
--- Found 3 Strava activities to export
+-- Export: Strava Activities (weegym) → Articles (weestoater)
+-- Generated: 2026-11-15T14:03:05.885854
+-- Total records: 133
 
 INSERT INTO articles (
   id, title, slug, category, content, excerpt, icon,
@@ -58,8 +58,8 @@ INSERT INTO articles (
   'Morning Run',
   'strava-2026-11-15-morning-run',
   'Strava',
-  '<h3>Morning Run</h3><p><strong>Date:</strong>...',
-  '5.2km in 28min',
+  '<h3>Morning Run</h3><p><strong>Date:</strong> 2026-11-15 06:30:00</p><p><strong>Type:</strong> Run</p><p><strong>Distance:</strong> 5.20 km</p><p><strong>Duration:</strong> 28 minutes</p><p><strong>Average Speed:</strong> 11.14 km/h</p></p><p><strong>Elevation Gain:</strong> 45m</p><p><strong>Average Heart Rate:</strong> 165 bpm</p><p><strong>Max Heart Rate:</strong> 178 bpm</p><p><strong>Calories:</strong> 456</p>',
+  '5.2km in 28min +45m',
   'bi-person-running',
   '2026-11-15',
   3,
@@ -79,10 +79,10 @@ Copy the SQL and paste into weestoater's Supabase SQL Editor:
 2. Select your weestoater project
 3. Open **SQL Editor**
 4. Click **New Query**
-5. Paste the contents of `strava-articles.sql`
+5. Paste the contents of `scripts/data/strava-articles-import.sql`
 6. Click **Run**
 
-Articles are now available on the `/strava` page.
+All 133 activities are now imported as articles and available on the `/strava` page.
 
 ## Alternative: Manual Bulk Insert
 

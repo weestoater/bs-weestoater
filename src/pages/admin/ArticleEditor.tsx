@@ -378,6 +378,7 @@ export const ArticleEditor = () => {
                     <option value="Agile">Agile</option>
                     <option value="Accessibility">Accessibility</option>
                     <option value="Landie">Landie</option>
+                    <option value="Strava">Strava</option>
                   </select>
                 </div>
 

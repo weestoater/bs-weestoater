@@ -34,6 +34,7 @@ const fallbackItems = [
   { label: "Football", path: "/football" },
   { label: "Landie", path: "/landie" },
   { label: "React", path: "/react" },
+  { label: "Strava", path: "/strava" },
   { label: "SW", path: "/sw" },
 ];
 
