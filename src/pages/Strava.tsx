@@ -72,6 +72,24 @@ export const StravaPage = () => {
       if (excerptMatch) {
         totalDistance += parseFloat(excerptMatch[1]);
         totalDuration += parseInt(excerptMatch[2]);
+      } else if (article.content) {
+        // Fallback: extract distance from content
+        const contentDistMatch = article.content.match(
+          /<p><strong>Distance:<\/strong> ([\d.]+) mi/,
+        );
+        if (contentDistMatch) {
+          totalDistance += parseFloat(contentDistMatch[1]);
+        }
+
+        // Fallback: extract duration from content
+        if (!excerptMatch) {
+          const contentDurationMatch = article.content.match(
+            /<p><strong>Duration:<\/strong> (\d+) minutes/,
+          );
+          if (contentDurationMatch) {
+            totalDuration += parseInt(contentDurationMatch[1]);
+          }
+        }
       }
 
       // Extract calories from content
@@ -122,6 +140,14 @@ export const StravaPage = () => {
 
       const elevMatch = article.excerpt.match(/\+(\d+)ft/);
       if (elevMatch) metrics.elevation = parseInt(elevMatch[1]);
+    }
+
+    // Fallback: extract distance from content if not found in excerpt
+    if (!metrics.distance && article.content) {
+      const contentDistMatch = article.content.match(
+        /<p><strong>Distance:<\/strong> ([\d.]+) mi/,
+      );
+      if (contentDistMatch) metrics.distance = parseFloat(contentDistMatch[1]);
     }
 
     if (article.content) {
