@@ -1,0 +1,351 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║            STRAVA MIGRATION - YOUR CUSTOMIZED PLAN SNAPSHOT               ║
+║                                                                            ║
+║                           weegym → bs-weestoater                          ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+YOUR DECISIONS (Chosen Nov 15, 2026)
+═════════════════════════════════════════════════════════════════════════════
+
+✓ Athlete Data:         Single athlete (just you)
+✓ Historical Data:      MIGRATE ALL weegym activities
+✓ Features:             ALL 7 equally important
+✓ Segments:             Activities only (no segments)
+✓ Sync:                 Manual refresh NOW → Auto-sync LATER
+✓ Mobile Design:        Mobile-first responsive
+✓ Deployment:           Parallel FIRST (weegym+bs-weestoater) → Full cutover LATER
+
+
+IMPACT SUMMARY
+═════════════════════════════════════════════════════════════════════════════
+
+Timeline:     ~4 weeks (Phase A) + 1-2 weeks (Phase B)
+Complexity:   Medium-High (all features, historical data, mobile-first)
+Risk Level:   LOW (parallel deployment, weegym stays running)
+Data Loss:    ZERO (everything migrated, nothing discarded)
+
+
+PHASE A: WEEKS 1-4 (Full Feature Launch)
+═════════════════════════════════════════════════════════════════════════════
+
+Week 1:       Setup + Database Schema
+              └─ Environment variables, Supabase tables, OAuth credentials
+
+Week 2:       Service Layer + Historical Data Import
+              └─ Port stravaService to TypeScript
+              └─ Import all weegym activities (~1,000+)
+              └─ Validate data integrity
+
+Week 2-3:     Authentication Flow (parallel)
+              └─ OAuth connect/callback
+              └─ Token storage & refresh
+              └─ Athlete profile sync
+
+Week 2-4:     Components & ALL 7 Features (parallel, mobile-first)
+              ├─ Activity browsing (filters, search, detail view)
+              ├─ Analytics dashboard (stats, charts, time ranges)
+              ├─ Activity maps (route visualization)
+              ├─ Personal records (tracking, categories)
+              ├─ Social features (kudos, comments, achievements)
+              ├─ Goals tracking
+              └─ Export/reporting
+
+Week 3-4:     Testing & Quality Assurance
+              ├─ Unit tests (>85% coverage)
+              ├─ Component tests (all features)
+              ├─ E2E tests (OAuth, data sync)
+              ├─ Mobile testing (iOS, Android)
+              ├─ A11y testing (WCAG 2.2 AA)
+              └─ Performance testing
+
+Week 4:       Documentation & Phase A Deployment
+              ├─ Developer guide
+              ├─ User guide
+              ├─ Deploy to staging (Netlify preview)
+              ├─ Final QA on Netlify
+              └─ Deploy to production
+
+              ✨ PHASE A LIVE: Weegym + bs-weestoater both available
+
+
+PHASE B: WEEKS 5-7 (Advanced Features & Full Cutover)
+═════════════════════════════════════════════════════════════════════════════
+
+Week 5:       Auto-Sync Implementation (only if Phase A stable)
+              ├─ Strava webhooks OR polling service
+              ├─ Real-time activity notifications
+              ├─ Sync status indicators
+              └─ Production monitoring
+
+Week 6-7:     Full Migration Cutover
+              ├─ Migrate remaining user preferences
+              ├─ Final data validation
+              ├─ Disable weegym Strava section
+              └─ User communication & monitoring
+
+              ✨ PHASE B COMPLETE: bs-weestoater is primary
+
+
+WHAT YOU'RE BUILDING
+═════════════════════════════════════════════════════════════════════════════
+
+Feature                     Status              Mobile First?
+─────────────────────────────────────────────────────────────────
+1. Activity Browsing        Phase A             ✓ Yes
+2. Analytics Dashboard      Phase A             ✓ Yes
+3. Activity Maps            Phase A             ✓ Yes
+4. Personal Records         Phase A             ✓ Yes
+5. Social Features          Phase A             ✓ Yes
+6. Goals Tracking           Phase A             ✓ Yes
+7. Export/Reporting         Phase A             ✓ Yes
+─────────────────────────────────────────────────────────────────
+Auto-Sync                   Phase B.1           N/A (backend)
+Full Cutover                Phase B.2           N/A (ops)
+
+
+DATA MIGRATION SUMMARY
+═════════════════════════════════════════════════════════════════════════════
+
+Source:                weegym Supabase
+Destination:           bs-weestoater Supabase
+Activities to Import:  All weegym activities (estimated 500-2,000+)
+Data Loss:             None (100% preservation)
+Migration Strategy:    Historical data import in Phase 2, day 7-9
+Validation:            Automated checks + manual spot-checking
+
+Timeline for Migration:
+  • Phase 2.7: Import starts (all weegym activities)
+  • Phase 2.9: Import complete, validation begins
+  • Phase 6: Final QA with migrated data
+  • Phase A Deploy: Live with complete history
+
+
+KEY TECHNICAL DETAILS
+═════════════════════════════════════════════════════════════════════════════
+
+Architecture:
+  ├─ Frontend: React + TypeScript
+  ├─ Styling: SCSS with rem units (mobile-first)
+  ├─ State: React hooks + custom useStravaAuth/useStravaActivities
+  ├─ Backend: Supabase (database + auth)
+  ├─ Maps: react-leaflet + Leaflet
+  ├─ Charts: ag-charts-react (already available)
+  └─ Testing: Vitest + Playwright + axe-core
+
+Database:
+  ├─ strava_tokens (auth tokens)
+  ├─ strava_activities (1,000+ activities, fully indexed)
+  ├─ strava_personal_records (PR tracking)
+  ├─ strava_athlete_stats (aggregated stats)
+  └─ Performance: Indexed for fast queries
+
+Single Athlete Design:
+  └─ Simpler schema, faster queries, perfect for your use case
+
+
+RISK MITIGATION
+═════════════════════════════════════════════════════════════════════════════
+
+Risk                          Level    Mitigation
+──────────────────────────────────────────────────────────────────
+Data Loss                     🟢 Low   Backup weegym before import
+Auth Token Issues             🟢 Low   Strong refresh + fallback logic
+Historical Data Corruption    🟢 Low   Dry-run import, spot-check
+Mobile Responsiveness Bugs    🟡 Med   Test on 5+ real devices
+Performance with 1K+ activities 🟡 Med  Pagination, caching, indexing
+User Disruption               🟢 Low   Keep weegym running (Phase A)
+API Changes                   🟢 Low   Pin Strava API version
+─────────────────────────────────────────────────────────────────
+Overall Risk:                 🟢 LOW
+
+
+GIT WORKFLOW FOR YOU
+═════════════════════════════════════════════════════════════════════════════
+
+Start Week 1:
+  $ cd /Users/ian/git/bs-weestoater
+  $ git checkout -b feature/strava-setup
+  $ git push -u origin feature/strava-setup
+  # Follow Phase 1 checklist
+
+Each phase:
+  1. Create new feature branch
+  2. Commit daily (small, focused commits)
+  3. Rebase on main frequently
+  4. Create PR when phase complete
+  5. Merge after review & tests pass
+  6. Start next phase
+
+Branches you'll create:
+  ✓ feature/strava-setup
+  ✓ feature/strava-service-layer (+ migration scripts)
+  ✓ feature/strava-auth-flow
+  ✓ feature/strava-components-all-features (large, 12 days)
+  ✓ feature/strava-testing-comprehensive
+  ✓ feature/strava-docs-phase-a
+  ✓ feature/strava-auto-sync (Phase B)
+  ✓ feature/strava-full-cutover (Phase B)
+
+
+SUCCESS CRITERIA FOR PHASE A
+═════════════════════════════════════════════════════════════════════════════
+
+✓ 1,000+ weegym activities imported & displayed
+✓ All 7 features working (activity view, analytics, maps, PRs, etc.)
+✓ Mobile-first design looks great on phones (320px+)
+✓ OAuth flow works end-to-end
+✓ >85% test coverage
+✓ Zero accessibility violations (WCAG 2.2 AA)
+✓ Page load <2 seconds with all activities
+✓ Deployed to production
+✓ Weegym still available (zero risk)
+✓ All documentation complete
+
+→ Phase A Success = Ready for Phase B (auto-sync + full cutover)
+
+
+DEPENDENCIES (Already Available)
+═════════════════════════════════════════════════════════════════════════════
+
+✓ @supabase/supabase-js     Database & auth
+✓ react-leaflet + leaflet   Maps
+✓ ag-charts-react           Data visualization
+✓ ag-grid-react             Tables (if needed)
+✓ polyline-encoded          Route encoding
+✓ Bootstrap + reactstrap    UI components
+
+No new packages needed (use what's already there)
+
+
+TESTING REQUIREMENTS
+═════════════════════════════════════════════════════════════════════════════
+
+Unit Tests:           >85% of service layer & utils
+Component Tests:      All display components
+E2E Tests:            OAuth flow, data sync, basic features
+A11y Tests:           WCAG 2.2 AA on all pages
+Mobile Testing:       iOS Safari, Android Chrome (real devices)
+Performance:          <2s page load, <100ms component render
+
+Test Commands:
+  npm run lint                 (ESLint)
+  npm run test                 (Unit tests)
+  npm run test:coverage        (Coverage report)
+  npm run test:e2e             (Playwright)
+  npm run build                (TypeScript check)
+
+
+WHAT HAPPENS AFTER PHASE A
+═════════════════════════════════════════════════════════════════════════════
+
+Users will see:
+  • Two apps available: weegym + bs-weestoater
+  • bs-weestoater has all Strava features
+  • Must click "Sync" button to refresh activities (manual)
+  • Can gradually migrate between apps
+
+Week 4-5 (Phase B.1):
+  • Auto-sync added (new activities appear automatically)
+  • No manual sync needed anymore
+  • Webhooks/polling runs in background
+
+Week 6-7 (Phase B.2):
+  • Weegym Strava section disabled or sunset
+  • bs-weestoater becomes primary
+  • Can archive weegym if desired
+
+
+DEPLOYMENT STRATEGY
+═════════════════════════════════════════════════════════════════════════════
+
+Phase A Deployment:
+  1. Deploy to Netlify staging (preview environment)
+  2. Internal testing (you test thoroughly)
+  3. Deploy to production alongside weegym
+  4. Monitor for issues in real environment
+  5. No users forced to migrate immediately
+
+Phase B Deployment:
+  1. Auto-sync features deployed (Phase B.1)
+  2. Communication to users about cutover coming
+  3. Full cutover (Phase B.2) - disable weegym Strava
+  4. Continued monitoring & support
+
+Rollback Plan:
+  • If Phase A has critical issues: revert production deployment
+  • Users continue using weegym while we fix
+  • No data loss (everything backed up)
+  • Can retry Phase A next week
+
+
+NEXT IMMEDIATE STEPS
+═════════════════════════════════════════════════════════════════════════════
+
+✅ Step 1: Review this snapshot (5 minutes)
+✅ Step 2: Read CUSTOMIZED_MIGRATION_ROADMAP.md (20 minutes)
+✅ Step 3: Read MIGRATION_QUICK_START.md (10 minutes)
+
+🚀 Step 4: Start Phase 1
+   $ cd /Users/ian/git/bs-weestoater
+   $ git checkout -b feature/strava-setup
+   $ git push -u origin feature/strava-setup
+
+   Follow the Phase 1 checklist:
+   □ Add environment variables
+   □ Create Supabase schema
+   □ Update .env.example
+   □ Create documentation
+   □ Commit & create PR
+
+📅 Step 5: Estimated completion
+   • Phase 1: This week
+   • Phase 2-4: Week 2-3
+   • Phase 5-6: Week 4
+   • Phase A Launch: End of Week 4 ✨
+
+
+KEY CONTACTS & REFERENCES
+═════════════════════════════════════════════════════════════════════════════
+
+Code References:
+  • weegym stravaService:   /Users/ian/git/weegym/src/services/stravaService.js
+  • weegym components:      /Users/ian/git/weegym/src/pages/Strava*
+  • bs-weestoater:          /Users/ian/git/bs-weestoater/src/
+
+Documentation You Have:
+  • README.md                           (overview)
+  • CUSTOMIZED_MIGRATION_ROADMAP.md    (THIS PLAN - detailed)
+  • MIGRATION_QUICK_START.md           (Phase 1 guide)
+  • BRANCHING_STRATEGY.md              (git workflow)
+  • DECISION_CHECKLIST.md              (decisions made)
+  • STRAVA_MIGRATION_PLAN.md           (original detailed plan)
+
+External Resources:
+  • Strava API:    https://developers.strava.com/
+  • Supabase:      https://supabase.com/docs/
+  • React:         https://react.dev/
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+                    🚀 YOU'RE READY TO START PHASE 1! 🚀
+
+          Timeline: ~4 weeks (Phase A) + 1-2 weeks (Phase B)
+         Complexity: Medium-High (ambitious but achievable)
+            Risk: LOW (parallel deployment keeps weegym running)
+
+              Your Strava integration will include:
+              ✓ All 1,000+ activities migrated
+              ✓ All 7 features (browsing, analytics, maps, PRs, etc.)
+              ✓ Mobile-first responsive design
+              ✓ Zero data loss
+              ✓ Safe, phased rollout
+
+═════════════════════════════════════════════════════════════════════════════
+
+Next: Create feature/strava-setup branch and follow MIGRATION_QUICK_START.md
+
+═════════════════════════════════════════════════════════════════════════════

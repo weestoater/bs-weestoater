@@ -1,232 +1,267 @@
-# BS-Weestoater Architecture Documentation
+# Strava Integration Migration Documentation
 
-## 1. Overview
-
-BS-Weestoater is a modular, data-driven web application for tracking football statistics, weight loss (Slimming World), and fitness activities (Garmin). It is built with React, TypeScript, Vite, Supabase, and AG Charts, and follows modern best practices for maintainability, scalability, and performance.
+Complete migration planning package for moving Strava tracking from weegym to bs-weestoater.
 
 ---
 
-## 2. System Context & High-Level Architecture
+## 📑 Document Overview
 
-- **Frontend:** React 18+, TypeScript, Vite, Bootstrap 5, AG Charts
-- **Backend:** Supabase (PostgreSQL, Auth, Storage), Node.js scripts for migration and sync
-- **Data:** JSON files (historical), Supabase tables (current), API integration (Garmin)
-- **Testing:** Vitest (unit), Playwright (E2E), GitHub Actions (CI/CD)
+### 1. **MIGRATION_QUICK_START.md** ⭐ START HERE
+   - **Who**: You (getting started)
+   - **What**: 30-minute quick reference for Phase 1 setup
+   - **Contains**: Step-by-step setup instructions, prerequisites, environment variables
+   - **Time**: 5-10 min read
 
-### Diagram: System Context
+### 2. **STRAVA_MIGRATION_PLAN.md** 📋 COMPREHENSIVE PLAN
+   - **Who**: Developers implementing the migration
+   - **What**: Complete 6-phase migration roadmap
+   - **Contains**: 
+     - Phase-by-phase breakdown (setup, service layer, auth, components, testing, docs)
+     - Architecture recommendations
+     - File structure and naming conventions
+     - Data migration strategies
+     - Risk mitigation
+     - Timeline and success criteria
+   - **Time**: 20-30 min read
 
-```mermaid
-graph TD
-    User[User]
-    Browser[Browser]
-    ReactApp[React App (Vite, TypeScript)]
-    Supabase[Supabase DB & Auth]
-    JSON[Local JSON Data]
-    Scripts[Node.js Scripts]
-    Garmin[Garmin Connect API]
+### 3. **BRANCHING_STRATEGY.md** 🌳 GIT WORKFLOW
+   - **Who**: Git users managing branches
+   - **What**: Detailed branching strategy and workflow guide
+   - **Contains**:
+     - Visual branch diagrams
+     - Step-by-step branch lifecycle (create → develop → merge)
+     - Conflict resolution procedures
+     - Rebase vs merge decisions
+     - PR template and best practices
+     - Useful git commands
+     - Concurrent development scenarios
+   - **Time**: 15-20 min read
 
-    User --> Browser
-    Browser --> ReactApp
-    ReactApp -->|Fetch| Supabase
-    ReactApp -->|Import| JSON
-    Scripts -->|Migrate| Supabase
-    Scripts -->|Sync| JSON
-    Scripts -->|Sync| Supabase
-    ReactApp -->|API| Garmin
+---
+
+## 🎯 Quick Navigation by Role
+
+### 👨‍💼 Project Lead / Decision Maker
+1. Read: **MIGRATION_QUICK_START.md** (overview section)
+2. Skim: **STRAVA_MIGRATION_PLAN.md** (timeline, phases, risk section)
+3. Decision: Review strategy and approve Phase 1 setup
+
+### 👨‍💻 Developer Implementing Phase 1 (Setup)
+1. Read: **MIGRATION_QUICK_START.md** (complete)
+2. Reference: **STRAVA_MIGRATION_PLAN.md** (Phase 1 section)
+3. Use: **BRANCHING_STRATEGY.md** (branch lifecycle)
+
+### 👨‍💻 Developer Implementing Phases 2-6
+1. Read: **MIGRATION_QUICK_START.md** (overview)
+2. Read: **STRAVA_MIGRATION_PLAN.md** (your specific phase)
+3. Reference: **BRANCHING_STRATEGY.md** (workflow)
+4. Check: Success criteria and verification checklist
+
+### 🔀 Git/DevOps Person
+1. Study: **BRANCHING_STRATEGY.md** (complete)
+2. Reference: **STRAVA_MIGRATION_PLAN.md** (phase sequencing)
+3. Create: PR template and CI/CD configuration
+
+---
+
+## 📊 Migration At a Glance
+
+| Phase | Duration | Branch | Status | Dependencies |
+|-------|----------|--------|--------|---|
+| 1. Setup | 5 days | `feature/strava-setup` | ⏳ Not started | None |
+| 2. Service Layer | 7 days | `feature/strava-service-layer` | ⏳ Blocked | Phase 1 |
+| 3. Auth Flow | 5 days | `feature/strava-auth-flow` | ⏳ Blocked | Phase 1-2 |
+| 4. Components | 10 days | `feature/strava-components` | ⏳ Blocked | Phase 1-2 |
+| 5. Testing | 7 days | `feature/strava-testing` | ⏳ Blocked | Phase 1-4 |
+| 6. Docs & Deploy | 4 days | `feature/strava-docs` | ⏳ Blocked | Phase 1-5 |
+| **Total** | **~3-4 weeks** | | | |
+
+---
+
+## 🏗️ Architecture Summary
+
+```
+Strava Integration = Service Layer + Components + Pages
+
+┌─────────────────────────────────────────────────────┐
+│  Pages (StravaConnect, StravaActivities, etc.)     │
+├─────────────────────────────────────────────────────┤
+│  Components (ActivityCard, StatsSummary, Maps, etc.)│
+├─────────────────────────────────────────────────────┤
+│  Hooks (useStravaAuth, useStravaActivities)         │
+├─────────────────────────────────────────────────────┤
+│  Services (stravaService.ts)                        │
+│    - OAuth token management                        │
+│    - Activity sync from Strava API                  │
+│    - Data persistence to Supabase                   │
+├─────────────────────────────────────────────────────┤
+│  Utils (formatDistance, estimateCalories, etc.)    │
+├─────────────────────────────────────────────────────┤
+│  Types (StravaActivity, StravaToken, etc.)         │
+├─────────────────────────────────────────────────────┤
+│  Database (Supabase - already available)            │
+│    - strava_activities                              │
+│    - strava_tokens                                  │
+│    - strava_personal_records                        │
+│    - strava_athlete_stats                           │
+└─────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 3. Section-by-Section Architecture
+## ✅ Pre-Migration Checklist
 
-### 3.1 Football Section
-- **Purpose:** Track football match results, goals, and player stats for Motherwell FC.
-- **Data:**
-  - Historical: JSON files per season (matches, goals)
-  - Current: Supabase tables (seasons, matches, goals, cards, stats)
-- **Key Components:**
-  - `FootballSeasonResults`, `MatchDetails`, `GoalScorerDetails`, `FootballSeasonsNav`
-- **Data Flow:**
-  - Loads from Supabase (or JSON fallback)
-  - Data transformed to TypeScript interfaces
-  - Rendered via modular React components
-- **Testing:** Unit tests for utils, E2E for navigation and data display
+Before starting Phase 1:
 
-### 3.2 Slimming World Section
-- **Purpose:** Track weight loss progress, visualize trends, and manage weigh-in data.
-- **Data:**
-  - Historical: JSON file (`slimmingWorldData.json`)
-  - Current: Supabase tables (profiles, entries)
-- **Key Components:**
-  - `SlimmingWorld`, `SWDataTable`, `WeightConverter`, `AgCharts`
-- **Data Flow:**
-  - Loads from Supabase (or JSON fallback)
-  - Chart config generated dynamically
-  - Responsive Bootstrap layout
-- **Testing:** Unit tests for conversion, E2E for data visualization
-
-### 3.3 Garmin Activities Section
-- **Purpose:** Display and analyze fitness activities from Garmin Connect.
-- **Data:**
-  - Manual: JSON file (`garminActivities.json`)
-  - Auto-sync: Supabase table (`garmin_activities`)
-- **Key Components:**
-  - `useGarminActivities` hook, activity cards, summary charts
-- **Data Flow:**
-  - Node.js script syncs activities from Garmin API
-  - Data loaded from Supabase or JSON
-- **Testing:** E2E for sync and display, unit tests for data transformation
+- [ ] Read MIGRATION_QUICK_START.md
+- [ ] Have Strava API credentials ready (client ID, secret)
+- [ ] Access to bs-weestoater Supabase project
+- [ ] Access to weegym repo for reference
+- [ ] Node.js >=18 installed
+- [ ] Yarn 1.22+ installed
+- [ ] Git configured with your name/email
+- [ ] GitHub account with push access
+- [ ] ~3-4 weeks of development time estimated
 
 ---
 
-## 4. Data Structures & Interfaces
+## 🚀 Getting Started (5 Minutes)
 
-### 4.1 Football
-```typescript
-export interface Match {
-  date: string;
-  opposition: string;
-  venue: 'Home' | 'Away';
-  scored: number;
-  conceded: number;
-  league?: string;
-  video?: string;
-  goals?: MatchGoal[];
-  cards?: MatchCard[];
-  notes?: string;
-}
-export interface MatchGoal {
-  player: string;
-  mins: number;
-  assist?: string;
-}
-export interface MatchCard {
-  player: string;
-  type: 'yellow' | 'red';
-  minute: number;
-}
-export interface GoalScorer {
-  player: string;
-  goals: number;
-  assists: number;
-}
-```
+```bash
+# 1. Understand the plan
+cat README.md                          # (this file)
+cat MIGRATION_QUICK_START.md          # Read this next
 
-### 4.2 Slimming World
-```typescript
-export interface SwDataPoint {
-  date: string;
-  weight: number;
-  lost: number;
-  target: number;
-  sotw?: number;
-}
-export interface SwData {
-  startDate: string;
-  startWeight: number;
-  targetWeight: number;
-  data: SwDataPoint[];
-}
-```
+# 2. Create Phase 1 branch
+cd /Users/ian/git/bs-weestoater
+git checkout -b feature/strava-setup
 
-### 4.3 Garmin Activities
-```typescript
-export interface GarminActivity {
-  id: string;
-  date: string;
-  type: 'running' | 'cycling' | 'walking' | 'swimming' | 'other';
-  distance: number;
-  duration: number;
-  calories?: number;
-  averageHeartRate?: number;
-  maxHeartRate?: number;
-  averagePace?: number;
-  elevation?: number;
-  steps?: number;
-  notes?: string;
-}
+# 3. Follow Phase 1 steps in MIGRATION_QUICK_START.md
+# - Add environment variables
+# - Set up Supabase schema
+# - Create initial documentation
+
+# 4. Commit and create PR
+git add .
+git commit -m "chore(strava): setup migration infrastructure"
+git push -u origin feature/strava-setup
 ```
 
 ---
 
-## 5. Technology Stack & Dependencies
+## 📈 Phases Explained (TL;DR)
 
-- **Frontend:** React, TypeScript, Vite, Bootstrap, AG Charts
-- **Backend:** Supabase (Postgres, Auth, Storage), Node.js
-- **Testing:** Vitest, Playwright, ESLint
-- **CI/CD:** GitHub Actions
-- **Other:** Custom Node.js scripts for data migration and sync
+### Phase 1: Setup (5 days)
+Prepare the infrastructure: environment variables, database schema, documentation.
+**Output**: Ready to start development
 
----
+### Phase 2: Service Layer (7 days)
+Port the core Strava service from JavaScript to TypeScript. Create type definitions and utility functions.
+**Output**: TypeScript service layer with full API coverage
 
-## 6. Component & Folder Structure
+### Phase 3: Authentication (5 days)
+Implement OAuth flow: connect, callback, token management, user session.
+**Output**: Users can connect their Strava account
 
-```
-src/
-├── components/
-│   ├── football/
-│   ├── sw/
-│   └── ...
-├── config/
-├── content/
-├── data/
-├── hooks/
-├── interfaces/
-├── pages/
-├── utils/
-├── css/ or scss/
-```
-- **components/**: Modular UI components by domain
-- **config/**: Chart and section configuration
-- **content/**: Static and dynamic content
-- **data/**: JSON data files (legacy, fallback)
-- **hooks/**: Custom React hooks
-- **interfaces/**: TypeScript type definitions
-- **pages/**: Route-level components
-- **utils/**: Shared utility functions
-- **css/scss/**: Styling
+### Phase 4: Components & UI (10 days)
+Build React components for displaying activities, analytics, personal records.
+**Output**: Full UI with activity viewing and analytics dashboards
+
+### Phase 5: Testing (7 days)
+Unit tests, component tests, E2E tests, accessibility compliance.
+**Output**: Production-ready with >80% test coverage
+
+### Phase 6: Documentation & Deployment (4 days)
+Write guides, create deployment checklist, final QA.
+**Output**: Ready for deployment to production
 
 ---
 
-## 7. Data Flow & Processing
+## 🎯 Success Criteria
 
-- **Data import:** Static JSON (legacy) or Supabase fetch (current)
-- **Transformation:** Data mapped to TypeScript interfaces
-- **Display:** Modular React components render data
-- **Sync:** Node.js scripts migrate/sync data between JSON, Supabase, and APIs
+All must be complete for migration to be considered successful:
 
----
+✅ **Feature Parity**
+- All weegym Strava features working in bs-weestoater
+- Same data accuracy
+- Same user workflows
 
-## 8. Testing & CI/CD
+✅ **Code Quality**
+- Full TypeScript strict mode compliance
+- >80% test coverage
+- Zero ESLint warnings
+- WCAG 2.2 AA accessibility compliance
 
-- **Unit Tests:** Vitest for all core logic and components
-- **E2E Tests:** Playwright for user flows and integration
-- **Type Safety:** TypeScript for compile-time validation
-- **CI/CD:** GitHub Actions for lint, test, build, deploy
+✅ **Performance**
+- Page load <2 seconds with 1000+ activities
+- Component render <100ms
+- No memory leaks
+- Bundle size impact <50KB
 
----
+✅ **Documentation**
+- Developer guide complete
+- User guide complete
+- All APIs documented with examples
+- Troubleshooting guide available
 
-## 9. Extensibility & Best Practices
-
-- **Modular design:** Each section is self-contained and testable
-- **Type safety:** All data structures are strongly typed
-- **Responsive:** Bootstrap grid and custom SCSS for mobile-first design
-- **Performance:** Lazy loading, memoization, static imports
-- **Security:** Environment variables for secrets, RLS in Supabase
-- **Documentation:** All code and data structures documented inline
-
----
-
-## 10. Diagrams & References
-
-- **Architecture diagrams:** Mermaid diagrams above
-- **Data flow:** Sequence diagrams in section docs
-- **References:**
-  - [Supabase Docs](https://supabase.com/docs)
-  - [React Docs](https://react.dev/)
-  - [AG Charts Docs](https://charts.ag-grid.com/)
-  - [Bootstrap Docs](https://getbootstrap.com/)
+✅ **Deployment**
+- Zero downtime for existing features
+- Rollback plan documented and tested
+- Monitoring/alerts configured
+- All CI/CD tests passing
 
 ---
 
-_Last updated: February 2026_
+## 📞 Key Resources
+
+### External Documentation
+- **Strava API**: https://developers.strava.com/docs/
+- **Supabase**: https://supabase.com/docs
+- **React**: https://react.dev
+- **TypeScript**: https://www.typescriptlang.org/docs
+
+### Internal References
+- **weegym Strava Service**: `/Users/ian/git/weegym/src/services/stravaService.js`
+- **weegym Components**: `/Users/ian/git/weegym/src/pages/` (Strava*)
+- **bs-weestoater Structure**: `/Users/ian/git/bs-weestoater/src/`
+- **Project Docs**: `/Users/ian/git/bs-weestoater/docs/`
+
+---
+
+## 🔄 Continuous Updates
+
+These documents should evolve as the migration progresses:
+
+- After each phase completes, update status table above
+- Log any unexpected challenges or learnings
+- Update estimated timelines based on actual progress
+- Add troubleshooting items as they arise
+- Refine phase checklist based on experience
+
+---
+
+## ❓ Questions?
+
+Before you start, clarify these decisions:
+
+1. **Athlete Data**: Just your activities or multi-user support?
+2. **Historical Data**: Migrate all weegym data or start fresh?
+3. **Features**: Must-have vs nice-to-have from weegym?
+4. **Segments**: Include Strava segment data?
+5. **Mobile**: Full responsive mobile-first design?
+6. **Real-time**: Auto-sync new activities or manual refresh?
+7. **Archival**: Keep weegym running in parallel?
+
+See "Questions to Clarify" in STRAVA_MIGRATION_PLAN.md
+
+---
+
+## 📋 Document Version Info
+
+- **Created**: November 2024
+- **Scope**: bs-weestoater Strava migration
+- **Source Projects**: weegym → bs-weestoater
+- **Estimated Effort**: 3-4 weeks
+- **Team Size**: 1 developer (can be parallelized)
+
+**Next Document to Read**: [MIGRATION_QUICK_START.md](./MIGRATION_QUICK_START.md)

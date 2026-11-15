@@ -1,0 +1,371 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                 STRAVA MIGRATION: COMPLETE PLANNING PACKAGE                ║
+║                                                                            ║
+║                    weegym → bs-weestoater Migration                        ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+EXECUTIVE SUMMARY
+═════════════════════════════════════════════════════════════════════════════
+
+Project:        Migrate Strava activity tracking from weegym to bs-weestoater
+Duration:       3-4 weeks (6 phases, parallelizable after Phase 1)
+Complexity:     Medium
+Architecture:   TypeScript service layer + React components + Supabase backend
+Status:         📋 Planning Complete → ✅ Ready to Start
+
+
+RECOMMENDED BRANCHING STRATEGY
+═════════════════════════════════════════════════════════════════════════════
+
+Strategy:       Trunk-Based Development (simple, proven for solo/small teams)
+Main Branch:    main (always production-ready)
+Feature Branches: feature/strava-<component> (short-lived, <2 weeks)
+Merge Strategy: Squash or rebase for clean history
+
+Branch Sequence (can overlap after Phase 1):
+  1. feature/strava-setup ───────────→ (blocks all others)
+  2. feature/strava-types ──→ \
+  3. feature/strava-service-layer → → feature/strava-auth-flow ──→ \
+  4. feature/strava-components ──────→ feature/strava-testing ──→ main
+  5. feature/strava-docs ───────────→/
+
+
+MIGRATION PHASES (6 total)
+═════════════════════════════════════════════════════════════════════════════
+
+┌─ PHASE 1: SETUP (5 days) ─────────────────────────────────────────────┐
+│ • Database schema (Supabase tables)                                   │
+│ • Environment variables (OAuth credentials)                           │
+│ • Initial documentation                                              │
+│ Status: ⏳ Ready to start                                            │
+└────────────────────────────────────────────────────────────────────────┘
+
+┌─ PHASE 2: SERVICE LAYER (7 days) ─────────────────────────────────────┐
+│ • TypeScript interfaces (StravaActivity, StravaToken, etc.)           │
+│ • Port stravaService.js to TypeScript                                 │
+│ • Utility functions (formatting, calculations)                       │
+│ Status: ⏳ Blocked on Phase 1                                        │
+└────────────────────────────────────────────────────────────────────────┘
+
+┌─ PHASE 3: AUTHENTICATION (5 days) ────────────────────────────────────┐
+│ • OAuth flow (connect → callback → store tokens)                      │
+│ • Token refresh logic                                                │
+│ • useStravaAuth hook                                                │
+│ Status: ⏳ Blocked on Phase 1-2                                     │
+└────────────────────────────────────────────────────────────────────────┘
+
+┌─ PHASE 4: COMPONENTS & UI (10 days) ──────────────────────────────────┐
+│ • Activity display components                                        │
+│ • Analytics pages & dashboards                                       │
+│ • Route configuration                                                │
+│ Can start: After Phase 2 (parallel with Phase 3)                     │
+│ Status: ⏳ Blocked on Phase 1-2                                     │
+└────────────────────────────────────────────────────────────────────────┘
+
+┌─ PHASE 5: TESTING & QA (7 days) ──────────────────────────────────────┐
+│ • Unit tests (service layer)                                         │
+│ • Component tests                                                    │
+│ • E2E tests (OAuth flow, data sync)                                  │
+│ • Accessibility compliance (WCAG 2.2 AA)                             │
+│ • Performance testing                                                │
+│ Can start: After Phase 4 components are ready (parallel)             │
+│ Status: ⏳ Blocked on Phase 1-4                                     │
+└────────────────────────────────────────────────────────────────────────┘
+
+┌─ PHASE 6: DOCUMENTATION & DEPLOYMENT (4 days) ────────────────────────┐
+│ • Developer guide                                                    │
+│ • User guide                                                         │
+│ • Deployment checklist                                               │
+│ • CI/CD configuration                                                │
+│ Status: ⏳ Blocked on Phase 1-5                                     │
+└────────────────────────────────────────────────────────────────────────┘
+
+
+KEY FILES TO CREATE
+═════════════════════════════════════════════════════════════════════════════
+
+New Files:
+  src/
+    ├── interfaces/strava.ts           (Type definitions)
+    ├── services/stravaService.ts      (Core service - ported from weegym)
+    ├── utils/stravaUtils.ts           (Helper functions)
+    ├── hooks/useStravaAuth.ts         (Auth state)
+    ├── hooks/useStravaActivities.ts   (Activity data)
+    ├── components/
+    │   ├── StravaActivityCard.tsx
+    │   ├── StravaActivityList.tsx
+    │   ├── StravaActivityMap.tsx
+    │   ├── StravaStatsSummary.tsx
+    │   └── ... (more as needed)
+    ├── pages/
+    │   ├── StravaConnect.tsx           (OAuth prompt)
+    │   ├── StravaCallback.tsx          (OAuth callback)
+    │   ├── StravaActivities.tsx        (Activity browser)
+    │   ├── StravaAnalytics.tsx         (Dashboard)
+    │   └── StravaRecords.tsx           (Personal records)
+    └── __tests__/strava/...            (Tests)
+
+  docs/
+    ├── STRAVA_INTEGRATION_GUIDE.md     (Developer guide)
+    ├── STRAVA_USER_GUIDE.md            (User guide)
+    └── STRAVA_SETUP.md                 (Setup instructions)
+
+Modified Files:
+  • src/routes.tsx          (Add Strava routes)
+  • src/App.tsx             (Add navigation)
+  • .env.example            (Add env variables)
+  • package.json            (Add dependencies if needed)
+
+
+DEPENDENCIES
+═════════════════════════════════════════════════════════════════════════════
+
+Already Available (✅ no install needed):
+  • @supabase/supabase-js   (Database & auth)
+  • react-leaflet + leaflet (Maps)
+  • ag-charts-react         (Data visualization)
+  • ag-grid-react           (Tables)
+  • polyline-encoded        (Route encoding)
+  • bootstrap               (UI components)
+
+Likely Needed (check weegym):
+  • axios                   (HTTP client)
+  • date-fns                (Date formatting - optional)
+  • zustand                 (State management - optional)
+
+
+DATABASE SCHEMA (Supabase)
+═════════════════════════════════════════════════════════════════════════════
+
+Tables to create:
+  1. strava_app_configs
+     └─ OAuth credentials & app settings
+
+  2. strava_tokens
+     └─ User authentication tokens (access + refresh)
+
+  3. strava_activities
+     └─ Synced activities from Strava API
+
+  4. strava_personal_records
+     └─ Personal record tracking
+
+  5. strava_athlete_stats
+     └─ Aggregated statistics per user
+
+Indexes for performance:
+  • idx_strava_activities_user_id
+  • idx_strava_activities_start_date
+  • idx_strava_tokens_user_id
+
+
+GIT WORKFLOW EXAMPLE
+═════════════════════════════════════════════════════════════════════════════
+
+1. Start Feature Branch
+   $ git checkout -b feature/strava-setup
+   $ git push -u origin feature/strava-setup
+
+2. Work & Commit (small, focused commits)
+   $ git add src/services/stravaService.ts
+   $ git commit -m "feat(strava): implement OAuth token refresh"
+   $ git push
+
+3. Keep Updated (rebase if main advances)
+   $ git fetch origin
+   $ git rebase origin/main
+   $ git push --force-with-lease
+
+4. Create PR
+   → GitHub: New Pull Request
+   → Base: main, Compare: feature/strava-setup
+   → Link to migration plan
+   → Add checklist
+
+5. After Review & Tests Pass
+   $ git checkout main
+   $ git pull origin main
+   $ git merge --squash feature/strava-setup
+   $ git commit -m "Merge feature/strava-setup"
+   $ git push origin main
+
+6. Cleanup
+   $ git branch -d feature/strava-setup
+   $ git push origin --delete feature/strava-setup
+
+
+SUCCESS CRITERIA
+═════════════════════════════════════════════════════════════════════════════
+
+All must be complete:
+
+Feature Parity ✓
+  └─ All weegym Strava features working in bs-weestoater
+
+Code Quality ✓
+  └─ Full TypeScript strict mode
+  └─ >80% test coverage
+  └─ Zero ESLint warnings
+  └─ WCAG 2.2 AA accessible
+
+Performance ✓
+  └─ Page load <2s (with 1000+ activities)
+  └─ Component render <100ms
+  └─ Bundle size impact <50KB
+
+Documentation ✓
+  └─ Developer guide
+  └─ User guide
+  └─ API docs
+  └─ Troubleshooting guide
+
+Deployment ✓
+  └─ Zero downtime
+  └─ Rollback plan
+  └─ Monitoring configured
+  └─ All CI/CD passing
+
+
+TIMELINE
+═════════════════════════════════════════════════════════════════════════════
+
+Phase    Duration  Critical Path  Parallel With
+────────────────────────────────────────────────────────
+1. Setup    5 days  Blocks all     —
+2. Types    3 days  Phase 3        Phase 2b
+2b.Service  7 days  Phase 3        Phase 2a
+3. Auth     5 days  Phase 4        Phase 4 (after Phase 2)
+4. Comp    10 days  Phase 5        Phase 3 (after Phase 2)
+5. Test     7 days  Phase 6        None
+6. Docs     4 days  Deployment     None
+────────────────────────────────────────────────────────
+TOTAL      ~3-4 weeks
+
+
+INCLUDED DOCUMENTATION PACKAGE
+═════════════════════════════════════════════════════════════════════════════
+
+📄 README.md (this overview)
+   └─ Quick navigation by role
+   └─ Architecture summary
+   └─ Document index
+
+📄 MIGRATION_QUICK_START.md
+   └─ Phase 1 step-by-step
+   └─ Environment setup
+   └─ Database schema SQL
+   └─ Verification checklist
+   └─ Troubleshooting guide
+   ⏱️  5-10 min read
+
+📄 STRAVA_MIGRATION_PLAN.md
+   └─ Complete phase breakdown
+   └─ Architecture recommendations
+   └─ File structure
+   └─ Risk mitigation
+   └─ Data migration strategies
+   └─ Success criteria
+   ⏱️  20-30 min read
+
+📄 BRANCHING_STRATEGY.md
+   └─ Visual branch diagrams
+   └─ Git workflow (create/merge/rebase)
+   └─ Conflict resolution
+   └─ PR template
+   └─ Concurrent development
+   └─ Useful git commands
+   ⏱️  15-20 min read
+
+
+RISK MITIGATION
+═════════════════════════════════════════════════════════════════════════════
+
+Risk                          Mitigation
+──────────────────────────────────────────────────────────
+OAuth Token Issues            Strong refresh logic + fallback
+Data Loss                     Backup DB, test thoroughly, log all ops
+Strava API Changes            Pin API version, monitor changelog
+Performance Slow Down         Pagination, caching, lazy loading
+User Experience Loss          Keep weegym running in parallel initially
+
+
+NEXT STEPS
+═════════════════════════════════════════════════════════════════════════════
+
+1. ✅ Review this summary (5 minutes)
+
+2. 📖 Read MIGRATION_QUICK_START.md (10 minutes)
+
+3. 🔍 Answer clarification questions:
+   • Athlete data: Just yours or multi-user?
+   • Historical: Migrate all weegym data?
+   • Features: Must-have vs nice-to-have?
+   • Archival: Keep weegym running in parallel?
+
+4. 🚀 Start Phase 1:
+   $ cd /Users/ian/git/bs-weestoater
+   $ git checkout -b feature/strava-setup
+   $ Follow MIGRATION_QUICK_START.md steps
+
+5. 📝 Create PR and await review
+
+6. ✨ Iterate through phases 2-6
+
+
+QUESTIONS BEFORE YOU START
+═════════════════════════════════════════════════════════════════════════════
+
+Please clarify:
+
+1. Athlete Data Support
+   Question: Show just your activities or multiple athletes?
+   Impact: Database schema, component complexity
+
+2. Historical Data
+   Question: Migrate all years of weegym data initially?
+   Impact: Initial sync time, testing data volume
+
+3. Feature Set
+   Question: Which weegym Strava features are critical?
+   Impact: Development priority and timeline
+
+4. Segments & Leaderboards
+   Question: Include Strava segment data?
+   Impact: Service layer complexity
+
+5. Mobile Design
+   Question: Full responsive mobile-first?
+   Impact: Component and testing effort
+
+6. Real-time Sync
+   Question: Auto-sync new activities or manual refresh?
+   Impact: Webhook/polling implementation
+
+7. Archival Strategy
+   Question: Keep weegym running in parallel?
+   Impact: Deployment and user communication
+
+
+CONTACT / REFERENCES
+═════════════════════════════════════════════════════════════════════════════
+
+Internal References:
+  • weegym repo:        /Users/ian/git/weegym
+  • bs-weestoater repo: /Users/ian/git/bs-weestoater
+  • weegym Strava:      /Users/ian/git/weegym/src/services/stravaService.js
+
+External APIs:
+  • Strava API:         https://developers.strava.com/
+  • Supabase:          https://supabase.com/docs/
+
+Documentation:
+  • Full Plan:          ./STRAVA_MIGRATION_PLAN.md
+  • Quick Start:        ./MIGRATION_QUICK_START.md
+  • Branching:         ./BRANCHING_STRATEGY.md
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+🚀 Ready to start? Read MIGRATION_QUICK_START.md next!
+
+═════════════════════════════════════════════════════════════════════════════
