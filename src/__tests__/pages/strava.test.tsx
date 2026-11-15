@@ -48,9 +48,14 @@ describe("Strava page", () => {
     // Verify getArticles was called with correct category
     expect(getArticles).toHaveBeenCalledWith({ category: "Strava" });
 
-    // Check MVP stats are visible
+    // Check MVP stats labels are visible
     expect(await screen.findByText("Distance")).toBeInTheDocument();
     expect(await screen.findByText("Duration")).toBeInTheDocument();
+
+    // Check that summary contains the calculated values
+    const container = screen.getByText("Summary").closest(".card");
+    expect(container?.textContent).toMatch(/1\.5\s*mi/); // Total distance
+    expect(container?.textContent).toMatch(/30m/); // Total duration
 
     // Check show details button exists
     expect(
