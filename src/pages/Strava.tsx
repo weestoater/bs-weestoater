@@ -237,8 +237,8 @@ export const StravaPage = () => {
                     value={useMetric ? "metric" : "imperial"}
                     onChange={(e) => setUseMetric(e.target.value === "metric")}
                   >
-                    <option value="imperial">Metric (km, m)</option>
-                    <option value="metric">Imperial (mi, ft)</option>
+                    <option value="imperial">Imperial (mi, ft)</option>
+                    <option value="metric">Metric (km, m)</option>
                   </select>
                 </div>
                 <div className="row g-3">
