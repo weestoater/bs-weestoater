@@ -75,7 +75,7 @@ export const StravaPage = () => {
       } else if (article.content) {
         // Fallback: extract distance from content
         const contentDistMatch = article.content.match(
-          /<p><strong>Distance:<\/strong> ([\d.]+) mi/,
+          /<p><strong>Distance:<\/strong>\s+([\d.]+)\s*mi/,
         );
         if (contentDistMatch) {
           totalDistance += parseFloat(contentDistMatch[1]);
@@ -84,7 +84,7 @@ export const StravaPage = () => {
         // Fallback: extract duration from content
         if (!excerptMatch) {
           const contentDurationMatch = article.content.match(
-            /<p><strong>Duration:<\/strong> (\d+) minutes/,
+            /<p><strong>Duration:<\/strong>\s+(\d+)\s+minutes/,
           );
           if (contentDurationMatch) {
             totalDuration += parseInt(contentDurationMatch[1]);
@@ -140,14 +140,20 @@ export const StravaPage = () => {
 
       const elevMatch = article.excerpt.match(/\+(\d+)ft/);
       if (elevMatch) metrics.elevation = parseInt(elevMatch[1]);
+    } else {
+      console.warn("Article missing excerpt:", article.id);
     }
 
     // Fallback: extract distance from content if not found in excerpt
     if (!metrics.distance && article.content) {
       const contentDistMatch = article.content.match(
-        /<p><strong>Distance:<\/strong> ([\d.]+) mi/,
+        /<p><strong>Distance:<\/strong>\s+([\d.]+)\s*mi/,
       );
-      if (contentDistMatch) metrics.distance = parseFloat(contentDistMatch[1]);
+      if (contentDistMatch) {
+        metrics.distance = parseFloat(contentDistMatch[1]);
+      } else {
+        console.warn("Could not extract distance from content:", article.id, article.content.substring(0, 200));
+      }
     }
 
     if (article.content) {
