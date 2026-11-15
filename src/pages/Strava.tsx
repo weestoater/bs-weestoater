@@ -113,7 +113,8 @@ export const StravaPage = () => {
     };
 
     if (article.excerpt) {
-      const distMatch = article.excerpt.match(/(\d+\.?\d*)mi/);
+      // More specific regex: match "Xmi (YYkm)" pattern to avoid matching duration
+      const distMatch = article.excerpt.match(/(\d+\.?\d*)mi \(/);
       if (distMatch) metrics.distance = parseFloat(distMatch[1]);
 
       const durationMatch = article.excerpt.match(/in (\d+)min/);
