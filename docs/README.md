@@ -1,33 +1,69 @@
-# Strava Integration Migration Documentation
+# Documentation Index
 
-Complete migration planning package for moving Strava tracking from weegym to bs-weestoater.
+> **Welcome!** This folder contains all project documentation, now organized by status to make it easy to find what you need.
+
+## ⚡ Quick Start
+
+- **👀 What should I read first?** → [INDEX.md](INDEX.md) - Complete navigation guide
+- **🔐 Compliance Requirements** → [ACCESSIBILITY.md](ACCESSIBILITY.md) - WCAG 2.2 AA requirements (KEEP PROMINENT)
+- **🟡 Strava Migration In Progress** → [in-flight/strava/STRAVA_PHASE_1_READY.md](in-flight/strava/STRAVA_PHASE_1_READY.md)
+- **✅ What's Been Completed?** → [implemented/](implemented/) folder
 
 ---
 
-## 📑 Document Overview
+## 📁 New Structure
 
-### 1. **MIGRATION_QUICK_START.md** ⭐ START HERE
-   - **Who**: You (getting started)
-   - **What**: 30-minute quick reference for Phase 1 setup
-   - **Contains**: Step-by-step setup instructions, prerequisites, environment variables
-   - **Time**: 5-10 min read
+All docs are now organized by status:
 
-### 2. **STRAVA_MIGRATION_PLAN.md** 📋 COMPREHENSIVE PLAN
-   - **Who**: Developers implementing the migration
-   - **What**: Complete 6-phase migration roadmap
-   - **Contains**: 
-     - Phase-by-phase breakdown (setup, service layer, auth, components, testing, docs)
-     - Architecture recommendations
-     - File structure and naming conventions
-     - Data migration strategies
-     - Risk mitigation
-     - Timeline and success criteria
-   - **Time**: 20-30 min read
+| Folder | Purpose | What It Contains |
+|--------|---------|------------------|
+| **`implemented/`** | ✅ Completed work | Finished implementations, verified results, incident reports |
+| **`in-flight/`** | 🟡 Active/planned | Current projects, migration plans, guides for upcoming work |
+| **`guides/`** | 📚 How-to reference | Feature docs, admin guides, integration guides, testing procedures |
+| **`ACCESSIBILITY.md`** | 🔒 Compliance | WCAG 2.2 AA requirements (root level - DO NOT MOVE) |
 
-### 3. **BRANCHING_STRATEGY.md** 🌳 GIT WORKFLOW
-   - **Who**: Git users managing branches
-   - **What**: Detailed branching strategy and workflow guide
-   - **Contains**:
+### Subfolders in `in-flight/`:
+- `strava/` - Strava migration (Phase 1 ✅, Phases 2-6 📋)
+- `refactoring/` - Code refactoring guides (planned)
+- `deployment/` - Deployment setup (planning)
+- `testing/` - Testing documentation (active)
+
+### Subfolders in `guides/`:
+- `features/` - Football, Slimming World, Target Weight guides
+- `admin/` - weeCMS, admin interface, navigation
+- `testing/` - A11y testing, image optimization
+- `integration/` - MCP server guide
+
+---
+
+## 🎯 Common Questions
+
+**Q: What's the status of the Strava migration?**  
+A: Phase 1 complete ✅, ready for PR after credential rotation. See: `in-flight/strava/STRAVA_PHASE_1_READY.md`
+
+**Q: Which phases are done vs. planned?**  
+A: See: `implemented/` (done) vs. `in-flight/` (planned/active)
+
+**Q: How do I use [Feature]?**  
+A: Check `guides/features/` for your feature
+
+**Q: What are the WCAG requirements?**  
+A: Read: `ACCESSIBILITY.md`
+
+**Q: What's been completed recently?**  
+A: See: `implemented/PHASE_2_3_IMPLEMENTATION_COMPLETE.md`
+
+---
+
+## 📖 Full Navigation
+
+For complete documentation index with all files and statuses, see: **[INDEX.md](INDEX.md)**
+
+---
+
+**Last Updated**: November 15, 2026  
+**Structure**: Organized by status (Implemented | In-Flight | Guides)  
+**Accessibility**: WCAG 2.2 AA Compliant
      - Visual branch diagrams
      - Step-by-step branch lifecycle (create → develop → merge)
      - Conflict resolution procedures
