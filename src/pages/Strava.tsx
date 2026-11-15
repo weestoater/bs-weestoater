@@ -201,6 +201,26 @@ export const StravaPage = () => {
     return `${hours}h ${mins}m`;
   };
 
+  const formatActivityDateTime = (article: Article): string => {
+    // Extract datetime from content: "2026-06-30 14:43:40"
+    const dateMatch = article.content?.match(
+      /<p><strong>Date:<\/strong> (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})<\/p>/,
+    );
+    if (!dateMatch) return article.published_date;
+
+    const dateStr = dateMatch[1];
+    const date = new Date(dateStr + "Z"); // Add Z for UTC
+
+    const weekday = date.toLocaleDateString("en-US", { weekday: "short" });
+    const month = date.toLocaleDateString("en-US", { month: "short" });
+    const day = date.getUTCDate();
+    const year = date.getUTCFullYear();
+    const hours = String(date.getUTCHours()).padStart(2, "0");
+    const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+
+    return `${weekday}, ${day} ${month} ${year} at ${hours}:${minutes}`;
+  };
+
   return (
     <>
       <PageTitleH1
@@ -347,7 +367,7 @@ export const StravaPage = () => {
                             {article.title}
                           </h5>
                           <p className="text-muted small mb-0">
-                            {article.published_date}
+                            {formatActivityDateTime(article)}
                           </p>
                         </div>
                         <span
