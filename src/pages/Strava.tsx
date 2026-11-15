@@ -130,29 +130,43 @@ export const StravaPage = () => {
       type: article.tags?.[0] || "Activity",
     };
 
+    // Try to extract distance from excerpt first
     if (article.excerpt) {
       // More specific regex: match "Xmi (YYkm)" pattern to avoid matching duration
       const distMatch = article.excerpt.match(/(\d+\.?\d*)mi \(/);
-      if (distMatch) metrics.distance = parseFloat(distMatch[1]);
+      if (distMatch) {
+        metrics.distance = parseFloat(distMatch[1]);
+      }
 
       const durationMatch = article.excerpt.match(/in (\d+)min/);
       if (durationMatch) metrics.duration = parseInt(durationMatch[1]);
 
       const elevMatch = article.excerpt.match(/\+(\d+)ft/);
       if (elevMatch) metrics.elevation = parseInt(elevMatch[1]);
-    } else {
-      console.warn("Article missing excerpt:", article.id);
     }
 
-    // Fallback: extract distance from content if not found in excerpt
+    // Fallback: extract from content if excerpt didn't work
     if (!metrics.distance && article.content) {
-      const contentDistMatch = article.content.match(
+      // Try flexible pattern first: "Distance: X.X mi"
+      let distMatch = article.content.match(
         /<p><strong>Distance:<\/strong>\s+([\d.]+)\s*mi/,
       );
-      if (contentDistMatch) {
-        metrics.distance = parseFloat(contentDistMatch[1]);
-      } else {
-        console.warn("Could not extract distance from content:", article.id, article.content.substring(0, 200));
+      // If that fails, try just looking for any number followed by "mi (" (to avoid 136min)
+      if (!distMatch) {
+        distMatch = article.content.match(/Distance[:\s]+(\d+\.?\d*)mi\s/);
+      }
+      if (distMatch) {
+        metrics.distance = parseFloat(distMatch[1]);
+      }
+    }
+
+    if (!metrics.duration && article.content) {
+      // Try to find duration from content
+      const durationMatch = article.content.match(
+        /<p><strong>Duration:<\/strong>\s+(\d+)\s+minutes/,
+      );
+      if (durationMatch) {
+        metrics.duration = parseInt(durationMatch[1]);
       }
     }
 
