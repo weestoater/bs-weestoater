@@ -8,14 +8,17 @@ Complete setup instructions for Strava OAuth and database configuration.
 
 ### Development Setup
 
-Add to `.env`:
+Add to `.env` (⚠️ DO NOT COMMIT THIS FILE):
 
 ```bash
 # Strava OAuth Configuration
+# Get these from https://www.strava.com/settings/api (see section 2)
 VITE_STRAVA_CLIENT_ID=your_client_id_here
 VITE_STRAVA_CLIENT_SECRET=your_client_secret_here
 VITE_STRAVA_REDIRECT_URI=http://localhost:3000/strava/callback
 ```
+
+⚠️ **SECURITY**: These credentials should NEVER be committed to git. They go in `.env` which is in `.gitignore`.
 
 ### Production Setup
 
@@ -215,10 +218,12 @@ In Supabase Studio:
 # Check that Strava env vars are set
 grep STRAVA .env
 
-# Output should show:
-# VITE_STRAVA_CLIENT_ID=your_client_id_here
-# VITE_STRAVA_CLIENT_SECRET=your_client_secret_here
+# Output should show (with YOUR actual values):
+# VITE_STRAVA_CLIENT_ID=your_client_id
+# VITE_STRAVA_CLIENT_SECRET=your_client_secret
 # VITE_STRAVA_REDIRECT_URI=http://localhost:3000/strava/callback
+
+# ⚠️ NEVER paste actual credentials into code or documentation!
 ```
 
 ### Verify Database Connection
