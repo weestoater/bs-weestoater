@@ -10,10 +10,12 @@
 
 ### Environment Setup
 - [x] Create `.env.example` with Strava variables
-- [x] Add Strava credentials to `.env`:
+- [x] Add Strava credentials to `.env` (NOT committed to git):
   - [x] `VITE_STRAVA_CLIENT_ID=your_client_id_here`
   - [x] `VITE_STRAVA_CLIENT_SECRET=your_client_secret_here`
   - [x] `VITE_STRAVA_REDIRECT_URI=http://localhost:3000/strava/callback`
+
+⚠️ **SECURITY**: Real credentials go in `.env` which is in `.gitignore`. Never commit credentials to git.
 
 ### Database Schema
 - [ ] Create Supabase tables (manual via Supabase Studio)
