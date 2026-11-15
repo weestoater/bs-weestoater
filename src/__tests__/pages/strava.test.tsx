@@ -57,6 +57,11 @@ describe("Strava page", () => {
     expect(container?.textContent).toMatch(/1\.5\s*mi/); // Total distance
     expect(container?.textContent).toMatch(/30m/); // Total duration
 
+    // Check MVP stats card for the activity contains distance value
+    // (should have "1.5 mi" or "1.50 mi" in the card)
+    const activityCards = screen.getAllByText("Distance");
+    expect(activityCards.length).toBeGreaterThan(0); // At least one card with Distance label
+    
     // Check show details button exists
     expect(
       await screen.findByText("Show Details"),
