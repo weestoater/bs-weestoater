@@ -1,0 +1,122 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    STRAVA SECTION - QUICK REFERENCE                        ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📍 LOCATION
+   Page: src/pages/Strava.tsx
+   Route: /strava
+   Nav: src/patterns/appheader.tsx
+
+🎯 KEY FILES
+   SQL Import:  scripts/data/strava-articles-import.sql (133 activities)
+   Docs:        docs/STRAVA_SETUP_SUMMARY.md
+   Layout Docs: docs/guides/admin/STRAVA_PAGE_LAYOUT.md
+   Import Docs: docs/guides/admin/STRAVA_EXPORT_IMPORT.md
+
+⚙️ COMPONENTS
+   Page:     StravaPage (src/pages/Strava.tsx)
+   Card:     ArticleCard (src/components/articles/ArticleCard.tsx) - reused
+   Interface: Article (src/interfaces/Article.ts)
+
+📊 STATISTICS SHOWN
+   • Total Activities (count)
+   • Total Distance (miles primary, km secondary)
+   • Total Duration (hours:minutes format)
+   • Total Calories
+   • Activity Type Breakdown (badges)
+
+🔧 UNITS CONVERSION
+   Distance:  meters (Strava API) → miles (primary) + km (secondary)
+   Speed:     m/s (Strava API) → mph (primary) + km/h (secondary)
+   Elevation: meters → feet (primary) + meters (secondary)
+   Duration:  seconds → minutes/hours:minutes
+
+🎛️ USER CONTROLS
+   Units Toggle: Imperial (mi) ↔ Metric (km)
+   Grid Layout: Responsive (4/3/2/1 columns)
+   Filters: None (planned for future)
+
+💾 DATABASE
+   Table:    articles
+   Category: "Strava"
+   Tags:     ARRAY['Run'], ARRAY['Ride'], ARRAY['Walk'], etc.
+   Author:   "Strava Import"
+   Published: true (all imported articles)
+   Featured: false
+
+🔐 SECURITY NOTES
+   • All articles published (no draft concept)
+   • Author field set to "Strava Import" for tracking
+   • RLS policies: published=true + publish_at check
+   • No external API calls (database only)
+
+📈 PERFORMANCE
+   • Stats calculated on page load (O(n))
+   • No real-time updates
+   • Article images lazy-loaded
+   • All 133 activities fit in single query
+
+✅ TESTS
+   Test File: src/__tests__/pages/strava.test.tsx
+   Status:    1 passed
+   Run:       npm test -- src/__tests__/pages/strava.test.tsx
+
+🎨 STYLING
+   Framework: Bootstrap 5
+   Responsive: Yes (mobile-first)
+   Accessibility: WCAG 2.2 AA
+   Colors: Primary (metrics), Danger (heart rate), Warning (calories)
+
+📱 RESPONSIVE BREAKPOINTS
+   Desktop (≥1400px): 3-4 columns
+   Tablet (768-1199px): 4-6 columns
+   Mobile (<768px): 1-2 columns
+
+🚀 NEXT STEPS AFTER IMPORT
+   1. Execute SQL in Supabase (copy/paste scripts/data/strava-articles-import.sql)
+   2. Visit /strava and verify 133 articles load
+   3. Test units toggle (Imperial ↔ Metric)
+   4. Verify stats dashboard calculations
+   5. Check responsive design on mobile
+
+📚 DOCUMENTATION HIERARCHY
+   STRAVA_SETUP_SUMMARY.md      ← Start here for overview
+   STRAVA_PAGE_LAYOUT.md        ← Features & architecture
+   STRAVA_EXPORT_IMPORT.md      ← Admin import guide
+   Code:                        ← TypeScript in src/pages/Strava.tsx
+
+🔮 FUTURE ENHANCEMENTS (See STRAVA_PAGE_LAYOUT.md)
+   • Interactive route maps (Leaflet)
+   • Date range filters (30d, 3m, 1y, all)
+   • Activity type filter
+   • Dynamic stats recalculation
+   • Analytics charts
+
+⚠️ KNOWN ISSUES FIXED
+   ✓ Tags format: Now uses ARRAY['Type'] not JSON
+   ✓ Distance conversion: Meters correctly → miles
+   ✓ All 133 activities: Successfully converted
+
+🆘 TROUBLESHOOTING
+   Q: No articles showing?
+   A: Execute SQL import in Supabase first
+
+   Q: Wrong units displayed?
+   A: SQL has correct conversions; toggle on page switches display
+
+   Q: Stats not calculating?
+   A: Page fetches articles on load; refresh browser
+
+   Q: Mobile layout broken?
+   A: Bootstrap responsive classes handle all breakpoints
+
+📞 CODE REFERENCES
+   Article Type:     src/interfaces/Article.ts:6
+   Page Component:   src/pages/Strava.tsx:1
+   Route Config:     src/routes.tsx (lazy loaded)
+   Article Card:     src/components/articles/ArticleCard.tsx (reused)
+   DB Service:       backend/index.js:getArticles()
+
+════════════════════════════════════════════════════════════════════════════
+                Last Updated: 2026-11-15 | Status: ✅ Complete
+════════════════════════════════════════════════════════════════════════════
