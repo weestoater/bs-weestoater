@@ -62,3 +62,32 @@ export function getActivityCategory(sportType: string | null): ActivityCategory 
   if (!sportType) return FALLBACK;
   return CATEGORIES[sportType] ?? { ...FALLBACK, key: sportType, label: sportType };
 }
+
+export interface ActivityTypeCount extends ActivityCategory {
+  count: number;
+}
+
+/** Counts activities per category, most frequent first. */
+export function countActivityTypes(
+  activities: { sportType: string | null }[],
+): [string, ActivityTypeCount][] {
+  const counts = new Map<string, ActivityTypeCount>();
+  for (const activity of activities) {
+    const category = getActivityCategory(activity.sportType);
+    const entry = counts.get(category.key);
+    if (entry) entry.count += 1;
+    else counts.set(category.key, { ...category, count: 1 });
+  }
+  return [...counts.entries()].sort(([, a], [, b]) => b.count - a.count);
+}
+
+/** Returns activities whose category key is selected; an empty selection returns all. */
+export function filterActivitiesByType<T extends { sportType: string | null }>(
+  activities: T[],
+  selectedKeys: string[],
+): T[] {
+  if (selectedKeys.length === 0) return activities;
+  return activities.filter((activity) =>
+    selectedKeys.includes(getActivityCategory(activity.sportType).key),
+  );
+}

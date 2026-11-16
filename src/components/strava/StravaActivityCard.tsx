@@ -4,19 +4,19 @@ import { decodePolyline } from '../../utils/polylineDecoder';
 import { fetchStravaActivityDetail } from '../../utils/stravaApi';
 import type { StravaActivity, StravaActivityDetail } from '../../interfaces/StravaActivity';
 import { getActivityCategory } from '../../utils/stravaActivityType';
+import {
+  FEET_PER_METER,
+  METERS_PER_MILE,
+  MPH_PER_METER_PER_SECOND,
+  formatActivityDateTime,
+  formatDistance,
+  formatDuration,
+  formatSpeed,
+} from '../../utils/stravaFormat';
 
 interface StravaActivityCardProps {
   activity: StravaActivity;
-  useMetric?: boolean;
-  formatDistance: (miles: number | null, metric: boolean) => string;
-  formatSpeed: (mph: number | null, metric: boolean) => string;
-  formatDuration: (minutes: number | null) => string;
-  formatActivityDateTime: (startDateLocal: string) => string;
 }
-
-const METERS_PER_MILE = 1609.344;
-const FEET_PER_METER = 3.28084;
-const MPH_PER_METER_PER_SECOND = 2.236936;
 
 function decodeSafely(polyline: string | null) {
   if (!polyline) return [];
@@ -33,14 +33,7 @@ function decodeSafely(polyline: string | null) {
  * Displays a single live Strava activity. Details (route map, calories,
  * description) are fetched the first time the card is expanded.
  */
-export function StravaActivityCard({
-  activity,
-  useMetric = false,
-  formatDistance,
-  formatSpeed,
-  formatDuration,
-  formatActivityDateTime,
-}: StravaActivityCardProps) {
+export function StravaActivityCard({ activity }: StravaActivityCardProps) {
   const [expanded, setExpanded] = useState(false);
   const [detail, setDetail] = useState<StravaActivityDetail | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
@@ -103,7 +96,7 @@ export function StravaActivityCard({
         <div className="row g-3">
           <div className="col-sm-3 col-xs-6 text-center">
             <small className="text-muted d-block"><i className="bi bi-signpost-2 text-primary me-1"></i>Distance</small>
-            <strong>{formatDistance(distanceMiles, useMetric)}</strong>
+            <strong>{formatDistance(distanceMiles, false)}</strong>
           </div>
           <div className="col-sm-3 col-xs-6 text-center">
             <small className="text-muted d-block"><i className="bi bi-clock text-primary me-1"></i>Duration</small>
@@ -111,15 +104,11 @@ export function StravaActivityCard({
           </div>
           <div className="col-sm-3 col-xs-6 text-center">
             <small className="text-muted d-block"><i className="bi bi-speedometer2 text-primary me-1"></i>Avg Speed</small>
-            <strong>{formatSpeed(avgSpeedMph, useMetric)}</strong>
+            <strong>{formatSpeed(avgSpeedMph, false)}</strong>
           </div>
           <div className="col-sm-3 col-xs-6 text-center">
             <small className="text-muted d-block"><i className="bi bi-arrow-up text-primary me-1"></i>Elevation</small>
-            <strong>
-              {useMetric
-                ? `${activity.elevationGainM.toFixed(0)} m`
-                : `${elevationFt.toFixed(0)} ft`}
-            </strong>
+            <strong>{`${elevationFt.toFixed(0)} ft`}</strong>
           </div>
         </div>
       </div>
