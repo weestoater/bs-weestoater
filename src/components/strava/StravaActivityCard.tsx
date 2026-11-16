@@ -65,7 +65,7 @@ export function StravaActivityCard({ activity }: StravaActivityCardProps) {
   };
 
   return (
-    <div className="col-lg-4 col-sm-12 mb-3">
+    <div className="col-lg-4 col-sm-12 mb-2">
     <div className="card mb-3">
       <div className="card-header bg-light d-flex justify-content-between align-items-start">
         <div className="flex-grow-1">
