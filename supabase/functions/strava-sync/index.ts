@@ -59,19 +59,36 @@ async function getAccessToken(db: SupabaseClient): Promise<string> {
   return data.access_token;
 }
 
-async function stravaGet(token: string, path: string) {
+interface StravaApiActivity {
+  id: number;
+  name: string;
+  type?: string;
+  sport_type?: string;
+  start_date_local: string;
+  distance?: number;
+  moving_time?: number;
+  total_elevation_gain?: number;
+  average_speed?: number;
+  average_heartrate?: number;
+  max_heartrate?: number;
+  calories?: number;
+  description?: string | null;
+  map?: { polyline?: string | null; summary_polyline?: string | null };
+}
+
+async function stravaGet<T = StravaApiActivity>(token: string, path: string): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   if (res.status === 429) throw new SyncError("Strava rate limit reached, try again later", 429);
   if (!res.ok) throw new SyncError(`Strava API error (${res.status}) for ${path}`, 502);
-  return res.json();
+  return res.json() as Promise<T>;
 }
 
 async function syncStrava(db: SupabaseClient) {
   const token = await getAccessToken(db);
 
-  const activities: any[] = [];
+  const activities: StravaApiActivity[] = [];
   for (let page = 1; ; page++) {
     const batch = await stravaGet(token, `/athlete/activities?per_page=${PER_PAGE}&page=${page}`);
     activities.push(...batch);
