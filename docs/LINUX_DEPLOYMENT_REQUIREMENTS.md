@@ -4,6 +4,14 @@ Status: **planning only**. No deployment workflow is active (see `.github/WORKFL
 
 The site is a static Vite build (`yarn build` → `dist/`). Deployment = build in GitHub Actions, then copy `dist/` to the web root on the Linux host.
 
+Deploy the entire `dist/` directory, including every hashed file in `dist/assets/`.
+Publish the assets before switching `index.html` to the new build, and retain old
+hashed assets while clients may still have the previous version open. Prefer an
+atomic release switch when the host supports it. Verify the JavaScript URLs in
+the deployed HTML return HTTP 200 with a JavaScript content type; a 404 HTML
+response cannot be loaded as a module. `netlify.toml` headers do not apply on
+other hosts, so configure HTML and `sw.js` to revalidate on the actual server.
+
 ## 1. Recommended authentication
 
 **Key-based SSH with a dedicated, deploy-only key pair, stored as an encrypted GitHub Actions secret.**
