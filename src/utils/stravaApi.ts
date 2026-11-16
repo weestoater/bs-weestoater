@@ -3,18 +3,20 @@ import type {
   StravaActivityDetail,
 } from "../interfaces/StravaActivity";
 
+// Static JSON written by scripts/sync-strava.js; no secrets are exposed to the browser.
+const DATA_BASE = "/data/strava";
+
 async function requestJson<T>(url: string): Promise<T> {
   const res = await fetch(url);
-  const body = await res.json().catch(() => ({}));
   if (!res.ok) {
-    throw new Error(body.error || `Request failed (${res.status})`);
+    throw new Error(`Request failed (${res.status})`);
   }
-  return body as T;
+  return (await res.json()) as T;
 }
 
 export async function fetchStravaActivities(): Promise<StravaActivity[]> {
   const body = await requestJson<{ activities: StravaActivity[] }>(
-    "/.netlify/functions/strava-activities",
+    `${DATA_BASE}/activities.json`,
   );
   return body.activities;
 }
@@ -22,8 +24,5 @@ export async function fetchStravaActivities(): Promise<StravaActivity[]> {
 export async function fetchStravaActivityDetail(
   id: number,
 ): Promise<StravaActivityDetail> {
-  const body = await requestJson<{ activity: StravaActivityDetail }>(
-    `/.netlify/functions/strava-activity?id=${id}`,
-  );
-  return body.activity;
+  return requestJson<StravaActivityDetail>(`${DATA_BASE}/activity-${id}.json`);
 }

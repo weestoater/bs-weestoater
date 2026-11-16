@@ -9,7 +9,7 @@
  */
 
 async function testStravaCredentials() {
-  const clientId = process.env.VITE_STRAVA_CLIENT_ID;
+  const clientId = process.env.STRAVA_CLIENT_ID;
   const clientSecret = process.env.STRAVA_CLIENT_SECRET;
   const redirectUri = process.env.VITE_STRAVA_REDIRECT_URI;
 
@@ -18,7 +18,7 @@ async function testStravaCredentials() {
   // Check environment variables
   if (!clientId || !clientSecret || !redirectUri) {
     console.error("❌ Missing Strava credentials in .env:");
-    if (!clientId) console.error("  - VITE_STRAVA_CLIENT_ID");
+    if (!clientId) console.error("  - STRAVA_CLIENT_ID");
     if (!clientSecret) console.error("  - STRAVA_CLIENT_SECRET");
     if (!redirectUri) console.error("  - VITE_STRAVA_REDIRECT_URI");
     process.exit(1);
