@@ -2,31 +2,29 @@ import { describe, expect, test, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { StravaPage } from "../../pages/Strava";
 
-const { getArticles } = vi.hoisted(() => ({
-  getArticles: vi.fn(() =>
-    Promise.resolve([
-      {
-        id: "strava-2026-01-01-morning-walk",
-        title: "Morning Walk",
-        slug: "strava-2026-01-01-morning-walk",
-        category: "Strava",
-        excerpt: "1.5mi (2.4km) in 30min +100ft (30m)",
-        content:
-          "<h3>Morning Walk</h3><p><strong>Distance:</strong> 1.50 mi (2.41 km)</p><p><strong>Duration:</strong> 30 minutes</p><p><strong>Average Speed:</strong> 3.00 mph (4.82 km/h)</p><p><strong>Average Heart Rate:</strong> 100 bpm</p><p><strong>Calories:</strong> 150</p>",
-        published: true,
-        published_date: "2026-01-01",
-        tags: ["Walk"],
-        featured: false,
-        author: "Strava Import",
-        order_index: 0,
-      },
-    ]),
-  ),
-}));
+const { fetchStravaActivities, baseActivity } = vi.hoisted(() => {
+  const baseActivity = {
+    id: 1001,
+    name: "Morning Walk",
+    sportType: "Walk",
+    startDateLocal: "2026-01-01T09:00:00Z",
+    distanceM: 2414,
+    movingTimeS: 1790,
+    elevationGainM: 30,
+    averageSpeedMs: 1.34,
+    averageHeartrate: 100,
+    maxHeartrate: 120,
+    polyline: null,
+  };
+  return {
+    baseActivity,
+    fetchStravaActivities: vi.fn(() => Promise.resolve([baseActivity])),
+  };
+});
 
-vi.mock("../../../backend/index.js", () => ({
-  getSupabaseClient: vi.fn(() => ({})),
-  createDatabaseService: vi.fn(() => ({ getArticles })),
+vi.mock("../../utils/stravaApi", () => ({
+  fetchStravaActivities,
+  fetchStravaActivityDetail: vi.fn(),
 }));
 
 describe("Strava page", () => {
@@ -38,34 +36,51 @@ describe("Strava page", () => {
 
     // Check count message
     expect(
-      await screen.findByText("1 published Strava activity found."),
+      await screen.findByText("1 Strava activity found."),
     ).toBeInTheDocument();
 
-    // Check summary stats appear
-    expect(await screen.findByText("1")).toBeInTheDocument(); // Activities count
-    expect(await screen.findByText("Summary")).toBeInTheDocument();
+    expect(fetchStravaActivities).toHaveBeenCalled();
 
-    // Verify getArticles was called with correct category
-    expect(getArticles).toHaveBeenCalledWith({ category: "Strava" });
-
-    // Check MVP stats labels are visible
+    // Check MVP stats labels are visible in activity card
     expect(await screen.findByText("Distance")).toBeInTheDocument();
     expect(await screen.findByText("Duration")).toBeInTheDocument();
+    expect(await screen.findByText("Avg Speed")).toBeInTheDocument();
+    expect(await screen.findByText("Elevation")).toBeInTheDocument();
 
-    // Check that summary contains the calculated values
-    const container = screen.getByText("Summary").closest(".card");
-    expect(container?.textContent).toMatch(/1\.5\s*mi/); // Total distance
-    expect(container?.textContent).toMatch(/30m/); // Total duration
+    // Check that activity card displays formatted values
+    const distanceLabels = screen.getAllByText("Distance");
+    expect(distanceLabels.length).toBeGreaterThan(0); // At least one card with Distance label
 
-    // Check MVP stats card for the activity contains distance value
-    // (should have "1.5 mi" or "1.50 mi" in the card)
-    const activityCards = screen.getAllByText("Distance");
-    expect(activityCards.length).toBeGreaterThan(0); // At least one card with Distance label
-    
-    // Check show details button exists
+    // Check expand button exists and is initially collapsed
+    const expandButton = await screen.findByLabelText("Expand details");
+    expect(expandButton).toBeInTheDocument();
+    expect(expandButton).toHaveAttribute("aria-expanded", "false");
+
+    // Check filter buttons exist
     expect(
-      await screen.findByText("Show Details"),
+      await screen.findByRole("button", { name: /All Types/i }),
     ).toBeInTheDocument();
+    expect(
+      await screen.findByRole("button", { name: /Walk/i }),
+    ).toBeInTheDocument();
+  });
+
+  test("rounds fractional durations to whole minutes", async () => {
+    render(<StravaPage />);
+    // movingTimeS 1790 is 29.8 minutes, so this must not render a float like 29.83333m
+    expect(await screen.findByText("30m")).toBeInTheDocument();
+  });
+
+  test("groups all ride variants under a single Bike ride filter", async () => {
+    fetchStravaActivities.mockResolvedValueOnce([
+      { ...baseActivity, id: 1, sportType: "MountainBikeRide" },
+      { ...baseActivity, id: 2, sportType: "GravelRide" },
+    ]);
+    render(<StravaPage />);
+    expect(
+      await screen.findByRole("button", { name: /Bike ride \(2\)/ }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /MountainBikeRide|GravelRide/ })).toBeNull();
   });
 });
 

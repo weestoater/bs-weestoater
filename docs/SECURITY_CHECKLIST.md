@@ -50,7 +50,8 @@
 **Example `.env` entry:**
 ```bash
 # ⚠️ DO NOT COMMIT THIS FILE
-VITE_STRAVA_CLIENT_SECRET=your_actual_secret_here
+STRAVA_CLIENT_SECRET=your_actual_secret_here
+STRAVA_REFRESH_TOKEN=your_actual_refresh_token_here
 SUPABASE_SERVICE_ROLE_KEY=your_actual_key_here
 ```
 
@@ -58,7 +59,8 @@ SUPABASE_SERVICE_ROLE_KEY=your_actual_key_here
 ```bash
 # Strava OAuth (get from https://www.strava.com/settings/api)
 # ⚠️ IMPORTANT: Never commit real credentials to git
-VITE_STRAVA_CLIENT_SECRET=your_strava_client_secret
+STRAVA_CLIENT_SECRET=your_strava_client_secret
+STRAVA_REFRESH_TOKEN=your_strava_refresh_token
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 ```
 
