@@ -1,9 +1,54 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import { VitePWA } from "vite-plugin-pwa";
+
+// Serves netlify/functions/* under /.netlify/functions/* during `vite` dev,
+// so the Strava page works without `netlify dev`.
+function netlifyFunctionsDev(): Plugin {
+  return {
+    name: "netlify-functions-dev",
+    apply: "serve",
+    configureServer(server) {
+      const env = loadEnv(server.config.mode, process.cwd(), "");
+      for (const [key, value] of Object.entries(env)) {
+        process.env[key] ??= value;
+      }
+
+      server.middlewares.use("/.netlify/functions", async (req, res) => {
+        const url = new URL(req.url ?? "/", "http://localhost");
+        const name = url.pathname.replace(/^\//, "");
+        if (!/^[a-z-]+$/.test(name)) {
+          res.statusCode = 404;
+          res.end();
+          return;
+        }
+
+        try {
+          const mod = await server.ssrLoadModule(`/netlify/functions/${name}.js`);
+          const result = await mod.handler({
+            httpMethod: req.method,
+            headers: req.headers,
+            queryStringParameters: Object.fromEntries(url.searchParams),
+            body: null,
+          });
+          res.statusCode = result.statusCode;
+          for (const [key, value] of Object.entries(result.headers ?? {})) {
+            res.setHeader(key, value as string);
+          }
+          res.end(result.body);
+        } catch (err) {
+          server.config.logger.error(`netlify function ${name} failed: ${err}`);
+          res.statusCode = 500;
+          res.setHeader("Content-Type", "application/json");
+          res.end(JSON.stringify({ error: "Function failed; see dev server log" }));
+        }
+      });
+    },
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,6 +67,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    netlifyFunctionsDev(),
     ViteImageOptimizer({
       include: ["**/*.{jpg,jpeg,png,webp,avif,gif,tiff}"],
       exclude: ["**/*.svg"],

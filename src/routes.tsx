@@ -39,6 +39,11 @@ const SlimmingWorld = lazy(() =>
     default: module.SlimmingWorld,
   })),
 );
+const StravaPage = lazy(() =>
+  import("./pages/Strava").then((module) => ({
+    default: module.StravaPage,
+  })),
+);
 const GarminActivities = lazy(() =>
   import("./pages/GarminActivities").then((module) => ({
     default: module.GarminActivities,
@@ -147,6 +152,7 @@ export const appRoutes = [
   { path: "/season/:seasonId", element: <SeasonPage /> },
   { path: "/react", element: <ReactPage /> },
   { path: "/sw", element: <SlimmingWorld /> },
+  { path: "/strava", element: <StravaPage /> },
   { path: "/garmin", element: <GarminActivities /> },
   { path: "/icon-test", element: <IconTest /> },
   { path: "/admin/login", element: <AdminLogin /> },
