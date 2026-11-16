@@ -11,10 +11,10 @@ export interface StravaActivity {
   averageHeartrate: number | null;
   maxHeartrate: number | null;
   polyline: string | null;
+  calories: number | null;
 }
 
 /** Extra fields stored by the strava-sync Edge Function. */
 export interface StravaActivityDetail extends StravaActivity {
   description: string | null;
-  calories: number | null;
 }

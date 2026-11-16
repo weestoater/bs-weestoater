@@ -21,6 +21,8 @@ The Strava page reads activities from Supabase (`strava_activities`). An admin c
 
    ```bash
    npx supabase@latest secrets set STRAVA_CLIENT_ID=... STRAVA_CLIENT_SECRET=... STRAVA_REFRESH_TOKEN=...
+
+   Trim values before setting them. A trailing carriage return or space from `.env` makes Strava return 401 ("token refresh failed").
    ```
 
 4. Deploy the function:
@@ -38,6 +40,8 @@ The Strava page reads activities from Supabase (`strava_activities`). An admin c
    ```
 
 After that the button appears on the Strava page for signed-in admins. The first sync stores the summaries and then fills in details for up to 80 activities per run.
+
+Note: if an older `strava_activities` table already existed in the project, the migration's `create table if not exists` kept it and the sync failed with a missing-column error. Rename it first (for example to `strava_activities_legacy`) and re-run the migration.
 
 ## Scheduled sync (optional)
 

@@ -12,6 +12,8 @@ import {
 import type { StravaActivity } from "../interfaces/StravaActivity";
 import { getActivityCategory } from "../utils/stravaActivityType";
 
+const METERS_PER_MILE = 1609.344;
+
 export const StravaPage = () => {
   const [activities, setActivities] = useState<StravaActivity[]>([]);
   const [loading, setLoading] = useState(true);
@@ -85,6 +87,18 @@ export const StravaPage = () => {
           ),
     [activities, selectedActivityTypes],
   );
+
+  const totals = useMemo(() => {
+    const totalMeters = activities.reduce((sum, a) => sum + a.distanceM, 0);
+    const totalSeconds = activities.reduce((sum, a) => sum + a.movingTimeS, 0);
+    const totalCalories = activities.reduce((sum, a) => sum + (a.calories ?? 0), 0);
+    return {
+      count: activities.length,
+      miles: totalMeters / METERS_PER_MILE,
+      minutes: totalSeconds / 60,
+      calories: Math.round(totalCalories),
+    };
+  }, [activities]);
 
   const formatDistance = (miles: number | null, metric: boolean): string => {
     if (miles === null) return "N/A";
@@ -169,6 +183,29 @@ export const StravaPage = () => {
 
       {!loading && !error && (
         <>
+          {/* Summary */}
+          <section aria-labelledby="strava-summary-heading" className="mb-4">
+            <h2 id="strava-summary-heading" className="h5 mb-3">Summary</h2>
+            <dl className="row text-center mb-0">
+              <div className="col-6 col-md-3 mb-3">
+                <dt className="fs-6 text-muted">Activities</dt>
+                <dd className="fs-4 fw-bold mb-0">{totals.count}</dd>
+              </div>
+              <div className="col-6 col-md-3 mb-3">
+                <dt className="fs-6 text-muted">Total Distance</dt>
+                <dd className="fs-4 fw-bold mb-0">{formatDistance(totals.miles, false)}</dd>
+              </div>
+              <div className="col-6 col-md-3 mb-3">
+                <dt className="fs-6 text-muted">Total Time</dt>
+                <dd className="fs-4 fw-bold mb-0">{formatDuration(totals.minutes)}</dd>
+              </div>
+              <div className="col-6 col-md-3 mb-3">
+                <dt className="fs-6 text-muted">Total Calories</dt>
+                <dd className="fs-4 fw-bold mb-0">{totals.calories.toLocaleString("en-GB")} kcal</dd>
+              </div>
+            </dl>
+          </section>
+
           {/* Activity Type Filter */}
           {Object.keys(activityTypes).length > 0 && (
             <div className="mb-4">

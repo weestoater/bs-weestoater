@@ -17,15 +17,15 @@ interface StravaActivityRow {
   average_heartrate: number | null;
   max_heartrate: number | null;
   summary_polyline: string | null;
+  calories: number | null;
   description: string | null;
   detailed_polyline: string | null;
-  calories: number | null;
 }
 
 const LIST_COLUMNS =
-  "id, name, sport_type, start_date_local, distance_m, moving_time_s, elevation_gain_m, average_speed_ms, average_heartrate, max_heartrate, summary_polyline";
+  "id, name, sport_type, start_date_local, distance_m, moving_time_s, elevation_gain_m, average_speed_ms, average_heartrate, max_heartrate, summary_polyline, calories";
 
-const DETAIL_COLUMNS = `${LIST_COLUMNS}, description, detailed_polyline, calories`;
+const DETAIL_COLUMNS = `${LIST_COLUMNS}, description, detailed_polyline`;
 
 function toActivity(row: StravaActivityRow): StravaActivity {
   return {
@@ -40,6 +40,7 @@ function toActivity(row: StravaActivityRow): StravaActivity {
     averageHeartrate: row.average_heartrate,
     maxHeartrate: row.max_heartrate,
     polyline: row.summary_polyline,
+    calories: row.calories,
   };
 }
 
@@ -66,7 +67,6 @@ export async function fetchStravaActivityDetail(
     ...toActivity(row),
     polyline: row.detailed_polyline ?? row.summary_polyline,
     description: row.description,
-    calories: row.calories,
   };
 }
 

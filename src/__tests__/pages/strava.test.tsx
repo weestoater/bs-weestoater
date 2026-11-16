@@ -70,7 +70,9 @@ describe("Strava page", () => {
   test("rounds fractional durations to whole minutes", async () => {
     render(<StravaPage />);
     // movingTimeS 1790 is 29.8 minutes, so this must not render a float like 29.83333m
-    expect(await screen.findByText("30m")).toBeInTheDocument();
+    // Summary total and card both render "30m", so match all of them
+    expect((await screen.findAllByText("30m")).length).toBeGreaterThan(0);
+    expect(screen.queryByText(/29\.8/)).not.toBeInTheDocument();
   });
 
   test("groups all ride variants under a single Bike filter", async () => {
