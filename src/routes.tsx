@@ -135,6 +135,11 @@ const MediaLibrary = lazy(() =>
     default: module.MediaLibrary,
   })),
 );
+const StravaSyncAdmin = lazy(() =>
+  import("./pages/admin/StravaSync").then((module) => ({
+    default: module.StravaSyncAdmin,
+  })),
+);
 
 const withProtectedRoute = (element: ReactNode) => (
   <ProtectedRoute>{element}</ProtectedRoute>
@@ -157,6 +162,7 @@ export const appRoutes = [
   { path: "/icon-test", element: <IconTest /> },
   { path: "/admin/login", element: <AdminLogin /> },
   { path: "/admin", element: withProtectedRoute(<AdminDashboard />) },
+  { path: "/admin/strava", element: withProtectedRoute(<StravaSyncAdmin />) },
   { path: "/admin/books", element: withProtectedRoute(<BooksManager />) },
   { path: "/admin/books/new", element: withProtectedRoute(<BookEditor />) },
   {

@@ -184,6 +184,22 @@ export const AdminDashboard = () => {
             </div>
           </div>
         </div>
+
+        {/* Strava Sync */}
+        <div className="col-md-6 col-lg-4">
+          <div className="card h-100">
+            <div className="card-body">
+              <h3 className="card-title">
+                <i className="bi bi-activity me-2 text-warning"></i>
+                Strava
+              </h3>
+              <p className="card-text">Sync Strava activities into the database</p>
+              <Link to="/admin/strava" className="btn btn-warning">
+                Sync Strava
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Quick Stats */}

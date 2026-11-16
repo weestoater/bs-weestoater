@@ -1,6 +1,6 @@
 # Strava sync
 
-The Strava page reads activities from Supabase (`strava_activities`). An admin clicks **Sync from Strava** on the page, which calls the `strava-sync` Edge Function. The function fetches from Strava with the server-side secrets and upserts into Supabase. Strava credentials never reach the browser.
+The Strava page reads activities from Supabase (`strava_activities`). An admin runs **Sync from Strava** from the Admin Dashboard's Strava card (`/admin/strava`), which calls the `strava-sync` Edge Function. The function fetches from Strava with the server-side secrets and upserts into Supabase. Strava credentials never reach the browser.
 
 ## One-time setup
 
@@ -39,7 +39,7 @@ The Strava page reads activities from Supabase (`strava_activities`). An admin c
    on conflict do nothing;
    ```
 
-After that the button appears on the Strava page for signed-in admins. The first sync stores the summaries and then fills in details for up to 80 activities per run.
+After that the sync button appears on the Strava admin page (`/admin/strava`) for signed-in admins. The first sync stores the summaries and then fills in details for up to 80 activities per run.
 
 Note: if an older `strava_activities` table already existed in the project, the migration's `create table if not exists` kept it and the sync failed with a missing-column error. Rename it first (for example to `strava_activities_legacy`) and re-run the migration.
 

@@ -1,13 +1,9 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { PageTitleH1 } from "../components/global/pageTitleHeading";
 import { BackToTop } from "../components/global/BackToTop";
 
 import { StravaActivityCard } from "../components/strava/StravaActivityCard";
-import {
-  fetchStravaActivities,
-  isStravaAdmin,
-  triggerStravaSync,
-} from "../utils/stravaApi";
+import { fetchStravaActivities } from "../utils/stravaApi";
 
 import type { StravaActivity } from "../interfaces/StravaActivity";
 import {
@@ -28,50 +24,25 @@ export const StravaPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedActivityTypes, setSelectedActivityTypes] = useState<string[]>([]);
   const [dateRange, setDateRange] = useState<DateRangeValue>("all");
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [syncing, setSyncing] = useState(false);
-  const [syncMessage, setSyncMessage] = useState<string | null>(null);
-
-  const loadActivities = useCallback(
-    () =>
-      fetchStravaActivities()
-        .then(setActivities)
-        .catch((err) => {
-          setError(err instanceof Error ? err.message : "Failed to load Strava activities");
-        }),
-    [],
-  );
 
   useEffect(() => {
     let cancelled = false;
-    loadActivities().finally(() => {
-      if (!cancelled) setLoading(false);
-    });
-    isStravaAdmin().then((admin) => {
-      if (!cancelled) setIsAdmin(admin);
-    });
+    fetchStravaActivities()
+      .then((data) => {
+        if (!cancelled) setActivities(data);
+      })
+      .catch((err) => {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : "Failed to load Strava activities");
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
     return () => {
       cancelled = true;
     };
-  }, [loadActivities]);
-
-  const handleSync = async () => {
-    setSyncing(true);
-    setSyncMessage(null);
-    try {
-      const result = await triggerStravaSync();
-      setSyncMessage(
-        `Synced ${result.activities} activities, fetched ${result.detailsFetched} new details.${
-          result.rateLimited ? " Strava rate limit reached; run again later for the rest." : ""
-        }`,
-      );
-      await loadActivities();
-    } catch (err) {
-      setSyncMessage(err instanceof Error ? err.message : "Sync failed");
-    } finally {
-      setSyncing(false);
-    }
-  };
+  }, []);
 
   const activityTypes = useMemo(() => countActivityTypes(activities), [activities]);
 
@@ -235,25 +206,7 @@ export const StravaPage = () => {
                 </select>
               </div>
             )}
-
-            {isAdmin && (
-              <div className="ms-auto text-end">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={handleSync}
-                  disabled={syncing}
-                >
-                  <i className="bi bi-arrow-repeat me-2" aria-hidden="true"></i>
-                  {syncing ? "Syncing…" : "Sync from Strava"}
-                </button>
-              </div>
-            )}
           </div>
-
-          {isAdmin && syncMessage && (
-            <p role="status" className="mb-4">{syncMessage}</p>
-          )}
 
           {/* Activities List */}
           <p role="status" className="mb-4">

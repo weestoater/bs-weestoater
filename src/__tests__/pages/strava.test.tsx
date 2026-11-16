@@ -25,8 +25,6 @@ const { fetchStravaActivities, baseActivity } = vi.hoisted(() => {
 vi.mock("../../utils/stravaApi", () => ({
   fetchStravaActivities,
   fetchStravaActivityDetail: vi.fn(),
-  isStravaAdmin: vi.fn(() => Promise.resolve(false)),
-  triggerStravaSync: vi.fn(),
 }));
 
 describe("Strava page", () => {
@@ -35,6 +33,9 @@ describe("Strava page", () => {
 
     // Check title and article is rendered
     expect(await screen.findByText("Morning Walk")).toBeInTheDocument();
+
+    // Sync is admin-only and lives on the admin page, not the public page
+    expect(screen.queryByText("Sync from Strava")).not.toBeInTheDocument();
 
     // Check count message
     expect(
