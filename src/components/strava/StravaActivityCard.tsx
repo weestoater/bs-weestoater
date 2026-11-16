@@ -66,29 +66,34 @@ export function StravaActivityCard({ activity }: StravaActivityCardProps) {
 
   return (
     <div className="col-lg-4 col-sm-12 mb-2">
-    <div className="card mb-3">
-      <div className="card-header bg-light d-flex justify-content-between align-items-start">
-        <div className="flex-grow-1">
-          <h5 className="card-title mb-2">
+    <div className="card mb-1">
+      <div className="card-header">
+        <div className="row">
+          <div className="col-sm-7">
+            <h5 className="card-title mb-2">
             <span className={`badge ${activityCategory.colorClass} me-2`}>
               <i className={`bi ${activityCategory.icon} me-1`} aria-hidden="true"></i>
-              {activityCategory.label}
             </span>
             {activity.name}
           </h5>
-          <p className="text-muted mb-0 small">
+          </div>
+          <div className="col-sm-4"> <p className="text-muted mb-0 small">
             <i className="bi bi-calendar me-1"></i>
             {dateTime}
-          </p>
-        </div>
-        <button
-          className="btn btn-sm btn-outline-secondary"
+        </p></div>
+          <div className="col-sm-1"> 
+            <button
+          className="btn btn-sm btn-info"
           onClick={handleExpand}
           aria-expanded={expanded}
           aria-label={expanded ? 'Collapse details' : 'Expand details'}
         >
           <i className={`bi bi-chevron-${expanded ? 'up' : 'down'}`}></i>
-        </button>
+        </button></div>
+        </div>
+          
+         
+       
       </div>
 
       {/* Summary Stats Row */}
