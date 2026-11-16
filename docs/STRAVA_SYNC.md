@@ -1,46 +1,81 @@
 # Strava sync
 
-The Strava page reads static JSON files instead of calling Strava from the browser. `scripts/sync-strava.js` writes them, and the site serves them from `/data/strava/`.
+The Strava page reads activities from Supabase (`strava_activities`). An admin clicks **Sync from Strava** on the page, which calls the `strava-sync` Edge Function. The function fetches from Strava with the server-side secrets and upserts into Supabase. Strava credentials never reach the browser.
 
-## Output
+## One-time setup
+
+1. Log in and link the project (run these yourself; they open a browser):
+
+   ```bash
+   npx supabase@latest login
+   npx supabase@latest link --project-ref bvagseoxnweowmdwerct
+   ```
+
+2. Apply the migration (creates `strava_activities`, `strava_tokens`, `admins`, and `is_strava_admin()`):
+
+   ```bash
+   npx supabase@latest db push
+   ```
+
+3. Set the function secrets. Use the current refresh token from `.strava-state.json` if it exists, since Strava rotates it. Do not use `--env-file .env`, which would also push unrelated keys:
+
+   ```bash
+   npx supabase@latest secrets set STRAVA_CLIENT_ID=... STRAVA_CLIENT_SECRET=... STRAVA_REFRESH_TOKEN=...
+   ```
+
+4. Deploy the function:
+
+   ```bash
+   npx supabase@latest functions deploy strava-sync
+   ```
+
+5. Make yourself an admin. Sign in on the site first, then run this in the Supabase SQL editor, replacing the email:
+
+   ```sql
+   insert into public.admins (user_id)
+   select id from auth.users where email = 'you@example.com'
+   on conflict do nothing;
+   ```
+
+After that the button appears on the Strava page for signed-in admins. The first sync stores the summaries and then fills in details for up to 80 activities per run.
+
+## Scheduled sync (optional)
+
+To sync without the button, schedule the function with `pg_cron` and `pg_net` (enable both under Database > Extensions). Store the service role key in Vault, not in the SQL itself:
+
+```sql
+select vault.create_secret('<service-role-key>', 'strava_sync_key');
+
+select cron.schedule(
+  'strava-sync',
+  '*/30 * * * *',
+  $$
+  select net.http_post(
+    url := 'https://bvagseoxnweowmdwerct.supabase.co/functions/v1/strava-sync',
+    headers := jsonb_build_object(
+      'Authorization', 'Bearer ' || (select decrypted_secret from vault.decrypted_secrets where name = 'strava_sync_key')
+    )
+  );
+  $$
+);
+```
+
+## Rate limits
+
+Strava allows about 100 requests per 15 minutes and 1000 per day. Each run makes one list request per 200 activities and up to 80 detail requests. If Strava returns 429, the run stops and the rest is picked up next time.
+
+## Refresh token rotation
+
+Strava issues a new refresh token on each refresh. The function saves it to `strava_tokens`, which is readable only by the service role. If you rotate the token in Strava, run `secrets set STRAVA_REFRESH_TOKEN=...` again and clear the row in `strava_tokens`.
+
+## Fallback: JSON files on the Linux server
+
+`scripts/sync-strava.js` is still available. It writes static JSON, which is the same data without Supabase. It is not used by the page now.
 
 | File | Contents |
 |---|---|
 | `activities.json` | `{ syncedAt, activities }`, rewritten on every run |
 | `activity-<id>.json` | Detail for one activity, fetched once and then reused |
 
-## Running it
+Run it locally with `node --env-file=.env scripts/sync-strava.js`. Its state lives in `.strava-state.json`, which is gitignored.
 
-Locally (dev output goes to `public/data/strava/`, which is gitignored):
-
-```bash
-node --env-file=.env scripts/sync-strava.js
-```
-
-On the Linux server, add a cron entry (every 15 minutes) that writes straight into the web root:
-
-```cron
-*/15 * * * * cd /path/to/bs-weestoater && STRAVA_OUTPUT_DIR=/var/www/weestoater/data/strava /usr/bin/node --env-file=.env scripts/sync-strava.js >> /var/log/strava-sync.log 2>&1
-```
-
-Requirements on the server:
-
-- Node.js 20 or newer.
-- `.env` in the project root with `STRAVA_CLIENT_ID`, `STRAVA_CLIENT_SECRET`, `STRAVA_REFRESH_TOKEN`. It is never committed.
-- Write access to `STRAVA_OUTPUT_DIR`.
-
-## Deploying
-
-Your deploy step must not delete the generated folder. For example, with rsync:
-
-```bash
-rsync -av --delete --exclude 'data/strava/' dist/ /var/www/weestoater/
-```
-
-## Refresh token rotation
-
-Strava can issue a new refresh token on each refresh. The script saves the latest one to `.strava-state.json` (gitignored) and uses it on the next run. After you manually rotate the token in `.env`, delete `.strava-state.json` so the new value is used.
-
-## Rate limits
-
-Strava allows a limited number of requests per 15 minutes and per day. Details are only fetched for new activities, so a steady-state run makes one list request. If the limit is hit, the script stops and fetches the rest on the next run.

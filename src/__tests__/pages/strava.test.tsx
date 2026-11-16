@@ -25,6 +25,8 @@ const { fetchStravaActivities, baseActivity } = vi.hoisted(() => {
 vi.mock("../../utils/stravaApi", () => ({
   fetchStravaActivities,
   fetchStravaActivityDetail: vi.fn(),
+  isStravaAdmin: vi.fn(() => Promise.resolve(false)),
+  triggerStravaSync: vi.fn(),
 }));
 
 describe("Strava page", () => {

@@ -1,4 +1,4 @@
-/** Activity as returned by the strava-activities Netlify function (SI units). */
+/** Activity as stored in Supabase (SI units) and returned by fetchStravaActivities. */
 export interface StravaActivity {
   id: number;
   name: string;
@@ -13,7 +13,7 @@ export interface StravaActivity {
   polyline: string | null;
 }
 
-/** Extra fields returned by the strava-activity Netlify function. */
+/** Extra fields stored by the strava-sync Edge Function. */
 export interface StravaActivityDetail extends StravaActivity {
   description: string | null;
   calories: number | null;
