@@ -17,6 +17,10 @@ dist-ssr
 .env.local
 .env.production
 
+# Strava sync output (generated) and rotated refresh token state (secret)
+public/data/strava/
+.strava-state.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
