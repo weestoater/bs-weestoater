@@ -94,19 +94,19 @@ export function StravaActivityCard({ activity }: StravaActivityCardProps) {
       {/* Summary Stats Row */}
       <div className="card-body border-bottom">
         <div className="row g-3">
-          <div className="col-sm-3 col-xs-6 text-center">
+          <div className="col text-center">
             <small className="text-muted d-block"><i className="bi bi-signpost-2 text-primary me-1"></i>Distance</small>
             <strong>{formatDistance(distanceMiles, false)}</strong>
           </div>
-          <div className="col-sm-3 col-xs-6 text-center">
+          <div className="col text-center">
             <small className="text-muted d-block"><i className="bi bi-clock text-primary me-1"></i>Duration</small>
             <strong>{formatDuration(durationMinutes)}</strong>
           </div>
-          <div className="col-sm-3 col-xs-6 text-center">
+          <div className="col text-center">
             <small className="text-muted d-block"><i className="bi bi-speedometer2 text-primary me-1"></i>Avg Speed</small>
             <strong>{formatSpeed(avgSpeedMph, false)}</strong>
           </div>
-          <div className="col-sm-3 col-xs-6 text-center">
+          <div className="col text-center">
             <small className="text-muted d-block"><i className="bi bi-arrow-up text-primary me-1"></i>Elevation</small>
             <strong>{`${elevationFt.toFixed(0)} ft`}</strong>
           </div>
@@ -140,13 +140,13 @@ export function StravaActivityCard({ activity }: StravaActivityCardProps) {
           {/* Detailed Stats */}
           <div className="row g-3">
             {activity.averageHeartrate !== null && (
-              <div className="col-sm-4">
+              <div className="col">
                 <small className="text-muted d-block"><i className="bi bi-heart-pulse-fill me-2"></i>Avg Heart Rate</small>
                 <strong>{Math.round(activity.averageHeartrate)} bpm</strong>
               </div>
             )}
             {activity.maxHeartrate !== null && (
-              <div className="col-sm-4">
+              <div className="col">
                 <small className="text-muted d-block">
                   <i className="bi bi-heart-pulse text-danger me-1"></i>
                   Max Heart Rate</small>
@@ -154,7 +154,7 @@ export function StravaActivityCard({ activity }: StravaActivityCardProps) {
               </div>
             )}
             {detail?.calories != null && (
-              <div className="col-sm-4">
+              <div className="col">
                 <small className="text-muted d-block"><i className="bi bi-fire text-warning me-1"></i>Calories Burned</small>
                 <strong>{Math.round(detail.calories)} kcal</strong>
               </div>
