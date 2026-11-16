@@ -8,7 +8,7 @@ export interface ActivityCategory {
 
 const BIKE: ActivityCategory = {
   key: "BikeRide",
-  label: "Bike ride",
+  label: "Bike",
   icon: "bi-bicycle",
   colorClass: "bg-primary",
 };

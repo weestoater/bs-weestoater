@@ -71,14 +71,14 @@ describe("Strava page", () => {
     expect(await screen.findByText("30m")).toBeInTheDocument();
   });
 
-  test("groups all ride variants under a single Bike ride filter", async () => {
+  test("groups all ride variants under a single Bike filter", async () => {
     fetchStravaActivities.mockResolvedValueOnce([
       { ...baseActivity, id: 1, sportType: "MountainBikeRide" },
       { ...baseActivity, id: 2, sportType: "GravelRide" },
     ]);
     render(<StravaPage />);
     expect(
-      await screen.findByRole("button", { name: /Bike ride \(2\)/ }),
+      await screen.findByRole("button", { name: /Bike \(2\)/ }),
     ).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /MountainBikeRide|GravelRide/ })).toBeNull();
   });

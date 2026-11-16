@@ -102,19 +102,19 @@ export function StravaActivityCard({
       <div className="card-body border-bottom">
         <div className="row g-3">
           <div className="col-sm-3 col-xs-6 text-center">
-            <small className="text-muted d-block">Distance</small>
+            <small className="text-muted d-block"><i className="bi bi-signpost-2 text-primary me-1"></i>Distance</small>
             <strong>{formatDistance(distanceMiles, useMetric)}</strong>
           </div>
           <div className="col-sm-3 col-xs-6 text-center">
-            <small className="text-muted d-block">Duration</small>
+            <small className="text-muted d-block"><i className="bi bi-clock text-primary me-1"></i>Duration</small>
             <strong>{formatDuration(durationMinutes)}</strong>
           </div>
           <div className="col-sm-3 col-xs-6 text-center">
-            <small className="text-muted d-block">Avg Speed</small>
+            <small className="text-muted d-block"><i className="bi bi-speedometer2 text-primary me-1"></i>Avg Speed</small>
             <strong>{formatSpeed(avgSpeedMph, useMetric)}</strong>
           </div>
           <div className="col-sm-3 col-xs-6 text-center">
-            <small className="text-muted d-block">Elevation</small>
+            <small className="text-muted d-block"><i className="bi bi-arrow-up text-primary me-1"></i>Elevation</small>
             <strong>
               {useMetric
                 ? `${activity.elevationGainM.toFixed(0)} m`
@@ -141,30 +141,32 @@ export function StravaActivityCard({
           {coordinates.length > 0 && (
             <div className="mb-4">
               <h3 className="mb-3">
-                <i className="bi bi-geo-alt me-2"></i>
+                <i className="bi bi-geo-alt-fill me-2 text-info"></i>
                 Route Map
               </h3>
-              <RouteMap coordinates={coordinates} height="400px" title={activity.name} />
+              <RouteMap coordinates={coordinates} height="475px" title={activity.name} />
             </div>
           )}
 
           {/* Detailed Stats */}
           <div className="row g-3">
             {activity.averageHeartrate !== null && (
-              <div className="col-sm-6">
-                <small className="text-muted d-block">Avg Heart Rate</small>
+              <div className="col-sm-4">
+                <small className="text-muted d-block"><i className="bi bi-heart-pulse-fill me-2"></i>Avg Heart Rate</small>
                 <strong>{Math.round(activity.averageHeartrate)} bpm</strong>
               </div>
             )}
             {activity.maxHeartrate !== null && (
-              <div className="col-sm-6">
-                <small className="text-muted d-block">Max Heart Rate</small>
+              <div className="col-sm-4">
+                <small className="text-muted d-block">
+                  <i className="bi bi-heart-pulse text-danger me-1"></i>
+                  Max Heart Rate</small>
                 <strong>{Math.round(activity.maxHeartrate)} bpm</strong>
               </div>
             )}
             {detail?.calories != null && (
-              <div className="col-sm-6">
-                <small className="text-muted d-block">Calories Burned</small>
+              <div className="col-sm-4">
+                <small className="text-muted d-block"><i className="bi bi-fire text-warning me-1"></i>Calories Burned</small>
                 <strong>{Math.round(detail.calories)} kcal</strong>
               </div>
             )}
